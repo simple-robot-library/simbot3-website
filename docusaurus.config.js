@@ -4,16 +4,18 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+// https://docusaurus.io/zh-CN
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'simple-robot',
+  title: 'Simple Robot',
   tagline: '欢迎，我的朋友',
   url: 'https://github.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  organizationName: 'simple-robot', // Usually your GitHub org/user name.
+  organizationName: 'Simple Robot', // Usually your GitHub org/user name.
   projectName: 'simbot', // Usually your repo name.
 
   presets: [
@@ -42,6 +44,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      hideableSidebar: true,
+      // autoCollapseSidebarCategories: true,
       navbar: {
         title: 'Simple Robot',
         logo: {
@@ -57,6 +61,12 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+            dropdownActiveClassDisabled: true,
+          },
+          {
             href: 'https://github.com/ForteScarlet/simpler-robot',
             label: 'GitHub',
             position: 'right',
@@ -71,7 +81,7 @@ const config = {
             items: [
               {
                 label: '文档',
-                to: '/docs/intro',
+                to: '/docs/home',
               },
 
             ],
@@ -99,13 +109,29 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} simple-robot, Inc. Built with <a href="https://www.docusaurus.cn/">Docusaurus</a>.`,
+        copyright: `Built with <a href="https://www.docusaurus.cn/">Docusaurus</a>. <br> Copyright © ${new Date().getFullYear()} Forte Scarlet.`,
       },
       prism: {
+        additionalLanguages: ['java', 'kotlin', 'groovy'],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
     }),
+
 };
 
 module.exports = config;
+
+// Reverse the sidebar items ordering (including nested category items)
+function reverseSidebarItems(items) {
+  // Reverse items in categories
+  const result = items.map((item) => {
+    if (item.type === 'category') {
+      return {...item, items: reverseSidebarItems(item.items)};
+    }
+    return item;
+  });
+  // Reverse items at current level
+  result.reverse();
+  return result;
+}

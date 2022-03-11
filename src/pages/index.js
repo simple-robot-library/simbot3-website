@@ -6,18 +6,38 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
+const documentButtonTexts = [
+    '从文档上手 - 5hour ⏱️',
+    '开始阅读文档 📚',
+    '👉 通过文档开始学习',
+    '🌸 万花丛中过 🌸',
+    '👀'
+]
+
+const taglines = [
+    '欢迎，我的朋友',
+    '别来无恙',
+    '这里是simbot文档专享乐园',
+    '等你好久了',
+    '最近过的怎么样?',
+    '有没有想我呢?',
+    '有没有好好喝水?',
+    'Simple Robot, 还是simple-robot?',
+]
+
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">{random(taglines)}</p>
+        {/*<p className="hero__subtitle">{siteConfig.tagline}</p>*/}
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+              {random(documentButtonTexts)}
           </Link>
         </div>
       </div>
@@ -37,4 +57,8 @@ export default function Home() {
       </main>
     </Layout>
   );
+}
+
+function random(elements) {
+    return elements[Math.floor(Math.random()*elements.length)]
 }
