@@ -11,11 +11,6 @@ jobs:
     steps:
       # 检出仓库代码
       - uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-          submodules: true
-
       - uses: actions/setup-node@v3
       - with:
           node-version: 16.x
