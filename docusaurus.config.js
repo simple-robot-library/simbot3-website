@@ -13,7 +13,7 @@ const config = {
   title: 'Simple Robot',
   tagline: '欢迎，我的朋友',
   url: 'https://simple-robot-library.github.io/simbot3-website',
-  baseUrl: '/simbot3-website/',
+  baseUrl: '/',
   onBrokenLinks: 'warn', //  [ignore, log, warn, error, throw]
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
