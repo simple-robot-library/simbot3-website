@@ -17,8 +17,8 @@ const config = {
   onBrokenLinks: 'warn', //  [ignore, log, warn, error, throw]
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  organizationName: 'simple-robot-library', // Usually your GitHub org/user name.
-  projectName: 'simbot3-website', // Usually your repo name.
+  organizationName: 'Simple Robot', // Usually your GitHub org/user name.
+  projectName: 'simbot', // Usually your repo name.
 
   presets: [
     [
