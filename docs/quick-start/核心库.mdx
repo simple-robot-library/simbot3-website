@@ -16,10 +16,11 @@ import Link from '@docusaurus/Link';
 
 ## 使用依赖
 
-import { Versions } from '@site/src/components/Versions';
+import version from '@site/docs/quick-start/dpVersion.json'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
+
 
 <Tabs groupId="use-dependency">
 <TabItem value="Maven" label="Maven" default>
@@ -28,19 +29,19 @@ import CodeBlock from '@theme/CodeBlock';
 <dependency>
     <groupId>love.forte.simbot</groupId>
     <artifactId>simbot-core</artifactId>
-    <version>${Versions.simbot.version}</version>
+    <version>${version.simbot.version}</version>
 </dependency>\n
 <!-- 腾讯频道组件 -->
 <dependency>
     <groupId>love.forte.simbot.component</groupId>
     <artifactId>simbot-component-tencent-guild-core</artifactId>
-    <version>${Versions.simbot.component.tcg.version}</version>
+    <version></version>
 </dependency>\n
 <!-- mirai组件 -->
 <dependency>
     <groupId>love.forte.simbot.component</groupId>
     <artifactId>simbot-component-mirai-core</artifactId>
-    <version>${Versions.simbot.component.mirai.version}</version>
+    <version></version>
 </dependency>`}
 </CodeBlock>
 
@@ -50,22 +51,22 @@ import CodeBlock from '@theme/CodeBlock';
 <CodeBlock language="kotlin">
     {`// 3.x中，大部分组件的版本维护独立于标准库。
 // simbot核心标准库
-implementation("love.forte.simbot:simbot-core:${Versions.simbot.version}")\n
+implementation("love.forte.simbot:simbot-core:$vSimbotCore")\n
 // 腾讯频道组件
-implementation("love.forte.simbot.component:simbot-component-tencent-guild-core:${Versions.simbot.component.tcg.version}")\n
+implementation("love.forte.simbot.component:simbot-component-tencent-guild-core:$vSimbotCore")\n
 // mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-core:${Versions.simbot.component.mirai.version}")`}
+implementation("love.forte.simbot.component:simbot-component-mirai-core:$vSimbotCore")`}
 </CodeBlock>
 </TabItem>
 <TabItem value="Gradle Groovy" label="Gradle Groovy">
 <CodeBlock language="groovy">
     {`// 3.x中，大部分组件的版本维护独立于标准库。
 // simbot核心标准库
-implementation 'love.forte.simbot:simbot-core:${Versions.simbot.version}'\n
+implementation 'love.forte.simbot:simbot-core:$vSimbotCore'\n
 // 腾讯频道组件
-implementation 'love.forte.simbot.component:simbot-component-tencent-guild-core:${Versions.simbot.component.tcg.version}'\n
+implementation 'love.forte.simbot.component:simbot-component-tencent-guild-core:$vSimbotCore'\n
 // mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-core:${Versions.simbot.component.mirai.version}'`}
+implementation 'love.forte.simbot.component:simbot-component-mirai-core:$vSimbotCore'`}
 </CodeBlock>
 </TabItem>
 </Tabs>

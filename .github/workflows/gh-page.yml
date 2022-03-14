@@ -1,0 +1,36 @@
+name: Deploy gh-page
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-doc:
+    if: github.repository == 'simple-robot-library/simbot3-website'
+    name: Deploy-doc
+    runs-on: ubuntu-latest
+    steps:
+      # 检出仓库代码
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          submodules: true
+
+      - with:
+          node-version: 16.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Build website
+        run: npm run build
+
+      # https://github.com/marketplace/actions/github-pages-action
+      - name: Push to doc repository
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PUSH_TOKEN }}
+#          external_repository: simple-robot-library/simbot3-main-apiDoc
+          publish_branch: gh-pages  # default: gh-pages
+          publish_dir: ./build

@@ -6,17 +6,19 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 // https://docusaurus.io/zh-CN
 
+// npm run docusaurus docs:version 3.0.0-preview.0.1
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Simple Robot',
   tagline: '欢迎，我的朋友',
-  url: 'https://github.com',
+  url: 'https://simple-robot-library.github.io/simbot3-website',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn', //  [ignore, log, warn, error, throw]
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-  organizationName: 'Simple Robot', // Usually your GitHub org/user name.
-  projectName: 'simbot', // Usually your repo name.
+  organizationName: 'simple-robot-library', // Usually your GitHub org/user name.
+  projectName: 'simbot3-website', // Usually your repo name.
 
   presets: [
     [
@@ -63,7 +65,7 @@ const config = {
           {
             type: 'docsVersionDropdown',
             position: 'right',
-            dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+            // dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
             dropdownActiveClassDisabled: true,
           },
           {

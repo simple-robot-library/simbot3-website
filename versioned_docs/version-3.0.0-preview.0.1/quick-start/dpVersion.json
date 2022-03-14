@@ -1,0 +1,10 @@
+{
+  "simbot": {
+    "version": "3.0.0.preview.0.1",
+    "component": {
+      "mirai": "3.0.0.preview.0.1-MIRAI",
+      "tcg": "3.0.0.preview.0.1-TCG",
+      "khl": "3.0.0.preview.0.1-KHL"
+    }
+  }
+}
