@@ -46,6 +46,9 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [{
+        name: 'keywords', content: 'forte, fortescarlet, simbot, simple-robot'
+      }],
       hideableSidebar: true,
       // autoCollapseSidebarCategories: true,
       navbar: {
@@ -62,6 +65,7 @@ const config = {
             label: '文档',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
+            ////////
           {
             type: 'docsVersionDropdown',
             position: 'right',
@@ -72,7 +76,7 @@ const config = {
             href: 'https://github.com/ForteScarlet/simpler-robot',
             label: 'GitHub',
             position: 'right',
-          },
+          }
         ],
       },
       footer: {
@@ -120,6 +124,10 @@ const config = {
       },
     }),
 
+  i18n: {
+    defaultLocale: 'cn',
+    locales: ['cn']
+  }
 };
 
 module.exports = config;
