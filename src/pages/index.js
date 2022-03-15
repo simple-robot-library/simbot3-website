@@ -5,15 +5,18 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import BrowserOnly from "@docusaurus/core/lib/client/exports/BrowserOnly";
+// import Baidu from '@site/static/baiduStatistic.js'
 
+// console.log(Baidu)
 
-
+// Expression statement is not assignment or call
 const documentButtonTexts = [
-    '从文档上手 - 5hour ⏱️',
-    '开始阅读文档 📚',
+    '⏱️ 从文档上手',
+    '📚 开始阅读文档',
     '👉 通过文档开始学习',
     '🌸 万花丛中过 🌸',
-    '👀'
+    '👀 随便逛逛?'
 ]
 
 const taglines = [
@@ -27,19 +30,10 @@ const taglines = [
     'Simple Robot, 还是simple-robot?',
 ]
 
+
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
     return (
-        <div>
-            <script>
-                {`const _hmt = _hmt || [];
-                (function () {
-                const hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?c446fffc21c42c4af42ff1595795363a";
-                const s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();`}
-            </script>
             <header className={clsx('hero hero--primary', styles.heroBanner)}>
                 <div className="container">
                     <h1 className="hero__title">{siteConfig.title}</h1>
@@ -54,8 +48,6 @@ function HomepageHeader() {
                     </div>
                 </div>
             </header>
-        </div>
-
     );
 }
 
@@ -63,8 +55,16 @@ export default function Home() {
     const {siteConfig} = useDocusaurusContext();
     return (
         <Layout
-            title={`Hello from ${siteConfig.title}`}
-            description="Description will go into a meta tag in <head />">
+            title={`欢迎! ${siteConfig.title}`}
+            // title={`Hello from ${siteConfig.title}`}
+            description="Simple Robot (simbot) website by Forte Scarlet">
+            <BrowserOnly>
+                {() => {
+                    require('@site/static/baiduStatistic.js')
+                    return <div>Hello</div>
+                }
+                }
+            </BrowserOnly>
             <HomepageHeader/>
             <main>
                 <HomepageFeatures/>
