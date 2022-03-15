@@ -6,13 +6,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
-var _hmt = _hmt || [];
-(function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?c446fffc21c42c4af42ff1595795363a";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
 
 
 const documentButtonTexts = [
@@ -37,20 +30,32 @@ const taglines = [
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
     return (
-        <header className={clsx('hero hero--primary', styles.heroBanner)}>
-            <div className="container">
-                <h1 className="hero__title">{siteConfig.title}</h1>
-                <p className="hero__subtitle">{random(taglines)}</p>
-                {/*<p className="hero__subtitle">{siteConfig.tagline}</p>*/}
-                <div className={styles.buttons}>
-                    <Link
-                        className="button button--secondary button--lg"
-                        to="/docs/intro">
-                        {random(documentButtonTexts)}
-                    </Link>
+        <div>
+            <script>
+                {`const _hmt = _hmt || [];
+                (function () {
+                const hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?c446fffc21c42c4af42ff1595795363a";
+                const s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();`}
+            </script>
+            <header className={clsx('hero hero--primary', styles.heroBanner)}>
+                <div className="container">
+                    <h1 className="hero__title">{siteConfig.title}</h1>
+                    <p className="hero__subtitle">{random(taglines)}</p>
+                    {/*<p className="hero__subtitle">{siteConfig.tagline}</p>*/}
+                    <div className={styles.buttons}>
+                        <Link
+                            className="button button--secondary button--lg"
+                            to="/docs/intro">
+                            {random(documentButtonTexts)}
+                        </Link>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </div>
+
     );
 }
 

@@ -47,8 +47,32 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [{
-        name: 'keywords', content: 'forte, fortescarlet, simbot, simple-robot'
+        name: 'keywords', content: 'forte, forte-scarlet, fortescarlet, simbot, simple-robot'
       }],
+
+      // https://www.algolia.com/account/api-keys/all?applicationId=XJ6OXX8I3C
+      algolia: {
+        appId: 'VLLZ4JZE8Z',
+
+        // Public API key: it is safe to commit it
+        apiKey: 'e60d9ee16618a0ad3a338ecc73cb840e',
+
+        indexName: 'simbot website',
+
+        // Optional: see doc section below
+        contextualSearch: true,
+
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push.
+        // Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        // externalUrlRegex: 'external\\.com|domain\\.com',
+
+        // Optional: Algolia search parameters
+        searchParameters: {},
+
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+      },
+
       hideableSidebar: true,
       // autoCollapseSidebarCategories: true,
       navbar: {
@@ -131,17 +155,3 @@ const config = {
 };
 
 module.exports = config;
-
-// Reverse the sidebar items ordering (including nested category items)
-function reverseSidebarItems(items) {
-  // Reverse items in categories
-  const result = items.map((item) => {
-    if (item.type === 'category') {
-      return {...item, items: reverseSidebarItems(item.items)};
-    }
-    return item;
-  });
-  // Reverse items at current level
-  result.reverse();
-  return result;
-}
