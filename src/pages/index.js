@@ -61,7 +61,6 @@ export default function Home() {
             <BrowserOnly>
                 {() => {
                     require('@site/static/baiduStatistic.js')
-                    return <div>Hello</div>
                 }
                 }
             </BrowserOnly>
