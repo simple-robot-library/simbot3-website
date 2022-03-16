@@ -211,7 +211,7 @@ public void useBotManager() {
 `OriginBotManager` 无关任何环境，属于 **全局** 性API。你应该谨慎考虑是否应该使用任何 **全局** 相关的API，并且这些API未来都有可能发生变更。
 :::
 
-然而，我们依然建议你在更合适的环境中获取并使用 `BotManager`。
+我们依然建议你在更合适的环境中获取并使用 `BotManager`。
 在 `simbot3` 中，`BotManager` 与 `Bot`， 或者说整个启动流程（在基础的 **core** 模块的角度上） 息息相关。
 
 因此你可以通过 `Bot` 很轻易地得到其对应/所属的 `BotManager`，并在尽量避免使用 `OriginBotManager` 的情况下进行操作：

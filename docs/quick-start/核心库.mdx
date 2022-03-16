@@ -17,7 +17,6 @@ tags: [快速开始]
 :::
 
 ## 使用依赖
-### 普通依赖
 
 import version from './dpVersion.json'
 import Tabs from '@theme/Tabs';
@@ -75,13 +74,18 @@ implementation 'love.forte.simbot.component:simbot-component-mirai-core:${versio
 </Tabs>
 
 
-### 使用快照
-除了使用release版本，你也可以使用快照版本。simbot 的快照版本可以前往 <https://oss.sonatype.org/content/repositories/snapshots/love/forte/simbot/simbot-api/> 查询。
+<details>
+<summary>使用快照版本</summary>
+
+:::note
+除了使用release版本，你也可以使用快照版本。simbot 的快照版本可以前往 <a href="https://oss.sonatype.org/content/repositories/snapshots/love/forte/simbot/simbot-api/">https://oss.sonatype.org/content/repositories/snapshots/love/forte/simbot/simbot-api/</a> 查询。
+:::
 
 <Tabs groupId="use-dependency">
 <TabItem value="Maven" label="Maven" default>
 <CodeBlock language="xml">
-{`<!-- simbot核心标准库 -->
+{`<!-- 记得配置快照仓库 -->\n
+<!-- simbot核心标准库 -->
 <dependency>
     <groupId>love.forte.simbot</groupId>
     <artifactId>simbot-core</artifactId>
@@ -104,7 +108,18 @@ implementation 'love.forte.simbot.component:simbot-component-mirai-core:${versio
 
 <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
 <CodeBlock language="kotlin">
-{`// 3.x中，大部分组件的版本维护独立于标准库。
+{`//配置仓库，包括其中的快照仓库
+repositories {
+    mavenCentral()
+    // mavenLocal()
+    maven {
+        url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
+}
+// 3.x中，大部分组件的版本维护独立于标准库。
 // simbot核心标准库
 implementation("love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}")\n
 // 腾讯频道组件
@@ -116,7 +131,8 @@ implementation("love.forte.simbot.component:simbot-component-mirai-core:${versio
 
 <TabItem value="Gradle Groovy" label="Gradle Groovy">
 <CodeBlock language="groovy">
-{`// 3.x中，大部分组件的版本维护独立于标准库。
+{`//记得配置快照仓库\n
+// 3.x中，大部分组件的版本维护独立于标准库。
 // simbot核心标准库
 implementation 'love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}'\n
 // 腾讯频道组件
@@ -126,6 +142,10 @@ implementation 'love.forte.simbot.component:simbot-component-mirai-core:${versio
 </CodeBlock>
 </TabItem>
 </Tabs>
+
+</details>
+
+
 
 
 
