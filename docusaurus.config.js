@@ -5,6 +5,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 // https://docusaurus.io/zh-CN
+// https://mui.com/zh/getting-started/installation/
 
 // npm run docusaurus docs:version 3.0.0-preview.0.1
 

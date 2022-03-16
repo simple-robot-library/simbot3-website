@@ -135,7 +135,7 @@ implementation 'love.forte.simbot.component:simbot-component-mirai-core:${versio
 事件管理器应当是你第一个所需的东西。
 
 <Tabs groupId="code">
-<TabItem value="kotlin" default>
+<TabItem value="Kotlin" default>
 
 ```kotlin
 val eventManager = coreListenerManager {
@@ -144,7 +144,7 @@ val eventManager = coreListenerManager {
 ```
 
 </TabItem>
-<TabItem value="java">
+<TabItem value="Java">
 
 ```java
 // 配置类
@@ -160,7 +160,7 @@ final CoreListenerManager eventManager = CoreListenerManager.newInstance(configu
 因为我假设你同时使用了两个组件，因此你要构建两个管理器。
 
 <Tabs groupId="code">
-<TabItem value="kotlin" default>
+<TabItem value="Kotlin" default>
 
 ```kotlin
 // 腾讯频道bot管理器
@@ -175,7 +175,7 @@ val miraiBotManager = miraiBotManager(eventManager)
 ```
 
 </TabItem>
-<TabItem value="java">
+<TabItem value="Java">
 
 ```java
 // 腾讯频道bot管理器配置类
@@ -200,7 +200,7 @@ final MiraiBotManager miraiBotManager = MiraiBotManager.newInstance(eventManager
 回到上面我们一开始构建好的 eventManager来，向其中注册监听函数。
 
 <Tabs groupId="code">
-    <TabItem value="kotlin" default>
+    <TabItem value="Kotlin" default>
 
 ```kotlin
 // 注册方式很多，这里仅提供几个示例
@@ -227,7 +227,7 @@ eventManager.listen { _, event: MessageEvent ->
 ```
 
 </TabItem>
-<TabItem value="java">
+<TabItem value="Java">
 
 ```java
 // 注册方式很多，这里仅提供几个示例
@@ -273,14 +273,14 @@ eventManager.register(CoreListenerUtil.newCoreListener(
 事件注册完成之后，你可能发现了，我们还没有注册任何的bot。
 
 <Tabs groupId="code">
-    <TabItem value="kotlin" default>
+    <TabItem value="Kotlin" label="Kotlin" default>
 
 ```kotlin
 // TODO
 ```
 
 </TabItem>
-<TabItem value="java">
+<TabItem value="Java" label="Java">
 
 ```java
 // TODO

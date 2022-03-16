@@ -1,13 +1,14 @@
 ---
 sidebar_position: 1
+title: 唯一标识ID
 ---
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 
-ID, 是一个大家都熟悉的内容，它常常表现为一串数字，或者一串字符。
+ID，用于代表一个目标的唯一标识。ID一个大家都熟悉的内容，它常常表现为一串数字，或者一串字符。
 
-为了统一在各个环境下可能存在的ID类型差异，在simbot3.x中提供了一套针对ID的类型。
+为了统一在各个环境下可能存在的ID类型差异，在 `simbot3` 中提供了一套针对ID的类型。
 
 ## ID
 
@@ -61,7 +62,7 @@ sealed class NumericalID<N : Number> : ID() {
 简单的使用示例：
 
 <Tabs groupId="code-show">
-<TabItem value="kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" label="Kotlin" default>
 
 ```kotlin
 val intId = 123.ID
@@ -101,7 +102,7 @@ final BigIntegerID biId = Identifies.ID(BigInteger.valueOf(500L));
 除了数字ID，最常见的就是字符序列ID了，比如一串UUID。`CharSequenceID` 是一个独立实现，表示一个最基础的字符串ID。
 
 <Tabs groupId="code-show">
-<TabItem value="kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" label="Kotlin" default>
 
 ```kotlin
 val id: CharSequenceID = "HelloWorld".ID
