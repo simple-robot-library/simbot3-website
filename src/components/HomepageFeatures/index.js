@@ -4,42 +4,44 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: '易于使用',
+    Svg: require('@site/static/img/features/3/偷懒.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        不管你信不信，但是它至少不会过多的拖累你。
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: '组件协同',
+    Svg: require('@site/static/img/features/3/看书.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        不同的组件之间可以更紧密的合作。<br/><small>在不同的平台中，我们也要卿卿我我！</small>
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: (<span>
+            <span>基于 </span>
+            <a title='Copyright © 2022 JetBrains s.r.o. and the [Kotlin] logo are registered trademarks of JetBrains s.r.o.' href='https://www.jetbrains.com/'>Kotlin</a>
+  </span>) ,
+    // Svg: require('@site/static/img/Kotlin.svg').default,
+    Svg: require('@site/static/img/Kotlin_icon.svg').default,
+    svgTitle: 'Copyright © 2022 JetBrains s.r.o. and the [Kotlin] logo are registered trademarks of JetBrains s.r.o.',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        基础代码由 <a href='https://kotlinlang.org/'>Kotlin</a> 完成。提供全异步的API，并尽可能的提供 <a href='https://www.oracle.com/java/'>Java</a> 的友好兼容。
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({Svg, title, svgTitle, description}) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+      <div className="text--center" title={svgTitle}>
+        <Svg className={`${styles.featureSvg} themedDocusaurus`} role="img" title={svgTitle} />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>

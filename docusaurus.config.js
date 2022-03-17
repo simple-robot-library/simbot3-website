@@ -12,7 +12,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Simple Robot',
-  tagline: '欢迎，我的朋友',
+  tagline: '欢迎，我的朋友。欢迎来到 Simple Robot',
   url: 'http://simbot.forte.love',
   baseUrl: '/',
   onBrokenLinks: 'warn', //  [ignore, log, warn, error, throw]
@@ -29,13 +29,13 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/simple-robot-library/simbot3-website',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/simple-robot-library/simbot3-website',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -58,7 +58,7 @@ const config = {
         // Public API key: it is safe to commit it
         apiKey: 'e60d9ee16618a0ad3a338ecc73cb840e',
 
-        indexName: 'simbot website',
+        indexName: 'doc',
 
         // Optional: see doc section below
         contextualSearch: true,
@@ -72,6 +72,16 @@ const config = {
 
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: 'search',
+      },
+
+      // 公告
+      announcementBar: {
+        id: 'still_under_construction',
+        content: `🚧 <b>尚在施工中...</b>`,
+        backgroundColor: '#FFB906',
+        textColor: '#142F48',
+        isCloseable: true
+
       },
 
       hideableSidebar: true,
@@ -122,7 +132,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/ForteScarlet/simpler-robot',
+                href: 'https://github.com/simple-robot',
               },
             ],
           },
@@ -132,10 +142,12 @@ const config = {
               {
                 label: 'Blog',
                 to: '/blog',
-              },
-              {
+              }, {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/simple-robot',
+              }, {
+                label: 'Issues',
+                href: 'https://github.com/ForteScarlet/simpler-robot/issues',
               },
             ],
           },
@@ -150,8 +162,8 @@ const config = {
     }),
 
   i18n: {
-    defaultLocale: 'cn',
-    locales: ['cn']
+    defaultLocale: 'zh-CN',
+    locales: ['zh-CN']
   }
 };
 

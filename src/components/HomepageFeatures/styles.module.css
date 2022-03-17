@@ -9,3 +9,11 @@
   height: 200px;
   width: 200px;
 }
+
+[data-theme='light'] .featureSvg [fill='#000'] {
+  fill: black;
+}
+
+[data-theme='dark'] .featureSvg [fill='#000'] {
+  fill: white;
+}
