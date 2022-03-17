@@ -6,11 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import BrowserOnly from "@docusaurus/core/lib/client/exports/BrowserOnly";
-// import Baidu from '@site/static/baiduStatistic.js'
 
-// console.log(Baidu)
-
-// Expression statement is not assignment or call
 const documentButtonTexts = [
     '⏱️ 从文档上手',
     '📚 开始阅读文档',
@@ -34,8 +30,15 @@ const taglines = [
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
     const day = new Date().getDay()
+
+    // styles['heroBannerBg' + day]
+    // const day = 0
+    // const style = styles['heroBannerBg' + day]
+    // const style = bgStyles[day][0]
+    // console.log(styles.heroBanner)
+
     return (
-            <header className={clsx('hero hero--primary', styles['heroBanner'], styles['heroBannerBg' + day])}>
+            <header className={clsx('hero hero--primary', styles.heroBanner, styles['heroBannerBg' + day])} >
                 <div className="container">
                     <h1 className="hero__title">{siteConfig.title}</h1>
                     <p className="hero__subtitle">{random(taglines)}</p>
