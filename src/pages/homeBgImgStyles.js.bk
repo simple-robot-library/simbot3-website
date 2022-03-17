@@ -21,4 +21,4 @@ const bgStyles = [
 
 console.log(bgStyles)
 
-export default bgStyles
+// export default bgStyles

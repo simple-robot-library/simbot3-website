@@ -72,10 +72,10 @@ import Mermaid from '@theme/Mermaid';
 
 ## 章节列表
 
-[//]: # ()
-[//]: # (import DocCardList from '@theme/DocCardList';)
 
-[//]: # (import {useCurrentSidebarCategory} from '@docusaurus/theme-common';)
+import DocCardList from '@theme/DocCardList';
 
-[//]: # ()
-[//]: # (<DocCardList items={useCurrentSidebarCategory&#40;&#41;.items}/>)
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
