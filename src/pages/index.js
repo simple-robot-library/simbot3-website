@@ -33,8 +33,9 @@ const taglines = [
 
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
+    const day = new Date().getDay()
     return (
-            <header className={clsx('hero hero--primary', styles.heroBanner)}>
+            <header className={clsx('hero hero--primary', styles['heroBanner'], styles['heroBannerBg' + day])}>
                 <div className="container">
                     <h1 className="hero__title">{siteConfig.title}</h1>
                     <p className="hero__subtitle">{random(taglines)}</p>
