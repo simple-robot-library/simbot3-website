@@ -10,6 +10,14 @@
   overflow: hidden;
 }
 
+.heroBanner {
+  background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+}
+
+[data-theme='dark'] .heroBanner {
+  background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;

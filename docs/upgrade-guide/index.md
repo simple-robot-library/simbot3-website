@@ -52,16 +52,18 @@ import TabItem from '@theme/TabItem';
 
 ## 部分功能对照
 ### 事件监听
-首先你需要明白，v2中的以注解形式进行事件监听的方式在3.x中交由 **boot** 相关模块负责了，也就是说如果你仅仅只是使用了 `love.forte.simbot:simbot-core` 之类的非 **boot** 相关的模块，那么是没有那些注解的。
 
 :::info
+首先你需要明白，simbot2中的以注解形式进行事件监听的方式在simbot3中交由 **boot** 相关模块负责了，
+也就是说如果你仅仅只是使用了 `love.forte.simbot:simbot-core` 之类的非 **boot** 相关的模块，那么是没有那些注解的。
+
 下文所有示例代码中可能出现的 `@Beans`、`@Listener` (simbot3的相关示例代码) 等注解均为 **boot** 模块下内容，**core** 模块无需也没有相关注解。
 此处为了简化展示，大部分示例默认认为处于 **boot** 模块中。
 :::
 
 让我们来看一下对照。首先，加入在simbot2中，你编写的内容如果是：
 
-<Tabs groupId="code">
+<Tabs groupId="code" class="shadow--md">
 <TabItem value="Kotlin" default>
 
 ```kotlin title="simbot2✌"
@@ -90,7 +92,7 @@ public class MyListener {
 </TabItem>
 </Tabs>
 
-那么在v3中其表现为（在boot相关模块下）：
+那么在simbot3中其表现为（在boot相关模块下）：
 
 <Tabs groupId="code">
 <TabItem value="Kotlin" default>
@@ -139,7 +141,7 @@ public class MyListener {
 
 
 ### 获取Bot
-在v2中，你如果需要在非监听函数环境中使用bot或者需要botManager并寻找其他bot，那么你需要借助依赖注入功能：
+在simbot2中，你如果需要在非监听函数环境中使用bot或者需要botManager并寻找其他bot，那么你需要借助依赖注入功能：
 
 <Tabs groupId="code">
 <TabItem value="Kotlin" default>
