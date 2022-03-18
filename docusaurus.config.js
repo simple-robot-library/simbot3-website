@@ -118,17 +118,17 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: '文档',
             items: [
               {
-                label: '文档',
+                label: '文档首页',
                 to: '/docs/intro',
               },
 
             ],
           },
           {
-            title: 'Community',
+            title: '社区',
             items: [
               {
                 label: 'GitHub',
@@ -137,7 +137,7 @@ const config = {
             ],
           },
           {
-            title: 'More',
+            title: '可能感兴趣',
             items: [
               {
                 label: 'Blog',

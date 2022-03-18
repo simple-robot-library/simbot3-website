@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
-title: 唯一标识ID
+sidebar_position: 10
+title: 唯一标识 ID
 ---
 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
@@ -52,51 +52,124 @@ sealed class NumericalID<N : Number> : ID() {
 ```
 
 `NumericalID`提供了6个基本数据类型实现：
-● `IntID`
-● `LongID`
-● `DoubleID`
-● `FloatID`
-● `BigDecimalID`
-● `BigIntegerID`
+- `IntID`
+- `LongID`
+- `DoubleID`
+- `FloatID`
+- `BigDecimalID`
+- `BigIntegerID`
 
 简单的使用示例：
 
+
+
+<!-- 展示类型 -->
 <Tabs groupId="code-show">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default>
+
+<!-- id类型 -->
+<Tabs groupId="id-type">
+
+<TabItem value="Int">
 
 ```kotlin
 val intId = 123.ID
+```
 
+</TabItem>
+<TabItem value="Long">
+
+```kotlin
 val longId = 123456L.ID
+```
 
+</TabItem>
+<TabItem value="Double">
+
+```kotlin
 val doubleId = 123.456.ID
+```
 
+</TabItem>
+<TabItem value="Float">
+
+```kotlin
 val floatId = 123.456F.ID
+```
 
+</TabItem>
+<TabItem value="BigDecimal">
+
+```kotlin
 val bdId = BigDecimal("123,456").ID
+```
 
+</TabItem>
+<TabItem value="BigInteger">
+
+```kotlin
 val biId = BigInteger.valueOf(123456).ID
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+
+</Tabs>
+
+</TabItem>
+<TabItem value="Java">
+
+<!-- id类型 -->
+<Tabs groupId="id-type">
+
+<TabItem value="Int">
 
 ```java
 final IntID intId = Identifies.ID(123);
+```
 
+</TabItem>
+<TabItem value="Long">
+
+```java
 final LongID longId = Identifies.ID(123456L);
+```
 
+</TabItem>
+<TabItem value="Double">
+
+```java
 final DoubleID doubleId = Identifies.ID(123.456);
+```
 
+</TabItem>
+<TabItem value="Float">
+
+```java
 final FloatID floatId = Identifies.ID(123.456F);
+```
 
+</TabItem>
+<TabItem value="BigDecimal">
+
+```java
 final BigDecimalID bdId = Identifies.ID(new BigDecimal("123.456").setScale(1, RoundingMode.HALF_UP));
+```
 
+</TabItem>
+<TabItem value="BigInteger">
+
+```java
 final BigIntegerID biId = Identifies.ID(BigInteger.valueOf(500L));
 ```
 
 </TabItem>
+
 </Tabs>
+
+</TabItem>
+</Tabs>
+
+
 
 ### CharSequenceID 
 除了数字ID，最常见的就是字符序列ID了，比如一串UUID。`CharSequenceID` 是一个独立实现，表示一个最基础的字符串ID。
