@@ -3,4 +3,6 @@ sidebar_position: 1
 title: 首页
 ---
 
-此目录下的内容为 simbot3 版本的相关文档内容。
+此文档的内容为 [Simple Robot](https://github.com/ForteScarlet/simpler-robot) v3.x 版本的使用手册。
+
+
