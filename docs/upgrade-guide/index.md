@@ -110,6 +110,10 @@ class MyListener {
 </TabItem>
 <TabItem value="KotlinTop" label="Kotlin(Top-Level)">
 
+:::caution 实验性
+`boot` 模块下对于Kotlin顶层函数的扫描与加载功能尚处于**实验阶段**。
+:::
+
 ```kotlin title="simbot3👌"
 @Listener
 suspend fun FriendMessageEvent.listen() {
@@ -135,8 +139,8 @@ public class MyListener {
 
 我们可以注意到如下变化：
 - 不再需要通过注解标记需要监听的类型了，而是仅需要一个标记注解 `@Listener`。simbot3中会根据你所需的类型自动判断这个监听函数的监听事件类型。假如标记为了监听函数（标记了 `@Listener` ）的监听函数没有提供任何事件相关的类型，那么代表它监听所有事件。
-- Kotlin中，支持扫描顶层函数。（尚在试验阶段，仍旧建议使用类中函数。）
-- 作为依赖注入功能的注解 `@Beans` 的 名称 没有变。
+- Kotlin中，支持扫描顶层函数。（实验阶段）
+- 作为依赖注入功能的注解 `@Beans` 的 **名称** 没有变（包路径有变化）。
 - 事件名称变了。
 
 
@@ -209,10 +213,10 @@ public void useBotManager() {
 </TabItem>
 </Tabs>
 
-:::caution
+:::caution 注意
 `OriginBotManager` 无关任何环境，属于 **全局** 性API。你应该谨慎考虑是否应该使用任何 **全局** 相关的API，并且这些API未来都有可能发生变更。
 
-相关内容可参考 [BOT管理器](../defition/bot-manager)
+相关内容可参考 [BOT管理器](../defition/bot-manager) 。
 :::
 
 
