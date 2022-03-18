@@ -64,7 +64,7 @@ sealed class NumericalID<N : Number> : ID() {
 
 
 <!-- 展示类型 -->
-<Tabs groupId="code-show">
+<Tabs groupId="code">
 <TabItem value="Kotlin" default>
 
 <!-- id类型 -->
@@ -174,7 +174,7 @@ final BigIntegerID biId = Identifies.ID(BigInteger.valueOf(500L));
 ### CharSequenceID 
 除了数字ID，最常见的就是字符序列ID了，比如一串UUID。`CharSequenceID` 是一个独立实现，表示一个最基础的字符串ID。
 
-<Tabs groupId="code-show">
+<Tabs groupId="code">
 <TabItem value="Kotlin" label="Kotlin" default>
 
 ```kotlin
