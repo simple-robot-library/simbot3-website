@@ -26,4 +26,4 @@ simbot3中的消息实体将会基于 [kotlinx.serialization](https://github.com
 
 
 
-但是实际上，simbot3中，所有的消息均以实体形式出现，猫猫码不再必要。有关消息相关的内容，你可以参考 消息概述 (TODO) 。
+但是实际上，simbot3中，所有的消息均以实体形式出现，猫猫码不再必要。有关消息相关的内容，你可以参考 [消息概述](message-overview) 。
