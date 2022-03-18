@@ -211,55 +211,11 @@ public void useBotManager() {
 
 :::caution
 `OriginBotManager` 无关任何环境，属于 **全局** 性API。你应该谨慎考虑是否应该使用任何 **全局** 相关的API，并且这些API未来都有可能发生变更。
+
+相关内容可参考 [BOT管理器](../defition/bot-manager)
 :::
 
-我们依然建议你在更合适的环境中获取并使用 `BotManager`。
-在 `simbot3` 中，`BotManager` 与 `Bot`， 或者说整个启动流程（在基础的 **core** 模块的角度上） 息息相关。
-
-因此你可以通过 `Bot` 很轻易地得到其对应/所属的 `BotManager`，并在尽量避免使用 `OriginBotManager` 的情况下进行操作：
-
-
-<Tabs groupId="code">
-<TabItem value="Kotlin" default>
-
-```kotlin title="simbot3👌"
-@Beans
-class Foo {
-    /** 监听一个群消息事件 */
-    @Listener
-    suspend fun GroupMessageEvent.listener() {
-        // 得到事件中bot所属的manager
-        val manager: BotManager<out Bot> = bot.manager
-        // 得到当前管理器的所有bot
-        val all: Sequence<Bot> = manager.all()
-    }
-}
-```
-
-</TabItem>
-<TabItem value="Java">
-
-```java title="simbot3👌"
-@Beans
-public class Foo {
-    /** 监听一个群消息事件 */
-    @Listener
-    public void listener(GroupMessageEvent event) {
-        // 得到此事件对应的bot
-        final Bot bot = event.getBot();
-
-        // 得到bot所属的manager
-        final BotManager<? extends Bot> manager = bot.getManager();
-
-        // 得到这个botManager中的所有Bot
-        final Stream<? extends Bot> allBot = manager.all();
-    }
-}
-```
-
-</TabItem>
-</Tabs>
 
 
 ### 消息对象
-请参考 消息概述(TODO)。
+请参考 [消息概述](../defition/message-overview)。
