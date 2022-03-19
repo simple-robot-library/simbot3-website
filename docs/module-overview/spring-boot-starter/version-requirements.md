@@ -4,8 +4,8 @@ sidebar_location: 10
 
 ---
 
-simbot3对SpringBoot要求最低版本至少为 [v2.6.4](https://github.com/spring-projects/spring-boot/releases/tag/v2.6.4), 
-或保证内置的 `Spring Framework` 版本必须高于等于 [v5.3.16](https://github.com/spring-projects/spring-framework/releases/tag/v5.3.16) 。
+simbot3对SpringBoot要求最低版本至少为 [**v2.6.4**](https://github.com/spring-projects/spring-boot/releases/tag/v2.6.4), 
+或保证内置的 `Spring Framework` 版本必须高于等于 [**v5.3.16**](https://github.com/spring-projects/spring-framework/releases/tag/v5.3.16) 。
 
 :::info
 你可以查看 [Spring Framework#28012](https://github.com/spring-projects/spring-framework/issues/28012) 来了解原因。
