@@ -3,7 +3,7 @@ title: boot 核心模块
 sidebar_location: 10
 ---
 
-与 [基础核心模块](../core.md) 类似，boot核心模块是针对于 [boot](index.md) 模块的基础完整实现模块。
+与 [基础核心模块](../core) 类似，boot核心模块是针对于 [boot](index.md) 模块的基础完整实现模块。
 
 
 
