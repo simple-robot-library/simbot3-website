@@ -20,13 +20,13 @@ public interface FooGroup : Group, DeleteSupport {
 }
 ```
 
-## 消息发送能力 `SendSupport`
+## 消息发送能力 `SendSupport` {#send-support}
 
-## 消息回复能力 `ReplySupport`
+## 消息回复能力 `ReplySupport` {#reply-support}
 
-## 消息回应能力 `MessageReactSupport`
+## 消息回应能力 `MessageReactSupport` {#message-react-support}
 
-## 禁言/静音能力 `MuteSupport`
+## 禁言/静音能力 `MuteSupport` {#mute-support}
 
 ## 删除能力 `DeleteSupport` {#delete-support}
 
