@@ -5,7 +5,7 @@ title: BOT配置
 
 :::info 注意
 
-BOT配置只在 [**boot**](../module-overview/boot) 模块或者 [**Spring Boot Starter**](../module-overview/spring-boot-starter) 模块下有效/有意义。
+BOT配置只在 [**boot**](../overviews/module-overview/boot) 模块或者 [**Spring Boot Starter**](../overviews/module-overview/spring-boot-starter) 模块下有效/有意义。
 
 :::
 

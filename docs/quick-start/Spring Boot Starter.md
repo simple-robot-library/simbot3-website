@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-此章节示例整合 `Spring Boot`。有关相关模块的说明，可以参考 [Simple Robot Spring Boot Starter模块概述](../module-overview/spring-boot-starter)
+此章节示例整合 `Spring Boot`。有关相关模块的说明，可以参考 [Simple Robot Spring Boot Starter模块概述](../overviews/module-overview/spring-boot-starter)
 
 :::note
 
@@ -15,7 +15,7 @@ sidebar_position: 3
 
 simbot 的 `Spring Boot Starter` 对 `Spring Boot` 或者说对 `Spring Framework` 版本存在一定要求。
 
-详细信息请查看 [**simbot 中的 Spring Boot 版本要求**](../module-overview/spring-boot-starter/version-requirements.md) 。
+详细信息请查看 [**simbot 中的 Spring Boot 版本要求**](../overviews/module-overview/spring-boot-starter/version-requirements.md) 。
 
 :::
 
