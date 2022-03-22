@@ -30,7 +30,7 @@ BOT配置只在 [**boot**](../module-overview/boot) 模块或者 [**Spring Boot 
 ```
 
 `component` 属性用来阐明此配置文件是为了哪个组件所服务的，它的值为对应组件的ID值。例如上述示例中的 `simbot.mirai`，
-则代表此配置文件为 mirai组件(TODO) 所使用的配置。
+则代表此配置文件为 [mirai组件](../component-overview/mirai) 所使用的配置。
 
 而对于一个mirai组件，能够进行登陆的最简配置**之一**如下：
 

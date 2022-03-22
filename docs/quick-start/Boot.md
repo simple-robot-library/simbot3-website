@@ -7,12 +7,16 @@ tags: [快速开始]
 
 
 :::note
-下文将会假设你想要使用 腾讯频道组件(TODO) 和 mirai组件(TODO)。
+
+下文将会假设你想要使用 [**腾讯频道组件**](../component-overview/tencent-guild) 和 [**mirai组件**](../component-overview/mirai)。
+
 :::
 
 
 :::info
+
 注意，此 `Boot` 并不是指 `SpringBoot` 喔。
+
 :::
 
 
@@ -78,7 +82,9 @@ implementation 'love.forte.simbot.component:simbot-component-mirai-boot:${versio
 ### 启动类
 
 :::caution
+
 ⚠️ 注意：在使用Boot模块的时候，你的启动类至少需要有**一层以上**的包路径结构。
+
 :::
 
 
@@ -158,4 +164,4 @@ TODO
 
 
 ## 打包
-参考文档  打包 TODO
+参考文档  打包(TODO)

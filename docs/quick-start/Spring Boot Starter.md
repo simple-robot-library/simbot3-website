@@ -6,7 +6,7 @@ sidebar_position: 3
 
 :::note
 
-下文将会**假设**你想要使用 腾讯频道组件(TODO) 和 mirai组件(TODO) 。
+下文将会**假设**你想要使用 [**腾讯频道组件**](../component-overview/tencent-guild) 和 [**mirai组件**](../component-overview/mirai) 。
 
 :::
 
@@ -78,7 +78,7 @@ implementation 'love.forte.simbot.component:simbot-component-mirai-boot:${versio
 
 :::note
 
-可以注意到，simbot 的 `Spring Boot Starter` 除了核心依赖的坐标不同以外，组件的依赖配置与 [Boot](Boot.mdx) 模块的配置基本一致。
+可以注意到，simbot 的 `Spring Boot Starter` 除了核心依赖的坐标不同以外，组件的依赖配置与 [Boot](Boot.md) 模块的配置基本一致。
 
 :::
 
@@ -121,7 +121,7 @@ public class Main {
 
 需要注意的是，如果你的项目中没有什么能够保持项目持续运行的组件的话（比如 `spring-web` ）， 那么项目会在启动后停止。
 如果想要避免这种情况，你可以从 `SpringContext` 中得到 `SimbootContext` 并执行他们的 `join` 相关方法。
-有关于 `SimbootContext`，你可以参考 [**快速开始 - Boot**](Boot.mdx#启动类) 中有关 `启动类` 的相关内容。
+有关于 `SimbootContext`，你可以参考 [**快速开始 - Boot**](Boot.md#启动类) 中有关 `启动类` 的相关内容。
 
 :::
 
@@ -213,7 +213,7 @@ public class BarController {
 
 ## BOT配置
 
-参考章节 BOT配置(TODO)
+参考章节 [BOT配置](../basic/bot-config.md)
 
 
 ## 打包
