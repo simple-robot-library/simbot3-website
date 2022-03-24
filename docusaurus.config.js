@@ -13,7 +13,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Simple Robot',
   tagline: '欢迎，我的朋友。欢迎来到 Simple Robot',
-  url: 'http://simbot.forte.love',
+  url: 'https://simbot.forte.love',
   baseUrl: '/',
   onBrokenLinks: 'warn', //  [ignore, log, warn, error, throw]
   onBrokenMarkdownLinks: 'warn',

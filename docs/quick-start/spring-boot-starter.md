@@ -1,5 +1,7 @@
 ---
 sidebar_position: 3
+tags: [快速开始]
+title: Spring Boot Starter
 ---
 
 此章节示例整合 `Spring Boot`。有关相关模块的说明，可以参考 [Simple Robot Spring Boot Starter模块概述](../overviews/module-overview/spring-boot-starter)
