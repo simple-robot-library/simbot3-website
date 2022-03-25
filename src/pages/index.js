@@ -27,31 +27,54 @@ const taglines = [
 ]
 
 
+function r() {
+    const arr = [true].concat(Array(100).fill(false))
+    return rGet(arr)
+}
+
+function rGet(arr) {
+    return arr[Math.floor(Math.random() * arr.length)]
+}
+
+const otherValue = [
+    '三', '叁', '③', 'Ⅲ', '仨',
+    ':3', '4-1', '5-2', '☘️', '👌',
+    'v3', '³', '₃', '⑶', '③', '⒊', '㈢', 'ヾ',
+    '(❁´◡`❁)', '(≧▽≦*)o', 'ψ(｀∇´)ψ', '(～￣▽￣)～', 'φ(゜▽゜*)', '♪(*^▽^*)', '（*＾-＾*）',
+    'q(≧▽≦q)', 'φ(*￣0￣)', '(❁´◡`❁)', '(*^_^*)', '(*^▽^*)', '（*＾-＾*）',
+    '(≧∀≦)ゞ', 'o(*￣▽￣*)ブ', '♪(^∇^*)', 'o(*￣︶￣*)o'
+]
+
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
-    const day = new Date().getDay()
-
+    const date = new Date()
+    const day = date.getDay()
+    const isAprilFools = (date.getMonth() + 1) === 4 && date.getDate() === 1;
+    const isBirthday = (date.getMonth() + 1) === 8 && date.getDate() === 3;
+    console.log('Today: ' + date.getMonth() + '-' + date.getDate() + '(' + date + ')')
     // styles['heroBannerBg' + day]
     // const day = 0
     // const style = styles['heroBannerBg' + day]
     // const style = bgStyles[day][0]
     // console.log(styles.heroBanner)
 
+    const numberVersionValue = (isAprilFools || isBirthday || r()) ? rGet(otherValue) : '3'
+
     return (
-            <header className={clsx('hero hero--primary', styles.heroBanner, styles['heroBannerBg' + day])} >
-                <div className="container">
-                    <h1 className="hero__title">{siteConfig.title}</h1>
-                    <p className="hero__subtitle">{random(taglines)}</p>
-                    {/*<p className="hero__subtitle">{siteConfig.tagline}</p>*/}
-                    <div className={styles.buttons}>
-                        <Link
-                            className="button button--secondary button--lg"
-                            to="/docs/intro">
-                            {random(documentButtonTexts)}
-                        </Link>
-                    </div>
+        <header className={clsx('hero hero--primary', styles.heroBanner, styles['heroBannerBg' + day])}>
+            <div className="container">
+                <h1 className="hero__title">{siteConfig.title} <small>{numberVersionValue}</small></h1>
+                <p className="hero__subtitle">{random(taglines)}</p>
+                {/*<p className="hero__subtitle">{siteConfig.tagline}</p>*/}
+                <div className={styles.buttons}>
+                    <Link
+                        className="button button--secondary button--lg"
+                        to="/docs/intro">
+                        {random(documentButtonTexts)}
+                    </Link>
                 </div>
-            </header>
+            </div>
+        </header>
     );
 }
 

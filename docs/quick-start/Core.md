@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+title: Core
 description: 使用核心库进行开发。
 tags: [快速开始]
 ---
