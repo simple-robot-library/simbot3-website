@@ -1,11 +1,18 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+// import img1 from '@site/static/img/kfc/Twister.jpeg'
+
+const today = new Date().getDay()
+const chicken = 4
 
 const FeatureList = [
   {
     title: '易于使用',
-    Svg: require('@site/static/img/features/3/偷懒.svg').default,
+    // Svg: require('@site/static/img/kfc/Twister.jpeg').default,
+    Svg: today === chicken ? function ({className}) {
+        return <img className={className} draggable={false} src={require('@site/static/img/kfc/Twister.jpeg').default}  alt={``}/>
+    } : require('@site/static/img/features/3/偷懒.svg').default,
     description: (
       <>
         不管你信不信，但是它至少不会过多的拖累你。
@@ -14,7 +21,9 @@ const FeatureList = [
   },
   {
     title: '组件协同',
-    Svg: require('@site/static/img/features/3/看书.svg').default,
+    Svg: today === chicken ? function ({className}) {
+        return <img className={className} draggable={false} src={require('@site/static/img/kfc/TwisterBox.jpeg').default}  alt={``}/>
+    } : require('@site/static/img/features/3/看书.svg').default,
     description: (
       <>
         不同的组件之间可以更紧密的合作。<br/><small>在不同的平台中，我们也要卿卿我我！</small>
@@ -36,6 +45,17 @@ const FeatureList = [
     ),
   },
 ];
+
+
+
+function SvgOrImg({Svg, svgTitle, Img}) {
+    if (today === 3) {
+        return <img src={require(img).default} className={`${styles.featureSvg} themedDocusaurus`} />
+    } else {
+        return <Svg className={`${styles.featureSvg} themedDocusaurus`} role="img" title={svgTitle} />
+    }
+}
+
 
 function Feature({Svg, title, svgTitle, description}) {
   return (
