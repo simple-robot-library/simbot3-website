@@ -11,7 +11,11 @@ const FeatureList = [
     title: '易于使用',
     // Svg: require('@site/static/img/kfc/Twister.jpeg').default,
     Svg: today === chicken ? function ({className}) {
-        return <img className={className} draggable={false} src={require('@site/static/img/kfc/Twister.jpeg').default}  alt={``}/>
+        return (
+            <a href='/img/kfc/Twister.jpeg' target={`_blank`}>
+                <img className={className} draggable={false} src={require('@site/static/img/kfc/Twister_s1.jpg').default} alt={`疯狂星期四`}/>
+            </a>
+        )
     } : require('@site/static/img/features/3/偷懒.svg').default,
     description: (
       <>
@@ -22,7 +26,11 @@ const FeatureList = [
   {
     title: '组件协同',
     Svg: today === chicken ? function ({className}) {
-        return <img className={className} draggable={false} src={require('@site/static/img/kfc/TwisterBox.jpeg').default}  alt={``}/>
+        return (
+            <a href='/img/kfc/TwisterBox.jpeg' target={`_blank`}><img className={className} draggable={false}
+                    src={require('@site/static/img/kfc/TwisterBox_s1.jpg').default} alt={`奖励自己`}/>
+            </a>
+        )
     } : require('@site/static/img/features/3/看书.svg').default,
     description: (
       <>
@@ -47,14 +55,6 @@ const FeatureList = [
 ];
 
 
-
-function SvgOrImg({Svg, svgTitle, Img}) {
-    if (today === 3) {
-        return <img src={require(img).default} className={`${styles.featureSvg} themedDocusaurus`} />
-    } else {
-        return <Svg className={`${styles.featureSvg} themedDocusaurus`} role="img" title={svgTitle} />
-    }
-}
 
 
 function Feature({Svg, title, svgTitle, description}) {
