@@ -12,7 +12,7 @@ const FeatureList = [
     // Svg: require('@site/static/img/kfc/Twister.jpeg').default,
     Svg: today === chicken ? function ({className}) {
         return (
-            <a href='/img/kfc/Twister.jpeg' target={`_blank`}>
+            <a href='/img/kfc/Twister.jpeg' target='_blank'>
                 <img className={className} draggable={false} src={require('@site/static/img/kfc/Twister_s1.jpg').default} alt={`疯狂星期四`}/>
             </a>
         )
@@ -27,7 +27,7 @@ const FeatureList = [
     title: '组件协同',
     Svg: today === chicken ? function ({className}) {
         return (
-            <a href='/img/kfc/TwisterBox.jpeg' target={`_blank`}><img className={className} draggable={false}
+            <a href='/img/kfc/TwisterBox.jpeg' target='_blank'><img className={className} draggable={false}
                     src={require('@site/static/img/kfc/TwisterBox_s1.jpg').default} alt={`奖励自己`}/>
             </a>
         )
