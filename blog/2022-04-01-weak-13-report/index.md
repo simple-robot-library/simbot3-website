@@ -31,7 +31,10 @@ tags: [2022,周报]
     <small><small><small><i>虽然语雀里这一章节也是空的</i></small></small></small>
 - 部分组件相关的详细内容
 
-这周更新文档的时候，还顺便在本站点埋下了一点点小小的彩蛋。不知道你能发现多少小细节呢～？
+这周更新文档的时候，还顺便在本站点埋下了一点点小小的彩蛋。不知道你能发现多少小细节呢～？ <br />
+<small><small><small><small><small><small>
+<i>贴心提示：大部分彩蛋和小细节都存在于首页中。</i>
+</small></small></small></small></small></small>
 
 <hr />
 
