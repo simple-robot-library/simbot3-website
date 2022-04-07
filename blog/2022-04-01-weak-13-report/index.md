@@ -1,14 +1,14 @@
 ---
 authors: forliy
 title: 2022年第13周周报
-tags: [2022,周报]
+tags: [2022周报,周报]
 ---
 
 这周(以及未来可能的几周)由于下面的复习原因，可能并没有太多的什么针对于 [Simple Robot](https://github.com/ForteScarlet/simpler-robot) 相关信息或者进展。
 
 不过嘛。。这周报可从来没有说过这是专供于simbot的周报喔？
 
-![](./chicken.jpg)
+[![](chicken.jpg)](chicken.jpg)
 <small><i>等了1小时才出餐的疯狂星期四</i></small>
 
 ## 👑 QQ群要闻
@@ -50,7 +50,7 @@ tags: [2022,周报]
 继续十分痛苦但是充满偷懒的复习4月份要考试的东西。😢  
 
 
-![](study.jpg)
+[![](study.jpg)](study.jpg)
 
 <small>
 
