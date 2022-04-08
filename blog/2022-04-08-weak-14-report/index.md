@@ -12,7 +12,7 @@ tags: [2022周报,周报]
 中，基本完整的实现了开黑啦的标准库相关模块，并针对标准库提供了针对于simbot标准事件中的**消息事件**的实现。
 也就是说在上个版本中，你可以通过simbot的标准写法来监听开黑啦事件中的好友消息与频道消息了。
 
-而这周，将会发布一个新的版本 [v3.0.0.preview.6.0-0.1.0](https://github.com/simple-robot/simbot-component-kaiheila/releases/tag/v3.0.0.preview.6.0-0.1.0) 来提供更丰富的simbot标准事件的实现。
+而这周，将会发布一个新的版本 [v3.0.0.0.preview.1.0](https://github.com/simple-robot/simbot-component-kaiheila/releases/tag/v3.0.0.0.preview.1.0) 来提供更丰富的simbot标准事件的实现。
 本周计划会提供：
 - 成员进出频道
 - 成员加入/离开频道服务器
