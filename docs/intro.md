@@ -1,8 +1,7 @@
 ---
 sidebar_position: 1
-title: ''
+title: '首页'
 ---
-
 
 import HeaderShow from '@site/src/components/HeaderShow';
 
