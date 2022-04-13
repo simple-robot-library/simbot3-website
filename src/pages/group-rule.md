@@ -92,6 +92,7 @@
 
 
 
-
+## 其他公告
+参考 [Blog-公告](https://simbot.forte.love/blog/tags/%E5%85%AC%E5%91%8A)
 
 
