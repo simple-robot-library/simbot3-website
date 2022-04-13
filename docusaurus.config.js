@@ -4,6 +4,10 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const firstYear = 2022
+const currentYear = new Date().getFullYear()
+const copyrightYear = currentYear === firstYear ? firstYear : firstYear + '-' + currentYear
+
 // https://docusaurus.io/zh-CN
 // https://mui.com/zh/getting-started/installation/
 
@@ -12,7 +16,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Simple Robot',
-  tagline: '欢迎，我的朋友。欢迎来到 Simple Robot',
+  tagline: '欢迎，我的朋友。',
   url: 'https://simbot.forte.love',
   baseUrl: '/',
   onBrokenLinks: 'warn', //  [ignore, log, warn, error, throw]
@@ -20,7 +24,6 @@ const config = {
   favicon: 'img/favicon.png',
   organizationName: 'Simple Robot', // Usually your GitHub org/user name.
   projectName: 'simbot', // Usually your repo name.
-
   presets: [
     [
       'classic',
@@ -51,27 +54,28 @@ const config = {
       }],
 
       // https://www.algolia.com/account/api-keys/all?applicationId=XJ6OXX8I3C
-      algolia: {
-        appId: 'VLLZ4JZE8Z',
-
-        // Public API key: it is safe to commit it
-        apiKey: 'e60d9ee16618a0ad3a338ecc73cb840e',
-
-        indexName: 'doc',
-
-        // Optional: see doc section below
-        contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push.
-        // Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        // externalUrlRegex: 'external\\.com|domain\\.com',
-
-        // Optional: Algolia search parameters
-        searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: 'search',
-      },
+      // TODO algolia not ready yet.
+      // algolia: {
+      //   appId: 'VLLZ4JZE8Z',
+      //
+      //   // Public API key: it is safe to commit it
+      //   apiKey: 'e60d9ee16618a0ad3a338ecc73cb840e',
+      //
+      //   indexName: 'doc',
+      //
+      //   // Optional: see doc section below
+      //   contextualSearch: true,
+      //
+      //   // Optional: Specify domains where the navigation should occur through window.location instead on history.push.
+      //   // Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      //   // externalUrlRegex: 'external\\.com|domain\\.com',
+      //
+      //   // Optional: Algolia search parameters
+      //   searchParameters: {},
+      //
+      //   // Optional: path for search page that enabled by default (`false` to disable it)
+      //   searchPagePath: 'search',
+      // },
 
       // 公告
       announcementBar: {
@@ -152,7 +156,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Built with <a href="https://www.docusaurus.cn/">Docusaurus</a>. <br> Copyright © ${new Date().getFullYear()} Forte Scarlet.`,
+        copyright: `Built with <a href="https://www.docusaurus.cn/">Docusaurus</a>. <br> Copyright © ${copyrightYear} Forte Scarlet.`,
       },
       prism: {
         additionalLanguages: ['java', 'kotlin', 'groovy'],
