@@ -88,7 +88,7 @@ const config = {
       },
 
       hideableSidebar: true,
-      // autoCollapseSidebarCategories: true,
+      autoCollapseSidebarCategories: true,
       navbar: {
         hideOnScroll: true,
         title: 'Simple Robot',

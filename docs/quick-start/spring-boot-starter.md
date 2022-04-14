@@ -4,7 +4,7 @@ tags: [快速开始]
 title: Spring Boot Starter
 ---
 
-此章节示例整合 `Spring Boot`。有关相关模块的说明，可以参考 [Simple Robot Spring Boot Starter模块概述](../overviews/module-overview/spring-boot-starter)
+此章节示例整合 `Spring Boot`。有关相关模块的说明，可以参考 [Simple Robot: Spring Boot Starter 模块概述](../overviews/module-overview/spring-boot-starter)
 
 :::note
 
@@ -24,69 +24,34 @@ simbot 的 `Spring Boot Starter` 对 `Spring Boot` 或者说对 `Spring Framewor
 
 ## 使用依赖
 
-import version from './dpVersion.json'
+import version from './dpVersion.json';
+import QuickStartSpringBootStarterCodes from '@site/src/components/QuickStartSpringBootStarterCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
 
-<Tabs groupId="use-dependency">
-<TabItem value="Maven" label="Maven" default>
-<CodeBlock language="xml">
-{`<!-- simbot核心标准库 -->
-<dependency>
-    <groupId>love.forte.simbot.boot</groupId>
-    <artifactId>simboot-core-spring-boot-starter</artifactId>
-    <version>${version.simbot.version}</version>
-</dependency>\n
-<!-- 腾讯频道组件 -->
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-tencent-guild-boot</artifactId>
-    <version>${version.simbot.component.tcg}</version>
-</dependency>\n
-<!-- mirai组件 -->
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-mirai-boot</artifactId>
-    <version>${version.simbot.component.mirai}</version>
-</dependency>`}
-</CodeBlock>
-</TabItem>
 
-<TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
-<CodeBlock language="Kotlin">
-{`// 3.x中，大部分组件的版本维护独立于标准库。
-// simbot核心标准库
-implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}")\n
-// 腾讯频道组件
-implementation("love.forte.simbot.component:simbot-component-tencent-guild-boot:${version.simbot.component.tcg}")\n
-// mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}")`}
-</CodeBlock>
-</TabItem>
+<QuickStartSpringBootStarterCodes version={version} />
 
-<TabItem value="Gradle Groovy" label="Gradle Groovy">
-<CodeBlock language="Groovy">
-{`// 3.x中，大部分组件的版本维护独立于标准库。
-// simbot核心标准库
-implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}'\n
-// 腾讯频道组件
-implementation 'love.forte.simbot.component:simbot-component-tencent-guild-boot:${version.simbot.component.tcg}'\n
-// mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}'`}
-</CodeBlock>
-</TabItem>
-</Tabs>
+:::note 引用Spring Boot
+
+simbot的Spring Boot Starter模块是以 `runtime` 的形式引入的 `spring-boot-autoconfigure` 等相关依赖，因此你必须主动额外的引入其他任意你所需的Spring Boot依赖。
+:::
 
 :::note
 
-可以注意到，simbot 的 `Spring Boot Starter` 除了核心依赖的坐标不同以外，组件的依赖配置与 [Boot](Boot.md) 模块的配置基本一致。
+可以注意到，simbot 的 `Spring Boot Starter` 除了核心依赖的坐标不同以外，组件的依赖配置与 [**Boot**](Boot.md) 模块的配置基本一致。
 
 :::
 
 ## 使用
 ### 启动类
-首先，编写一个Spring Boot项目的入口类，也就是启动类。在Spring Boot中，我们通过标记一个注解 @EnableSimbot 来开启simbot的使用。
+首先，编写一个 Spring Boot 项目的入口类，也就是启动类。在 Spring Boot 中，我们通过标记一个注解 **`@EnableSimbot`** 来开启simbot的使用。
+
+:::note
+
+注意使用的注解与 [**Boot**](Boot.md) 模块中的差异。
+
+:::
 
 
 <Tabs>
@@ -215,8 +180,8 @@ public class BarController {
 
 ## BOT配置
 
-参考章节 [BOT配置](../basic/bot-config.md)
+参考章节 [BOT配置](../basic/bot-config)
 
 
 ## 打包
-参考章节 打包(TODO)
+参考章节 [打包](../basic/package)

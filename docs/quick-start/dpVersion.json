@@ -1,14 +1,14 @@
 {
   "simbot": {
-    "version": "3.0.0.preview.0.999",
-    "snapshotVersion": "3.0.0.preview.0.999-SNAPSHOT",
+    "version": "3.0.0.preview.6.0",
+    "snapshotVersion": "3.0.0.preview.6.0-SNAPSHOT",
     "component": {
-      "mirai": "3.0.0.preview.0.999-MIRAI",
-      "tcg": "3.0.0.preview.0.999-TCG",
-      "khl": "3.0.0.preview.0.999-KHL",
-      "miraiSnap": "3.0.0.preview.0.999-MIRAI-SNAPSHOT",
-      "tcgSnap": "3.0.0.preview.0.999-TCG-SNAPSHOT",
-      "khlSnap": "3.0.0.preview.0.999-KHL-SNAPSHOT"
+      "mirai": "3.0.0.0.preview.1.0",
+      "tcg": "3.0.0.0.preview.1.0",
+      "khl": "3.0.0.0.preview.1.1",
+      "miraiSnap": "3.0.0.0.preview.1.0-SNAPSHOT",
+      "tcgSnap": "3.0.0.0.preview.1.0-SNAPSHOT",
+      "khlSnap": "3.0.0.0.preview.1.1-SNAPSHOT"
     }
   }
 }

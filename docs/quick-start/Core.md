@@ -25,59 +25,13 @@ tags: [快速开始]
 ## 使用依赖
 
 import version from './dpVersion.json'
+import QuickStartCoreCodes from '@site/src/components/QuickStartCoreCodes';
+import QuickStartCoreSnapshotCodes from '@site/src/components/QuickStartCoreSnapshotCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
 
 
-<Tabs groupId="use-dependency">
-<TabItem value="Maven" label="Maven" default>
-<CodeBlock language="xml">
-{`<!-- simbot核心标准库 -->
-<dependency>
-    <groupId>love.forte.simbot</groupId>
-    <artifactId>simbot-core</artifactId>
-    <version>${version.simbot.version}</version>
-</dependency>\n
-<!-- 腾讯频道组件 -->
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-tencent-guild-core</artifactId>
-    <version>${version.simbot.component.tcg}</version>
-</dependency>\n
-<!-- mirai组件 -->
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-mirai-core</artifactId>
-    <version>${version.simbot.component.mirai}</version>
-</dependency>`}
-</CodeBlock>
-</TabItem>
-
-<TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
-<CodeBlock language="kotlin">
-    {`// 3.x中，大部分组件的版本维护独立于标准库。
-// simbot核心标准库
-implementation("love.forte.simbot:simbot-core:${version.simbot.version}")\n
-// 腾讯频道组件
-implementation("love.forte.simbot.component:simbot-component-tencent-guild-core:${version.simbot.component.tcg}")\n
-// mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}")`}
-</CodeBlock>
-</TabItem>
-
-<TabItem value="Gradle Groovy" label="Gradle Groovy">
-<CodeBlock language="groovy">
-{`// 3.x中，大部分组件的版本维护独立于标准库。
-// simbot核心标准库
-implementation 'love.forte.simbot:simbot-core:${version.simbot.version}'\n
-// 腾讯频道组件
-implementation 'love.forte.simbot.component:simbot-component-tencent-guild-core:${version.simbot.component.tcg}'\n
-// mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}'`}
-</CodeBlock>
-</TabItem>
-</Tabs>
+<QuickStartCoreCodes version={version} />
 
 
 <details>
@@ -89,67 +43,7 @@ implementation 'love.forte.simbot.component:simbot-component-mirai-core:${versio
 
 :::
 
-<Tabs groupId="use-dependency">
-<TabItem value="Maven" label="Maven" default>
-<CodeBlock language="xml">
-{`<!-- 记得配置快照仓库 -->\n
-<!-- simbot核心标准库 -->
-<dependency>
-    <groupId>love.forte.simbot</groupId>
-    <artifactId>simbot-core</artifactId>
-    <version>${version.simbot.snapshotVersion}</version>
-</dependency>\n
-<!-- 腾讯频道组件 -->
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-tencent-guild-core</artifactId>
-    <version>${version.simbot.component.tcgSnap}</version>
-</dependency>\n
-<!-- mirai组件 -->
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-mirai-core</artifactId>
-    <version>${version.simbot.component.miraiSnap}</version>
-</dependency>`}
-</CodeBlock>
-</TabItem>
-
-<TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
-<CodeBlock language="kotlin">
-{`//配置仓库，包括其中的快照仓库
-repositories {
-    mavenCentral()
-    // mavenLocal()
-    maven {
-        url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
-}
-// 3.x中，大部分组件的版本维护独立于标准库。
-// simbot核心标准库
-implementation("love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}")\n
-// 腾讯频道组件
-implementation("love.forte.simbot.component:simbot-component-tencent-guild-core:${version.simbot.component.tcgSnap}")\n
-// mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.miraiSnap}")`}
-</CodeBlock>
-</TabItem>
-
-<TabItem value="Gradle Groovy" label="Gradle Groovy">
-<CodeBlock language="groovy">
-{`//记得配置快照仓库\n
-// 3.x中，大部分组件的版本维护独立于标准库。
-// simbot核心标准库
-implementation 'love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}'\n
-// 腾讯频道组件
-implementation 'love.forte.simbot.component:simbot-component-tencent-guild-core:${version.simbot.component.tcgSnap}'\n
-// mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.miraiSnap}'`}
-</CodeBlock>
-</TabItem>
-</Tabs>
+<QuickStartCoreSnapshotCodes version={version} />
 
 </details>
 

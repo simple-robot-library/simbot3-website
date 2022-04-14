@@ -22,60 +22,13 @@ tags: [快速开始]
 
 ## 使用依赖
 
-import version from './dpVersion.json'
+import version from './dpVersion.json';
+import QuickStartBootCodes from '@site/src/components/QuickStartBootCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
 
+<QuickStartBootCodes version={version} />
 
-<Tabs groupId="use-dependency">
-<TabItem value="Maven" label="Maven" default>
-<CodeBlock language="xml">
-{`<!-- simbot核心标准库 -->
-<dependency>
-    <groupId>love.forte.simbot.boot</groupId>
-    <artifactId>simboot-core</artifactId>
-    <version>${version.simbot.version}</version>
-</dependency>\n
-<!-- 腾讯频道组件 -->
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-tencent-guild-boot</artifactId>
-    <version>${version.simbot.component.tcg}</version>
-</dependency>\n
-<!-- mirai组件 -->
-<dependency>
-    <groupId>love.forte.simbot.component</groupId>
-    <artifactId>simbot-component-mirai-boot</artifactId>
-    <version>${version.simbot.component.mirai}</version>
-</dependency>`}
-</CodeBlock>
-</TabItem>
-
-<TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
-<CodeBlock language="kotlin">
-{`// 3.x中，大部分组件的版本维护独立于标准库。
-// simbot核心标准库
-implementation("love.forte.simbot.boot:simboot-core:${version.simbot.version}")\n
-// 腾讯频道组件
-implementation("love.forte.simbot.component:simbot-component-tencent-guild-boot:${version.simbot.component.tcg}")\n
-// mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}")`}
-</CodeBlock>
-</TabItem>
-
-<TabItem value="Gradle Groovy" label="Gradle Groovy">
-<CodeBlock language="groovy">
-{`// 3.x中，大部分组件的版本维护独立于标准库。
-// simbot核心标准库
-implementation 'love.forte.simbot.boot:simboot-core:${version.simbot.version}'\n
-// 腾讯频道组件
-implementation 'love.forte.simbot.component:simbot-component-tencent-guild-boot:${version.simbot.component.tcg}'\n
-// mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}'`}
-</CodeBlock>
-</TabItem>
-</Tabs>
 
 
 ## 使用
@@ -92,6 +45,9 @@ implementation 'love.forte.simbot.component:simbot-component-mirai-boot:${versio
 <TabItem value="Kotlin" default>
 
 ```kotlin title="Application.kt"
+package com.example
+
+
 @SimbootApplication 
 class Application
 
@@ -105,6 +61,8 @@ suspend fun main(args: Array<String>) {
 <TabItem value="Java">
 
 ```java title="Application.java"
+package com.example;
+
 @SimbootApplication
 public class Application {
     public static void main(String[] args) throws SimbootApplicationException {
@@ -127,6 +85,9 @@ public class Application {
 <TabItem value="Kotlin" default>
 
 ```kotlin title="Bar.kt"
+package com.example.listener
+
+
 @Beans
 class Bar {
     
@@ -141,6 +102,9 @@ class Bar {
 <TabItem value="Java">
 
 ```java title="Bar.java"
+package com.example.listener;
+
+
 @Beans
 public class Bar {
 
@@ -157,11 +121,12 @@ public class Bar {
 
 
 ## Bot配置
-TODO
+
+参考 [BOT配置](../basic/bot-config)
 
 ## 启动
 执行你的main函数，并根据日志进行相关操作。
 
 
 ## 打包
-参考文档  打包(TODO)
+参考文档  [打包](../basic/package)
