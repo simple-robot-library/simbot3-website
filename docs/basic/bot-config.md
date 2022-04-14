@@ -15,6 +15,16 @@ BOT配置只在 [**boot**](../overviews/module-overview/boot) 模块或者 [**Sp
 这些文件需要放置于你的项目资源目录（举个例子，对于一个IDEA默认的Maven项目来讲，其目录为 `项目目录/src/main/resources` ）下的 `simbot-bots` 目录中。
 而对于 `*.bot` 文件，其格式与 `JSON` 一致（且不允许出现注释），你可以通过IDE来设置对于 `.bot` 文件的类型设置。
 
+:::caution 更多支持
+
+在未来，可能会考虑提供更多类型的bot文件的支持。<br />
+例如通过 `*.bot.yml` 或 `*.bot.yaml` 来支持 [**`YAML`**](https://yaml.org/) 格式的配置文件，<br />
+或是通过 `*.bot.properties` 来支持 **`properties`** 格式的配置文件。
+
+同样的，考虑在未来支持 `*.bot.json` 的形式来直接使用 **`JSON`** 扩展名。
+
+:::
+
 以IDEA举例，你可以通过 `settings -> File Types` 中左侧搜索 `JSON`，并在右边添加 pattern: `*.bot`，如下图这样：
 
 ![](@site/static/img/bot_config/idea-json-file-config.png)

@@ -8,6 +8,12 @@ const firstYear = 2022
 const currentYear = new Date().getFullYear()
 const copyrightYear = currentYear === firstYear ? firstYear : firstYear + '-' + currentYear
 
+const styles = ['primary', 'dark', undefined]
+
+const day = new Date().getDay()
+
+const navbarStyle = styles[day % 3]
+
 // https://docusaurus.io/zh-CN
 // https://mui.com/zh/getting-started/installation/
 
@@ -50,8 +56,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       metadata: [{
-        name: 'keywords', content: 'forte, forte-scarlet, fortescarlet, simbot, simple-robot'
+        name: 'keywords', content: 'forte, forte-scarlet, fortescarlet, simbot, simple-robot, bot'
       }],
+
+      image: 'img/logo.png',
 
       // https://www.algolia.com/account/api-keys/all?applicationId=XJ6OXX8I3C
       // TODO algolia not ready yet.
@@ -90,6 +98,7 @@ const config = {
       hideableSidebar: true,
       autoCollapseSidebarCategories: true,
       navbar: {
+        style: navbarStyle,
         hideOnScroll: true,
         title: 'Simple Robot',
         logo: {
@@ -172,3 +181,15 @@ const config = {
 };
 
 module.exports = config;
+
+
+
+/*
+DocCardList
+{
+  docId: "component-overview/mirai/index"
+  href: "/docs/component-overview/mirai/"
+  label: "Mirai组件"
+  type: "link"
+}
+ */
