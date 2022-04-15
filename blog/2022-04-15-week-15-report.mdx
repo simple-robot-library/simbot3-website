@@ -41,15 +41,11 @@ val at = "[CAT:at,code=123]"
 val message: Message = catCodeToMessage(at)
 ```
 
-2. 解析 `Neko` 为 `Message.Element
-<
-*>` 对象
+2. 解析 `Neko` 为 `Message.Element<*>` 对象
 
 ```kotlin
 val at = CatCodeUtil.nekoTemplate.at(123)
-val message: Message.Element
-<
-*> = at.toMessage()
+val message: Message.Element<*> = at.toMessage()
 ```
 
 3. 将 Mirai 的 `SingleMessage` 转化为 `Neko`
@@ -74,14 +70,10 @@ final String cat = "[CAT:at,code=123]";
 final Message message = CatCodeMessageUtil.catCodeToMessage(cat);
 ```
 
-2. 解析 `Neko` 为 `Message.Element
-<
-*>` 对象
+2. 解析 `Neko` 为 `Message.Element<*>` 对象
 ```java
 final Neko cat = CatCodeUtil.INSTANCE.getNekoTemplate().at(123);
-final Message.Element
-<
-?> message = CatCodeMessageUtil.toMessage(cat);
+final Message.Element<?> message = CatCodeMessageUtil.toMessage(cat);
 ```
 
 3. 将 Mirai 的 `SingleMessage` 转化为 `Neko`
