@@ -35,7 +35,7 @@ const FeatureList = [
     } : require('@site/static/img/features/3/看书.svg').default,
     description: (
       <>
-        不同的组件之间可以更紧密的合作。<br/><small>在不同的平台中，我们也要卿卿我我！</small>
+        不同的组件之间可以更紧密的合作。<br/><small>在不同的平台中，也要卿卿我我！</small>
       </>
     ),
   },
