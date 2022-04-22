@@ -23,9 +23,17 @@ import TabItem from '@theme/TabItem';
   	<plugin>
     	<groupId>org.springframework.boot</groupId>
     	<artifactId>spring-boot-maven-plugin</artifactId>
+    	<!-- 也许需要指定版本号  -->
     	<configuration>
             <addResources>true</addResources>
     	</configuration>
+    	<executions>
+            <execution>
+                <goals>
+                    <goal>repackage</goal>
+                </goals>
+            </execution>
+        </executions>
     </plugin>
   </plugins>
 </build>
