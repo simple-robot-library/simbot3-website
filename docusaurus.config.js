@@ -88,7 +88,7 @@ const config = {
       // 公告
       announcementBar: {
         id: 'still_under_construction',
-        content: `🚧 <b>尚在施工中, 内容仅供参考</b> 🚧`,
+        content: `🚧 <b>尚在施工中...</b> 🚧 一切内容以<a href="https://github.com/ForteScarlet/simpler-robot">仓库</a>和代码中实际内容为准。`,
         backgroundColor: '#FFB906',
         textColor: '#142F48',
         isCloseable: false
@@ -137,6 +137,10 @@ const config = {
                 label: '文档首页',
                 to: '/docs/intro',
               },
+              {
+                label: '核心API文档',
+                to: 'https://simple-robot-library.github.io/simbot3-main-apiDoc/',
+              },
 
             ],
           },
@@ -144,8 +148,20 @@ const config = {
             title: '社区',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/simple-robot',
+                label: 'GitHub ',
+                href: 'https://github.com/ForteScarlet/simpler-robot',
+              },
+              {
+                label: 'Gitee镜像 ',
+                href: 'https://gitee.com/ForteScarlet/simpler-robot',
+              },
+              {
+                label: '组织库 🏢',
+                to: 'https://github.com/simple-robot',
+              },
+              {
+                label: '图书馆 📚',
+                to: 'https://github.com/simple-robot-library',
               },
             ],
           },
