@@ -88,10 +88,10 @@ const config = {
       // 公告
       announcementBar: {
         id: 'still_under_construction',
-        content: `🚧 <b>尚在施工中...</b>`,
+        content: `🚧 <b>尚在施工中！！！！！...</b>`,
         backgroundColor: '#FFB906',
         textColor: '#142F48',
-        isCloseable: true
+        isCloseable: false
 
       },
 
