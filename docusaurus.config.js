@@ -41,10 +41,12 @@ const config = {
           editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main',
         },
         blog: {
+          blogTitle: 'Simbot Blog',
+          blogDescription: '与simbot相关的或者不相关的各种博客！',
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main',
-          postsPerPage: 'ALL',
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

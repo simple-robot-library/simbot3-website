@@ -4,6 +4,10 @@ title: 2022年第13周周报
 tags: [2022周报,周报]
 ---
 
+2022年第13周周报。
+
+<!--truncate-->
+
 这周(以及未来可能的几周)由于下面的复习原因，可能并没有太多的什么针对于 [Simple Robot](https://github.com/ForteScarlet/simpler-robot) 相关信息或者进展。
 
 不过嘛。。这周报可从来没有说过这是专供于simbot的周报喔？
