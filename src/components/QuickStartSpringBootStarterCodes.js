@@ -115,13 +115,13 @@ export default function QuickStartSpringBootStarterCodes({version}) {
         </TabItem>
 
         <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
-            <CodeBlock language="Kotlin">
+            <CodeBlock language="kotlin">
                 { gradleKts(version) }
             </CodeBlock>
         </TabItem>
 
         <TabItem value="Gradle Groovy" label="Gradle Groovy">
-            <CodeBlock language="Groovy">
+            <CodeBlock language="groovy">
                 { gradleGroovy(version) }
             </CodeBlock>
         </TabItem>

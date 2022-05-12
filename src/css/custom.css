@@ -5,6 +5,14 @@
  */
 
 /* You can override the default Infima variables here. */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/font/JetBrainsMono.ttf");
+}
+
+
+
+
 :root {
   --ifm-color-primary-darkest: #f494ae;
   --ifm-color-primary-darker: #f06b8e;
@@ -13,6 +21,7 @@
   --ifm-color-primary-light: #e9275a;
   --ifm-color-primary-lighter: #e81950;
   --ifm-color-primary-lightest: #c01341;
+  --ifm-font-family-monospace: 'JetBrains Mono';
   --ifm-code-font-size: 95%;
 }
 
@@ -41,13 +50,14 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 
-.docusaurus-highlight-code-line {
-  background-color: rgba(23, 23, 23, 0.1);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-}
+/*.docusaurus-highlight-code-line {*/
+/*  background-color: rgba(23, 23, 23, 0.1);*/
+/*  display: block;*/
+/*  margin: 0 calc(-1 * var(--ifm-pre-padding));*/
+/*  padding: 0 var(--ifm-pre-padding);*/
+/*}*/
 
-[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(23, 23, 23, 0.3);
-}
+/*[data-theme='dark'] .docusaurus-highlight-code-line {*/
+/*  background-color: rgba(23, 23, 23, 0.3);*/
+/*}*/
+
