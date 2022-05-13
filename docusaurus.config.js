@@ -16,9 +16,10 @@ const copyrightYear = currentYear === firstYear ? firstYear : firstYear + '-' + 
 
 const styles = ['primary', 'dark', undefined]
 
-const day = new Date().getDay()
+// const day = new Date().getDay()
 
-const navbarStyle = styles[day % 3]
+// const navbarStyle = styles[day % 3]
+const navbarStyle = styles['dark']
 
 // https://docusaurus.io/zh-CN
 // https://mui.com/zh/getting-started/installation/
