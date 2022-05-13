@@ -37,19 +37,19 @@ function SimpleSimpleCode() {
     return <>
         <Tabs groupId="w19code">
             <TabItem value="launcher">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="App.kt">
                     {simpleCodeValueLauncher1()}
                 </CodeBlock>
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="App.kt">
                     {simpleCodeValueLauncher2()}
                 </CodeBlock>
             </TabItem>
             <TabItem value="create">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="App.kt">
                     {simpleCodeValueCreate1()}
                 </CodeBlock>
 
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="App.kt">
                     {simpleCodeValueCreate2()}
                 </CodeBlock>
             </TabItem>
@@ -184,17 +184,17 @@ function SimpleFullCode() {
     return <>
         <Tabs groupId="w19code">
             <TabItem value="launcher">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="App.kt">
                     {fullCodeValueLauncher()}
                 </CodeBlock>
             </TabItem>
             <TabItem value="create">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="App.kt">
                     {fullCodeValueCreate()}
                 </CodeBlock>
             </TabItem>
             <TabItem value="builder">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="App.kt">
                     {fullCodeValueBuilder()}
                 </CodeBlock>
             </TabItem>
@@ -262,14 +262,14 @@ function extraCodeCreateValue3() {
 function SimpleExtraCode() {
     return <Tabs groupId="w19code">
         <TabItem value="launcher">
-            <CodeBlock language="kotlin">{extraCodeLauncherValue1()}</CodeBlock>
-            <CodeBlock language="kotlin">{extraCodeLauncherValue2()}</CodeBlock>
-            <CodeBlock language="kotlin">{extraCodeLauncherValue3()}</CodeBlock>
+            <CodeBlock language="kotlin" title="App.kt">{extraCodeLauncherValue1()}</CodeBlock>
+            <CodeBlock language="kotlin" title="App.kt">{extraCodeLauncherValue2()}</CodeBlock>
+            <CodeBlock language="kotlin" title="App.kt">{extraCodeLauncherValue3()}</CodeBlock>
         </TabItem>
         <TabItem value="create">
-            <CodeBlock language="kotlin">{extraCodeCreateValue1()}</CodeBlock>
-            <CodeBlock language="kotlin">{extraCodeCreateValue2()}</CodeBlock>
-            <CodeBlock language="kotlin">{extraCodeCreateValue3()}</CodeBlock>
+            <CodeBlock language="kotlin" title="App.kt">{extraCodeCreateValue1()}</CodeBlock>
+            <CodeBlock language="kotlin" title="App.kt">{extraCodeCreateValue2()}</CodeBlock>
+            <CodeBlock language="kotlin" title="App.kt">{extraCodeCreateValue3()}</CodeBlock>
         </TabItem>
     </Tabs>
 }
@@ -327,19 +327,19 @@ function BootSimpleCode() {
     return <>
         <Tabs groupId="w19code">
             <TabItem value="launcher">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="com/example/App.kt">
                     {bootSimpleCodeValueLauncher1()}
                 </CodeBlock>
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="com/example/App.kt">
                     {bootSimpleCodeValueLauncher2()}
                 </CodeBlock>
             </TabItem>
             <TabItem value="create">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="com/example/App.kt">
                     {bootSimpleCodeValueCreate1()}
                 </CodeBlock>
 
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="com/example/App.kt">
                     {bootSimpleCodeValueCreate2()}
                 </CodeBlock>
             </TabItem>
@@ -462,17 +462,17 @@ function BootFullCode() {
     return <>
         <Tabs groupId="w19code">
             <TabItem value="launcher">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="com/example/App.kt">
                     {bootFullCodeValueLauncher()}
                 </CodeBlock>
             </TabItem>
             <TabItem value="create">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="com/example/App.kt">
                     {bootFullCodeValueCreate()}
                 </CodeBlock>
             </TabItem>
             <TabItem value="builder">
-                <CodeBlock language="kotlin">
+                <CodeBlock language="kotlin" title="com/example/App.kt">
                     {bootFullCodeValueBuilder()}
                 </CodeBlock>
             </TabItem>
@@ -539,14 +539,14 @@ function bootExtraCodeCreateValue3() {
 function BootExtraCode() {
     return <Tabs groupId="w19code">
         <TabItem value="launcher">
-            <CodeBlock language="kotlin">{bootExtraCodeLauncherValue1()}</CodeBlock>
-            <CodeBlock language="kotlin">{bootExtraCodeLauncherValue2()}</CodeBlock>
-            <CodeBlock language="kotlin">{bootExtraCodeLauncherValue3()}</CodeBlock>
+            <CodeBlock language="kotlin" title="com/example/App.kt">{bootExtraCodeLauncherValue1()}</CodeBlock>
+            <CodeBlock language="kotlin" title="com/example/App.kt">{bootExtraCodeLauncherValue2()}</CodeBlock>
+            <CodeBlock language="kotlin" title="com/example/App.kt">{bootExtraCodeLauncherValue3()}</CodeBlock>
         </TabItem>
         <TabItem value="create">
-            <CodeBlock language="kotlin">{bootExtraCodeCreateValue1()}</CodeBlock>
-            <CodeBlock language="kotlin">{bootExtraCodeCreateValue2()}</CodeBlock>
-            <CodeBlock language="kotlin">{bootExtraCodeCreateValue3()}</CodeBlock>
+            <CodeBlock language="kotlin" title="com/example/App.kt">{bootExtraCodeCreateValue1()}</CodeBlock>
+            <CodeBlock language="kotlin" title="com/example/App.kt">{bootExtraCodeCreateValue2()}</CodeBlock>
+            <CodeBlock language="kotlin" title="com/example/App.kt">{bootExtraCodeCreateValue3()}</CodeBlock>
         </TabItem>
     </Tabs>
 }
