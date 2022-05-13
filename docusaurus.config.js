@@ -94,6 +94,13 @@ const config = {
       //   searchPagePath: 'search',
       // },
 
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        }
+      },
+
       // 公告
       announcementBar: {
         id: 'still_under_construction',
@@ -104,8 +111,7 @@ const config = {
 
       },
 
-      hideableSidebar: true,
-      autoCollapseSidebarCategories: true,
+      // autoCollapseSidebarCategories: true,
       navbar: {
         style: navbarStyle,
         hideOnScroll: true,
