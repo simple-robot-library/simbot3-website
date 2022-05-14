@@ -78,10 +78,9 @@
 
 :::danger
 
-下述示例消息内容均为不实内容，仅供示例，请勿轻信。
+下述示例消息内容均为不实内容，仅供示例，请勿相信。
 
 :::
-
 
 
 [![](/img/group-role-resource/xj1.png)](/img/group-role-resource/xj1.png)
