@@ -3,7 +3,7 @@ sidebar_position: 50
 title: 组织概述
 ---
 
-一个组织 `Organization` , 是一个 **组织结构**，也就是说它是一个 [结构体](Structured.md)。
+一个组织 `Organization` , 是一个 **组织结构**，也就是说它是一个 [结构体](./Structured.md)。
 
 组织必须是以人为中心的实体，常见为一个群聊、一个频道、一个服务器等。
 
@@ -19,8 +19,6 @@ title: 组织概述
 :::
 
 
-
-钉钉	群	yes	yes	根据所属企业结构化	根据所属企业结构化	根据所属企业结构化	根据所属企业结构化	no?	yes
 
 import NO from '@site/src/components/NO';
 import YES from '@site/src/components/YES';
@@ -44,5 +42,5 @@ import YES from '@site/src/components/YES';
 从上述列举内容来看，目前比较常见地组织形式有：
 - 单群聊天，不存在直接的层级关系，例如 `group` 。目前来看 group 中的信息可能会略多于 `guild` 。
 - 多频道服务器（`guild`），存在层级关系，外层 `guild` 囊括内层多个频道 （`channel`）。
-  - 频道中可能存在多个允许文字交流的频道。
-  - 频道可能存在分组。
+- 频道中可能存在多个允许文字交流的频道。
+- 频道可能存在分组。

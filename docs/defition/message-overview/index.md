@@ -30,10 +30,6 @@ tags: [消息]
 :::
 
 `Message.Element` 接口本身只规定了如下属性/函数：
-		
-		
-		
-		
 
 | 属性/函数       | 类型                          | 描述                            |
 |-------------|-----------------------------|-------------------------------|
@@ -57,7 +53,7 @@ tags: [消息]
 Messages messages = ....;
 messages.add(Text.of("Hello"));
 ```
-直接使用 `.add` 将会导致抛出异常。 
+直接使用 `.add` 将会导致抛出异常。
 
 :::
 
@@ -74,7 +70,7 @@ Messages newMessages = messages.plus(Text.of("World"));
 
 ### 构建
 
-import Tabs from '@theme/Tabs'; 
+import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs groupId="code">
@@ -119,8 +115,8 @@ final Messages newMessagesOfList = messagesOfList.plus(AtAll.INSTANCE);
 
 // 通过 Messages.getMessages 得到消息链
 final Messages messages = Messages.getMessages(
-                            Text.of("forte"), 
-                            new At(Identifies.ID(114514)), 
+                            Text.of("forte"),
+                            new At(Identifies.ID(114514)),
                             AtAll.INSTANCE
                         );
 ```

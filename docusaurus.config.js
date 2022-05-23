@@ -46,6 +46,16 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main',
+          // version
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: '3.0.0.preview',
+              // path: '3.0.0.preview',
+              // banner: '',
+              badge: true
+            },
+          },
         },
         blog: {
           blogTitle: 'Simbot Blog',
