@@ -25,7 +25,7 @@ simbot 的 `Spring Boot Starter` 对 `Spring Boot` 或者说对 `Spring Framewor
 ## 使用依赖
 
 import version from './dpVersion.json';
-import QuickStartSpringBootStarterCodes from '@site/src/components/QuickStartSpringBootStarterCodes';
+import QuickStartSpringBootStarterCodes from './QuickStartSpringBootStarterCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

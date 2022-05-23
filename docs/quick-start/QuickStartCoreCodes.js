@@ -5,18 +5,6 @@ import CodeBlock from '@theme/CodeBlock';
 
 function mavenCode(version) {
     return `
-<!-- 配置快照仓库 -->
-<repositories>
-    <repository>
-        <id>sonatype-snapshot</id>
-        <name>Sonatype Snapshots Repository</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-    </repository>
-</repositories>
-    
 <dependencies>
     <!-- simbot Core -->
     <dependency>
@@ -24,11 +12,11 @@ function mavenCode(version) {
         <artifactId>simbot-core</artifactId>
         <version>${version.simbot.version}</version>
     </dependency>
-    <!-- 腾讯频道组件 -->
+    <!-- 开黑啦组件 -->
     <dependency>
         <groupId>love.forte.simbot.component</groupId>
-        <artifactId>simbot-component-tencent-guild-core</artifactId>
-        <version>${version.simbot.component.tcg}</version>
+        <artifactId>simbot-component-kaiheila-core</artifactId>
+        <version>${version.simbot.component.khl}</version>
     </dependency>
     <!-- mirai组件 -->
     <dependency>
@@ -46,28 +34,21 @@ function mavenCode(version) {
 
 function gradleKts(version) {
     return `plugins {
-  \`java\`  // or kotlin
+  \`kotlin\`
 }
 
 group = "..."
 version = "..."
 
 repositories {
-    mavenCentral()
-    // 快照仓库
-    maven {
-        url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
+  mavenCentral()
 }
 
 // simbot核心标准库
 implementation("love.forte.simbot:simbot-core:${version.simbot.version}")
 
-// 腾讯频道组件
-implementation("love.forte.simbot.component:simbot-component-tencent-guild-core:${version.simbot.component.tcg}")
+// 开黑啦组件
+implementation("love.forte.simbot.component:simbot-component-kaiheila-core:${version.simbot.component.khl}")
 
 // mirai组件
 implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}")`
@@ -75,34 +56,27 @@ implementation("love.forte.simbot.component:simbot-component-mirai-core:${versio
 
 function gradleGroovy(version) {
     return `plugins {
-  id 'java' // or kotlin
+  id 'kotlin'
 }
 
 group = '...'
 version = '...'
 
 repositories {
-    mavenCentral()
-    // 快照仓库
-    maven { 
-        url 'https://oss.sonatype.org/content/repositories/snapshots/'
-        mavenContent {
-            snapshotsOnly()
-        }
-     }
+  mavenCentral()
 }
 
 // simbot核心标准库
 implementation 'love.forte.simbot:simbot-core:${version.simbot.version}'
 
-// 腾讯频道组件
-implementation 'love.forte.simbot.component:simbot-component-tencent-guild-core:${version.simbot.component.tcg}'
+// 开黑啦组件
+implementation 'love.forte.simbot.component:simbot-component-kaiheila-core:${version.simbot.component.khl}'
 
 // mirai组件
 implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}'`
 }
 
-export default function QuickStartCoreSnapshotCodes({version}) {
+export default function QuickStartCoreCodes({version}) {
     return <Tabs groupId="use-dependency">
         <TabItem value="Maven" label="Maven" default>
             <CodeBlock language="xml">

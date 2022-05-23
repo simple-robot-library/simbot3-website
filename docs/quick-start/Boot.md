@@ -23,7 +23,7 @@ tags: [快速开始]
 ## 使用依赖
 
 import version from './dpVersion.json';
-import QuickStartBootCodes from '@site/src/components/QuickStartBootCodes';
+import QuickStartBootCodes from './QuickStartBootCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

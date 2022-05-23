@@ -7,26 +7,42 @@ tags: [快速开始]
 
 此章节示例使用基础的核心模块。有关相关模块的说明，可以参考 [核心模块概述](../overviews/module-overview/core)
 
-:::note
+:::note 假设
 
-下述示例内容建立在你想要使用 [**腾讯频道组件**](../component-overview/tencent-guild) 和 [**mirai组件**](../component-overview/mirai) 的 **假设** 之上。
+下述示例内容建立在你想要使用 [**开黑啦组件**](../component-overview/kaiheila) 和 [**mirai组件**](../component-overview/mirai) 的 **假设** 之上。
 
 :::
+
+:::caution 兼容问题
+
+实际上 [**腾讯频道组件**](../component-overview/tencent-guild) 和 [**mirai组件**](../component-overview/mirai) 并不兼容。说具体点，**mirai组件**
+可能暂时无法与其他大部分组件兼容：因为 **mirai组件** 使用的 `Ktor` 版本为 `v1.x`, 而其他大部分组件使用的为 `v2.x`。
+
+因此下文中的组合使用仅为理想状态并仅做示例用。
+
+:::
+
 
 核心库没有什么注解、扫描，是更贴近于原生使用习惯的库，也许你需要写的代码会多一点儿，但是也能够让你可以更好的控制你所编写的一切。
 
 
-:::info
+:::info 注解?
 
-如果你希望使用类似于simbot2中以注解作为主要开发风格的库，或者希望能拥有简单依赖注入功能和扫描功能的库以便于规模化开发的话，你可以参考 [快速开始 - Boot](Boot.md)。
+如果你希望使用类似于simbot2中以注解作为主要开发风格的库，或者希望能拥有简单依赖注入功能和扫描功能的库以便于规模化开发的话，你可以参考 [**快速开始 - Boot**](Boot.md)。
 
 :::
 
-## 使用依赖
+:::info Java?
+
+需要注意的是，Core模块不提供Java相关的兼容API。
+
+:::
+
+# 使用依赖
 
 import version from './dpVersion.json'
-import QuickStartCoreCodes from '@site/src/components/QuickStartCoreCodes';
-import QuickStartCoreSnapshotCodes from '@site/src/components/QuickStartCoreSnapshotCodes';
+import QuickStartCoreCodes from './QuickStartCoreCodes';
+import QuickStartCoreSnapshotCodes from './QuickStartCoreSnapshotCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -51,174 +67,268 @@ import TabItem from '@theme/TabItem';
 
 
 
-## 开始
-### 构建事件管理器
+# 开始
+## 使用Application
 
-事件管理器应当是你第一个所需的东西。
+`Application` 是simbot应用程序的门户。在核心模块 `Core` 中提供了一个其工厂的最基础实现：`Simple`。
 
-<Tabs groupId="code">
-<TabItem value="Kotlin" default>
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.application.*
+import love.forte.simbot.core.application.*
 
-```kotlin
-val eventManager = coreListenerManager {
-    // 各种配置，比如拦截器
-}
-```
-
-</TabItem>
-<TabItem value="Java">
-
-```java
-// 配置类
-final CoreListenerManagerConfiguration configuration = new CoreListenerManagerConfiguration();
-
-final CoreListenerManager eventManager = CoreListenerManager.newInstance(configuration);
-```
-
-</TabItem>
-</Tabs>
-
-### 构建bot管理器
-因为我假设你同时使用了两个组件，因此你要构建两个管理器。
-
-<Tabs groupId="code">
-<TabItem value="Kotlin" default>
-
-```kotlin
-// 腾讯频道bot管理器
-val tcgBotManager = tencentGuildBotManager(eventManager) {
-        // 各种配置。这里我们假设默认情况下，所有注册的bot都只监听AT_MESSAGE事件
-        botConfigure = { _, _, _ ->
-        intentsForShardFactory = { EventSignals.AtMessages.intents }
+suspend fun main() {
+    val launcher: ApplicationLauncher<SimpleApplication> = simbotApplication(Simple) {
+        // ...
     }
-}
-// mirai bot管理器
-val miraiBotManager = miraiBotManager(eventManager)
-```
-
-</TabItem>
-<TabItem value="Java">
-
-```java
-// 腾讯频道bot管理器配置类
-final TencentGuildBotManagerConfiguration tencentGuildBotManagerConfiguration = new TencentGuildBotManagerConfiguration(eventManager);
-// 假设在默认情况下，所有的bot都只监听AT_MESSAGE事件
-tencentGuildBotManagerConfiguration.setBotConfigure((botConfiguration, appId, appKey, token) -> {
-    botConfiguration.intentsForShardFactoryAsInt(share -> EventSignals.AtMessages.getIntentsValue());
-    return Unit.INSTANCE; // kotlin lambda函数导致的问题
-});
-
-final TencentGuildBotManager tcgBotManager = TencentGuildBotManager.newInstance(tencentGuildBotManagerConfiguration);
-
-// mirai bot管理器
-final MiraiBotManager miraiBotManager = MiraiBotManager.newInstance(eventManager);
-```
-
-</TabItem>
-</Tabs>
-
-
-### 注册监听函数
-回到上面我们一开始构建好的 eventManager来，向其中注册监听函数。
-
-
-:::caution 注意
-
-下文中有关于监听函数注册的内容并非目前的最推荐方式。
-
-:::
-
-
-<Tabs groupId="code">
-<TabItem value="Kotlin" default>
-
-```kotlin
-// 注册方式很多，这里仅提供几个示例
-// 假设监听 腾讯频道中的 TcgChannelAtMessageEvent
-eventManager.listen { _, event: TcgChannelAtMessageEvent ->
-    val author = event.author()
-    event.reply("发消息的是: ${author.username}")
-}
-
-// 假设监听 mirai组件中的 MiraiGroupMessageEvent
-eventManager.listen { _, event: MiraiGroupMessageEvent ->
-    val author = event.author()
-    event.reply("发消息的是: ${author.username}")
-}
-
-// 假设监听 simbot标准api中的 MessageEvent, 所有MessageEvent下的子类型事件都会被触发
-eventManager.listen { _, event: MessageEvent ->
-    val bot = event.bot
-    println("收到消息的bot: ${bot.username}")
-    println("事件所属组件：${bot.component}")
-    // 如果支持回复，则回复
-    event.replyIfSupport("Hello Simbot")
+    
+    val application: SimpleApplication = launcher.launch()
+    application.join()
 }
 ```
 
-</TabItem>
-<TabItem value="Java">
+这是一个最基础的写法。你需要从 `simbotApplication` 下的代码块中进行一系列的操作，并得到一个 `ApplicationLauncher<SimpleApplication>`。
 
-```java
-// 注册方式很多，这里仅提供几个示例
-// 假设监听 腾讯频道中的 TcgChannelAtMessageEvent
-eventManager.register(CoreListenerUtil.newCoreListener(
-        TcgChannelAtMessageEvent.Key,
-        // context: 事件处理上下文
-        // event: 你要监听的事件类型
-        (context, event) -> {
-            final TencentMember author = event.getAuthor();
-            event.replyBlocking("发消息的是: " + author.getUsername());
+然后，启动这个 `launcher`, 得到一个 `Application` 的 `Simple` 实现：`SimpleApplication`。最后，挂起并直到它被终止。
+
+当然，你也可以一步到位，直接构建一个 `Application`。`Simple` 提供了几个额外的扩展函数以供使用，我们择其一作为示例：
+
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    val application: SimpleApplication = createSimpleApplication {
+    
+    }
+    application.join()
+}
+```
+
+## 组件安装
+
+### 安装组件标识
+
+构建 `Application` 并不能让你直接使用任何组件。你需要手动安装你所需要的**组件标识**（ `Component` ），这里以mirai组件和开黑啦组件为例：
+
+
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    createSimpleApplication {
+        install(MiraiComponent)
+        install(KaiheilaComponent)
+    }.join()
+}
+```
+
+通常情况下，每个组件实现都会提供一些扩展函数:
+
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    createSimpleApplication {
+        useMiraiComponent()
+        useKaiheilaComponent()
+    }.join()
+}
+```
+
+### 安装BotManager
+
+**组件标识** 通常为作为组件自己的标识以及特殊配置而存在（甚至很多都不需要配置）。 除了组件以外，`Application` 中还需要安装的一种东西为 `EventProvider`。
+开黑啦组件和mirai组件作为与bot相关的组件，通常会提供各自的 `BotManager` 实现，而 `BotManager` 也是 `EventProvider` 的一种。
+
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    createSimpleApplication {
+        useMiraiComponent()
+        useKaiheilaComponent()
+        
+        install(MiraiBotManager)
+        install(KaiheilaBotManager)
+    }.join()
+}
+```
+
+同样的，大多数组件也会为这个行为提供进行简化扩展：
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    createSimpleApplication {
+        useMiraiComponent()
+        useKaiheilaComponent()
+        
+        useMiraiBotManager()
+        useKaiheilaBotManager()
+    }.join()
+}
+```
+
+而对于安装**组件标识**和安装**BotManager**的操作，各组件又通常会提供整合扩展。因此上述流程可以简化为：
+
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    createSimpleApplication {
+        // 安装mirai组件标识，安装miraiBotManager
+        useMirai()
+    
+        // 安装kaiheila组件标识，安装kaiheilaBotManager
+        useKaiheila()
+    }.join()
+}
+```
+
+如果想要对各自组件下的部分进行配置，可以：
+
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    createSimpleApplication {
+        // 安装mirai组件标识，安装miraiBotManager
+        useMirai {
+            component { /* mirai 组件标识配置 */ }
+            botManager { /* mirai botManager配置 */ }
         }
-));
-
-// 假设监听 mirai组件中的 MiraiGroupMessageEvent
-eventManager.register(CoreListenerUtil.newCoreListener(
-        MiraiGroupMessageEvent.Key,
-        (context, event) -> {
-            final MiraiMember author = event.getAuthor();
-            event.replyBlocking("发消息的是: " + author.getUsername());
+    
+        // 安装kaiheila组件标识，安装kaiheilaBotManager
+        useKaiheila {
+            component { /* kaiheila 组件标识配置 */ }
+            botManager { /* kaiheila botManager配置 */ }
         }
-));
+    }.join()
+}
+```
 
-// 假设监听 simbot标准api中的 MessageEvent, 所有MessageEvent下的子类型事件都会被触发
-eventManager.register(CoreListenerUtil.newCoreListener(
-        MessageEvent.Key,
-        (context, event) -> {
-            final Bot bot = event.getBot();
-            System.out.println("收到消息的bot: " + bot.getUsername());
-            System.out.println("事件所属组件：" + bot.getComponent());
-            // 如果支持回复，则回复
-            if (event instanceof ReplySupport) {
-                ((ReplySupport) event).replyBlocking("Hello Simbot");
+### 特定Bot注册
+
+既然安装了 `BotManager`, 通常情况下组件实现中会提供对bot的预注册api：
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    createSimpleApplication {
+        // 安装mirai组件标识，安装miraiBotManager
+        useMirai {
+            botManager {
+                register(code = 123456L, password = "PASSWORD") { bot ->
+                    // 当 application启动完成后，启动bot
+                    it.onCompletion {
+                        bot.start()
+                    }
+                }
             }
         }
-));
+        
+        // 安装kaiheila组件标识，安装kaiheilaBotManager
+        useKaiheila {
+            botManager {
+                botManager {
+                    register(clientId = "CLIENT_ID", token = "TOKEN") { bot ->
+                        // 当 application启动完成后，启动bot
+                        it.onCompletion {
+                            bot.start()
+                        }
+                    }
+                }
+            }
+        }
+    }.join()
+}
 ```
 
-</TabItem>
-</Tabs>
+### 通用Bot注册
+除了针对于指定的组件进行特定的预注册以外，`Application` 也提供了全局通用的注册函数 `bots { ... }`：
 
-### 注册BOT
-事件注册完成之后，你可能发现了，我们还没有注册任何的bot。
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
 
-<Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+suspend fun main() {
+    createSimpleApplication {
+        useMirai()
+        useKaiheila()
+        
+        bots {
+            val botVerifyInfo = File("fooBot.bot").toResource().toBotVerifyInfo(StandardBotVerifyInfoDecoderFactory.Json.create())
+            register(botVerifyInfo)
+        }
+    }
+}
+```
+
+但是在 `Core` 中并不非常建议这种方式，因为这不如直接使用特定组件下的注册函数来的"精确"。因此此方式不进行过多介绍与解释。
+
+
+## 监听函数
+上面是安装组件、注册bot的流程，接下来是基础的监听函数注册流程。
+
+> 下文中将会适当省略上述部分内容
+
+监听函数的注册不是 `Application` 所强制要求的功能，但是 `Simple` 提供了它的基础实现。
+接下来的代码示例展示通过几种不同的方式实现：当一个好友发送消息 `"喵"` 的时候，bot回复：`"喵喵喵"`
 
 ```kotlin
-// TODO
+import love.forte.simbot.core.application.*
+import love.forte.simbot.core.event.*
+import love.forte.simbot.event.*
+
+suspend fun main() {
+    createSimpleApplication {
+        eventProcessor {
+            listeners {
+                // 方式二
+                listen(FriendMessageEvent) {
+                    // 匹配函数
+                    match { event -> "喵" in event.messageContent.plainText.trim() }
+                    // 处理函数
+                    handle { event ->
+                        event.friend().send("喵喵喵")
+                        EventResult.defaults()
+                    }
+                }
+                // 方式二
+                // 这种方式更建议使用在不需要 match 的情况。
+                FriendMessageEvent { event ->
+                    if ("喵" in event.messageContent.plainText.trim()) {
+                        event.friend().send("喵喵喵")
+                    }
+                    
+                    EventResult.defaults()
+                }
+                
+                // 方式三
+                // 直接提供一个 EventListener 对象，不通过builder
+                // 这里借助 simpleListener 函数构建对象
+                listener(simpleListener(FriendMessageEvent, matcher = { event ->
+                    "喵" in event.messageContent.plainText.trim()
+                }) { event ->
+                    event.friend().send("喵喵喵")
+                    EventResult.defaults()
+                })
+            }
+        }
+    }
+}
 ```
-
-</TabItem>
-<TabItem value="Java" label="Java">
-
-```java
-// TODO
-```
-
-</TabItem>
-</Tabs>
-
-
-
-
