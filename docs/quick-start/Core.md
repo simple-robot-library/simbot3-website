@@ -278,7 +278,7 @@ suspend fun main() {
 }
 ```
 
-但是在 `Core` 中并不非常建议这种方式，因为这不如直接使用特定组件下的注册函数来的"精确"。因此此方式不进行过多介绍与解释。
+但是在 `Core` 中并不非常建议这种方式，因为这不如直接使用特定组件下的注册函数来的"精确"。因此此方式不在此处进行过多介绍与解释。
 
 
 ## 监听函数
@@ -298,7 +298,7 @@ suspend fun main() {
     createSimpleApplication {
         eventProcessor {
             listeners {
-                // 方式二
+                // 方式一
                 listen(FriendMessageEvent) {
                     // 匹配函数
                     match { event -> "喵" in event.messageContent.plainText.trim() }
@@ -332,3 +332,94 @@ suspend fun main() {
     }
 }
 ```
+
+## 完整示例
+在最后，提供一个简单而完整的示例如下：
+```kotlin
+import love.forte.simbot.application.*
+import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+import love.forte.simbot.event.*
+
+/**
+ * main入口。
+ */
+suspend fun main() {
+    createSimpleApplication {
+        configApplication()
+    }.join()
+}
+
+/**
+ * 配置 Simple Application.
+ */
+private fun SimpleApplicationBuilder.configApplication() {
+    configKaiheila()
+    configMirai()
+    configEventProcessor()
+}
+
+
+/**
+ * 配置开黑啦相关内容
+ */
+private fun ApplicationBuilder<*>.configKaiheila() {
+    useKaiheila {
+        botManager { completionPerceivable ->
+            // 注册一个你kaiheila bot的账号
+            register("CLIENT_ID", "TOKEN") { bot ->
+                // application启动完成后执行
+                completionPerceivable.onCompletion {
+                    bot.start()
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 配置mirai相关内容
+ */
+private fun ApplicationBuilder<*>.configMirai() {
+    useMirai {
+        botManager { completionPerceivable ->
+            // 注册一个你的qq账号
+            register(123, "密码") { bot ->
+                // application启动完成后执行
+                completionPerceivable.onCompletion {
+                    bot.start()
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 配置事件处理器。如果事件很多，最好进行拆分。此处仅作示例
+ */
+private fun SimpleApplicationBuilder.configEventProcessor() {
+    eventProcessor {
+        listeners {
+            // 监听好友消息, 如果好友消息中有文本"喵"，回复"喵喵喵"
+            listen(FriendMessageEvent) {
+                // 匹配函数
+                match { event -> "喵" in event.messageContent.plainText.trim() }
+                // 处理函数
+                handle { event ->
+                    event.friend().send("喵喵喵")
+                    EventResult.defaults()
+                }
+            }
+        }
+    }
+}
+
+```
+
+
+
+
+## 收尾
+
+以上就是最基础的部分了，执行你的main方法，看看效果吧。
