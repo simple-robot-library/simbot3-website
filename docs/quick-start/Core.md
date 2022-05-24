@@ -7,6 +7,9 @@ tags: [快速开始]
 
 此章节示例使用基础的核心模块。有关相关模块的说明，可以参考 [核心模块概述](../overviews/module-overview/core)
 
+核心库没有什么注解、扫描，是更贴近于原生使用习惯的库，能够让你可以更好的控制你所编写的一切。
+
+
 :::note 假设
 
 下述示例内容建立在你想要使用 [**开黑啦组件**](../component-overview/kaiheila) 和 [**mirai组件**](../component-overview/mirai) 的 **假设** 之上。
@@ -15,15 +18,14 @@ tags: [快速开始]
 
 :::caution 兼容问题
 
-实际上 [**腾讯频道组件**](../component-overview/tencent-guild) 和 [**mirai组件**](../component-overview/mirai) 并不兼容。说具体点，**mirai组件**
-可能暂时无法与其他大部分组件兼容：因为 **mirai组件** 使用的 `Ktor` 版本为 `v1.x`, 而其他大部分组件使用的为 `v2.x`。
+实际上 [**开黑啦组件**](../component-overview/kaiheila) 和 [**mirai组件**](../component-overview/mirai) 并不兼容。说具体点，**mirai组件**
+可能暂时无法与其他大部分组件兼容：因为 **mirai** 使用的 [**Ktor**](https://ktor.io/) 版本为 `v1.x`, 而其他大部分组件使用的为 `v2.x`。
 
 因此下文中的组合使用仅为理想状态并仅做示例用。
 
 :::
 
 
-核心库没有什么注解、扫描，是更贴近于原生使用习惯的库，也许你需要写的代码会多一点儿，但是也能够让你可以更好的控制你所编写的一切。
 
 
 :::info 注解?
@@ -34,7 +36,7 @@ tags: [快速开始]
 
 :::info Java?
 
-需要注意的是，Core模块不提供Java相关的兼容API。
+需要注意的是，Core模块**不提供**Java相关的兼容API。
 
 :::
 
@@ -70,7 +72,7 @@ import TabItem from '@theme/TabItem';
 # 开始
 ## 使用Application
 
-`Application` 是simbot应用程序的门户。在核心模块 `Core` 中提供了一个其工厂的最基础实现：`Simple`。
+`Application` 是simbot应用程序的门户。在核心模块中提供了一个其工厂的最基础实现：`Simple`。
 
 ```kotlin title='SimpleApp.kt'
 import love.forte.simbot.application.*
@@ -218,6 +220,29 @@ suspend fun main() {
 }
 ```
 
+### 自动安装
+当你不关心具体组件，而只希望加载当前环境内所有支持的组件的时候，你可以使用由核心提供的扩展函数来尝试加载当前环境下所有支持自动加载的组件信息：
+
+```kotlin
+import love.forte.simbot.application.*
+import love.forte.simbot.core.application.*
+import love.forte.simbot.installAll
+import love.forte.simbot.installAllComponents
+
+suspend fun main() {
+    createSimpleApplication {
+        // 安装所有支持的组件
+        installAllComponents(/* classLoader = ... */)
+        // 安装所有支持的事件处理器
+        installAllEventProviders(/* classLoader = ... */)
+        
+        // 同时使用上述两个方法
+        installAll(/* classLoader = ... */)
+    }.join()
+}
+```
+
+
 ### 特定Bot注册
 
 既然安装了 `BotManager`, 通常情况下组件实现中会提供对bot的预注册api：
@@ -364,7 +389,7 @@ private fun SimpleApplicationBuilder.configApplication() {
 /**
  * 配置开黑啦相关内容
  */
-private fun ApplicationBuilder<*>.configKaiheila() {
+private fun SimpleApplicationBuilder.configKaiheila() {
     useKaiheila {
         botManager { completionPerceivable ->
             // 注册一个你kaiheila bot的账号
@@ -381,7 +406,7 @@ private fun ApplicationBuilder<*>.configKaiheila() {
 /**
  * 配置mirai相关内容
  */
-private fun ApplicationBuilder<*>.configMirai() {
+private fun SimpleApplicationBuilder.configMirai() {
     useMirai {
         botManager { completionPerceivable ->
             // 注册一个你的qq账号
