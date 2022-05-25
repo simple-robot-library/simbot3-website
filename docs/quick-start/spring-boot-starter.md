@@ -22,7 +22,7 @@ title: Spring Boot Starter
 
 :::
 
-:::caution 版本要求
+:::info 版本要求
 
 simbot 的 `Spring Boot Starter` 对 `Spring Boot` 或者说对 `Spring Framework` 版本存在一定要求。
 

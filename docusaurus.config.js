@@ -216,10 +216,10 @@ const config = {
       },
     }),
 
-  i18n: {
-    defaultLocale: 'zh-CN',
-    locales: ['zh-CN']
-  }
+  // i18n: {
+  //   defaultLocale: 'zh-CN',
+  //   locales: ['zh-CN']
+  // }
 };
 
 module.exports = config;

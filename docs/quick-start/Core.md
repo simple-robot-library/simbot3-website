@@ -28,7 +28,7 @@ tags: [快速开始]
 
 
 
-:::info 注解?
+:::tip 注解?
 
 如果你希望使用类似于simbot2中以注解作为主要开发风格的库，或者希望能拥有简单依赖注入功能和扫描功能的库以便于规模化开发的话，你可以参考 [**快速开始 - Boot**](Boot.md)。
 
@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
 <details>
 <summary>使用快照版本</summary>
 
-:::note
+:::note 快照
 
 除了使用release版本，你也可以使用快照版本。simbot 的快照版本可以前往 <a href="https://oss.sonatype.org/content/repositories/snapshots/love/forte/simbot/simbot-api/">https://oss.sonatype.org/content/repositories/snapshots/love/forte/simbot/simbot-api/</a> 查询。
 

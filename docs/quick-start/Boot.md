@@ -5,7 +5,7 @@ tags: [快速开始]
 
 此章节示例使用基础的 `Boot` 模块。有关相关模块的说明，可以参考 [Boot模块概述](../overviews/module-overview/boot)
 
-:::note 此非彼
+:::tip 此非彼
 
 注意，此 `Boot` 并不是指 `SpringBoot` 喔。
 

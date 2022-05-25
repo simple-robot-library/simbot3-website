@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 ## Fat Jar
 在 `Maven` 或 `Gradle` 下，你可以通过 [Spring Boot 构建应用(打包)](https://spring.io/guides/gs/spring-boot/) 的方式将你的程序打包为一个 `Fat Jar` 并部署到你希望的地方。
 
-:::caution
+:::info Fat Jar? NO!
 
 尽量不要用IDEA自带的打包功能打包为 `Fat Jar` ，除非你知道自己在做什么。
 
