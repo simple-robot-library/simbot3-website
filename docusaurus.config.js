@@ -210,7 +210,7 @@ const config = {
         copyright: `Built with <a href="https://www.docusaurus.cn/">Docusaurus</a>. <br> Copyright © ${copyrightYear} Forte Scarlet.`,
       },
       prism: {
-        additionalLanguages: ['java', 'kotlin', 'groovy'],
+        additionalLanguages: ['java', 'kotlin', 'groovy', 'properties'],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },

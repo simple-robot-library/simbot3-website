@@ -1,7 +1,7 @@
 {
   "simbot": {
-    "version": "3.0.0.preview.10.1",
-    "snapshotVersion": "3.0.0.preview.10.1-SNAPSHOT",
+    "version": "3.0.0.preview.10.2",
+    "snapshotVersion": "3.0.0.preview.10.2-SNAPSHOT",
     "component": {
       "mirai": "3.0.0.0.preview.5.0",
       "tcg": "3.0.0.0.preview.5.0",

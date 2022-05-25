@@ -465,7 +465,7 @@ class FooListeners {
 
 :::note 自定义扫描
 
-如上文所属，默认的bot配置扫描规则为 `simbot-bots/*.bot*`。但是你同样可以通过 `@SimbootApplication` 的参数修改这一默认值：
+如上文所述，默认的bot配置扫描规则为 `simbot-bots/*.bot*`。但是你同样可以通过 `@SimbootApplication` 的参数修改这一默认值：
 ```java title='example/BootApp.kt'
 @SimbootApplication(botResources = ["bots/bot-*.bot*"])
 class BootApp
@@ -620,7 +620,7 @@ public class BarListeners {
 
 :::note 自定义扫描
 
-如上文所属，默认的bot配置扫描规则为 `simbot-bots/*.bot*`。但是你同样可以通过 `@SimbootApplication` 的参数修改这一默认值：
+如上文所述，默认的bot配置扫描规则为 `simbot-bots/*.bot*`。但是你同样可以通过 `@SimbootApplication` 的参数修改这一默认值：
 ```java title='example/BootApp.java'
 @SimbootApplication(botResources = "bots/bot-*.bot*")
 public class BootApp {

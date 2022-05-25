@@ -26,11 +26,11 @@ function mavenCode(version) {
         <artifactId>simboot-core-spring-boot-starter</artifactId>
         <version>${version.simbot.version}</version>
     </dependency>
-    <!-- 腾讯频道组件 -->
+    <!-- 开黑啦组件 -->
     <dependency>
         <groupId>love.forte.simbot.component</groupId>
-        <artifactId>simbot-component-tencent-guild-boot</artifactId>
-        <version>${version.simbot.component.tcg}</version>
+        <artifactId>simbot-component-kaiheila-boot</artifactId>
+        <version>${version.simbot.component.khl}</version>
     </dependency>
     <!-- mirai组件 -->
     <dependency>
@@ -72,8 +72,8 @@ implementation("org.springframework.boot:spring-boot-starter-web")
 // simbot Spring Boot Starter
 implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}")
 
-// 腾讯频道组件
-implementation("love.forte.simbot.component:simbot-component-tencent-guild-boot:${version.simbot.component.tcg}")
+// 开黑啦组件
+implementation("love.forte.simbot.component:simbot-component-kaiheila-boot:${version.simbot.component.khl}")
 
 // mirai组件
 implementation("love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}")`
@@ -99,8 +99,8 @@ implementation 'org.springframework.boot:spring-boot-starter-web'
 // simbot Spring Boot Starter
 implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}'
 
-// 腾讯频道组件
-implementation 'love.forte.simbot.component:simbot-component-tencent-guild-boot:${version.simbot.component.tcg}'
+// 开黑啦组件
+implementation 'love.forte.simbot.component:simbot-component-kaiheila-boot:${version.simbot.component.khl}'
 
 // mirai组件
 implementation 'love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}'`
