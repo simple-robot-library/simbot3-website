@@ -38,7 +38,7 @@ tags: [快速开始]
 
 需要注意的是，Core模块**不提供**Java相关的兼容API。
 
-如果你希望使用Java，那么可以直接去参考 [**Boot**](Boot) 或 [**Spring Boot Starter**](spring-boot-starter) 的快速启动。
+如果你希望使用Java进行开发，那么可以直接去参考 [**Boot**](Boot) 或 [**Spring Boot Starter**](spring-boot-starter) 的快速启动 —— 这两个模块都是兼容Java的。
 
 :::
 
