@@ -260,3 +260,6 @@ Channel channel = event.getChannel();
 </TabItem>
 </Tabs>
 
+### MessageReactedEvent
+> <Label>尚未投入使用</Label>
+
