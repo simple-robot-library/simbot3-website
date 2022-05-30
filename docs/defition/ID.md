@@ -51,7 +51,7 @@ sealed class NumericalID<N : Number> : ID() {
 }
 ```
 
-`NumericalID`提供了6个基本数据类型实现：
+`NumericalID`提供了6个基本的类型实现：
 - `IntID`
 - `LongID`
 - `DoubleID`
