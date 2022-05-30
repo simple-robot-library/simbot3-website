@@ -30,7 +30,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 :::tip
 
-在api中，所有的api在Java中的表现都会在名称后追加 `Blocking` 后缀。例如 `accept()` 在Java中表现为 `acceptBlocking()`。
+在api中，所有的api在Java中的表现都会在名称后追加 `"Blocking"` 后缀。例如 `accept()` 在Java中表现为 `acceptBlocking()`。
 
 :::
 
@@ -75,7 +75,7 @@ boolean isRejected = event.rejectBlocking();
 
 ## JoinRequestEvent
 > <Label>api.join_request</Label>
-> <Label href='#requestevent' type='success'>RequestEvent</Label>
+> <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
 
 `RequestEvent` 的子类型，泛指一个可以表示为 **加入/添加申请** 的请求事件。常见于入群申请、好友添加申请等场景。
 
@@ -86,7 +86,7 @@ boolean isRejected = event.rejectBlocking();
 
 ## GuildRequestEvent
 > <Label>api.guild_request</Label>
-> <Label href='#requestevent' type='success'>RequestEvent</Label>
+> <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
 > <Label type='success'>GuildInfoContainer</Label>
 
 与 **频道服务器** 相关的请求事件。
@@ -94,29 +94,29 @@ boolean isRejected = event.rejectBlocking();
 
 ## GuildJoinRequestEvent
 > <Label>api.guild_join_request</Label>
-> <Label href='#joinrequestevent' type='success'>JoinRequestEvent</Label>
-> <Label href='#guildrequestevent' type='success'>GuildRequestEvent</Label>
+> <a href='#joinrequestevent'><Label type='success'>JoinRequestEvent</Label></a>
+> <a href='#guildrequestevent'><Label type='success'>GuildRequestEvent</Label></a>
 
 与 **加入频道服务器** 相关的请求事件。
 
 
 ## GroupRequestEvent
 > <Label>api.group_request</Label>
-> <Label href='#requestevent' type='success'>RequestEvent</Label>
+> <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
 > <Label type='success'>GroupInfoContainer</Label>
 
 与 **群** 相关的请求事件。
 
 ## GroupJoinRequestEvent
 > <Label>api.group_join_request</Label>
-> <Label href='#grouprequestevent' type='success'>GroupRequestEvent</Label>
-> <Label href='#joinrequestevent' type='success'>JoinRequestEvent</Label>
+> <a href='#grouprequestevent'><Label type='success'>GroupRequestEvent</Label></a>
+> <a href='#joinrequestevent'><Label type='success'>JoinRequestEvent</Label></a>
 
 与 **加入群** 相关的请求事件。
 
 ## ChannelRequestEvent
 > <Label>api.channel_request</Label>
-> <Label href='#requestevent' type='success'>RequestEvent</Label>
+> <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
 > <Label type='success'>ChannelInfoContainer</Label>
 
 与 **子频道** 相关的请求事件。
@@ -124,14 +124,14 @@ boolean isRejected = event.rejectBlocking();
 
 ## UserRequestEvent
 > <Label>api.user_request</Label>
-> <Label href='#requestevent' type='success'>RequestEvent</Label>
+> <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
 > <Label type='success'>UserInfoContainer</Label>
 
 与 **用户** 相关的请求事件。
 
 ## FriendRequestEvent
 > <Label>api.friend_request</Label>
-> <Label href='#userrequestevent' type='success'>UserRequestEvent</Label>
+> <a href='#userrequestevent'><Label type='success'>UserRequestEvent</Label></a>
 > <Label type='success'>FriendInfoContainer</Label>
 
 与 **好友** 相关的请求事件。此事件中涉及到的 `requester` 或其他属性可能并非 `Firend` 对象。
@@ -139,8 +139,8 @@ boolean isRejected = event.rejectBlocking();
 
 ## FriendAddRequestEvent
 > <Label>api.friend_add_request</Label>
-> <Label href='#joinrequestevent' type='success'>JoinRequestEvent</Label>
-> <Label href='#friendrequestevent' type='success'>FriendRequestEvent</Label>
+> <a href='#joinrequestevent'><Label type='success'>JoinRequestEvent</Label></a>
+> <a href='#friendrequestevent'><Label type='success'>FriendRequestEvent</Label></a>
 
 与 **好友添加** 相关的请求事件。此事件代表其他人想要**申请成为**当前bot的好友，
 因此此用户此时**并非**好友。

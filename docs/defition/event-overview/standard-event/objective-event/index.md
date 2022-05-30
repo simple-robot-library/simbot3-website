@@ -21,7 +21,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 ## UserEvent
 > <Label>api.user</Label>
-> <Label href='#objectiveevent' type='success'>ObjectiveEvent</Label>
+> <a href='#objectiveevent'><Label type='success'>ObjectiveEvent</Label></a>
 > <Label type='success'>UserInfoContainer</Label>
 
 代表与 **用户** 相关的事件。
@@ -58,7 +58,7 @@ User user = event.getUser();
 
 ## MemberEvent
 > <Label>api.member</Label>
-> <Label href='#userevent' type='success'>UserEvent</Label> 
+> <a href='#userevent'><Label type='success'>UserEvent</Label></a> 
 > <Label type='success'>MemberInfoContainer</Label> 
 
 代表与 **成员** 有关的事件。
@@ -97,7 +97,7 @@ Member member = event.getMember();
 
 ## FriendEvent
 > <Label>api.friend</Label>
-> <Label href='#userevent' type='success'>UserEvent</Label> 
+> <a href='#userevent'><Label type='success'>UserEvent</Label></a> 
 > <Label type='success'>FriendInfoContainer</Label> 
 
 代表与 **好友** 有关的事件。
@@ -135,7 +135,7 @@ Friend friend = event.getFriend();
 
 ## OrganizationEvent
 > <Label>api.organization</Label>
-> <Label href='#objectiveevent' type='success'>ObjectiveEvent</Label>
+> <a href='#objectiveevent'><Label type='success'>ObjectiveEvent</Label></a>
 
 一个与 **组织** 相关的事件。
 
@@ -173,7 +173,7 @@ Organization organization = event.getOrganization();
 
 ## GroupEvent
 > <Label>api.group</Label>
-> <Label href='#organizationevent' type='success'>OrganizationEvent</Label>
+> <a href='#organizationevent'><Label type='success'>OrganizationEvent</Label></a>
 > <Label type='success'>GroupInfoContainer</Label>
 
 一个与 **群** 相关的事件。继承 `GroupInfoContainer` 并提供属性 `group` 的获取。通常情况下 `group` 的值与 `organization` 的值一致。
@@ -210,7 +210,7 @@ Group group = event.getGroup();
 
 ## GuildEvent
 > <Label>api.guild</Label>
-> <Label href='#organizationevent' type='success'>OrganizationEvent</Label>
+> <a href='#organizationevent'><Label type='success'>OrganizationEvent</Label></a>
 
 一个与 **频道服务器** 相关的事件。提供属性 `guild` 的获取。通常情况下 `guild` 的值与 `organization` 的值一致。
 
@@ -246,7 +246,7 @@ Guild guild = event.getGuild();
 
 ## ChannelEvent
 > <Label>api.channel</Label>
-> <Label href='#organizationevent' type='success'>OrganizationEvent</Label>
+> <a href='#organizationevent'><Label type='success'>OrganizationEvent</Label></a>
 
 一个与 **子频道** 相关的事件。提供属性 `channel` 的获取。通常情况下 `channel` 的值与 `organization` 的值一致。
 

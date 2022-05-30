@@ -80,8 +80,8 @@ MessageReceipt receipt = event.replyBlocking(message);
 
 ## ContactMessageEvent
 > <Label>api.contact_message</Label>
-> <Label href='#messageevent' type='success'>MessageEvent</Label>
-> <Label href='../objective-event/#userevent' type='success'>UserEvent</Label>
+> <a href='#messageevent'><Label type='success'>MessageEvent</Label></a>
+> <a href='../objective-event/#userevent'><Label type='success'>UserEvent</Label></a>
 
 在 `ContactMessageEvent` 中，属性 `user` 与 `source` 返回类型一致，为 `User` 类型。
 
@@ -108,8 +108,8 @@ User source = event.getSource();
 
 ## FriendMessageEvent
 > <Label>api.friend_message</Label>
-> <Label href='#contactmessageevent' type='success'>ContactMessageEvent</Label>
-> <Label href='../objective-event/#friendevent' type='success'>FriendEvent</Label>
+> <a href='#contactmessageevent'><Label type='success'>ContactMessageEvent</Label></a>
+> <a href='../objective-event/#friendevent'><Label type='success'>FriendEvent</Label></a>
 
 | 属性       | 类型       | 描述               |
 |----------|----------|------------------|
@@ -142,8 +142,8 @@ Friend source = event.getSource();
 
 ## ChatRoomMessageEvent
 > <Label>api.chat_room_message</Label>
-> <Label href='#messageevent' type='success'>MessageEvent</Label>
-> <Label href='#organizationevent' type='success'>OrganizationEvent</Label>
+> <a href='#messageevent'><Label type='success'>MessageEvent</Label></a>
+> <a href='#organizationevent'><Label type='success'>OrganizationEvent</Label></a>
 > <Label type='success'>DeleteSupport</Label>
 > <Label type='success'>RemoteMessageContainer</Label>
 
@@ -200,8 +200,8 @@ boolean isDeleted = event.deleteBlocking();
 
 ## GroupMessageEvent
 > <Label>api.group_message</Label>
-> <Label href='#chatroommessageevent' type='success'>ChatRoomMessageEvent</Label>
-> <Label href='../objective-event/#groupevent' type='success'>GroupEvent</Label>
+> <a href='#chatroommessageevent'><Label type='success'>ChatRoomMessageEvent</Label></a>
+> <a href='../objective-event/#groupevent'><Label type='success'>GroupEvent</Label></a>
 
 
 一个来自于 **群** 的消息事件。
@@ -233,8 +233,8 @@ Group group = event.getGroup();
 
 ## ChannelMessageEvent
 > <Label>api.channel_message</Label>
-> <Label href='#chatroommessageevent' type='success'>ChatRoomMessageEvent</Label>
-> <Label href='../objective-event/#channelevent' type='success'>ChannelEvent</Label>
+> <a href='#chatroommessageevent'><Label type='success'>ChatRoomMessageEvent</Label></a>
+> <a href='../objective-event/#channelevent'><Label type='success'>ChannelEvent</Label></a>
 
 | 属性        | 类型        | 描述          |
 |-----------|-----------|-------------|
