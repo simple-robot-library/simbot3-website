@@ -57,7 +57,7 @@ public class MyListener {
 </Tabs>
 
 2. 通过参数获取：
-   在simbot3.x 中，`监听函数(@Listener)` 的参数由 `Binder` 负责进行解析与预处理。默认的Binder中会提供针对 `EventProcessingContext.Scope` 中元素的处理，因此你可以直接在一个监听函数的参数中使用 `ContinuousSessionContext` 来得到它：
+   在simbot3 中，`监听函数(@Listener)` 的参数由 `Binder` 负责进行解析与预处理。默认的Binder中会提供针对 `EventProcessingContext.Scope` 中元素的处理，因此你可以直接在一个监听函数的参数中使用 `ContinuousSessionContext` 来得到它：
 
 
 <Tabs groupId="code">
@@ -88,9 +88,9 @@ public class MyListener {
 
 
 ## 示例
-:::note 注意
+:::danger TODO
 
-下述逻辑经过简化，仅供参考。
+`v3.0.0.preview.10+` 持续会话API经历一次重构，下文示例已经过时。 
 
 :::
 
