@@ -270,12 +270,10 @@ suspend fun main() {
         // 安装kaiheila组件标识，安装kaiheilaBotManager
         useKaiheila {
             botManager {
-                botManager {
-                    register(clientId = "CLIENT_ID", token = "TOKEN") { bot ->
-                        // 当 application启动完成后，启动bot
-                        it.onCompletion {
-                            bot.start()
-                        }
+                register(clientId = "CLIENT_ID", token = "TOKEN") { bot ->
+                    // 当 application启动完成后，启动bot
+                    it.onCompletion {
+                        bot.start()
                     }
                 }
             }
@@ -316,7 +314,7 @@ suspend fun main() {
 监听函数的注册不是 `Application` 所强制要求的功能，但是 `Simple` 提供了它的基础实现。
 接下来的代码示例展示通过几种不同的方式实现：当一个好友发送消息 `"喵"` 的时候，bot回复：`"喵喵喵"`
 
-```kotlin
+```kotlin title='SimpleApp.kt'
 import love.forte.simbot.core.application.*
 import love.forte.simbot.core.event.*
 import love.forte.simbot.event.*
@@ -336,13 +334,12 @@ suspend fun main() {
                     }
                 }
                 // 方式二
-                // 这种方式更建议使用在不需要 match 的情况。
+                // 匹配逻辑在监听逻辑之后。
                 FriendMessageEvent { event ->
-                    if ("喵" in event.messageContent.plainText.trim()) {
-                        event.friend().send("喵喵喵")
-                    }
-                    
+                    event.friend().send("喵喵喵")
                     EventResult.defaults()
+                } onMatch {
+                   "喵" in event.messageContent.plainText.trim()
                 }
                 
                 // 方式三
@@ -362,7 +359,7 @@ suspend fun main() {
 
 ## 完整示例
 在最后，提供一个简单而完整的示例如下：
-```kotlin
+```kotlin title='SimpleApp.kt'
 import love.forte.simbot.application.*
 import love.forte.simbot.component.kaiheila.*
 import love.forte.simbot.component.mirai.*
