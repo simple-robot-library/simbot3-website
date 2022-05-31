@@ -1,5 +1,5 @@
 ---
-sidebar_location: 10
+sidebar_position: 10
 title: 标准消息
 tags: [消息]
 ---

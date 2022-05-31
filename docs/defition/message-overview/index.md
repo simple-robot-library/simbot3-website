@@ -31,12 +31,12 @@ tags: [消息]
 
 `Message.Element` 接口本身只规定了如下属性/函数：
 
-| 属性/函数       | 类型                          | 描述                            |
-|-------------|-----------------------------|-------------------------------|
-| key         | [Message.Key](#message-key) | 此消息的key信息。                    |
-| component   | Component                   | 提供此消息实现的组件对象。同 key.component。 |
-| toString()  | String                      | 得到此消息的字符串表现。                  |
-| equals(Any) | boolean                     | 比较两个元素是否相同。                   |
+| 属性/函数       | 类型                         | 描述                            |
+|-------------|----------------------------|-------------------------------|
+| key         | [Message.Key](#messagekey) | 此消息的key信息。                    |
+| component   | Component                  | 提供此消息实现的组件对象。同 key.component。 |
+| toString()  | String                     | 得到此消息的字符串表现。                  |
+| equals(Any) | boolean                    | 比较两个元素是否相同。                   |
 
 
 ## Messages
@@ -129,6 +129,6 @@ final Messages messages = Messages.getMessages(
 
 
 
-## Message.Key {#message-key}
+## Message.Key
 
 是一个应该由 Message.Element实现中的伴生对象进行实现的约定类型。

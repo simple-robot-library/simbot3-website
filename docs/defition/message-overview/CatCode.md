@@ -1,9 +1,10 @@
 ---
-sidebar_position: 60
-title: 猫猫码
+sidebar_position: 100
+title: 猫猫码?
+tags: [消息]
 ---
 
-猫猫码( `CatCode` )是一个具有特殊格式的字符串，是CQ码的精神延续。
+猫猫码 ( `CatCode` ) 是一个具有特殊格式的字符串，是CQ码的精神延续。
 
 
 `CatCode` 2.x会重构为基于 [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) 的多平台序列化库。
@@ -19,11 +20,13 @@ simbot3中的消息实体将会基于 [kotlinx.serialization](https://github.com
 
 猫猫码不再是simbot3中序列化消息的途径，它将会仅仅作为一个普通的序列化库发布（而且不知道会鸽多久）。
 
+
 想要在simbot3中实现消息序列化，只需要在注意消息实体是否支持序列化的前提下直接通过 [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
 完成。
+
 
 :::
 
 
 
-但是实际上，simbot3中，所有的消息均以实体形式出现，猫猫码不再必要。有关消息相关的内容，你可以参考 [消息概述](message-overview) 。
+但是实际上，simbot3中，所有的消息均以实体形式出现，猫猫码不再必要。有关消息相关的内容，你可以参考 [消息概述](index) 。
