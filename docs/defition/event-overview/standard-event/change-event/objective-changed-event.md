@@ -60,11 +60,45 @@ import CodeBlock from '@theme/CodeBlock';
 
 
 ## FriendChangedEvent
-TODO
+> <Label>api.friend_changed</Label>
+> <a href='./#changedevent'><Label type='success'>ChangedEvent</Label></a>
+> <a href='../objective-event/#friendevent'><Label type='success'>FriendEvent</Label></a>
+
+代表一个bot的好友（数量）发生了变化。
+
+| 属性       | 类型       | 描述         |
+|----------|----------|------------|
+| `source` | `Bot`    | 发生好友变化的bot |
+| `friend` | `Friend` | 变化的好友对象    |
+
+
+
 
 ## FriendIncreaseEvent
-TODO
+> <Label>api.friend_increase</Label>
+> <a href='./point-changed-event/#increaseevent'><Label type='success'>IncreaseEvent</Label></a>
+> <a href='#friendchangedevent'><Label type='success'>FriendChangedEvent</Label></a>
+
+代表一个bot的好友增加了。
+
+| 属性       | 类型       | 描述         |
+|----------|----------|------------|
+| `source` | `Bot`    | 发生好友变化的bot |
+| `friend` | `friend` | 增加的好友对象    |
+| `after`  | 同上       | 同上         |
+
 
 
 ## FriendDecreaseEvent
-TODO
+> <Label>api.friend_decrease</Label>
+> <a href='./point-changed-event/#decreaseevent'><Label type='success'>DecreaseEvent</Label></a>
+> <a href='#friendchangedevent'><Label type='success'>FriendChangedEvent</Label></a>
+
+
+代表一个bot的好友减少了。
+
+| 属性       | 类型       | 描述         |
+|----------|----------|------------|
+| `source` | `Bot`    | 发生好友变化的bot |
+| `friend` | `friend` | 减少的好友对象    |
+| `before` | 同上       | 同上         |

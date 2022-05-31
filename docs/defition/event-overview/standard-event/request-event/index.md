@@ -12,7 +12,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 ## RequestEvent
 > <Label>api.request</Label>
-> <Label type='success'>UserInfoContainer</Label>
+> <a href='../../../container-overview/#userinfocontainer'><Label type='success'>UserInfoContainer</Label></a>
 
 **请求事件** 的基础父类接口。
 
@@ -72,7 +72,6 @@ boolean isRejected = event.rejectBlocking();
 </TabItem>
 </Tabs>
 
-
 ## JoinRequestEvent
 > <Label>api.join_request</Label>
 > <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
@@ -83,14 +82,12 @@ boolean isRejected = event.rejectBlocking();
 |-----------|-------------|---------------------------------------------------------------|
 | `inviter` | `UserInfo?` | 本次添加申请人的**邀请人**。只有在组件**支持识别**邀请人并且**实际存在**邀请人的时候才会存在，否则为null。 |
 
-
 ## GuildRequestEvent
 > <Label>api.guild_request</Label>
 > <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
-> <Label type='success'>GuildInfoContainer</Label>
+> <a href='../../../container-overview/#guildinfocontainer'><Label type='success'>GuildInfoContainer</Label></a>
 
 与 **频道服务器** 相关的请求事件。
-
 
 ## GuildJoinRequestEvent
 > <Label>api.guild_join_request</Label>
@@ -99,11 +96,10 @@ boolean isRejected = event.rejectBlocking();
 
 与 **加入频道服务器** 相关的请求事件。
 
-
 ## GroupRequestEvent
 > <Label>api.group_request</Label>
 > <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
-> <Label type='success'>GroupInfoContainer</Label>
+> <a href='../../../container-overview/#groupinfocontainer'><Label type='success'>GroupInfoContainer</Label></a>
 
 与 **群** 相关的请求事件。
 
@@ -117,25 +113,23 @@ boolean isRejected = event.rejectBlocking();
 ## ChannelRequestEvent
 > <Label>api.channel_request</Label>
 > <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
-> <Label type='success'>ChannelInfoContainer</Label>
+> <a href='../../../container-overview/#channelinfocontainer'><Label type='success'>ChannelInfoContainer</Label></a>
 
 与 **子频道** 相关的请求事件。
-
 
 ## UserRequestEvent
 > <Label>api.user_request</Label>
 > <a href='#requestevent'><Label type='success'>RequestEvent</Label></a>
-> <Label type='success'>UserInfoContainer</Label>
+> <a href='../../../container-overview/#userinfocontainer'><Label type='success'>UserInfoContainer</Label></a>
 
 与 **用户** 相关的请求事件。
 
 ## FriendRequestEvent
 > <Label>api.friend_request</Label>
 > <a href='#userrequestevent'><Label type='success'>UserRequestEvent</Label></a>
-> <Label type='success'>FriendInfoContainer</Label>
+> <a href='../../../container-overview/#friendinfocontainer'><Label type='success'>FriendInfoContainer</Label></a>
 
 与 **好友** 相关的请求事件。此事件中涉及到的 `requester` 或其他属性可能并非 `Firend` 对象。
-
 
 ## FriendAddRequestEvent
 > <Label>api.friend_add_request</Label>

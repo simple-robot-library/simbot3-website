@@ -27,13 +27,13 @@ const taglines = [
 ]
 
 
-function r() {
-    const arr = [true].concat(Array(100).fill(false))
-    return rGet(arr)
+function random(elements) {
+    return elements[Math.floor(Math.random() * elements.length)]
 }
 
-function rGet(arr) {
-    return arr[Math.floor(Math.random() * arr.length)]
+function r() {
+    const arr = [true].concat(Array(100).fill(false))
+    return random(arr)
 }
 
 const otherValue = [
@@ -49,16 +49,20 @@ function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
     const date = new Date()
     const day = date.getDay()
+    // const day = random([0,1,2,3,4,5,6])
     const isAprilFools = (date.getMonth() + 1) === 4 && date.getDate() === 1;
     const isBirthday = (date.getMonth() + 1) === 8 && date.getDate() === 3;
     console.log('Today: ' + date.getMonth() + '-' + date.getDate() + '(' + date + ')')
+    console.log('Today: ' + day)
+
     // styles['heroBannerBg' + day]
     // const day = 0
     // const style = styles['heroBannerBg' + day]
     // const style = bgStyles[day][0]
     // console.log(styles.heroBanner)
 
-    const numberVersionValue = (isAprilFools || isBirthday || r()) ? rGet(otherValue) : '3'
+    const numberVersionValue = (isAprilFools || isBirthday || r()) ? random(otherValue) : '3'
+
 
     return (
         <header className={clsx('hero hero--primary', styles.heroBanner, styles['heroBannerBg' + day])}>
@@ -97,8 +101,4 @@ export default function Home() {
             </main>
         </Layout>
     );
-}
-
-function random(elements) {
-    return elements[Math.floor(Math.random() * elements.length)]
 }

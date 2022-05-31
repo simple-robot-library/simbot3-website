@@ -5,8 +5,8 @@ tags: [标准事件]
 
 simbot3核心库所提供的标准事件定义。
 
-## 文档约定
-在下述章节中，你可能会看到类似于下面这种形式的说明：
+## 文档展现
+在下述章节中，你可能会看到类似于下面这种的展现形式：
 
 import Label from '@site/src/components/Label'
 

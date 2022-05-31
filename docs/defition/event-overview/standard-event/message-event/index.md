@@ -77,7 +77,6 @@ MessageReceipt receipt = event.replyBlocking(message);
 </TabItem>
 </Tabs>
 
-
 ## ContactMessageEvent
 > <Label>api.contact_message</Label>
 > <a href='#messageevent'><Label type='success'>MessageEvent</Label></a>
@@ -139,7 +138,6 @@ Friend source = event.getSource();
 </TabItem>
 </Tabs>
 
-
 ## ChatRoomMessageEvent
 > <Label>api.chat_room_message</Label>
 > <a href='#messageevent'><Label type='success'>MessageEvent</Label></a>
@@ -197,7 +195,6 @@ boolean isDeleted = event.deleteBlocking();
 </TabItem>
 </Tabs>
 
-
 ## GroupMessageEvent
 > <Label>api.group_message</Label>
 > <a href='#chatroommessageevent'><Label type='success'>ChatRoomMessageEvent</Label></a>
@@ -229,7 +226,6 @@ Group group = event.getGroup();
 
 </TabItem>
 </Tabs>
-
 
 ## ChannelMessageEvent
 > <Label>api.channel_message</Label>
