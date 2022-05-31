@@ -1,9 +1,9 @@
 ---
-sidebar_position: 50
-title: 组织概述
+sidebar_position: 30
+title: 组织
 ---
 
-一个组织 `Organization` , 是一个 **组织结构**，也就是说它是一个 [结构体](./Structured.md)。
+一个组织 `Organization` , 是一个 **组织结构**，也就是说它是一个 [结构体](../Structured.md)。
 
 组织必须是以人为中心的实体，常见为一个群聊、一个频道、一个服务器等。
 
@@ -44,3 +44,6 @@ import YES from '@site/src/components/YES';
 - 多频道服务器（`guild`），存在层级关系，外层 `guild` 囊括内层多个频道 （`channel`）。
 - 频道中可能存在多个允许文字交流的频道。
 - 频道可能存在分组。
+
+
+有关组织的其他结构性定义等信息，请参考 [对象#组织](Objectives.md#organization)

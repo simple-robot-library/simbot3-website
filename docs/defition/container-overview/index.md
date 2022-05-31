@@ -144,7 +144,7 @@ Foo foo = container.getFoo(); // blocking
 
 ### FriendInfoContainer
 
-用于获取 `FirendInfo` 实例的容器
+用于获取 `FirendInfo` 实例的容器。
 
 | 属性                              | 类型           | 描述   |
 |---------------------------------|--------------|------|
@@ -166,6 +166,7 @@ Foo foo = container.getFoo(); // blocking
 
 ### FriendsContainer
 
+获取与当前bot相关的 `Friend` 信息的社交容器。
 
 <Tabs groupId="code">
 <TabItem value="Kotlin">
@@ -206,6 +207,7 @@ Friend friend = container.getFriend(id);
 
 ### GroupsContainer
 
+获取与当前bot相关的 `Group` 信息的社交容器。
 
 <Tabs groupId="code">
 <TabItem value="Kotlin">
@@ -246,6 +248,8 @@ Group group = container.getGroup(id);
 </Tabs>
 
 ### GuildsContainer
+
+获取与当前bot相关的 `Guild` 信息的社交容器。
 
 <Tabs groupId="code">
 <TabItem value="Kotlin">

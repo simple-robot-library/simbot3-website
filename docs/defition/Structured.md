@@ -1,11 +1,11 @@
 ---
-sidebar_position: 40
+sidebar_position: 20
 title: 结构体
 ---
 
 结构化接口 `Structured` 是一个通用的底层接口，其代表一个类型是一种类似于*树*的结构化、有层次的对象。
 
-当然，通常情况下你可能根本不会直接使用到此类型， 它通常由一些高层次的类型所继承或实现，例如 [组织](./Organization)。
+当然，通常情况下你可能根本不会直接使用到此类型， 它通常由一些高层次的类型所继承或实现，例如 [组织](base-objective/Organization.md)。
 
 ## 接口定义
 ```kotlin
