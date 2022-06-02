@@ -63,9 +63,12 @@ function HomepageHeader() {
 
     const numberVersionValue = (isAprilFools || isBirthday || r()) ? random(otherValue) : '3'
 
+    const heroBannerBg = styles['heroBannerBg' + day]
+    console.log("heroBannerBg: " + heroBannerBg)
+    console.log(heroBannerBg)
 
     return (
-        <header className={clsx('hero hero--primary', styles.heroBanner, styles['heroBannerBg' + day])}>
+        <header className={clsx('hero hero--primary', styles.heroBanner, heroBannerBg)}>
             <div className="container">
                 <h1 className="hero__title">{siteConfig.title} <small>{numberVersionValue}</small></h1>
                 <p className="hero__subtitle">{random(taglines)}</p>
