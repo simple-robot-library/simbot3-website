@@ -177,7 +177,7 @@ Foo foo = container.getFoo(); // blocking
 | `friend(ID)` <Label>suspend</Label> | <code>[Friend](../base-objective/Objectives#friend)?</code>       | 获取bot指定ID的好友 |
 
 ```kotlin
-val friends: Flow<Friend> = container.friends(...)
+val friends: Items<Friend> = container.friends
 
 val id: ID = ...
 val friend: Friend = container.friend(id)
@@ -192,7 +192,7 @@ val friend: Friend = container.friend(id)
 | `getFriend(ID)` | <code>[Friend](../base-objective/Objectives#friend)?</code>       | 获取bot指定ID的好友 |
 
 ```java
-Stream<Friend> friends = container.getFriends(...);
+Items<Friend> friends = container.getFriends();
 
 ID id = ...;
 Friend friend = container.getFriend(id);
@@ -216,7 +216,7 @@ Friend friend = container.getFriend(id);
 
 
 ```kotlin
-val groups: Flow<Group> = container.groups(...)
+val groups: Items<Group> = container.groups
 
 val id: ID = ...
 val group: Group = container.group(id)
@@ -232,7 +232,7 @@ val group: Group = container.group(id)
 
 
 ```java
-Stream<Group> groups = container.getGroups(...);
+Items<Group> groups = container.getGroups();
 
 ID id = ...;
 Group group = container.getGroup(id);
@@ -256,7 +256,7 @@ Group group = container.getGroup(id);
 
 
 ```kotlin
-val guilds: Flow<Guild> = container.guilds(...)
+val guilds: Items<Guild> = container.guilds
 
 val id: ID = ...
 val guild: Guild = container.guild(id)
@@ -273,7 +273,7 @@ val guild: Guild = container.guild(id)
 
 
 ```java
-Stream<Guild> guilds = container.getGuilds(...);
+Items<Guild> guilds = container.getGuilds(...);
 
 ID id = ...;
 Guild guild = container.getGuild(id);

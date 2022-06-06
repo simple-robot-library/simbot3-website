@@ -45,7 +45,7 @@ for(BotManager<?> it : OriginBotManager) {
 
 ```kotlin
 // 根据组件获取所有的管理器。假设这里获取所有的Mirai组件。
-val managers = OriginBotManager.getManagers(MiraiComponent.component)
+val managers: List<BotManager<*>> = OriginBotManager.getManagers(MiraiComponent.component)
 
 
 // 通过ID和组件信息直接定位一个Bot对象。
@@ -65,7 +65,7 @@ final OriginBotManager manager = OriginBotManager.INSTANCE;
 
 // 得到对应组件下的所有manager。
 // 实际上SimbotComponent不会有所属botManager，此处仅做示例。
-final Stream<BotManager<?>> managers = manager.getManagers(SimbotComponent.INSTANCE);
+final List<BotManager<?>> managers = manager.getManagers(SimbotComponent.INSTANCE);
 
 // 根据ID和组件信息得到对应的Bot。
 final ID botId = Identifies.ID(123); // 你bot的ID，可以是数字，或者字符串等。
@@ -95,7 +95,7 @@ suspend fun GroupMessageEvent.processEvent() {
     // 得到事件中bot所属的manager
     val manager: BotManager<out Bot> = bot.manager
     // 得到当前管理器的所有bot
-    val all: Sequence<Bot> = manager.all()
+    val all: List<Bot> = manager.all()
 }
 ```
 
@@ -112,7 +112,7 @@ public void processEvent(GroupMessageEvent event) {
     final BotManager<? extends Bot> manager = bot.getManager();
 
     // 得到这个botManager中的所有Bot
-    final Stream<? extends Bot> allBot = manager.all();
+    final List<? extends Bot> allBot = manager.all();
 }
 ```
 
@@ -135,7 +135,7 @@ public void processEvent(GroupMessageEvent event) {
 val manager: BotManager<*> = ...
 
 // 获取所有Bot，以序列Sequence的形式返回
-val all: Sequence<Bot> = manager.all()
+val all: List<Bot> = manager.all()
 
 // 获取指定的Bot
 val bot: Bot? = manager.get(123.ID)
@@ -148,7 +148,7 @@ val bot: Bot? = manager.get(123.ID)
 final BotManager<? extends Bot> manager = ...;
 
 // 获取所有的Bot，作为Stream返回
-final Stream<? extends Bot> allBot = manager.all();
+final List<? extends Bot> allBot = manager.all();
         
 // 根据ID获取对应的Bot
 final Bot bot = manager.get(Identifies.ID(123));
