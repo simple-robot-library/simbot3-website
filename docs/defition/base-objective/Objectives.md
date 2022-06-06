@@ -43,24 +43,23 @@ public interface Objectives : BotContainer, IDContainer {
 
 组织中所提供的属性与API大致如下 ：
 
-| 属性/API                                         | 类型/返回值                               | 描述                                                    |
-|------------------------------------------------|--------------------------------------|-------------------------------------------------------|
-| `bot`                                          | [MemberBot](#memberbot)              | 组织所属bot。此为此bot在当前组织中所扮演的对象。                           |
-| `id`                                           | [ID](../ID)                          | 组织的唯一标识。                                              |
-| `name`                                         | `String`                             | 参考 [OrganizationInfo](Info#organizationinfo)。         |
-| `icon`                                         | `String`                             | 参考 [OrganizationInfo](Info#organizationinfo)。         |
-| `description`                                  | `String`                             | 参考 [OrganizationInfo](Info#organizationinfo)。         |
-| `createTime`                                   | `Timestamp`                          | 参考 [OrganizationInfo](Info#organizationinfo)。         |
-| `ownerId`                                      | `ID`                                 | 参考 [OrganizationInfo](Info#organizationinfo)。         |
-| `maximumMember`                                | `Int`                                | 参考 [OrganizationInfo](Info#organizationinfo)。         |
-| `currentMember`                                | `Int`                                | 参考 [OrganizationInfo](Info#organizationinfo)。         |
-| `owner` <Label>suspend</Label>                 | [Member](#member)                    | 组织拥有者作为成员的实例。                                         |
-| `previous` <Label>suspend</Label>              | `? extends Organization`             | 参考 [结构体](../Structured)。                              |
-| `children(ID)` <Label>suspend</Label>          | `Flow<Organization>`                 | 参考 [结构体](../Structured)。                              |
-| `children(ID, Limiter)` <Label>suspend</Label> | `Flow<Organization>`                 | `children(ID = ...)` 的扩展，查询当前组织的下级组织。常见于频道服务器获取子频道列表。 |
-| `members(ID, Limiter)` <Label>suspend</Label>  | <code>Flow<[Member](#member)></code> | 获取当前组织内的成员列表。                                         |
-| `member(ID)` <Label>suspend</Label>            | <code>[Member](#member)?</code>      | 获取组织内指定ID的成员。                                         |
-| `roles(ID, Limiter)` <Label>suspend</Label>    | `Flow<Role>`                         | 获取组织内的角色列表。                                           |
+| 属性/API                              | 类型/返回值                                | 描述                                            |
+|-------------------------------------|---------------------------------------|-----------------------------------------------|
+| `bot`                               | [MemberBot](#memberbot)               | 组织所属bot。此为此bot在当前组织中所扮演的对象。                   |
+| `id`                                | [ID](../ID)                           | 组织的唯一标识。                                      |
+| `name`                              | `String`                              | 参考 [OrganizationInfo](Info#organizationinfo)。 |
+| `icon`                              | `String`                              | 参考 [OrganizationInfo](Info#organizationinfo)。 |
+| `description`                       | `String`                              | 参考 [OrganizationInfo](Info#organizationinfo)。 |
+| `createTime`                        | `Timestamp`                           | 参考 [OrganizationInfo](Info#organizationinfo)。 |
+| `ownerId`                           | `ID`                                  | 参考 [OrganizationInfo](Info#organizationinfo)。 |
+| `maximumMember`                     | `Int`                                 | 参考 [OrganizationInfo](Info#organizationinfo)。 |
+| `currentMember`                     | `Int`                                 | 参考 [OrganizationInfo](Info#organizationinfo)。 |
+| `owner` <Label>suspend</Label>      | [Member](#member)                     | 组织拥有者作为成员的实例。                                 |
+| `previous` <Label>suspend</Label>   | `? extends Organization`              |                                               |
+| `children`                          | `Items<Organization>`                 | 获取当前组织的下级组织列表。                                |
+| `roles`                             | `Items<Role>`                         | 获取组织内的角色列表。                                   |
+| `members`                           | <code>Items<[Member](#member)></code> | 获取当前组织内的成员列表。                                 |
+| `member(ID)` <Label>suspend</Label> | <code>[Member](#member)?</code>       | 获取组织内指定ID的成员。                                 |
 
 
 
@@ -74,13 +73,13 @@ public interface Objectives : BotContainer, IDContainer {
 `children` 得到的下级组织均为 `Channel` 类型。
 
 
-| 属性/API                                         | 类型/返回值                                         | 描述                                      |
-|------------------------------------------------|------------------------------------------------|-----------------------------------------|
-| `bot`                                          | [`MemberBot`](#memberbot)                      | 频道服务器所属bot。此为此bot在当前频道服务器中所扮演的对象。       |
-| `owner` <Label>suspend</Label>                 | [`GuildMember`](#guildmember)                  | 频道服务器拥有者作为成员的实例。                        |
-| `children(ID, Limiter)` <Label>suspend</Label> | <code>Flow<[Channel](#channel)></code>         | `children(ID = ...)` 的扩展，查询当前频道服务器的子频道。 |
-| `members(ID, Limiter)` <Label>suspend</Label>  | <code>Flow<[GuildMember](#guildmember)></code> | 获取当前频道服务器内的成员列表。                        |
-| `member(ID)` <Label>suspend</Label>            | <code>[GuildMember](#guildmember)?</code>      | 获取频道服务器内指定ID的成员。                        |
+| 属性/API                              | 类型/返回值                                          | 描述                                |
+|-------------------------------------|-------------------------------------------------|-----------------------------------|
+| `bot`                               | [`MemberBot`](#memberbot)                       | 频道服务器所属bot。此为此bot在当前频道服务器中所扮演的对象。 |
+| `owner` <Label>suspend</Label>      | [`GuildMember`](#guildmember)                   | 频道服务器拥有者作为成员的实例。                  |
+| `children`                          | <code>Items<[Channel](#channel)></code>         | 获取当前频道服务器的子频道。                    |
+| `members`                           | <code>Items<[GuildMember](#guildmember)></code> | 获取当前频道服务器内的成员列表。                  |
+| `member(ID)` <Label>suspend</Label> | <code>[GuildMember](#guildmember)?</code>       | 获取频道服务器内指定ID的成员。                  |
 
 
 

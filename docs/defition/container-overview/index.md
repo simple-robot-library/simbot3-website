@@ -171,10 +171,10 @@ Foo foo = container.getFoo(); // blocking
 <Tabs groupId="code">
 <TabItem value="Kotlin">
 
-| API                                                 | 返回值                                                              | 描述           |
-|-----------------------------------------------------|------------------------------------------------------------------|--------------|
-| `friends(Grouping, Limiter)` <Label>suspend</Label> | <code>Flow<[Friend](../base-objective/Objectives#friend)></code> | 获取bot的好友列表   |
-| `friend(ID)` <Label>suspend</Label>                 | <code>[Friend](../base-objective/Objectives#friend)?</code>      | 获取bot指定ID的好友 |
+| API                                 | 返回值                                                               | 描述           |
+|-------------------------------------|-------------------------------------------------------------------|--------------|
+| `friends`                           | <code>Items<[Friend](../base-objective/Objectives#friend)></code> | 获取bot的好友列表   |
+| `friend(ID)` <Label>suspend</Label> | <code>[Friend](../base-objective/Objectives#friend)?</code>       | 获取bot指定ID的好友 |
 
 ```kotlin
 val friends: Flow<Friend> = container.friends(...)
@@ -186,13 +186,10 @@ val friend: Friend = container.friend(id)
 </TabItem>
 <TabItem value="Java">
 
-| API                             | 返回值                                                                | 描述           |
-|---------------------------------|--------------------------------------------------------------------|--------------|
-| `getFriends(Grouping, Limiter)` | <code>Stream<[Friend](../base-objective/Objectives#friend)></code> | 获取bot的好友列表   |
-| `getFriends(Limiter)`           | <code>Stream<[Friend](../base-objective/Objectives#friend)></code> | 获取bot的好友列表   |
-| `getFriends(Grouping)`          | <code>Stream<[Friend](../base-objective/Objectives#friend)></code> | 获取bot的好友列表   |
-| `getFriends()`                  | <code>Stream<[Friend](../base-objective/Objectives#friend)></code> | 获取bot的好友列表   |
-| `getFriend(ID)`                 | <code>[Friend](../base-objective/Objectives#friend)?</code>        | 获取bot指定ID的好友 |
+| API             | 返回值                                                               | 描述           |
+|-----------------|-------------------------------------------------------------------|--------------|
+| `getFriends()`  | <code>Items<[Friend](../base-objective/Objectives#friend)></code> | 获取bot的好友列表   |
+| `getFriend(ID)` | <code>[Friend](../base-objective/Objectives#friend)?</code>       | 获取bot指定ID的好友 |
 
 ```java
 Stream<Friend> friends = container.getFriends(...);
@@ -212,10 +209,10 @@ Friend friend = container.getFriend(id);
 <Tabs groupId="code">
 <TabItem value="Kotlin">
 
-| API                                                | 返回值                                                            | 描述          |
-|----------------------------------------------------|----------------------------------------------------------------|-------------|
-| `groups(Grouping, Limiter)` <Label>suspend</Label> | <code>Flow<[Group](../base-objective/Objectives#group)></code> | 获取bot的群列表   |
-| `group(ID)` <Label>suspend</Label>                 | <code>[Group](../base-objective/Objectives#group)?</code>      | 获取bot指定ID的群 |
+| API                                | 返回值                                                             | 描述          |
+|------------------------------------|-----------------------------------------------------------------|-------------|
+| `groups`                           | <code>Items<[Group](../base-objective/Objectives#group)></code> | 获取bot的群列表   |
+| `group(ID)` <Label>suspend</Label> | <code>[Group](../base-objective/Objectives#group)?</code>       | 获取bot指定ID的群 |
 
 
 ```kotlin
@@ -228,13 +225,10 @@ val group: Group = container.group(id)
 </TabItem>
 <TabItem value="Java">
 
-| API                            | 返回值                                                              | 描述          |
-|--------------------------------|------------------------------------------------------------------|-------------|
-| `getGroups(Grouping, Limiter)` | <code>Stream<[Group](../base-objective/Objectives#group)></code> | 获取bot的群列表   |
-| `getGroups(Limiter)`           | <code>Stream<[Group](../base-objective/Objectives#group)></code> | 获取bot的群列表   |
-| `getGroups(Grouping)`          | <code>Stream<[Group](../base-objective/Objectives#group)></code> | 获取bot的群列表   |
-| `getGroups()`                  | <code>Stream<[Group](../base-objective/Objectives#group)></code> | 获取bot的群列表   |
-| `getGroup(ID)`                 | <code>[Group](../base-objective/Objectives#group)?</code>        | 获取bot指定ID的群 |
+| API            | 返回值                                                             | 描述          |
+|----------------|-----------------------------------------------------------------|-------------|
+| `getGroups()`  | <code>Items<[Group](../base-objective/Objectives#group)></code> | 获取bot的群列表   |
+| `getGroup(ID)` | <code>[Group](../base-objective/Objectives#group)?</code>       | 获取bot指定ID的群 |
 
 
 ```java
@@ -255,10 +249,10 @@ Group group = container.getGroup(id);
 <TabItem value="Kotlin">
 
 
-| API                                                | 返回值                                                            | 描述              |
-|----------------------------------------------------|----------------------------------------------------------------|-----------------|
-| `guilds(Grouping, Limiter)` <Label>suspend</Label> | <code>Flow<[Guild](../base-objective/Objectives#guild)></code> | 获取bot的频道服务器列表   |
-| `guild(ID)` <Label>suspend</Label>                 | <code>[Guild](../base-objective/Objectives#guild)?</code>      | 获取bot指定ID的频道服务器 |
+| API                                | 返回值                                                             | 描述              |
+|------------------------------------|-----------------------------------------------------------------|-----------------|
+| `guilds`                           | <code>Items<[Guild](../base-objective/Objectives#guild)></code> | 获取bot的频道服务器列表   |
+| `guild(ID)` <Label>suspend</Label> | <code>[Guild](../base-objective/Objectives#guild)?</code>       | 获取bot指定ID的频道服务器 |
 
 
 ```kotlin
@@ -272,13 +266,10 @@ val guild: Guild = container.guild(id)
 <TabItem value="Java">
 
 
-| API                            | 返回值                                                              | 描述              |
-|--------------------------------|------------------------------------------------------------------|-----------------|
-| `getGuilds(Grouping, Limiter)` | <code>Stream<[Guild](../base-objective/Objectives#guild)></code> | 获取bot的频道服务器列表   |
-| `getGuilds(Limiter)`           | <code>Stream<[Guild](../base-objective/Objectives#guild)></code> | 获取bot的频道服务器列表   |
-| `getGuilds(Grouping)`          | <code>Stream<[Guild](../base-objective/Objectives#guild)></code> | 获取bot的频道服务器列表   |
-| `getGuilds()`                  | <code>Stream<[Guild](../base-objective/Objectives#guild)></code> | 获取bot的频道服务器列表   |
-| `getGuild(ID)`                 | <code>[Guild](../base-objective/Objectives#guild)?</code>        | 获取bot指定ID的频道服务器 |
+| API            | 返回值                                                             | 描述              |
+|----------------|-----------------------------------------------------------------|-----------------|
+| `getGuilds()`  | <code>Items<[Guild](../base-objective/Objectives#guild)></code> | 获取bot的频道服务器列表   |
+| `getGuild(ID)` | <code>[Guild](../base-objective/Objectives#guild)?</code>       | 获取bot指定ID的频道服务器 |
 
 
 ```java

@@ -68,8 +68,8 @@ public void event(GroupEvent event) {
 @Listener 
 suspend fun GuildEvent.event() {
 	val guild = guild()
-    val channels = gulid.channels() // Flow<Channel>
-}
+    val channels: Items<Channel> = gulid.channels 
+} 
 ```
 
 </TabItem>
@@ -79,7 +79,7 @@ suspend fun GuildEvent.event() {
 @Listener
 public void event(GuildEvent event) {
     Guild guild = event.getGuild();
-    Stream<? extends Channel> channels = guild.getChannels();
+    Items<? extends Channel> channels = guild.getChannels();
 } 
 ```
 
@@ -144,6 +144,7 @@ java中不建议使用 `Thread.sleep(...)` 来达成延迟效果。
 @Listener
 public void listen(FriendMessageEvent event, @FilterValue("name") String name) throws Exception {
     Friend friend = event.getFriend();
+    // 并不建议使用阻塞方法。
     Thread.sleep(3000);
     friend.sendBlocking("Hello, " + name);
 }

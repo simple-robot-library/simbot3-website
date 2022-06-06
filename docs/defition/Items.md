@@ -100,7 +100,7 @@ items内部最终记录的 `limit` 值为 `20`，即后者覆盖前者。
 
 :::info 有些类似
 
-对于 **中间函数** 而 **终结函数** 这两个类型来讲，从概念上与普通的序列类型相似。
+对于 **中间函数** 和 **终结函数** 这两个类型来讲，从概念上与普通的序列类型相似。
 
 :::
 
@@ -140,20 +140,88 @@ items内部最终记录的 `limit` 值为 `20`，即后者覆盖前者。
 
 ## 转化函数
 与 [收集函数](#收集函数) **类似**，可以将其视为 `Items` 的终结函数，但是又有所不同：因为 **转化函数** 的转化结果为序列相关的类型，
-而这些类型尚未执行过终结函数，因此它并非完全的 _终结_，也不会真正的发生数据序列的产生。
+而这些类型尚未执行过终结函数，因此它并非完全的 _终结_，也不会真正的发生数据序列的产生行为。
 
 :::tip 复用?
 
 理论上来讲，`Items` 的转化函数是可以复用的（即调用多次），每次都会得到一个全新的序列实例。
-但是并不建议频繁的这么做，也没有什么实际意义。而且不保证未来会保持对此行为的宽松约束。
+但是并不建议这么做，也没有什么实际意义。而且不保证未来会保持对此行为的宽松约束。
 
 因此，如果没有必要，对于所有转化函数来讲请保证 **至多** 只调用 **一次**。
 
 :::
 
-`Items` 中的收集函数有：
+`Items` 中的转化函数的使用参考：
 
-TODO
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+class Bar
+class Tar(val foo: Bar)
+
+fun foo(items: Items<Bar>) {
+    val tarItems: Items<Tar> = items.transform { Tar(it) }
+}
+```
+
+:::tip
+
+事实上，转化函数主要用于面向那些对外提供 `Items` 结果的API，而并非使用者。如果作为使用者想要进行类型转化，
+你大可以先将其通过 `asSequence` 或 `asFlow` 将其转化为序列类型。
+
+```kotlin
+fun foo(items: Items<Bar>) {
+    val flow: Flow<Tar> = items.asFlow().map { Tar(it) }
+}
+```
+
+```kotlin
+fun foo(items: Items<Bar>) {
+    val sequence: Sequence<Tar> = items.asSequence().map { Tar(it) }
+}
+```
+
+:::
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+class Bar{ /* ... */ }
+class Tar{
+    Tar(Bar bar){ /* ... */ }
+}
+
+public void foo(Items<Bar> items) {
+    final Items<Tar> tarItems = Items.transform(items, Tar::new);
+}
+```
+
+
+:::tip
+
+事实上，转化函数主要用于面向那些对外提供 `Items` 结果的API，而并非使用者。
+这一点从上述示例中那种较为繁杂的使用方式也能看出来，这并不是为了使用者准备的api。
+
+如果作为使用者想要进行类型转化，
+你大可以先将其通过 `asStream` 将其转化为序列类型。
+
+```java
+public void foo(Items<Bar> items) {
+    final Stream<Tar> stream = items.asStream().map(Tar::new);
+}
+```
+
+
+:::
+
+</TabItem>
+</Tabs>
+
+
+
+
 
 
 
