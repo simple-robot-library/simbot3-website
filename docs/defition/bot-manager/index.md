@@ -1,6 +1,5 @@
 ---
 title: BOT管理器
-tags: [BOT,BOT管理器]
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: 目标对象
+title: 社交对象
 ---
 
 import Label from '@site/src/components/Label'
@@ -10,7 +10,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 
 目标对象 `Objectives` 是 simbot 中的基础定义类型之一。
-`Objectives` 是对与 `Bot` 相关联的对象 （例如一个 _组织_ 或一个具体的 _用户_ ）的统称。
+`Objectives` 是对与 `Bot` 相关联的对象 （例如一个 _组织_ 或一个具体的 _用户_ ）的统称，或许也可以将他们理解为相对于 Bot 的 **社交对象**。
 
 `Objectives` 的大致定义如下：
 ```kotlin
@@ -55,8 +55,8 @@ public interface Objectives : BotContainer, IDContainer {
 | `maximumMember`                     | `Int`                                 | 参考 [OrganizationInfo](Info#organizationinfo)。 |
 | `currentMember`                     | `Int`                                 | 参考 [OrganizationInfo](Info#organizationinfo)。 |
 | `owner` <Label>suspend</Label>      | [Member](#member)                     | 组织拥有者作为成员的实例。                                 |
-| `previous` <Label>suspend</Label>   | `? extends Organization`              |                                               |
-| `children`                          | `Items<Organization>`                 | 获取当前组织的下级组织列表。                                |
+| `previous` <Label>suspend</Label>   | `? extends Organization?`             | 尝试获取当前组织的上级组织。                                |
+| `children`                          | `Items<Organization>`                 | 尝试获取当前组织的下级组织列表。                              |
 | `roles`                             | `Items<Role>`                         | 获取组织内的角色列表。                                   |
 | `members`                           | <code>Items<[Member](#member)></code> | 获取当前组织内的成员列表。                                 |
 | `member(ID)` <Label>suspend</Label> | <code>[Member](#member)?</code>       | 获取组织内指定ID的成员。                                 |
@@ -96,6 +96,27 @@ public interface Objectives : BotContainer, IDContainer {
 
 
 ### Channel
+**Channel** 代表为 [Guild](#guild) 下的 **子频道** 。**Channel** 是 [ChatRoom](#chatroom) 的实现之一，
+因此其被期望为一个能够发送消息的组织目标。
+
+
+| 属性/API                              | 类型/返回值                                          | 描述                                  |
+|-------------------------------------|-------------------------------------------------|-------------------------------------|
+| `id`                                | [ID](../ID)                                     | 唯一标识。                               |
+| `bot`                               | [GuildMemberBot](#guildmemberbot)               | 当前子频道所属bot在当前子频道中所扮演的成员。            |
+| `guildId`                           | [ID](../ID)                                     | 参考 [ChannelInfo](info#channelinfo)  |
+| `name`                              | `String`                                        | 参考 [ChannelInfo](info#channelinfo)  |
+| `icon`                              | `String`                                        | 参考 [ChannelInfo](info#channelinfo)  |
+| `description`                       | `String`                                        | 参考 [ChannelInfo](info#channelinfo)  |
+| `createTime`                        | `Timestamp`                                     | 参考 [ChannelInfo](info#channelinfo)  |
+| `ownerId`                           | [ID](../ID)                                     | 参考 [ChannelInfo](info#channelinfo)  |
+| `maximumMember`                     | `Int`                                           | 参考 [ChannelInfo](info#channelinfo)  |
+| `currentMember`                     | `Int`                                           | 参考 [ChannelInfo](info#channelinfo)  |
+| `owner` <Label>suspend</Label>      | [GuildMember](#guildmember)                     | 参考 [Organization](#organization)    |
+| `guild` <Label>suspend</Label>      | [Guild](#guild)                                 | 当前子频道所属的频道服务器。                      |
+| `members`                           | <code>Items<[GuildMember](#guildmember)></code> | 当前子频道下的成员列表。大概率与Guild得到的结果一致。       |
+| `member(ID)` <Label>suspend</Label> | [GuildMember](#guildmember)                     | 根据ID获取当前子频道下的指定成员。大概率与Guild得到的结果一致。 |
+
 
 
 ### Group
@@ -105,6 +126,9 @@ public interface Objectives : BotContainer, IDContainer {
 
 
 ### Bot
+
+
+### Contact
 
 
 ### Friend
@@ -125,3 +149,9 @@ public interface Objectives : BotContainer, IDContainer {
 
 
 ### MemberBot
+
+
+### GuildMemberBot
+
+
+### GroupMemberBot
