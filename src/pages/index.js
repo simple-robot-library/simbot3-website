@@ -45,11 +45,10 @@ const otherValue = [
     '(≧∀≦)ゞ', 'o(*￣▽￣*)ブ', '♪(^∇^*)', 'o(*￣︶￣*)o'
 ]
 
-function HomepageHeader() {
+function HomepageHeader({day}) {
     const {siteConfig} = useDocusaurusContext();
     const date = new Date()
     // const day = date.getDay()
-    const day = random([0,1,2,3,4,5,6])
     const isAprilFools = (date.getMonth() + 1) === 4 && date.getDate() === 1;
     const isBirthday = (date.getMonth() + 1) === 8 && date.getDate() === 3;
     console.log('Today: ' + date.getMonth() + '-' + date.getDate() + '(' + date + ')')
@@ -86,6 +85,8 @@ function HomepageHeader() {
 }
 
 export default function Home() {
+    const day = random([0,1,2,3,4,5,6])
+
     const {siteConfig} = useDocusaurusContext();
     return (
         <Layout
@@ -98,7 +99,7 @@ export default function Home() {
                 }
                 }
             </BrowserOnly>
-            <HomepageHeader/>
+            <HomepageHeader day={day}/>
             <main>
                 <HomepageFeatures/>
             </main>
