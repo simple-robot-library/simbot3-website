@@ -48,8 +48,8 @@ const otherValue = [
 function HomepageHeader() {
     const {siteConfig} = useDocusaurusContext();
     const date = new Date()
-    const day = date.getDay()
-    // const day = random([0,1,2,3,4,5,6])
+    // const day = date.getDay()
+    const day = random([0,1,2,3,4,5,6])
     const isAprilFools = (date.getMonth() + 1) === 4 && date.getDate() === 1;
     const isBirthday = (date.getMonth() + 1) === 8 && date.getDate() === 3;
     console.log('Today: ' + date.getMonth() + '-' + date.getDate() + '(' + date + ')')
