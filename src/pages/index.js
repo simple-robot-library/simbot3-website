@@ -85,14 +85,14 @@ function HomepageHeader({day}) {
 }
 
 export default function Home() {
-    const day = random([0,1,2,3,4,5,6])
+    const day = new Date().getDay()
 
     const {siteConfig} = useDocusaurusContext();
     return (
         <Layout
             title={`欢迎! ${siteConfig.title}`}
             // title={`Hello from ${siteConfig.title}`}
-            description="Simple Robot (simbot) website by Forte Scarlet">
+            description="Simple Robot official website.">
             <BrowserOnly>
                 {() => {
                     require('@site/static/baiduStatistic.js')

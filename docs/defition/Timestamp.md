@@ -15,7 +15,32 @@ title: 时间戳
 因此simbot提供了 `Timestamp` 作为面向使用者的统一时间戳类型来取代不同时间单位的时间戳。
 
 ## 定义
+如下为 `Timestamp` 的基本定义（简化版）：
+```kotlin
+public sealed class Timestamp : Comparable<Timestamp> {
 
+    /**
+     * 秒值。
+     */
+    public abstract val second: Long
+
+    /**
+     * 毫秒值。
+     */
+    public abstract val millisecond: Long
+
+    /**
+     * 此时间戳是否是一个被支持的真实时间戳。
+     * 如果得到false，则代表此时间戳本质上不存在，且上述秒值和毫秒值最终结果应为-1。
+     */
+    public abstract fun isSupport(): Boolean
+
+
+    public object NotSupport : Timestamp() {
+       // 细节省略...
+    }
+}
+```
 
 
 :::caution TODO
