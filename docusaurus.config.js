@@ -213,6 +213,24 @@ const config = {
         additionalLanguages: ['java', 'kotlin', 'groovy', 'properties'],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        magicComments: [
+          // Remember to extend the default highlight class name as well!
+          {
+            className: 'theme-code-block-highlighted-line',
+            line: 'highlight-next-line',
+            block: {start: 'highlight-start', end: 'highlight-end'},
+          },
+          {
+            className: 'code-block-error-line',
+            line: 'This will error',
+            block: {start: 'error-start', end: 'error-end'},
+          },
+          {
+            className: 'code-block-success-line',
+            line: 'This is success',
+            block: {start: 'success-start', end: 'success-end'},
+          },
+        ],
       },
     }),
 
