@@ -1,7 +1,7 @@
 name: Deploy gh-page
 on:
-  push:
-    branches: [main]
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
   deploy-doc:
