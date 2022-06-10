@@ -3,11 +3,10 @@ on:
   push:
     branches: [main]
   schedule:
-  - cron: "0 4 * * *"
+    - cron: "0 11 * * *"
 
 jobs:
   deploy-doc:
-    if: github.repository == 'simple-robot-library/simbot3-website'
     name: Deploy-doc
     runs-on: ubuntu-latest
     steps:
