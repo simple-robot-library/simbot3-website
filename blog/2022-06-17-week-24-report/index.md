@@ -107,7 +107,7 @@ if (bot instanceof FriendsContainer) {
 
 ### ⛔️ 移除 `@Filter.or` 和 `@Filter.and`
 最终，`@Filter` 注解中的 `or` 和 `and` 最终还是无法打破规则。它们破坏了注解的约定，而Kotlin将会在1.9版本将这种行为标记为错误。
-因此，我们决定删除这两个参数 ———— 实际上，这两个参数也的确没有非常使用的应用场景。
+因此，我们决定删除这两个参数 ———— 实际上，这两个参数也的确没有非常有用的应用场景。
 相关原因参考：
 - [**Spring Framework#28012#issuecomment-1154964509**](https://github.com/spring-projects/spring-framework/issues/28012#issuecomment-1154964509)
 - [**KT-47932**](https://youtrack.jetbrains.com/issue/KT-47932)
