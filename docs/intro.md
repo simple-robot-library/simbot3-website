@@ -57,6 +57,41 @@ friend.sendMessageBlocking("Hey!");  // blocking api for java
 
 
 <Tabs groupId="simbot-history-version">
+<TabItem value="simbot3">
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun myListener(messageEvent: GroupMessageEvent) {
+    val group = messageEvent.group()
+    val groupId = group.id
+    val groupName = group.name
+    // ...
+    group.send("Hey, simbot3")
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void myListener(GroupMessageEvent messageEvent) {
+   Group group = messageEvent.getGroup();
+   String groupCode = group.getGroupCode();
+   String groupName = group.getGroupName();
+   // ...
+   group.sendBlocking("Hey, simbot3");
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+
 <TabItem value="simbot2">
 
 :::note 实际上...
@@ -93,40 +128,6 @@ public void myListener(GroupMsg messageEvent, Sender sender) {
     String groupName = groupInfo.getGroupName();
    // ...
    sender.SENDER.sendGroupMsg(messageEvent, "Bye, simbot2");
-}
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem value="simbot3">
-
-<Tabs groupId="code">
-<TabItem value="Kotlin">
-
-```kotlin
-@Listener
-suspend fun myListener(messageEvent: GroupMessageEvent) {
-    val group = messageEvent.group()
-    val groupId = group.id
-    val groupName = group.name
-    // ...
-    group.send("Hey, simbot3")
-}
-```
-
-</TabItem>
-<TabItem value="Java">
-
-```java
-@Listener
-public void myListener(GroupMessageEvent messageEvent) {
-   Group group = messageEvent.getGroup();
-   String groupCode = group.getGroupCode();
-   String groupName = group.getGroupName();
-   // ...
-   group.sendBlocking("Hey, simbot3");
 }
 ```
 

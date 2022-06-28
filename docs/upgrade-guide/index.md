@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
 此处为了简化展示，大部分示例默认认为处于 **boot** 模块中。
 :::
 
-让我们来看一下对照。首先，加入在simbot2中，你编写的内容如果是：
+让我们来看一下对照。首先，假如在simbot2中，你编写的内容如果是：
 
 <Tabs groupId="code" class="shadow--md">
 <TabItem value="Kotlin" default>
@@ -219,7 +219,97 @@ public void useBotManager() {
 相关内容可参考 [BOT管理器](../defition/bot-manager) 。
 :::
 
+实际上，`OriginBotManager` 并不是特别被建议使用。在 simbot3 中，
+你可以通过 `Bot`、`Application` 等多种方式来取代使用 `OriginBotManager`。
 
+
+<Tabs groupId="code">
+<TabItem value="Kotlin" default>
+
+从bot：
+
+```kotlin
+@Listener
+suspend fun onEvent(event: FooEvent){
+    // 通过bot直接得到其所属的botManager
+    val botManager = event.bot.manager
+    val newBot = botManager.register(...)
+    newBot.start()
+    // ...
+}
+```
+
+从application：
+
+```kotlin
+@Listener
+suspend fun onEvent(context: EventProcessingContext,  event: FooEvent){
+    context.application.botManagers.forEach { manager -> 
+        if (...) {
+            val newBot = manager.register(...)
+            newBot.start()
+            // ...
+        }
+    }
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+从bot：
+
+```java
+@Listener
+public void onEvent(FooEvent event) throws InterruptedException {
+    final BotManager<? extends Bot> manager = event.getBot().getManager();
+    final Bot newBot = manager.register(...);
+    newBot.startBlocking();
+    // ...
+}
+```
+
+从application：
+
+```java
+@Listener
+public void onEvent(EventProcessingContext context, FriendMessageEvent event) throws InterruptedException {
+    final Application application = context.getAttribute(ApplicationAttributes.Application);
+    if (application != null) {
+        for (BotManager<?> manager : application.getBotManagers()) {
+            if (...) {
+                final Bot bot = manager.register(...);
+                bot.startBlocking();
+                // ...
+            }
+        }
+    }
+}
+```
+
+或
+
+```java
+@Listener
+public void onEvent(EventProcessingContext context, FriendMessageEvent event) throws InterruptedException {
+    final Application application = ApplicationAttributes.getApplication(context);
+    for (BotManager<?> manager : application.getBotManagers()) {
+        if (...) {
+            final Bot bot = manager.register(...);
+            bot.startBlocking();
+            // ...
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
 
 ### 消息对象
-请参考 [消息概述](../defition/message-overview)。
+
+:::info
+
+更多请参考 [**消息概述**](../defition/message-overview)。
+
+:::

@@ -3,7 +3,7 @@ sidebar_position: 30
 title: 组织
 ---
 
-一个组织 `Organization` , 是一个 **组织结构**，也就是说它是一个 [结构体](../Structured.md)。
+一个组织 `Organization` , 一个 **组织结构**。
 
 组织必须是以人为中心的实体，常见为一个群聊、一个频道、一个服务器等。
 
