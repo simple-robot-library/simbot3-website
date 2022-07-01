@@ -63,7 +63,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 ## 仓库结构/仓库迁移
 
-近期，我们会优化各代码仓库的代码结构（比如简化、美化gradle脚本）。
+近期，我们会优化各代码仓库的代码结构（比如简化、美化gradle脚本），并进而完善各仓库的README或贡献帮助等。
 
 除了代码内的结构，我们还打算重命名[**组织库**](https://github.com/simple-robot)，
 由 **`simple-robot`** 更名为 **`simple-robot-projects`**，
