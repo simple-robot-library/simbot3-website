@@ -13,7 +13,6 @@ import CodeBlock from '@theme/CodeBlock';
 此文档的内容为 [Simple Robot](https://github.com/ForteScarlet/simpler-robot) v3.x 版本的使用手册。
 
 
-
 ## 概述
 Simple Robot(下文简称simbot) 一开始是作为一个机器人标准开发框架所诞生的，而现在，
 它是一个保留了作为机器人标准开发框架为主要职责的bot风格事件调度框架，目前处于v3版本。

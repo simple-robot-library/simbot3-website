@@ -35,7 +35,7 @@ import Label from '@site/src/components/Label'
 只不过这一次的不兼容更新是针对**包结构**的，对实际上的功能没有影响。
 
 对于这次的包结构变化的细节内容，你可以参阅 [PR<sup>#378</sup>](https://github.com/ForteScarlet/simpler-robot/pull/378) 
-或者 [《v3.0.0-beta.M3包路径变更公告》](../../../2022/07/06/announcement-package-rename)。
+或者 [《v3.0.0-beta.M3包路径变更公告》](../2022-07-06-announcement-package-rename)。
 
 如果不出意外，**`M3`** 的下一个版本将会是 **`RC`**。
 

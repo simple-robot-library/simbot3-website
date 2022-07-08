@@ -10,6 +10,8 @@
     src: url("/font/JetBrainsMono.ttf");
 }
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css");
+
 code {
     border-color: rgba(0, 0, 0, 0.02);
     color: #f339a9;

@@ -66,12 +66,16 @@ const config = {
           blogSidebarCount: 'ALL',
           feedOptions: {
             type: 'all',
+            title: 'Simple Robot Blog',
+            description: 'Simple Robot官方博客喵',
             copyright: `Copyright © ${copyrightYear} Forte Scarlet.`,
-
+            language: 'zh-CN'
           }
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+              require.resolve('./src/css/custom.css'),
+          ],
         },
       }),
     ],
@@ -165,15 +169,33 @@ const config = {
             title: '文档',
             items: [
               {
-                label: '文档首页',
+                label: '文档',
                 to: '/docs/intro',
               },
               {
-                label: '核心API文档',
+                label: 'API文档',
                 to: 'https://simple-robot-library.github.io/simbot3-main-apiDoc/',
               },
 
             ],
+          },
+          {
+            title: "博客",
+            items: [
+              {
+                label: 'Blog',
+                to: '/blog'
+              },
+              {
+                html: `<a class="footer__link-item" href="/blog/rss.xml">Rss订阅</a> <sup><i class="bi bi-rss-fill"></i></sup></a>`
+              },
+              {
+                html: `<a class="footer__link-item" href="/blog/atom.xml">Atom订阅 <sup><i class="bi bi-rss-fill"></i></sup></a>`
+              },
+              {
+                html: `<a class="footer__link-item" href="/blog/feed.json">Json订阅</a> <sup><i class="bi bi-rss-fill"></i></sup></a>`
+              },
+            ]
           },
           {
             title: '社区',
@@ -188,26 +210,24 @@ const config = {
               },
               {
                 label: '组织库 🏢',
-                to: 'https://github.com/simple-robot',
+                href: 'https://github.com/simple-robot',
               },
               {
                 label: '图书馆 📚',
-                to: 'https://github.com/simple-robot-library',
+                href: 'https://github.com/simple-robot-library',
               },
             ],
           },
           {
-            title: '可能感兴趣',
+            title: '交流&反馈',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              }, {
-                label: 'GitHub',
-                href: 'https://github.com/simple-robot',
-              }, {
                 label: 'Issues',
                 href: 'https://github.com/ForteScarlet/simpler-robot/issues',
+              },
+              {
+                label: 'Discussions',
+                href: 'https://github.com/ForteScarlet/simpler-robot/discussions',
               },
             ],
           },
