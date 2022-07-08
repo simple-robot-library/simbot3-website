@@ -17,11 +17,11 @@ import YES from '@site/src/components/YES';
 |--------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | `love.forte.simbot.BotInfo`                                  | <code>love.forte.simbot.<b><YES value='bot' /></b>.BotInfo</code>                                  |
 | `love.forte.simbot.Bot`                                      | <code>love.forte.simbot.<b><YES value='bot' /></b>.Bot</code>                                      |
-| `love.forte.simbot.SocialRelationsContainer`                 | <code>love.forte.simbot.<b><YES value='bot' /></b>.SocialRelationsContainer</code>                 |
-| `love.forte.simbot.FriendsContainer`                         | <code>love.forte.simbot.<b><YES value='bot' /></b>.FriendsContainer</code>                         |
-| `love.forte.simbot.ContactsContainer`                        | <code>love.forte.simbot.<b><YES value='bot' /></b>.ContactsContainer</code>                        |
-| `love.forte.simbot.GroupsContainer`                          | <code>love.forte.simbot.<b><YES value='bot' /></b>.GroupsContainer</code>                          |
-| `love.forte.simbot.GuildsContainer`                          | <code>love.forte.simbot.<b><YES value='bot' /></b>.GuildsContainer</code>                          |
+| `love.forte.simbot.SocialRelationsContainer`                 | <code>love.forte.simbot.<b><YES value='definition' /></b>.SocialRelationsContainer</code>          |
+| `love.forte.simbot.FriendsContainer`                         | <code>love.forte.simbot.<b><YES value='definition' /></b>.FriendsContainer</code>                  |
+| `love.forte.simbot.ContactsContainer`                        | <code>love.forte.simbot.<b><YES value='definition' /></b>.ContactsContainer</code>                 |
+| `love.forte.simbot.GroupsContainer`                          | <code>love.forte.simbot.<b><YES value='definition' /></b>.GroupsContainer</code>                   |
+| `love.forte.simbot.GuildsContainer`                          | <code>love.forte.simbot.<b><YES value='definition' /></b>.GuildsContainer</code>                   |
 | `love.forte.simbot.BotRegistrar`                             | <code>love.forte.simbot.<b><YES value='bot' /></b>.BotRegistrar</code>                             |
 | `love.forte.simbot.ComponentMismatchException`               | <code>love.forte.simbot.<b><YES value='bot' /></b>.ComponentMismatchException</code>               |
 | `love.forte.simbot.VerifyFailureException`                   | <code>love.forte.simbot.<b><YES value='bot' /></b>.VerifyFailureException</code>                   |

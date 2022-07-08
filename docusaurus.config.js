@@ -64,6 +64,11 @@ const config = {
           editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main',
           blogSidebarTitle: 'All posts',
           blogSidebarCount: 'ALL',
+          feedOptions: {
+            type: 'all',
+            copyright: `Copyright © ${copyrightYear} Forte Scarlet.`,
+
+          }
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
