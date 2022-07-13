@@ -13,6 +13,8 @@ export default function SimbotUtteranc() {
         script.setAttribute('issue-term', 'pathname');
         script.setAttribute('theme',  configs.theme);
         script.setAttribute('label', '💬评论');
+        script.setAttribute('input-position', 'top');
+        script.setAttribute('comment-order', 'desc');
     }
 
     function componentDidMount(isDark) {
