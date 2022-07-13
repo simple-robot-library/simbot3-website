@@ -92,27 +92,27 @@ const config = {
 
       // https://www.algolia.com/account/api-keys/all?applicationId=XJ6OXX8I3C
       // TODO algolia not ready yet.
-      // algolia: {
-      //   appId: 'VLLZ4JZE8Z',
-      //
-      //   // Public API key: it is safe to commit it
-      //   apiKey: 'e60d9ee16618a0ad3a338ecc73cb840e',
-      //
-      //   indexName: 'doc',
-      //
-      //   // Optional: see doc section below
-      //   contextualSearch: true,
-      //
-      //   // Optional: Specify domains where the navigation should occur through window.location instead on history.push.
-      //   // Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      //   // externalUrlRegex: 'external\\.com|domain\\.com',
-      //
-      //   // Optional: Algolia search parameters
-      //   searchParameters: {},
-      //
-      //   // Optional: path for search page that enabled by default (`false` to disable it)
-      //   searchPagePath: 'search',
-      // },
+      algolia: {
+        appId: 'VLLZ4JZE8Z',
+
+        // Public API key: it is safe to commit it
+        apiKey: 'e60d9ee16618a0ad3a338ecc73cb840e',
+
+        indexName: 'doc',
+
+        // Optional: see doc section below
+        contextualSearch: true,
+
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push.
+        // Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        // externalUrlRegex: 'external\\.com|domain\\.com',
+
+        // Optional: Algolia search parameters
+        // searchParameters: {},
+
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+      },
 
       docs: {
         sidebar: {

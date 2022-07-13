@@ -51,7 +51,8 @@ tags: [消息]
 
 ```java
 Messages messages = ....;
-messages.add(Text.of("Hello"));
+// This will error
+messages.add(Text.of("Hello")); // error
 ```
 直接使用 `.add` 将会导致抛出异常。
 

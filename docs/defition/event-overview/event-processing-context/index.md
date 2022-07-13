@@ -6,7 +6,7 @@ tags: [标准事件]
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-事件处理上下文， 即 **`EventProcessingContext`** ，是整个事件调度流程中的**核心对象**。
+事件处理上下文， 即 **`EventProcessingContext`** ，是整个事件调度流程中的 **核心对象**。
 
 :::note 起源...
 
@@ -14,9 +14,10 @@ import TabItem from '@theme/TabItem';
 
 :::
 
-**事件处理上下文创建于事件推送之初、消亡于事件调度结束，是一次完整事件调度流程的代表。**
+事件处理上下文创建于事件推送之初、消亡 <small>(指不会再提供给其他流程)</small> 于事件调度结束，是一次完整事件调度流程的代表。
 
 在核心模块下，一个简单的事件监听如下所示：
+
 ```kotlin
 createSimpleApplication {
     listeners {
