@@ -1,22 +1,28 @@
 import React from 'react';
 import Footer from '@theme-original/Footer';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import SimbotUtteranc from "../../components/SimbotUtteranc";
 
+function InjectSimbotUtteranc() {
+    return <BrowserOnly>
+        {() => {
+            const pathname = location.pathname
+            if (
+                (pathname.startsWith('/blog/') && pathname.length > 6)
+                || (pathname.startsWith('/docs/') && pathname.length > 6)
+            ) {
+                return <SimbotUtteranc/>
+            } else {
+                return <></>
+            }
+        }}
+    </BrowserOnly>
+}
+
 export default function FooterWrapper(props) {
-    const pathname = location.pathname
-    let footers = []
-
-    // 只在 /doc 或 /blog 下，且不能完全等于
-    if (
-        (pathname.startsWith('/blog/') && pathname.length > 6)
-        || (pathname.startsWith('/docs/') && pathname.length > 6)
-    ) {
-        footers.push(<SimbotUtteranc/>)
-    }
-
     return (
         <>
-            {footers}
+            <InjectSimbotUtteranc/>
             <Footer {...props}/>
         </>
     );

@@ -9,7 +9,7 @@ export default function SimbotUtteranc() {
         script.setAttribute('async', 'true');
         script.setAttribute('repo', 'simple-robot-library/simbot3-website');
         script.setAttribute('issue-term', 'pathname');
-        script.setAttribute('issue-term', 'pathname');
+        script.setAttribute('theme', 'github-light');
         script.setAttribute('label', '💬评论');
         anchor.appendChild(script);
     }
