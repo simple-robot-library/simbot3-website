@@ -1,5 +1,5 @@
 ---
-authors: forliy
+authors: [forliy, forte]
 title: v3.0.0-beta.M3包路径变更公告
 tags: [公告]
 ---
