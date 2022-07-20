@@ -12,18 +12,28 @@
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css");
 
+strong[dark-theme='dark'] {
+    text-decoration-line: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.9);
+}
+
 strong {
     text-decoration-line: underline;
+    text-decoration-color: rgba(0,0,0,0.25);
+
 }
+
 
 strong code {
     text-decoration-line: underline;
     text-decoration-color: #ef5d84;
+    /*#ef5d84: rgba(239,93,132,0.25)*/
 }
 
 strong code[dark-theme='dark'] {
     text-decoration-line: underline;
     text-decoration-color: #f339a9;
+    /*#f339a9*/
 }
 
 code {

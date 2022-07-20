@@ -130,7 +130,7 @@ implementation 'love.forte.simbot3:simbot3-xxx:0.x.x'
 <details>
 <summary>未来...?</summary>
 
-:::note 可期
+:::tip 可期
 
 美好的展望总是一切的开端。
 

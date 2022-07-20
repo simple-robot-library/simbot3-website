@@ -4,11 +4,11 @@ title: v3.0.0-beta.M3包路径变更公告
 tags: [公告]
 ---
 
-在 **`v3.0.0-beta.M3`** 中，我们将做最后一个大面积的不兼容变更，并不再继续追加新特性或不兼容变更。
+在 [**`v3.0.0-beta.M3`**](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-M3) 中，我们将做最后一个大面积的不兼容变更，并不再继续追加新特性或不兼容变更。
 
 <!--truncate-->
 
-我们将会在 **`v3.0.0-beta.M3`** 版本对部分内容的包路径做出调整，具体涉及类型如下：
+我们将会在 [**`v3.0.0-beta.M3`**](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-M3) 版本对部分内容的包路径做出调整，具体涉及类型如下：
 
 import YES from '@site/src/components/YES';
 
