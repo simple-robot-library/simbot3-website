@@ -3,83 +3,71 @@ sidebar_position: 30
 title: 持续会话
 ---
 
-在simbot3中优化了在simbot2中的持续会话作用域，并使用了更为直观的方式来提供会话的使用。
+当你需要在一个监听函数中，持续的处理连续或多个事件的时候，或许**持续会话**可以为你提供一些微不足道的帮助。
 
+本章节将会试着想你介绍如何使用 **持续会话上下文(`ContinuousSessionContext`)** 来在一个监听函数中等待并处理其他事件。
 
-:::info 注
+持续会话由 **核心模块**( `simbot-core` ) 中的 **作用域**( `SimpleScope` ) 提供，不属于标准API的一部分。
 
-下述中出现的 `@Listener` 、`@Listen` 等诸如此类的注解是由 `boot` 模块所提供的。假如你只是用了基础的核心模块，可能会与下述示例存在一定出入，但是对于 `ContinuousSessionContext` 在监听函数中的使用是相同的。
-
-:::
+因此通常情况下，持续会话仅支持 **核心模块** 及其衍生模块（包括 **Boot核心模块** ( `simboot-core` )
+和 **Spring Boot启动器** ( `simbot-spring-boot-starter` )）。
 
 :::caution 实验性
 
-持续会话相关api尚处于**实验阶段**，可能会存在各种问题并且可能会随时变成API。
+**持续会话**相关api尚处于**实验阶段**，可能会存在各种问题并且可能会随时变成API。
 
 :::
-
-
-## 描述
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-首先，你需要在你的监听函数内取得一个 `持续会话作用域 (ContinuousSessionContext)` 来作为进行函数内部会话的入口。
-1. 使用context获取：
-   `ContinuousSessionContext` 本质是 `EventProcessingContext中` `作用域 (Scope)` 的一种，你可以通过 `ContinuousSessionContext.getAttribute(...)` 进行获取，例如：
+:::tip 前情提要
+
+下文介绍中出现的代码示例如非特殊说明则将会会有所简化。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value='Kotlin'>
+
+在 **Kotlin** 中，将会以相同风格的代码来 **核心模块** 和 **Boot模块** 下的监听函数。
+
+例如下述代码：
+
+```kotlin
+suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+      // Here ...
+}
+```
+
+将可以代表为下述内容：
+
+<Tabs groupId="Kotlin-Module">
+<TabItem label="核心模块" value='Core'>
+
+```kotlin
+suspend fun main() {
+    createSimpleApplication {
+        listeners {
+            listen(FooEvent) {
+               // highlight-start
+                process { event -> // this: EventListenerProcessingContext
+                    // Here ...
+                }
+                // highlight-end
+            }
+        }
+    }.join()
+}
+```
+
+_(或核心模块中的其他类似形式)_
+
+</TabItem>
+<TabItem label="Boot模块"  value='Boot'>
 
 ```kotlin
 @Listener
-suspend fun listener(context: EventProcessingContext) {
-    val sessionContext = context.getAttribute(EventProcessingContext.Scope.ContinuousSession)
-    // ..
-}
-```
-
-</TabItem>
-<TabItem value="Java">
-
-```java
-@Beans
-public class MyListener {
-    @Listener
-    public void listener(EventProcessingContext context) {
-        final ContinuousSessionContext sessionContext = context.getAttribute(EventProcessingContext.Scope.ContinuousSession);
-        // ...
-    }
-}
-```
-
-</TabItem>
-</Tabs>
-
-2. 通过参数获取：
-   在simbot3 中，`监听函数(@Listener)` 的参数由 `Binder` 负责进行解析与预处理。默认的Binder中会提供针对 `EventProcessingContext.Scope` 中元素的处理，因此你可以直接在一个监听函数的参数中使用 `ContinuousSessionContext` 来得到它：
-
-
-<Tabs groupId="code">
-<TabItem value="Kotlin" default>
-
-```kotlin
-@Listener
-suspend fun listener(sessionContext: ContinuousSessionContext) {
-    // ..
-}
-```
-
-</TabItem>
-<TabItem value="Java">
-
-```java
-@Beans
-public class MyListener {
-    @Listener
-    public void listener(ContinuousSessionContext sessionContext) {
-        // ...
-    }
+suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+      // Here ...
 }
 ```
 
@@ -87,89 +75,629 @@ public class MyListener {
 </Tabs>
 
 
-## 示例
+
+</TabItem>
+<TabItem value='Java'>
+
+在 **Java** 中，通常使用的为 **Boot模块** 或 **Spring Boot启动器**。
+因此示例代码会以Boot模块下的风格进行展示，例如：
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    // Here ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::
+
+## 获取
+
+### 通过 `SimpleScope` 获取
+
+使用之前，最重要的事情就是需要获取它。开篇我们提到，`ContinuousSessionContext` 是由核心模块中的 `SimpleScope` 所提供的，
+因此获取持续会话最基本的方式便是通过 **事件处理上下文**( `EventProcessingContext` 或 `EventListenerProcessingContext` )
+和
+`SimpleScope` 来获取它。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+    val sessionContext: ContinuousSessionContext? = this[SimpleScope.ContinuousSession]
+    // ...
+}
+```
+
+:::tip null?
+
+上述代码中可以看到，通过 `context[...]` 得到的结果是**可能为空**的。当你使用的是第三方提供的实现或者非核心模块或其衍生模块的话，
+你可能无法得到所需的结果。
+
+文章的后续我们将会默认将当前环境视为处于**核心模块或其衍生模块**中，并**假定**获取的结果不会为null。
+但在正常使用的时候，还是应当多加留意。
+
+:::
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(EventProcessingContext context, FriendEvent event) {
+    final ContinuousSessionContext sessionContext = context.get(SimpleScope.ContinuousSession);
+}
+```
+
+:::tip null?
+
+上述代码中，通过 `context.get(...)` 得到的结果是**可能为空**的。当你使用的是第三方提供的实现或者非核心模块或其衍生模块的话，
+你可能无法得到所需的结果。
+
+文章的后续我们将会默认将当前环境视为处于**核心模块或其衍生模块**中，并**假定**获取的结果不会为null。
+但在正常使用的时候，还是应当多加留意。
+
+:::
+
+</TabItem>
+</Tabs>
+
+### 通过扩展属性获取
+
+核心模块通过SimpleScope提供了一系列用于简化获取其内属性的**扩展属性**，其中也包括针对于从 `EventProcessingContext`
+或 `EventProcessingContext`
+中获取 `ContinuousSessionContext` 的属性。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+**`continuousSession`**
+
+获取 `EventProcessingContext` 中的 `ContinuousSessionContext`。当无法获取、不存在或不支持时将会**抛出异常**。
+
+```kotlin
+suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+    val sessionContext: ContinuousSessionContext = this.continuousSession
+}
+```
+
+**`continuousSessionOrNull`**
+
+获取 `EventProcessingContext` 中的 `ContinuousSessionContext`。当无法获取、不存在或不支持时将会得到null。
+
+```kotlin
+suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+    val sessionContext: ContinuousSessionContext? = this.continuousSessionOrNull
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+**`SimpleScope.getContinuousSession`**
+
+获取 `EventProcessingContext` 中的 `ContinuousSessionContext`。当无法获取、不存在或不支持时将会**抛出异常**。
+
+```java
+@Listener
+public void onEvent(EventProcessingContext context, FooEvent event) {
+    final ContinuousSessionContext continuousSession = SimpleScope.getContinuousSession(context);
+}
+```
+
+**`SimpleScope.getContinuousSessionOrNull`**
+
+获取 `EventProcessingContext` 中的 `ContinuousSessionContext`。当无法获取、不存在或不支持时将会得到null。
+
+```java
+@Listener
+public void onEvent(EventProcessingContext context, FooEvent event) {
+    final ContinuousSessionContext continuousSession = SimpleScope.getContinuousSessionOrNull(context);
+}
+```
+
+</TabItem>
+</Tabs>
+
+### 通过参数注入获取
+
+除了手动获取，你也可以直接将 `ContinuousSessionContext` 作为监听函数参数来自动注入。
+
+:::info
+
+参数注入仅在**Boot相关模块**下有效。
+
+:::
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    // Here ...
+}
+```
+
+:::note 仔细看
+
+这里的 `receiver` 不再是之前几个示例中的 `EventProcessingContext`，而是直接使用了 `ContinuousSessionContext`。
+
+:::
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    // Here ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+
+后续如果没有特殊说明，将会以 **通过参数注入获取** 的方式来作为其他示例的基础前提。
+
+:::
+
+## 基本使用
+
+了解了如何获取 `ContinuousSessionContext`，接下来便是如果去**使用**。
+
+### `waiting`
+
+`ContinuousSessionContext` 中的API分为几种类型，其中 `waiting` 是最基本的一种API。
+此API代表：等待并获取下一个**结果**。
+
+#### 等待并选择
+
+你可以将 `waiting` 的**回调函数**视为一种内置的、小型的监听函数。
+当你使用 `watiing` 的时候，它会监听后续所有推送而来的其他事件，直到你选择出你所需要的内容：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+    val value: Int = sessionContext.waiting { provider -> // this: EventProcessingContext
+        provider.push(1)
+    }
+}
+```
+
+在 `waiting` 的参数函数体中，存在两个参数：`this: EventProcessingContext` 和 `provider: ContinuousSessionProvider<T>`。
+其中，`this` 即为触发此回调函数时的事件处理上下文。
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent fooEvent) {
+    val event: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
+        // 当前事件
+        val currentEvent: Event = this.event
+        provider.push(currentEvent)
+    }
+}
+```
+
+上述示例中，`waiting` 在回调函数中得到了下一个事件处理上下文中的 **事件对象**，并通过 `provider` 推送给了等待处。
+也由此可见，`provider` 的作用为向调用 `waiting` 的等待处推送一个 **结果**。
+
+其中，`provider` 推送的类型应当与外部的接收类型一致。
+
+你可以有条件的/选择性的推送：
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+    val value: String = sessionContext.waiting { provider -> // this: EventProcessingContext
+        // 当前事件
+        val currentEvent: Event = this.event
+        if (currentEvent.component.id == "foo") {
+            // 如果此事件的所属组件id为'foo', 推送字符串 "Yes"
+            provider.push("Yes")
+        }
+    }
+}
+```
+
+或者推送一个异常：
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+    val event: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
+        // 当前事件
+        val currentEvent: Event = this.event
+        if (currentEvent.component.id == "foo") {
+            // 如果此事件的所属组件id为'foo', 推送异常 IllegalStateException("No")
+            provider.pushException(IllegalStateException("No"))
+        }
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+:::caution 阻塞
+
+对**Java**来讲，`ContinuousSessionContext` 中的所有API都是 **阻塞** 的。因此在Java中使用时需要更多的考虑一下性能或一个监听函数的长时间阻塞问题。
+
+在有必要时合理的为监听函数提供异步能力，防止影响到其他监听函数。
+
+:::
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    final Integer next = sessionContext.waiting((c, provider) -> {
+         provider.push(1);
+    });
+}
+```
+
+在 `waiting` 的参数函数体中，存在两个参数：`EventProcessingContext c` 和 `ContinuousSessionProvider<T> provider`。
+其中，`c` 即为触发此回调函数时的事件处理上下文。
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    final Event received = sessionContext.waiting((c, provider) -> {
+        final Event currentEvent = c.getEvent();
+        provider.push(currentEvent);
+    });
+}
+```
+
+上述示例中，`waiting` 在回调函数中得到了下一个事件处理上下文中的 **事件对象**，并通过 `provider` 推送给了等待处。
+也由此可见，`provider` 的作用为向调用 `waiting` 的等待处推送一个 **结果**。
+
+其中，`provider` 推送的类型应当与外部的接收类型一致。
+
+你可以有条件的/选择性的推送：
+
+```java
+@Listener
+public void onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+    final String received = sessionContext.waiting((c, provider) -> {
+        final Event currentEvent = c.getEvent();
+        if ("foo".equals(currentEvent.getComponent().getId())) {
+            provider.push("Yes");
+        }
+    });
+}
+```
+
+或者推送一个异常：
+
+```java
+@Listener
+public void onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+    final String received = sessionContext.waiting((c, provider) -> {
+        final Event currentEvent = c.getEvent();
+        if ("foo".equals(currentEvent.getComponent().getId())) {
+            provider.pushException(new IllegalStateException("No"));
+        }
+    });
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+上述代码中，`sessionContext.waiting` 会一直挂起/阻塞，并直到参数中的函数体中使用 `provider` 推送了一个结果。
+而函数体会在每一次出现其他事件推送时被触发。
+
+:::note Provider?
+
+有关 `provider` 的内容会在后续讲到。
+
+:::
+
+:::info 注意!
+
+需要注意，当一个 `ContinuousSessionContext` **已经取用**一个事件时，
+这个事件将**不会**参与到正常的事件调度流程中。也因此，通过 `ContinuousSessionContext` 的任何API
+**取用** 的事件，将无法触发任何其他的监听函数、拦截器或过滤器等正常监听流程中的内容。
+
+<hr />
+
+同样需要注意的是，上述这种 **取用** 行为，是建立在等待函数体内的 `provider.push` 不是异步发生的前提下。
+除了一些你认为必要的场景，你**不应该**在 `ContinuousSessionContext` 的回调函数中通过异步执行 `provider.push`
+来推送结果 ———— 这可能会导致事件的调度判定出现混乱。
+
+:::
+
+### `waitingForNext`
+
+`waitingForNextXxx` 是 `waiting` 的衍生API。此API代表：等待并获取下一个符合条件的**事件对象**。
+
+#### 监听任何事件
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+@Listener
+suspend fun EventProcessingContext.onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    val event: Event = sessionContext.waitingForNext()
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    final Event next = sessionContext.waitingForNext();
+}
+```
+
+</TabItem>
+</Tabs>
+
+上述代码中，`sessionContext.waitingForNext()` 代表为等待下一个函数的到来，并得到它。
+
+此处的 `waitingForNext` 没有任何参数，因此任何一个事件到来都会符合条件包括来自**不同组件、不同Bot**的事件。
+
+:::info 衍生
+
+前文说过，`waitingForNext` 是 `waiting` 的衍生API。实际上，上述示例相似于：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    val next: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
+        provider.push(this.event)
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    final Event received = sessionContext.waiting((c, provider) -> {
+        provider.push(c.getEvent());
+    });
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::
+
+#### 明确类型的监听事件
+
+通常情况下，你至少也需要一个明确的监听类型作为你的下一个目标。
+
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+import love.forte.simbot.event.waitingForNext
+
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    val event: BarEvent = sessionContext.waitingForNext(BarEvent)
+}
+```
+
+或者显式的指定事件类型的参数名：
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    val event: BarEvent = sessionContext.waitingForNext(key = BarEvent)
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    final BarEvent next = sessionContext.waitingForNext(BarEvent.Key);
+}
+```
+
+</TabItem>
+</Tabs>
+
+你可以通过提供一个事件的 **事件类型** ( `Event.Key` ) 来指定一个具体的事件类型。
+
+:::info 明确的类型!
+
+需要注意，你应当自始至终都使用一个 **明确的** 事件类型，例如：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    // success-start
+    val event: BarEvent = sessionContext.waitingForNext(key = BarEvent)
+    // success-end
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    // success-start
+    final BarEvent next = sessionContext.waitingForNext(BarEvent.Key);
+    // success-end
+}
+```
+
+</TabItem>
+</Tabs>
+
+而不是：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    // error-start
+    val event: Event = sessionContext.waitingForNext(key = event.key)
+    // error-end
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+    // error-start
+    final Event next = sessionContext.waitingForNext(event.getKey());
+    // error-end
+}
+```
+
+</TabItem>
+</Tabs>
+
+**为什么?**
+
+一个从监听函数中得到的事件对象可能仅仅只是当前事件类型的**某个子类型**，因此通过 `getKey`
+得到的事件类型标识也只是一个类型的**子集**，
+并且你无法掌控这些可能存在任何不对外公开内容的类型标识。
+
+例如一个事件 `FooEvent`, 假设它存在两个不对外公开的实现：`AImpl` 和 `BImpl`。
+
+当一次事件触发时，你所得到的 `FooEvent` 只可能是上述两个类型的**其中一个**，而当你使用 `getKey` 时，你是无法明确得知是这两个类型中的具体哪一个的。
+
+因此，`Event.Key` 应当是**绝对明确**的，才能保证你所得到的内容是你预期的结果。
+
+:::
+
+#### 有条件的监听任何事件
+
+当你需要一个事件的时候，通常都是**有条件**的。而上述的几种示例中，你似乎并没有在 `ContinuousSessionContext`
+取用一个事件的时候为此行为提供 **条件**。
+
+当你需要提供一个对后续事件的取用条件时：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val next: Event = sessionContext.waitingForNext { event -> // this: EventProcessingContext
+        // match ...
+        true
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final Event next = sessionContext.waitingForNext((context, event) -> {
+        // match ...
+        return true;
+    });
+}
+```
+
+</TabItem>
+</Tabs>
+
+你可以为 `waitingForNext` 提供一个 **匹配函数**，通过提供的 `EventProcessingContext` 和事件本体，
+并根据你的匹配结果来决定是否要**取用**此事件。
+
+当得到过一次 `true` 时，`waitingForNext` 的等待便会结束。
+
+#### 有条件的监听明确类型的事件
+
+
+当然，你也可以在存在匹配条件的时候明确一个所需的事件类型：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+@Listener
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val next: FooEvent = sessionContext.waitingForNext(FooEvent) { event -> // this: EventProcessingContext
+        // match ...
+        true
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final FooEvent next = sessionContext.waitingForNext(FooEvent.Key, (context, event) -> {
+        // match ...
+        return true;
+    });
+}
+```
+
+</TabItem>
+</Tabs>
+
+### `waitingForNextMessage`
+
+TODO
+
+## 超时处理
+
+## Provider
+
+## Receiver
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
 :::danger TODO
 
-`v3.0.0.preview.10+` 持续会话API经历一次重构，下文示例已经过时。 
+**尚在施工中..**
 
 :::
 
 
-<Tabs groupId="code">
-<TabItem value="Kotlin" default>
-
-```kotlin
-@Listener
-@ContentTrim // 使事件过滤中的目标字符串前后去空
-@Filter("记录", matchType = MatchType.TEXT_EQUALS)
-suspend fun ChannelMessageEvent.listen(session: ContinuousSessionContext): EventResult {
-    
-    val userId = author.id
-    val channelId = channel().id
-    
-    channel().send("请输入你的名称")
-    
-    // session.waitingFor 会挂起，直到超时，或者监听函数内调用了 provider.push / provider.pushException
-    
-    val name: String = session.waitingFor(id = randomID(), timeout = 1.minutes) { event: ChannelMessageEvent, context, provider ->
-        
-        // session构建的临时监听器暂时无法整合例如 @Filter 等便捷过滤的方法，你需要手动匹配事件是否是你所需要的
-        if (channel().id == channelId && author.id == userId) {
-            val value = event.messageContent.plainText.trim()
-            provider.push(value) // 当得到的需要的值，推送结果以结束外层挂起
-        }
-    }
-    
-    channel().send("你的名称：$name")
-}
-```
-
-</TabItem>
-<TabItem value="Java">
-
-```java
-@Beans
-public class DemoListener {
-
-    
-    @Listener
-    @ContentTrim // 使事件过滤中的目标字符串前后去空
-    @Filter(value = "记录", matchType = MatchType.TEXT_EQUALS)
-    public void listen(GroupMessageEvent event, ContinuousSessionContext sessionContext) throws ExecutionException, InterruptedException {
-        final ID authorId = event.getAuthor().getId();
-        final ID groupId = event.getGroup().getId();
-
-        replyIfSupport(event, () -> "请输入你的名称");
 
 
-        // 得到一个String类型的接收器
-        final ContinuousSessionReceiver<String> receiver = sessionContext.waiting(GroupMessageEvent.Key, (e, context, provider) -> {
 
-            // session构建的临时监听器暂时无法整合例如 @Filter 等便捷过滤的方法，你需要手动匹配事件是否是你所需要的
-            if (e.getGroup().getId().equals(groupId) && e.getAuthor().getId().equals(authorId)) {
-                String value = e.getMessageContent().getPlainText().trim();
-                provider.push(value); // 当得到的需要的值，推送结果以结束外层future的等待
-            }
 
-        });
-
-        // 转化为 future 后进行等待。
-        final String name = receiver.asFuture().get();
-
-        replyIfSupport(event, () -> "你的名称：" + name));
-    }
-
-    /** 简化 Java 中事件进行 'reply' 的函数。 */
-    private void replyIfSupport(Event event, Supplier<String> messageSupplier) {
-        if (!(event instanceof MessageReplySupport)) {
-            throw new IllegalStateException("事件不支持消息回复");
-        }
-
-        ((MessageReplySupport) event).replyBlocking(messageSupplier.get());
-    }
-}
-
-```
-
-</TabItem>
-</Tabs>
