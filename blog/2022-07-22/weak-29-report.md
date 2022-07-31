@@ -2,7 +2,6 @@
 authors: forliy
 title: 2022年第29周周报
 tags: [2022周报,周报]
-draft: true
 ---
 
 

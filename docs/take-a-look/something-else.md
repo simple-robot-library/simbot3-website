@@ -144,9 +144,16 @@ java中不建议使用 `Thread.sleep(...)` 来达成延迟效果。
 @Listener
 public void listen(FriendMessageEvent event, @FilterValue("name") String name) throws Exception {
     Friend friend = event.getFriend();
-    // 并不建议使用阻塞方法。
-    Thread.sleep(3000);
-    friend.sendBlocking("Hello, " + name);
+    // 部分类型(比如「Bot」)提供了面向Java用户使用的非阻塞延迟api, 并返回得到 DelayableCompletableFuture 对象.
+    // 对于 DelayableCompletableFuture 类型，你可以将它视为一个拥有 `delay` api的 CompletableFuture.
+    event.getBot()
+            .delay(Duration.ofSeconds(3), () -> {
+                // 延迟 「3s」, 然后发送消息.
+                friend.sendBlocking("Hello, " + name);
+            }).delay(3000, () -> {
+                // 再延迟「3000ms」, 控制台输出信息
+                System.out.println("发送消息3秒后");
+            });
 }
 ```
 
