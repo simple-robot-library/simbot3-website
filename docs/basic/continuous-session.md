@@ -14,16 +14,16 @@ title: 持续会话
 
 :::caution 实验性
 
-**持续会话**相关api尚处于**实验阶段**，可能会存在各种问题并且可能会随时变成API。
+**持续会话**相关api尚处于**实验阶段**，可能会存在各种问题并且可能会随时变更API。
 
 :::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::tip 前情提要
+:::note 前情提要
 
-下文介绍中出现的代码示例如非特殊说明则将会会有所简化。
+下文介绍中出现的代码示例如非特殊说明则将会有所简化。
 
 <Tabs groupId="code">
 <TabItem value='Kotlin'>
@@ -38,7 +38,7 @@ suspend fun EventProcessingContext.onEvent(event: FooEvent) {
 }
 ```
 
-将可以代表为下述内容：
+将可以代表为下列情况：
 
 <Tabs groupId="Kotlin-Module">
 <TabItem label="核心模块" value='Core'>
@@ -59,7 +59,8 @@ suspend fun main() {
 }
 ```
 
-_(或核心模块中的其他类似形式)_
+_或其他类似的事件监听形式_
+
 
 </TabItem>
 <TabItem label="Boot模块"  value='Boot'>
@@ -100,8 +101,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 
 使用之前，最重要的事情就是需要获取它。开篇我们提到，`ContinuousSessionContext` 是由核心模块中的 `SimpleScope` 所提供的，
 因此获取持续会话最基本的方式便是通过 **事件处理上下文**( `EventProcessingContext` 或 `EventListenerProcessingContext` )
-和
-`SimpleScope` 来获取它。
+和 `SimpleScope` 来获取它。
 
 <Tabs groupId='code'>
 <TabItem value='Kotlin'>
@@ -148,8 +148,8 @@ public void onEvent(EventProcessingContext context, FriendEvent event) {
 
 ### 通过扩展属性获取
 
-核心模块通过SimpleScope提供了一系列用于简化获取其内属性的**扩展属性**，其中也包括针对于从 `EventProcessingContext`
-或 `EventProcessingContext`
+核心模块通过 `SimpleScope` 提供了一系列用于简化获取其内属性的**扩展属性**，其中也包括针对于从 `EventProcessingContext`
+或 `EventListenerProcessingContext`
 中获取 `ContinuousSessionContext` 的属性。
 
 <Tabs groupId='code'>
@@ -207,7 +207,7 @@ public void onEvent(EventProcessingContext context, FooEvent event) {
 
 除了手动获取，你也可以直接将 `ContinuousSessionContext` 作为监听函数参数来自动注入。
 
-:::info
+:::info 有效范围
 
 参数注入仅在**Boot相关模块**下有效。
 
@@ -223,9 +223,11 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 }
 ```
 
-:::note 仔细看
+:::note 示例前提
 
-这里的 `receiver` 不再是之前几个示例中的 `EventProcessingContext`，而是直接使用了 `ContinuousSessionContext`。
+后续如果没有特殊说明，将会以 **通过参数注入获取** 的方式来作为其他示例的基础前提。
+
+但是代码示例中将不会体现 `@Listener` 注解。 
 
 :::
 
@@ -239,14 +241,16 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 }
 ```
 
-</TabItem>
-</Tabs>
-
 :::info
 
 后续如果没有特殊说明，将会以 **通过参数注入获取** 的方式来作为其他示例的基础前提。
 
 :::
+
+</TabItem>
+</Tabs>
+
+
 
 ## 基本使用
 
@@ -260,13 +264,18 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 #### 等待并选择
 
 你可以将 `waiting` 的**回调函数**视为一种内置的、小型的监听函数。
-当你使用 `watiing` 的时候，它会监听后续所有推送而来的其他事件，直到你选择出你所需要的内容：
+当你使用 `watiing` 的时候，它会监听后续所有推送而来的其他事件，直到你选择出你所需要的内容。
+
+:::note 无条件的
+
+这种等待**不自动区分**任何诸如 `Bot`、组件等属性。
+
+:::
 
 <Tabs groupId='code'>
 <TabItem value='Kotlin'>
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
     val value: Int = sessionContext.waiting { provider -> // this: EventProcessingContext
         provider.push(1)
@@ -278,7 +287,6 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 其中，`this` 即为触发此回调函数时的事件处理上下文。
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent fooEvent) {
     val event: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
         // 当前事件
@@ -296,7 +304,6 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent fooEvent)
 你可以有条件的/选择性的推送：
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
     val value: String = sessionContext.waiting { provider -> // this: EventProcessingContext
         // 当前事件
@@ -312,7 +319,6 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 或者推送一个异常：
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
     val event: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
         // 当前事件
@@ -404,7 +410,7 @@ public void onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 
 :::
 
-:::info 注意!
+:::caution 注意!
 
 需要注意，当一个 `ContinuousSessionContext` **已经取用**一个事件时，
 这个事件将**不会**参与到正常的事件调度流程中。也因此，通过 `ContinuousSessionContext` 的任何API
@@ -420,15 +426,14 @@ public void onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 
 ### `waitingForNext`
 
-`waitingForNextXxx` 是 `waiting` 的衍生API。此API代表：等待并获取下一个符合条件的**事件对象**。
+`waitingForNext` 是 [waiting](#waiting) 的衍生API。此API代表：等待并获取下一个符合条件的**事件对象**。
 
-#### 监听任何事件
+#### 等待任何事件
 
 <Tabs groupId='code'>
 <TabItem value='Kotlin'>
 
 ```kotlin
-@Listener
 suspend fun EventProcessingContext.onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
     val event: Event = sessionContext.waitingForNext()
 }
@@ -449,9 +454,13 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 
 上述代码中，`sessionContext.waitingForNext()` 代表为等待下一个函数的到来，并得到它。
 
-此处的 `waitingForNext` 没有任何参数，因此任何一个事件到来都会符合条件包括来自**不同组件、不同Bot**的事件。
+:::note 无条件的
 
-:::info 衍生
+与 [**`waiting`**](#waiting) 类似的，这种等待**不自动区分**任何诸如 `Bot`、组件等属性。
+
+:::
+
+:::tip 衍生
 
 前文说过，`waitingForNext` 是 `waiting` 的衍生API。实际上，上述示例相似于：
 
@@ -459,7 +468,6 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
     val next: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
         provider.push(this.event)
@@ -484,7 +492,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 
 :::
 
-#### 明确类型的监听事件
+#### 明确类型的等待事件
 
 通常情况下，你至少也需要一个明确的监听类型作为你的下一个目标。
 
@@ -495,7 +503,6 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 ```kotlin
 import love.forte.simbot.event.waitingForNext
 
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
     val event: BarEvent = sessionContext.waitingForNext(BarEvent)
 }
@@ -504,7 +511,6 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 或者显式的指定事件类型的参数名：
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
     val event: BarEvent = sessionContext.waitingForNext(key = BarEvent)
 }
@@ -533,7 +539,6 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
     // success-start
     val event: BarEvent = sessionContext.waitingForNext(key = BarEvent)
@@ -562,7 +567,6 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
     // error-start
     val event: Event = sessionContext.waitingForNext(key = event.key)
@@ -599,7 +603,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 
 :::
 
-#### 有条件的监听任何事件
+#### 有条件的等待任何事件
 
 当你需要一个事件的时候，通常都是**有条件**的。而上述的几种示例中，你似乎并没有在 `ContinuousSessionContext`
 取用一个事件的时候为此行为提供 **条件**。
@@ -610,7 +614,6 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
     val next: Event = sessionContext.waitingForNext { event -> // this: EventProcessingContext
         // match ...
@@ -640,7 +643,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 
 当得到过一次 `true` 时，`waitingForNext` 的等待便会结束。
 
-#### 有条件的监听明确类型的事件
+#### 有条件的等待明确类型的事件
 
 
 当然，你也可以在存在匹配条件的时候明确一个所需的事件类型：
@@ -649,7 +652,6 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value='Kotlin'>
 
 ```kotlin
-@Listener
 suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
     val next: FooEvent = sessionContext.waitingForNext(FooEvent) { event -> // this: EventProcessingContext
         // match ...
@@ -676,7 +678,77 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 
 ### `waitingForNextMessage`
 
+`waitingForNextMessage` 是 [`waitingForNext`](#waitingfornext) 的衍生API。此API代表：等待并获取下一个符合条件的**消息事件的消息**。
+
+与 `waitingForNext` 十分类似，只不过 `waitingForNextMessage` 的目标更为具体：一个**消息事件**，且返回值始终为 **MessageContent** 类型。
+
+:::note 无条件
+
+与 [**`waitingForNext`**](#waitingfornext) 类似，这种等待**不自动区分**任何诸如 `Bot`、组件等属性。
+
+:::
+
+#### 等待任何消息
+
+你可以通过 `waitingForNextMessage` 等待下一个最快出现的消息事件。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    val message: MessageContent = sessionContext.waitingForNextMessage()
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final MessageContent message = sessionContext.waitingForNextMessage();
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+#### 等待指定类型的任何消息
+
+与 [**`waitingForNext`**](#waitingfornext) 类似，你可以指定一个具体的消息事件类型来等待。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+    val message: MessageContent = sessionContext.waitingForNextMessage(FooMessageEvent)
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final MessageContent message = sessionContext.waitingForNextMessage(FooMessageEvent);
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+
 TODO
+
+### `next`
+
+### `nextMessage`
+
 
 ## 超时处理
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: BOT配置
+title: BOT配置文件
 ---
 
 import Tabs from '@theme/Tabs';
@@ -26,6 +26,123 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
+## 类型支持
+
+虽然上文讲到，bot文件配置支持多种格式的文件，例如 `*.bot`、`*.bot.json`、`*.bot.yaml`、`*.bot.properties` 等，
+但是并不是所有的格式支持都是**默认集成**的。
+
+对于一些不是默认集成使用的文件类型支持，你需要在你的项目环境中添加额外的依赖。
+
+### JSON
+
+**JSON** 文件格式的配置文件默认情况下可以直接使用，即 `*.bot` 和 `*.bot.json` 格式的文件。
+
+
+### YAML
+
+如果你希望增加对 `*.bot.yml` 或 `*.bot.yaml` 格式文件的支持，请添加 [`com.charleskorn.kaml:kaml`](https://github.com/charleskorn/kaml) 依赖。
+
+
+<Tabs groupId="use-dependency">
+<TabItem value="Maven" default>
+
+```xml title=pom.xml
+<dependencies>
+
+    <!-- https://mvnrepository.com/artifact/com.charleskorn.kaml/kaml -->
+    <dependency>
+        <groupId>com.charleskorn.kaml</groupId>
+        <artifactId>kaml</artifactId>
+        <version>0.46.0</version>
+    </dependency>
+
+</dependencies>
+```
+
+</TabItem>
+<TabItem value="Gradle Kotlin DSL">
+
+```kotlin title=gradle.build.kts
+dependencies {
+    implementation("com.charleskorn.kaml:kaml:0.46.0")
+}
+```
+
+</TabItem>
+<TabItem value="Gradle Groovy">
+
+```groovy title=gradle.build
+dependencies {
+    implementation 'com.charleskorn.kaml:kaml:0.46.0'
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+:::note 日志
+
+如果无法在你的运行时环境中找到此依赖，那么你有可能会在控制台中发现类似于如下内容的警告日志：
+```log
+[WARN] Unable to find the com.charleskorn.kaml:kaml in current classpath, the bot configuration parser in *.bot.yaml format will not be available.
+```
+假如你没有使用 **YAML** 格式文件的计划，那么大可以无视此警告。
+
+:::
+
+### Properties
+
+如果你希望增加对 `*.bot.properties` 格式文件的支持，请添加 [`kotlinx-serialization-properties`](https://github.com/Kotlin/kotlinx.serialization/tree/master/formats#properties) 依赖。
+
+<Tabs groupId="use-dependency">
+<TabItem value="Maven" default>
+
+```xml title=pom.xml
+<dependencies>
+
+    <!-- https://mvnrepository.com/artifact/com.charleskorn.kaml/kaml -->
+    <dependency>
+        <groupId>org.jetbrains.kotlinx</groupId>
+        <artifactId>kotlinx-serialization-properties</artifactId>
+        <version>1.3.3</version>
+        <scope>runtime</scope>
+    </dependency>
+
+</dependencies>
+```
+
+</TabItem>
+<TabItem value="Gradle Kotlin DSL">
+
+```kotlin title=gradle.build.kts
+dependencies {
+    runtimeOnly("org.jetbrains.kotlinx:kotlinx-serialization-properties:1.3.3")
+}
+```
+
+</TabItem>
+<TabItem value="Gradle Groovy">
+
+```groovy title=gradle.build
+dependencies {
+    runtimeOnly 'org.jetbrains.kotlinx:kotlinx-serialization-properties:1.3.3'
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+:::note 日志
+
+如果无法在你的运行时环境中找到此依赖，那么你有可能会在控制台中发现类似于如下内容的警告日志：
+```log
+[WARN] Unable to find the kotlinx-serialization-properties in current classpath, the bot configuration parser in *.bot.properties format will not be available.
+```
+假如你没有使用 **Properties** 格式文件的计划，那么大可以无视此警告。
+
+:::
 
 ## 配置项
 对于一个bot配置文件，其可能存在的属性在每个不同的组件下都是不同的，但是有一个属性必定存在，即 component:

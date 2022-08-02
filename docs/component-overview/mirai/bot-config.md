@@ -1,30 +1,30 @@
 ---
 sidebar_position: 10
-title: Bot配置
+title: Bot配置文件
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-有关bot的配置相关内容，请先阅读 [BOT配置](../../basic/bot-config) 。
+有关bot的配置文件相关内容，请先阅读 [BOT配置](../../basic/bot-config) 。
 
 ## 最简配置
 ### 明文密码
 
-```json title="my-bot.bot"
+```json title="my-bot.bot.json"
 {
-"component": "simbot.mirai",
-"code": 123456789,
-"password": "你的密码"
+    "component": "simbot.mirai",
+    "code": 123456789,
+    "password": "你的密码"
 }
 ```
 其中，code 为账号，password为此账号的密码。
 ### MD5密码
-```json title="my-bot.bot"
+```json title="my-bot.bot.json"
 {
-"component": "simbot.mirai",
-"code": 123456789,
-"passwordMD5": "e807f1fcf82d132f9bb018ca6738a19f"
+    "component": "simbot.mirai",
+    "code": 123456789,
+    "passwordMD5": "e807f1fcf82d132f9bb018ca6738a19f"
 }
 ```
 其中，code 为账号，password为此账号的密码。
@@ -33,13 +33,15 @@ import TabItem from '@theme/TabItem';
 <details>
 <summary>完整配置参考</summary>
 
-:::note
+> 仅供参考，以具体代码效果为准。
 
-仅供参考，以具体代码效果为准。
 
-:::
+配置属性 `config` 下的几乎所有属性都是可选的（甚至包括 `config` 属性自己），因此你没有必要书写过于完整的配置文件。
 
-```json title="my-bot.bot"
+下述的完整配置参考中，`config.deviceInfo` 将会被**省略**。
+
+
+```json title="my-bot.bot.json"
 {
   "component": "simbot.mirai",
   "code": 123,
@@ -56,33 +58,7 @@ import TabItem from '@theme/TabItem';
       "autoReconnectOnForceOffline": false,
       "protocol": "ANDROID_PHONE",
       "highwayUploadCoroutineCount": 16,
-      "deviceInfo": {
-        "display": [77, 73, 82, 65, 73, 45, 83, 73, 77, 66, 79, 84, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49],
-        "product": [109, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "device": [109, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "board": [109, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "brand": [102, 111, 114, 116, 101],
-        "model": [109, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "bootloader": [117, 110, 107, 110, 111, 119, 110],
-        "fingerprint": [109, 97, 109, 111, 101, 47, 109, 105, 114, 97, 105, 47, 109, 105, 114, 97, 105, 58, 49, 48, 47, 77, 73, 82, 65, 73, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49, 47, 54, 53, 56, 51, 55, 54, 48, 58, 117, 115, 101, 114, 47, 114, 101, 108, 101, 97, 115, 101, 45, 107, 101, 121, 115],
-        "bootId": [-44, 29, -116, -39, -113, 0, -78, 4, -23, -128, 9, -104, -20, -8, 66, 126],
-        "procVersion": [76, 105, 110, 117, 120, 32, 118, 101, 114, 115, 105, 111, 110, 32, 51, 46, 48, 46, 51, 49, 45, 50, 71, 54, 57, 72, 122, 115, 105, 32, 40, 97, 110, 100, 114, 111, 105, 100, 45, 98, 117, 105, 108, 100, 64, 120, 120, 120, 46, 120, 120, 120, 46, 120, 120, 120, 46, 120, 120, 120, 46, 99, 111, 109, 41],
-        "baseBand": [],
-        "version": {
-          "incremental": [53, 56, 57, 49, 57, 51, 56],
-          "release": [49, 48],
-          "codename": [82, 69, 76],
-          "sdk": 29
-        },
-        "simInfo": [84, 45, 77, 111, 98, 105, 108, 101],
-        "osType": [97, 110, 100, 114, 111, 105, 100],
-        "macAddress": [48, 50, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48],
-        "wifiBSSID": [48, 50, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48],
-        "wifiSSID": [60, 117, 110, 107, 110, 111, 119, 110, 32, 115, 115, 105, 100, 62],
-        "imsiMd5": [-44, 29, -116, -39, -113, 0, -78, 4, -23, -128, 9, -104, -20, -8, 66, 126],
-        "imei": "899752952597699",
-        "apn": [119, 105, 102, 105]
-      },
+      "deviceInfo": null,
       "simpleDeviceInfo": null,
       "deviceInfoFile": null,
       "noNetworkLog": false,
@@ -95,7 +71,9 @@ import TabItem from '@theme/TabItem';
         "groupMemberListCacheEnabled": false
       },
       "loginCacheEnabled": true,
-      "convertLineSeparator": true
+      "convertLineSeparator": true,
+      "recallMessageCacheStrategy": "INVALID"
+      
   }
 }
 ```
@@ -157,6 +135,22 @@ import TabItem from '@theme/TabItem';
             同原生mirai配置，是否处理接受到的特殊换行符, 默认为 true。
             <li>若为 true, 会将收到的 CRLF(\r\n) 和 CR(\r) 替换为 LF(\n)</li>
             <li>若为 false, 则不做处理</li>
+        </td>
+    </tr>
+    <tr>
+        <td>config.<b>recallMessageCacheStrategy</b></td>
+        <td>
+            用于 <b>消息撤回事件(<code>MiraiMessageRecallEvent</code>)</b> 的消息缓存策略。
+            可选值为枚举类型 <code>MiraiBotVerifyInfoConfiguration.RecallMessageCacheStrategyType</code> 中的可选元素：
+            <table>
+                <thead>
+                    <tr><th>元素名</th><th>释义</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>INVALID</td><td>无效的缓存策略，即<b>不进行缓存。</b></td></tr>
+                    <tr><td>MEMORY_LRU</td><td>基于内存的 LRU 缓存策略</td></tr>
+                </tbody>
+            </table>
         </td>
     </tr>
 
