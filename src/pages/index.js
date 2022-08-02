@@ -51,8 +51,8 @@ function HomepageHeader({day}) {
     // const day = date.getDay()
     const isAprilFools = (date.getMonth() + 1) === 4 && date.getDate() === 1;
     const isBirthday = (date.getMonth() + 1) === 8 && date.getDate() === 3;
-    console.log('Today: ' + date.getMonth() + '-' + date.getDate() + '(' + date + ')')
-    console.log('Today: ' + day)
+    // console.log('Today: ' + date.getMonth() + '-' + date.getDate() + '(' + date + ')')
+    // console.log('Today: ' + day)
 
     // styles['heroBannerBg' + day]
     // const day = 0
@@ -63,8 +63,8 @@ function HomepageHeader({day}) {
     const numberVersionValue = (isAprilFools || isBirthday || r()) ? random(otherValue) : '3'
 
     const heroBannerBg = styles['heroBannerBg' + day]
-    console.log("heroBannerBg: " + heroBannerBg)
-    console.log(heroBannerBg)
+    // console.log("heroBannerBg: " + heroBannerBg)
+    // console.log(heroBannerBg)
 
     return (
         <header className={clsx('hero hero--primary', styles.heroBanner, heroBannerBg)}>
