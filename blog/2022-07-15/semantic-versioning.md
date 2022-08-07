@@ -1,6 +1,7 @@
 ---
 authors: [forliy, forte]
 title: 语义化版本?
+tags: [杂谈]
 ---
 
 simbot3的版本语义，依旧不尽人意。
