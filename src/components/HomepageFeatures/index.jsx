@@ -43,7 +43,7 @@ function FeatureList() {
        {
            title: (<span>
             <span>基于 </span>
-            <a title='Copyright © 2022 JetBrains s.r.o. and the [Kotlin] logo are registered trademarks of JetBrains s.r.o.' href='https://www.jetbrains.com/'>Kotlin</a>
+            <a title='Copyright © 2022 JetBrains s.r.o. and the [Kotlin] logo are registered trademarks of JetBrains s.r.o.' href='https://kotlinlang.org/'>Kotlin</a>
   </span>) ,
            // Svg: require('@site/static/img/Kotlin.svg').default,
            Svg: require('@site/static/img/Kotlin_icon.svg').default,
