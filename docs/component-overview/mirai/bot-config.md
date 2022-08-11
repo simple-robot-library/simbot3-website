@@ -13,22 +13,20 @@ import Label from '@site/src/components/Label'
 
 mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-schema.org/) 。
 
-> 当前 `schema` 版本：[<Label>0.0.1</Label>](/schema/component/mirai/bot/0.0.1/bot.schema.json)
+> 当前 `schema` 版本：[<Label>0.0.1</Label>](/schema/component/mirai/bot/0.0.1/bot.config.json)
 
 ### 架构资源
 
-你可以通过 [此处](/schema/component/mirai/bot/0.0.1/bot.schema.json) 下载 `bot.schema.bot` 文件，
+你可以通过 [此处](/schema/component/mirai/bot/0.0.1/bot.config.json) 下载 `bot.config.json` 文件，
 或者使用远程资源路径：
 
-```
-$host/schema/component/mirai/bot/0.0.1/bot.schema.json
-```
+**`$host/schema/component/mirai/bot/0.0.1/bot.config.json`**
 
 :::note
 
 远程资源路径的 `$host` 即为当前站点，例如：
 
-<https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json>
+<https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.config.json>
 
 :::
 
