@@ -7,7 +7,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Label from '@site/src/components/Label'
 
-
 有关bot的配置文件相关内容，请先阅读 [BOT配置](../../basic/bot-config) 。
 
 ## 配置提示
@@ -16,13 +15,14 @@ mirai组件为其下的配置文件提供了 [`json-schema`](http://json-schema.
 
 > 当前 `schema` 版本：[<Label>0.0.1</Label>](/schema/component/mirai/bot/0.0.1/bot.schema.json)
 
+### 架构资源
+
 你可以通过 [此处](/schema/component/mirai/bot/0.0.1/bot.schema.json) 下载 `bot.schema.bot` 文件，
-或者使用远程资源路径： 
+或者使用远程资源路径：
 
 ```
 $host/schema/component/mirai/bot/0.0.1/bot.schema.json
 ```
-
 
 :::note
 
@@ -34,8 +34,13 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
 
 :::
 
+### 如何使用
+
+以 [IntelliJ IDEA](https://www.jetbrains.com/?from=simpler-robot) 为例，
+对一个 `JSON` 文件使用架构可以参考其 [官方文档](https://www.jetbrains.com/help/idea/json.html#ws_json_using_schemas)。
 
 ## 最简配置
+
 ### 明文密码
 
 ```json title="my-bot.bot.json"
@@ -48,18 +53,22 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
     }
 }
 ```
-其中，code 为账号，password为此账号的密码。
+
 ### MD5密码
+
 ```json title="my-bot.bot.json"
 {
     "component": "simbot.mirai",
     "code": 123456789,
-    "passwordMD5": "e807f1fcf82d132f9bb018ca6738a19f"
+    "passwordInfo": {
+        "type": "md5_text",
+        "md5": "e807f1fcf82d132f9bb018ca6738a19f"
+    }
 }
 ```
-其中，code 为账号，password为此账号的密码。
 
 ## 参考
+
 <details>
 <summary>完整配置参考</summary>
 
@@ -70,15 +79,17 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
 
 下述的完整配置参考中，`config.deviceInfo` 将会被**省略**。
 
+> 下述部分属性不会提供所有的可能（例如 `passwordInfo`），对所有属性的完整解释参见后续说明。
 
 ```json title="my-bot.bot.json"
 {
   "component": "simbot.mirai",
   "code": 123,
-  "password": "密码, 跟下面的passwordMD5(字符串)二选一使用",
-  "passwordMD5": null,
+  "passwordInfo": {
+     "type": "text",
+     "text": "明文密码"
+  },
   "config": {
-      "deviceInfoSeed": 1,
       "workingDir": ".",
       "heartbeatPeriodMillis": 60000,
       "statHeartbeatPeriodMillis": 300000,
@@ -88,9 +99,9 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
       "autoReconnectOnForceOffline": false,
       "protocol": "ANDROID_PHONE",
       "highwayUploadCoroutineCount": 16,
-      "deviceInfo": null,
-      "simpleDeviceInfo": null,
-      "deviceInfoFile": null,
+      "deviceInfo": {
+         "type": "auto"
+      },
       "noNetworkLog": false,
       "noBotLog": false,
       "isShowingVerboseEventLog": false,
@@ -103,7 +114,6 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
       "loginCacheEnabled": true,
       "convertLineSeparator": true,
       "recallMessageCacheStrategy": "INVALID"
-      
   }
 }
 ```
@@ -113,18 +123,61 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
 ## 参数释义
 
 <table>
-    <thead><tr><th>参数</th><th>含义</th></tr></thead>
+    <thead><tr><th>参数</th><th>类型</th><th>含义</th></tr></thead>
 <tbody>
-    <tr><td><b>code</b></td><td>账号。</td></tr>
-    <tr><td><b>password</b></td><td>明文密码，与下面的 passwordMD5二选一。</td></tr>
-    <tr><td><b>passwordMD5</b></td><td>MD5加密后的密码，与上面的 password 二选一。</td></tr>
-    <tr><td>config.<b>deviceInfoSeed</b></td><td>mirai配置自定义deviceInfoSeed的时候使用的随机种子。默认为1。</td></tr>
-    <tr><td>config.<b>workingDir</b></td><td>同原生mirai配置，mirai的工作目录。默认为 <code>.</code> 。</td></tr>
-    <tr><td>config.<b>heartbeatPeriodMillis</b></td><td>同原生mirai配置，连接心跳包周期。</td></tr>
-    <tr><td>config.<b>statHeartbeatPeriodMillis</b></td><td>同原生mirai配置，状态心跳包周期。</td></tr>
-    <tr><td>config.<b>heartbeatTimeoutMillis</b></td><td>同原生mirai配置，每次心跳时等待结果的时间。</td></tr>
+    <tr>
+        <td><b>code</b></td>
+        <td>integer</td>
+        <td>账号。</td>
+    </tr>
+    <tr>
+        <td><s><b>password</b></s></td>
+        <td>string</td>
+        <td><s>明文密码，与下面的 passwordMD5二选一。</s></td>
+    </tr>
+    <tr>
+        <td><s><b>passwordMD5</b></s></td>
+        <td>string</td>
+        <td><s>MD5加密后的密码，与上面的 password 二选一。</s></td>
+    </tr>
+    <tr>
+        <td><b>passwordInfo</b></td>
+        <td>object</td>
+        <td>密码配置。后续会提供详细解释。</td>
+    </tr>
+    <tr>
+        <td><b>config</b></td>
+        <td>object</td>
+        <td>其他详细配置</td>
+    </tr>
+    <tr>
+        <td><s>config.<b>deviceInfoSeed</b></s></td>
+        <td>integer</td>
+        <td><s>mirai配置自定义deviceInfoSeed的时候使用的随机种子。默认为1。</s></td>
+    </tr>
+    <tr>
+        <td>config.<b>workingDir</b></td>
+        <td>string</td>
+        <td>同原生mirai配置，mirai的工作目录。默认为 <code>"."</code> 。</td>
+    </tr>
+    <tr>
+        <td>config.<b>heartbeatPeriodMillis</b></td>
+        <td>integer</td>
+        <td>同原生mirai配置，连接心跳包周期。</td>
+    </tr>
+    <tr>
+        <td>config.<b>statHeartbeatPeriodMillis</b></td>
+        <td>integer</td>
+        <td>同原生mirai配置，状态心跳包周期。</td>
+    </tr>
+    <tr>
+        <td>config.<b>heartbeatTimeoutMillis</b></td>
+        <td>integer</td>
+        <td>同原生mirai配置，每次心跳时等待结果的时间。</td>
+    </tr>
     <tr>
         <td>config.<b>heartbeatStrategy</b></td>
+        <td>enum</td>
         <td>
         <p>同原生mirai配置，枚举类型。心跳策略。可选元素：</p>
         <li>STAT_HB</li> 
@@ -132,10 +185,19 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
         <li>NONE</li> 
         </td>
 </tr>
-    <tr><td>config.<b>reconnectionRetryTimes</b></td><td>同原生mirai配置，最多尝试多少次重连。</td></tr>
-    <tr><td>config.<b>autoReconnectOnForceOffline</b></td><td>同原生mirai配置，Boolean类型。在被挤下线时 (BotOfflineEvent.Force) 自动重连。</td></tr>
+    <tr>
+        <td>config.<b>reconnectionRetryTimes</b></td>
+        <td>integer</td>
+        <td>同原生mirai配置，最多尝试多少次重连。</td>
+    </tr>
+    <tr>
+        <td>config.<b>autoReconnectOnForceOffline</b></td>
+        <td>boolean</td>
+        <td>同原生mirai配置，Boolean类型。在被挤下线时 (BotOfflineEvent.Force) 自动重连。</td>
+    </tr>
     <tr>
         <td>config.<b>protocol</b></td>
+        <td>enum</td>
         <td>
            同原生mirai配置，枚举类型。使用协议类型。可选元素： 
             <li>ANDROID_PHONE</li>
@@ -145,22 +207,60 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
             <li>MACOS</li>  
         </td>
     </tr>
-    <tr><td>config.<b>highwayUploadCoroutineCount</b></td><td>同原生mirai配置，Highway 通道上传图片, 语音, 文件等资源时的协程数量。</td></tr>
-    <tr><td>config.<b>deviceInfo</b></td><td>使用的自定义设备信息。详见下文。</td></tr>
-    <tr><td>config.<b>simpleDeviceInfo</b></td><td>使用的自定义设备信息的简化可读版。详见下文。</td></tr>
-    <tr><td>config.<b>deviceInfoFile</b></td><td>指定设备信息文件。详见下文。</td></tr>
-    <tr><td>config.<b>noNetworkLog</b></td><td>不展示mirai网络日志。默认false</td></tr>
-    <tr><td>config.<b>noBotLog</b></td><td>不展示mirai Bot日志。默认false</td></tr>
-    <tr><td>config.<b>isShowingVerboseEventLog</b></td><td>同原生mirai配置，是否显示过于冗长的事件日志。默认false。</td></tr>
-    <tr><td>config.<b>cacheDir</b></td><td>同原生mirai配置，缓存数据目录, 相对于 <code>workingDir</code> 。</td></tr>
-    <tr><td>config.<b>contactListCache</b></td><td>同原生mirai配置，Json Object 格式。详见下文。</td></tr>
+    <tr>
+        <td>config.<b>highwayUploadCoroutineCount</b></td>
+        <td>integer</td>
+        <td>同原生mirai配置，Highway 通道上传图片, 语音, 文件等资源时的协程数量。</td>
+    </tr>
+    <tr>
+        <td>config.<b>deviceInfo</b></td>
+        <td>object</td>
+        <td>使用的自定义设备信息配置，详见下文。</td>
+    </tr>
+    <tr>
+        <td><s>config.<b>simpleDeviceInfo</b></s></td>
+        <td>object</td>
+        <td><s>使用的自定义设备信息的简化可读版。详见下文。</s></td>
+    </tr>
+    <tr>
+        <td><s>config.<b>deviceInfoFile</b></s></td>
+        <td>string</td>
+        <td><s>指定设备信息文件。详见下文。</s></td>
+    </tr>
+    <tr>
+        <td>config.<b>noNetworkLog</b></td>
+        <td>boolean</td>
+        <td>不展示mirai网络日志。默认false</td>
+    </tr>
+    <tr>
+        <td>config.<b>noBotLog</b></td>
+        <td>boolean</td>
+        <td>不展示mirai Bot日志。默认false</td>
+    </tr>
+    <tr>
+        <td>config.<b>isShowingVerboseEventLog</b></td>
+        <td>boolean</td>
+        <td>同原生mirai配置，是否显示过于冗长的事件日志。默认false。</td>
+    </tr>
+    <tr>
+        <td>config.<b>cacheDir</b></td>
+        <td>string</td>
+        <td>同原生mirai配置，缓存数据目录, 相对于 <code>workingDir</code> 。</td>
+    </tr>
+    <tr>
+        <td>config.<b>contactListCache</b></td>
+        <td>object</td>
+        <td>同原生mirai配置，详见下文。</td>
+    </tr>
     <tr>
         <td>config.<b>loginCacheEnabled</b></td>
+        <td>boolean</td>
         <td>同原生mirai配置，登录缓存。开启后在密码登录成功时会保存秘钥等信息, 在下次启动时通过这些信息登录, 而不提交密码。可以减少验证码出现的频率。<br />
     秘钥信息会由密码加密保存. 如果秘钥过期, 则会进行普通密码登录。默认为true。</td>
     </tr>
     <tr>
         <td>config.<b>convertLineSeparator</b></td>
+        <td>boolean</td>
         <td>
             同原生mirai配置，是否处理接受到的特殊换行符, 默认为 true。
             <li>若为 true, 会将收到的 CRLF(\r\n) 和 CR(\r) 替换为 LF(\n)</li>
@@ -169,6 +269,7 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
     </tr>
     <tr>
         <td>config.<b>recallMessageCacheStrategy</b></td>
+        <td>enum</td>
         <td>
             用于 <b>消息撤回事件(<code>MiraiMessageRecallEvent</code>)</b> 的消息缓存策略。
             可选值为枚举类型 <code>MiraiBotVerifyInfoConfiguration.RecallMessageCacheStrategyType</code> 中的可选元素：
@@ -188,7 +289,15 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
 </table>
 
 ### deviceInfo
+
+:::danger TODO
+
+TODO
+
+:::
+
 使用的自定义设备信息。例如：
+
 ```json title="my-bot.bot"
 {
     "config": {
@@ -228,11 +337,13 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
 至于其中各属性内容，完全对应 Mirai 原生的 `DeviceInfo` 类，请自行参考其源码。
 
 ### simpleDeviceInfo
+
 如上一个属性 `deviceInfo` 所示， 其绝大部分属性都是 `ByteArray` 类型的，因此实际上的可读性比较差。
 
 因此 simbot 提供了一个 `simpleDeviceInfo` 属性来使得所有的 `ByteArray` 类型的属性都作为 **字符串** 来使用。
 
 例如：
+
 ```json title="my-bot.bot"
 {
     "config": {
@@ -277,9 +388,10 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
 
 :::
 
-
 ### deviceInfoFile
+
 除了通过上述 `deviceInfo` 或者 `simpleDeviceInfo` 配置设备信息以外，也可以通过 `deviceInfoFile` 属性来指定一个外部json文件。
+
 ```json title="my-bot.bot"
 {
   "config": {
@@ -292,20 +404,24 @@ https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
 
 当 `deviceInfo` 属性存在的时候，优先使用 `deviceInfo` 。
 
-
 ### contactListCache
+
 同原生mirai配置字段 `contactListCache` ，Json Object 格式。其属性如下：
 
 #### saveIntervalMillis
+
 同原生mirai配置，在有修改时自动保存间隔. 默认 `60` 秒. 在每次登录完成后有修改时都会立即保存一次.
 
 #### friendListCacheEnabled
+
 同原生mirai配置，开启好友列表缓存.
 
 #### groupMemberListCacheEnabled
+
 同原生mirai配置，开启群成员列表缓存.
 
 #### 参考配置
+
 ```json title="my-bot.bot"
 {
    "config": {
