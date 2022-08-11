@@ -28,9 +28,7 @@ $host/schema/component/mirai/bot/0.0.1/bot.schema.json
 
 远程资源路径的 `$host` 即为当前站点，例如：
 
-```
-https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
-```
+<https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json>
 
 :::
 
