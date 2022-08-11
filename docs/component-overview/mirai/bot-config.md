@@ -5,8 +5,35 @@ title: Bot配置文件
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Label from '@site/src/components/Label'
+
 
 有关bot的配置文件相关内容，请先阅读 [BOT配置](../../basic/bot-config) 。
+
+## 配置提示
+
+mirai组件为其下的配置文件提供了 [`json-schema`](http://json-schema.org/)。
+
+> 当前 `schema` 版本：[<Label>0.0.1</Label>](/schema/component/mirai/bot/0.0.1/bot.schema.json)
+
+你可以通过 [此处](/schema/component/mirai/bot/0.0.1/bot.schema.json) 下载 `bot.schema.bot` 文件，
+或者使用远程资源路径： 
+
+```
+$host/schema/component/mirai/bot/0.0.1/bot.schema.json
+```
+
+
+:::note
+
+远程资源路径的 `$host` 即为当前站点，例如：
+
+```
+https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.schema.json
+```
+
+:::
+
 
 ## 最简配置
 ### 明文密码
@@ -15,7 +42,10 @@ import TabItem from '@theme/TabItem';
 {
     "component": "simbot.mirai",
     "code": 123456789,
-    "password": "你的密码"
+    "passwordInfo": {
+        "type": "text",
+        "text": "你的密码"
+    }
 }
 ```
 其中，code 为账号，password为此账号的密码。
