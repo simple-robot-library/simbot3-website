@@ -9,9 +9,9 @@ import Label from '@site/src/components/Label'
 
 有关bot的配置文件相关内容，请先阅读 [BOT配置](../../basic/bot-config) 。
 
-## 配置提示
+## 架构
 
-mirai组件为其下的配置文件提供了 [`json-schema`](http://json-schema.org/)。
+mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-schema.org/) 。
 
 > 当前 `schema` 版本：[<Label>0.0.1</Label>](/schema/component/mirai/bot/0.0.1/bot.schema.json)
 
@@ -64,8 +64,6 @@ $host/schema/component/mirai/bot/0.0.1/bot.schema.json
     }
 }
 ```
-
-## 参考
 
 <details>
 <summary>完整配置参考</summary>
@@ -124,141 +122,146 @@ $host/schema/component/mirai/bot/0.0.1/bot.schema.json
     <thead><tr><th>参数</th><th>类型</th><th>含义</th></tr></thead>
 <tbody>
     <tr>
-        <td><b>code</b></td>
-        <td>integer</td>
+        <td><b>component</b> <Label>必须</Label> </td>
+        <td><Label>const</Label></td>
+        <td>固定值：<code>simbot.mirai</code>，代表当前配置文件是针对mirai组件的</td>
+    </tr>
+    <tr>
+        <td><b>code</b> <Label>必须</Label> </td>
+        <td><Label>integer</Label></td>
         <td>账号。</td>
     </tr>
     <tr>
         <td><s><b>password</b></s></td>
-        <td>string</td>
-        <td><s>明文密码，与下面的 passwordMD5二选一。</s></td>
+        <td><Label>string</Label></td>
+        <td> <b>已弃用</b> <s>明文密码，与下面的 passwordMD5二选一。</s></td>
     </tr>
     <tr>
         <td><s><b>passwordMD5</b></s></td>
-        <td>string</td>
-        <td><s>MD5加密后的密码，与上面的 password 二选一。</s></td>
+        <td><Label>string</Label></td>
+        <td> <b>已弃用</b> <s>MD5加密后的密码，与上面的 password 二选一。</s></td>
     </tr>
     <tr>
-        <td><b>passwordInfo</b></td>
-        <td>object</td>
+        <td><b>passwordInfo</b> <Label>必须</Label> </td>
+        <td><a href="#passwordinfoconfiguration"><Label>PasswordInfoConfiguration</Label></a></td>
         <td>密码配置。后续会提供详细解释。</td>
     </tr>
     <tr>
         <td><b>config</b></td>
-        <td>object</td>
+        <td><Label>Config</Label></td>
         <td>其他详细配置</td>
     </tr>
     <tr>
         <td><s>config.<b>deviceInfoSeed</b></s></td>
-        <td>integer</td>
-        <td><s>mirai配置自定义deviceInfoSeed的时候使用的随机种子。默认为1。</s></td>
+        <td><Label>integer</Label></td>
+        <td> <b>已弃用</b> <s>mirai配置自定义deviceInfoSeed的时候使用的随机种子。默认为1。</s></td>
     </tr>
     <tr>
         <td>config.<b>workingDir</b></td>
-        <td>string</td>
+        <td><Label>string</Label></td>
         <td>同原生mirai配置，mirai的工作目录。默认为 <code>"."</code> 。</td>
     </tr>
     <tr>
         <td>config.<b>heartbeatPeriodMillis</b></td>
-        <td>integer</td>
+        <td><Label>integer</Label></td>
         <td>同原生mirai配置，连接心跳包周期。</td>
     </tr>
     <tr>
         <td>config.<b>statHeartbeatPeriodMillis</b></td>
-        <td>integer</td>
+        <td><Label>integer</Label></td>
         <td>同原生mirai配置，状态心跳包周期。</td>
     </tr>
     <tr>
         <td>config.<b>heartbeatTimeoutMillis</b></td>
-        <td>integer</td>
+        <td><Label>integer</Label></td>
         <td>同原生mirai配置，每次心跳时等待结果的时间。</td>
     </tr>
     <tr>
         <td>config.<b>heartbeatStrategy</b></td>
-        <td>enum</td>
+        <td><Label>enum</Label></td>
         <td>
         <p>同原生mirai配置，枚举类型。心跳策略。可选元素：</p>
-        <li>STAT_HB</li> 
-        <li>REGISTER</li> 
-        <li>NONE</li> 
+        <li><code>STAT_HB</code></li> 
+        <li><code>REGISTER</code></li> 
+        <li><code>NONE</code></li> 
         </td>
 </tr>
     <tr>
         <td>config.<b>reconnectionRetryTimes</b></td>
-        <td>integer</td>
+        <td><Label>integer</Label></td>
         <td>同原生mirai配置，最多尝试多少次重连。</td>
     </tr>
     <tr>
         <td>config.<b>autoReconnectOnForceOffline</b></td>
-        <td>boolean</td>
-        <td>同原生mirai配置，Boolean类型。在被挤下线时 (BotOfflineEvent.Force) 自动重连。</td>
+        <td><Label>boolean</Label></td>
+        <td>同原生mirai配置，Boolean类型。在被挤下线时 (`BotOfflineEvent.Force`) 自动重连。</td>
     </tr>
     <tr>
         <td>config.<b>protocol</b></td>
-        <td>enum</td>
+        <td><Label>enum</Label></td>
         <td>
            同原生mirai配置，枚举类型。使用协议类型。可选元素： 
-            <li>ANDROID_PHONE</li>
-            <li>ANDROID_PAD</li>
-            <li>ANDROID_WATCH</li>
-            <li>IPAD</li>
-            <li>MACOS</li>  
+            <li><code>ANDROID_PHONE</code></li>
+            <li><code>ANDROID_PAD</code></li>
+            <li><code>ANDROID_WATCH</code></li>
+            <li><code>IPAD</code></li>
+            <li><code>MACOS</code></li>  
         </td>
     </tr>
     <tr>
         <td>config.<b>highwayUploadCoroutineCount</b></td>
-        <td>integer</td>
+        <td><Label>integer</Label></td>
         <td>同原生mirai配置，Highway 通道上传图片, 语音, 文件等资源时的协程数量。</td>
     </tr>
     <tr>
         <td>config.<b>deviceInfo</b></td>
-        <td>object</td>
+        <td><Label>DeviceInfoConfiguration</Label></td>
         <td>使用的自定义设备信息配置，详见下文。</td>
     </tr>
     <tr>
         <td><s>config.<b>simpleDeviceInfo</b></s></td>
-        <td>object</td>
-        <td><s>使用的自定义设备信息的简化可读版。详见下文。</s></td>
+        <td><Label>object</Label></td>
+        <td> <b>已弃用</b> <s>使用的自定义设备信息的简化可读版。</s></td>
     </tr>
     <tr>
         <td><s>config.<b>deviceInfoFile</b></s></td>
-        <td>string</td>
-        <td><s>指定设备信息文件。详见下文。</s></td>
+        <td><Label>string</Label></td>
+        <td> <b>已弃用</b> <s>指定设备信息文件。</s></td>
     </tr>
     <tr>
         <td>config.<b>noNetworkLog</b></td>
-        <td>boolean</td>
+        <td><Label>boolean</Label></td>
         <td>不展示mirai网络日志。默认false</td>
     </tr>
     <tr>
         <td>config.<b>noBotLog</b></td>
-        <td>boolean</td>
+        <td><Label>boolean</Label></td>
         <td>不展示mirai Bot日志。默认false</td>
     </tr>
     <tr>
         <td>config.<b>isShowingVerboseEventLog</b></td>
-        <td>boolean</td>
+        <td><Label>boolean</Label></td>
         <td>同原生mirai配置，是否显示过于冗长的事件日志。默认false。</td>
     </tr>
     <tr>
         <td>config.<b>cacheDir</b></td>
-        <td>string</td>
+        <td><Label>string</Label></td>
         <td>同原生mirai配置，缓存数据目录, 相对于 <code>workingDir</code> 。</td>
     </tr>
     <tr>
         <td>config.<b>contactListCache</b></td>
-        <td>object</td>
+        <td><Label>ContactListCacheConfiguration</Label></td>
         <td>同原生mirai配置，详见下文。</td>
     </tr>
     <tr>
         <td>config.<b>loginCacheEnabled</b></td>
-        <td>boolean</td>
+        <td><Label>boolean</Label></td>
         <td>同原生mirai配置，登录缓存。开启后在密码登录成功时会保存秘钥等信息, 在下次启动时通过这些信息登录, 而不提交密码。可以减少验证码出现的频率。<br />
     秘钥信息会由密码加密保存. 如果秘钥过期, 则会进行普通密码登录。默认为true。</td>
     </tr>
     <tr>
         <td>config.<b>convertLineSeparator</b></td>
-        <td>boolean</td>
+        <td><Label>boolean</Label></td>
         <td>
             同原生mirai配置，是否处理接受到的特殊换行符, 默认为 true。
             <li>若为 true, 会将收到的 CRLF(\r\n) 和 CR(\r) 替换为 LF(\n)</li>
@@ -267,7 +270,7 @@ $host/schema/component/mirai/bot/0.0.1/bot.schema.json
     </tr>
     <tr>
         <td>config.<b>recallMessageCacheStrategy</b></td>
-        <td>enum</td>
+        <td><Label>enum</Label></td>
         <td>
             用于 <b>消息撤回事件(<code>MiraiMessageRecallEvent</code>)</b> 的消息缓存策略。
             可选值为枚举类型 <code>MiraiBotVerifyInfoConfiguration.RecallMessageCacheStrategyType</code> 中的可选元素：
@@ -276,8 +279,8 @@ $host/schema/component/mirai/bot/0.0.1/bot.schema.json
                     <tr><th>元素名</th><th>释义</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>INVALID</td><td>无效的缓存策略，即<b>不进行缓存。</b></td></tr>
-                    <tr><td>MEMORY_LRU</td><td>基于内存的 LRU 缓存策略</td></tr>
+                    <tr><td><code>INVALID</code></td><td>无效的缓存策略，即<b>不进行缓存。</b></td></tr>
+                    <tr><td><code>MEMORY_LRU</code></td><td>基于内存的 LRU 缓存策略</td></tr>
                 </tbody>
             </table>
         </td>
@@ -286,26 +289,310 @@ $host/schema/component/mirai/bot/0.0.1/bot.schema.json
 </tbody>
 </table>
 
-### deviceInfo
+### PasswordInfoConfiguration
 
-:::danger TODO
+`PasswordInfoConfiguration` 是用于配置账号密码的配置类型。其大致结构如下：
 
-TODO
+```json
+{
+  "passwordInfo": {
+    "type": "password_type",
+    "paramA": "valueA",
+    "paramB": "valueB"
+  }
+}
+```
+
+上述示例中可见，`passwordInfo` 一定存在一个 `type` 属性来标记当前配置的类型。`type` 是一个具有固定可选范围的字符串值，并且 `type` 的选择会决定其他的可用属性。
+下面会分别介绍所有的type以及它们对应的具体结构。
+
+#### text {#pwd-text}
+
+当 `type` 值为 `text` 时，代表所配置的内容为 **明文密码**。 
+
+```json
+{
+  "passwordInfo": {
+    "type": "text",
+    "text": "password"
+  }
+}
+```
+
+#### md5_text {#pwd-md5-text}
+
+与 [`type=text`](#pwd-text) 时类似，当 `type` 值为 `md5_text` 时，代表所配置的内容为 **MD5密码(字符串)**。
+
+```json
+{
+  "passwordInfo": {
+    "type": "md5_text",
+    "md5": "e807f1fcf84d112f3bb018ca6738a19f"
+  }
+}
+```
+
+#### md5_bytes
+
+与 [`type=md5_text`](#pwd-md5-text) 时类似，当 `type` 值为 `md5_text` 时，代表所配置的内容为 **MD5密码(字节组)**。
+
+```json
+{
+  "passwordInfo": {
+    "type": "md5_bytes",
+    "md5": [-24, 7, -15, -4, -14, 45, 18, 47, -101, -80, 24, -54, 102, 56, -95, -97]
+  }
+}
+```
+
+
+#### env {#pwd-env}
+
+下文几个以 `env_` 开头的配置类型代表那些直接通过虚拟机参数或者环境变量来进行动态配置的方式。
+这类配置方式暂且称其为**环境变量类**的配置。
+
+在环境变量配置中，会存在两个属性：`prop` 和 `env`。比如如下**示例**：
+
+```json
+{
+  "code": 123456,
+  "passwordInfo": {
+    "type": "env_xxx",
+    "prop": "mirai.$CODE$.password",
+    "env": "mirai.$CODE$.password"
+  }
+}
+```
+
+上述配置代表，当前配置的bot的密码，会先通过虚拟机参数，也就是 `System.getProperty("simbot.mirai.123456.password")` 获取。
+如果无法获取，则会尝试通过环境变量，也就是 `System.getenv("simbot.mirai.123456.password")` 获取。
+
+带入上述示例，你可以通过如下启动命令来动态提供账号 `123456` 的密码信息。
+
+```shell
+java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
+```
+
+注意，`prop` 是优先于 `env` 进行获取的。
+
+:::tip 占位符? 
+
+也许你发现了，上述配置中存在一串占位符 `$CODE$`。占位符会在 [后续](#mark) 进行简单介绍。
 
 :::
 
-使用的自定义设备信息。例如：
+`prop` 和 `env` 本质上都是 **可选** 属性，但是它们二者必须至少 **存在一个** 。
 
-```json title="my-bot.bot"
+因此下述配置将会引发运行时异常：
+
+:::danger 缺少属性
+
+```json
 {
-    "config": {
-      "deviceInfoJson": {
-        "display": [77, 73, 82, 65, 73, 45, 83, 73, 77, 66, 79, 84, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49],
-        "product": [109, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "device": [109, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "board": [109, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "brand": [102, 111, 114, 116, 101],
-        "model": [109, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
+  "passwordInfo": {
+    "type": "env_xxx"
+  }
+}
+```
+
+:::
+
+#### env_text
+
+通过[环境变量属性](#pwd-env)配置 **明文密码**。
+
+```json
+{
+  "passwordInfo": {
+    "type": "env_text",
+    "prop": "xxx",
+    "env": "xxx"
+  }
+}
+```
+
+#### env_md5_text
+
+通过[环境变量属性](#pwd-env)配置 **md5密码(字符串)**。
+
+```json
+{
+  "passwordInfo": {
+    "type": "env_md5_text",
+    "prop": "xxx",
+    "env": "xxx"
+  }
+}
+```
+
+
+### DeviceInfoConfiguration
+
+`DeviceInfoConfiguration` 是用来配置当前账号所使用的**设备信息(`DeviceInfo`)**的配置类型。其大致结构如下：
+
+```json
+{
+  "config": {
+    "deviceInfo": {
+      "type": "xxx",
+      "paramA": "valueA",
+      "paramB": "valueB"
+    }
+  }
+}
+```
+
+上述示例中可见，`deviceInfo` 一定存在一个 `type` 属性来标记当前配置的类型。`type` 是一个具有固定可选范围的字符串值，并且 `type` 的选择会决定其他的可用属性。 
+下面会分别介绍所有的 `type` 可选项以及它们对应的具体结构。
+
+:::info 简化示例
+
+后续相关示例代码会将上述结构中的 `config` 省略，而使用如下结构：
+
+```json
+{
+   "deviceInfo": {
+     "type": "xxx",
+     "paramA": "valueA",
+     "paramB": "valueB"
+   }
+}
+```
+
+:::
+
+#### random
+
+`random` 代表使用mirai所提供的随机设备信息API来生成并使用一个随机的设备信息实例。
+
+```json
+{
+  "deviceInfo": {
+    "type": "random",
+    "seed": null
+  }
+}
+```
+
+属性 `seed` 是一个 **可选项**，且 **可为空**，默认值为 `null`。其代表进行随机时所需要使用的随机种子。
+
+#### simbot_random
+
+`simbot_random` 代表使用simbot组件所提供的**随机设备信息**。simbot组件所提供的随机设备信息相比较于mirai原生的随机设备信息而言，
+其中替换了部分属性内容，使得设备信息中留下了一些 simbot 的痕迹。
+
+```json
+{
+  "deviceInfo": {
+    "type": "simbot_random",
+    "seed": 1
+  }
+}
+```
+
+属性 `seed` 是一个 **可选项**，默认值为 `1`。其代表进行随机时所需要使用的随机种子。
+
+#### resource
+
+`resource` 代表寻找并读取一个本地或资源目录中的配置文件。
+
+```json
+{
+  "deviceInfo": {
+    "type": "resource",
+    "paths": ["foo/bar/device.json"]
+  }
+}
+```
+
+属性 `path` 是 **必选项**，且元素数量应当 **至少为1**。`path` 代表了需要按照顺序寻找的资源文件列表，因此 `path` 所指向的路径都应当为一个**具体的文件**，而不是目录。
+
+**`path` 是支持 [占位符](#mark) 的**。
+
+下述配置为例：
+
+```json
+{
+  "deviceInfo": {
+    "type": "resource",
+    "paths": ["foo/bar/device-$CODE$.json"]
+  }
+}
+```
+
+假设当前bot账号为 `123456`，则上述中配置的路径最终结果为 `"foo/bar/device-123456.json"` 。
+
+
+`path` 在解析时，会首先尝试寻找本地目录，而后寻找资源目录。例如下述配置中：
+
+```json
+{
+  "deviceInfo": {
+    "type": "resource",
+    "paths": ["foo/device.json"]
+  }
+}
+```
+
+解析器首先会去寻找本地目录 `foo/device.json`，也就是项目根目录下 `foo` 目录下的 `device.json` 文件。
+假如未寻得，则会通过类加载器尝试加载当前资源目录下的 `foo/device.json` 结果。如果上述过程结束且 `paths` 所有内容都无命中结果，
+将会抛出异常。
+
+如果你希望指定具体地寻找范围，比如仅寻找本地路径、仅寻找资源路径或者深层寻找资源路径，你可以通过为元素标记**前缀**来完成：
+
+```json
+{
+  "deviceInfo": {
+    "type": "resource",
+    "paths": [
+      "file:device-local.json",
+      "classpath:device-resource.json",
+      "classpath*:device-any.json"
+    ]
+  }
+}
+```
+
+当使用前缀 `file:` 时，指定其后的路径为本地文件。
+
+当使用前缀 `classpath:` 时，指定其后的路径为资源路径。
+
+当使用前缀 `classpath*:` 时，指定其后的路径为资源路径，但是会获取可能得到的**所有**资源并取首个结果。
+
+
+#### object
+
+`object` 代表直接使用最原本的 `DeviceInfo` 序列化结果对象来作为属性值。
+
+```json
+{
+  "deviceInfo": {
+    "type": "object",
+    "object": {}
+  }
+}
+```
+
+<details>
+<summary>完整属性示例</summary>
+
+:::note 仅供参考
+
+下述示例仅为参考，不建议直接使用。属性具体含义请参考mirai `DeviceInfo` 类说明。
+
+:::
+
+```json
+{
+    "deviceInfo": {
+      "type": "object",
+      "object": {
+        "display": [76, 73, 82, 65, 73, 45, 83, 73, 77, 66, 79, 84, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49],
+        "product": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
+        "device": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
+        "board": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
+        "brand": [101, 111, 114, 116, 101],
+        "model": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
         "bootloader": [117, 110, 107, 110, 111, 119, 110],
         "fingerprint": [109, 97, 109, 111, 101, 47, 109, 105, 114, 97, 105, 47, 109, 105, 114, 97, 105, 58, 49, 48, 47, 77, 73, 82, 65, 73, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49, 47, 54, 53, 56, 51, 55, 54, 48, 58, 117, 115, 101, 114, 47, 114, 101, 108, 101, 97, 115, 101, 45, 107, 101, 121, 115],
         "bootId": [-44, 29, -116, -39, -113, 0, -78, 4, -23, -128, 9, -104, -20, -8, 66, 126],
@@ -330,81 +617,138 @@ TODO
 }
 ```
 
-此数据内容完全对应 Mirai 原生的 `DeviceInfo` 类，会将其直接解析为 `DeviceInfo` 实例进行使用。
+</details>
 
-至于其中各属性内容，完全对应 Mirai 原生的 `DeviceInfo` 类，请自行参考其源码。
 
-### simpleDeviceInfo
+#### simple_object
 
-如上一个属性 `deviceInfo` 所示， 其绝大部分属性都是 `ByteArray` 类型的，因此实际上的可读性比较差。
+`simple_object` 与上文中的 `object` 很类似，只不过 `simple_object` 代表使用simbot所提供的 `SimpleDeviceInfo` 序列化结果对象来作为属性值。
 
-因此 simbot 提供了一个 `simpleDeviceInfo` 属性来使得所有的 `ByteArray` 类型的属性都作为 **字符串** 来使用。
+`SimpleDeviceInfo` 属性名与 `DeviceInfo` 基本一致，只不过将 `DeviceInfo` 中所有原本为字节数组的属性变更为了字符串，使得其属性可以相对表现得更直观。
 
-例如：
-
-```json title="my-bot.bot"
+```json
 {
-    "config": {
-       "simpleDeviceInfo": {
-            "display": "MIRAI.496596.001",
-            "product": "mirai",
-            "device": "mirai",
-            "board": "mirai",
-            "brand": "mamoe",
-            "model": "mirai",
-            "bootloader": "unknown",
-            "fingerprint": "mamoe/mirai/mirai:10/MIRAI.200122.001/7041834:user/release-keys",
-            "bootId": "8B176CE7-2C0D-554E-440D-1D6FC8F53AD1",
-            "procVersion": "Linux version 3.0.31-o66PpLqf (android-build@xxx.xxx.xxx.xxx.com)",
-            "baseBand": "",
-            "version": {
-                "incremental": "5891938",
-                "release": "10",
-                "codename": "REL",
-                "sdk": 29
-            },
-            "simInfo": "T-Mobile",
-            "osType": "android",
-            "macAddress": "02:00:00:00:00:00",
-            "wifiBSSID": "02:00:00:00:00:00",
-            "wifiSSID": "<unknown ssid>",
-            "imsiMd5": "5df6e66cc541fe594f228c889cd7828b",
-            "imei": "078869213288891",
-            "apn": "wifi"
-          }
+  "deviceInfo": {
+    "type": "simple_object",
+    "object": {}
+  }
+}
+```
+<details>
+<summary>完整属性示例</summary>
+
+:::note 仅供参考
+
+下述示例仅为参考，不建议直接使用。属性具体含义请参考mirai `DeviceInfo` 类说明（ `SimpleDeviceInfo` 字段含义于其一致）。
+
+:::
+
+```json
+{
+    "deviceInfo": {
+      "type": "object",
+      "object": {
+        "display": "MIRAI.496596.001",
+        "product": "mirai",
+        "device": "mirai",
+        "board": "mirai",
+        "brand": "mamoe",
+        "model": "mirai",
+        "bootloader": "unknown",
+        "fingerprint": "mamoe/mirai/mirai:10/MIRAI.200122.001/7041834:user/release-keys",
+        "bootId": "8B176CE7-2C0D-554E-440D-1D6FC8F53AD1",
+        "procVersion": "Linux version 3.0.31-o66PpLqf (android-build@xxx.xxx.xxx.xxx.com)",
+        "baseBand": "",
+        "version": {
+          "incremental": "5891938",
+          "release": "10",
+          "codename": "REL",
+          "sdk": 29
+        },
+        "simInfo": "T-Mobile",
+        "osType": "android",
+        "macAddress": "02:00:00:00:00:00",
+        "wifiBSSID": "02:00:00:00:00:00",
+        "wifiSSID": "<unknown ssid>",
+        "imsiMd5": "5df6e66cc541fe594f228c889cd7828b",
+        "imei": "078869213288891",
+        "apn": "wifi"
+      }
     }
 }
 ```
 
-此配置会在使用的时候转化为 Mirai 的 `DeviceInfo` 类型并使用。
+</details>
 
-当 `deviceInfo` 属性存在的时候，优先使用 `deviceInfo` 。
+:::caution 兼容性
 
-:::caution
-
-需要注意的是，这代表此属性 **有可能** 会因为未来某天 `DeviceInfo` 类型发生了变化而无法使用，因此需要 **谨慎使用**。
+需要注意的是，`SimpleDeviceInfo` 是 simbot 通过对照 `DeviceInfo` 类的结构而手动构造出来的类型，因此其无法保证与 `DeviceInfo` 之间能够保持长久的兼容对照。
+假若 `DeviceInfo` 在后续版本产生变更， `SimpleDeviceInfo` 是无法保证能够适配兼容的。因此请**谨慎**使用 `SimpleDeviceInfo`。
 
 :::
 
-### deviceInfoFile
 
-除了通过上述 `deviceInfo` 或者 `simpleDeviceInfo` 配置设备信息以外，也可以通过 `deviceInfoFile` 属性来指定一个外部json文件。
+#### auto <Label>默认</Label>
 
-```json title="my-bot.bot"
+`auto` 是在未配置的情况下**默认使用**的类型，其代表会尝试自动寻找配置文件，如果找不到则会使用 [`simbot_random`](#simbot_random) 作为生成策略。
+
+```json
 {
-  "config": {
-     "deviceInfoFile": ".config/yourDeviceInfo.json"
+  "deviceInfo": {
+    "type": "auto",
+    "baseDir": null
   }
 }
 ```
 
-值为一个文件路径，代表设备信息json文件的路径。
+`baseDir` 是一个**可选的**，且**可为null**。其代表在自动搜寻配置文件时的基础目录。当为 `null` 的时候将**不会搜寻**配置文件。
 
-当 `deviceInfo` 属性存在的时候，优先使用 `deviceInfo` 。
+当 `baseDir` 不为 `null` 时，解析器首先会按照顺序尝试搜寻如下目录：
 
-### contactListCache
+1. 本地文件: `$baseDir/device-$CODE$.json` 
+2. 资源文件: `$baseDir/device-$CODE$.json`
+3. 本地文件: `$baseDir/device.json`
+4. 资源文件: `$baseDir/device.json`
 
-同原生mirai配置字段 `contactListCache` ，Json Object 格式。其属性如下：
+如下示例中，
+
+```json
+{
+  "deviceInfo": {
+     "type": "auto",
+     "baseDir": "devices"
+  }
+}
+```
+
+假设当前 `code` 为 `123456`，则最终寻找的目标路径为：
+
+- `devices/device-123456.json`
+- `devices/device.json`
+
+
+`baseDir` 支持 [占位符](#mark) 。
+
+例如：
+
+```json
+{
+  "deviceInfo": {
+     "type": "auto",
+     "baseDir": "devices-$CODE$"
+  }
+}
+```
+
+假设当前 `code` 为 `123456`, 则上述配置中的的 `baseDir` 最终会被替换为 `devices-123456`，并最终会去寻找如下目标：
+
+- `devices-123456/device-123456.json`
+- `devices-123456/device.json`
+
+
+### ContactListCacheConfiguration
+
+类型结构同原生mirai配置字段 `contactListCache`，其属性如下：
 
 #### saveIntervalMillis
 
@@ -431,3 +775,13 @@ TODO
    }
 }
 ```
+
+
+
+## 占位符替换 {#mark}
+
+在上述详细释义中，你可能会发现有些配置中（尤其是存在 `type` 的多选择配置）会出现占位符 `$CODE$`。其实这个占位符很简单，它会在这个配置进行处理前，将 `$CODE$` 替换为当前bot的`code`信息。
+
+例如你所配置的 `code` 值为 `123456`，那么 `$CODE$` 最终就会被替换为 `123456`。
+
+需要注意的是，并非所有配置都允许这个占位符。如果某个配置项支持，那么在说明中（也包括源码中的文档注释）将会有所体现。
