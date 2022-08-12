@@ -33,7 +33,13 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 ### 如何使用
 
 以 [IntelliJ IDEA](https://www.jetbrains.com/?from=simpler-robot) 为例，
-对一个 `JSON` 文件使用架构可以参考其 [官方文档](https://www.jetbrains.com/help/idea/json.html#ws_json_using_schemas)。
+对一个 `JSON` 文件使用JSON架构可以参考其 [官方文档](https://www.jetbrains.com/help/idea/json.html#ws_json_using_schemas)。
+
+:::tip
+
+**JSON架构** 的约束适用于 `JSON`、`YAML` 文件。
+
+:::
 
 ## 最简配置
 
