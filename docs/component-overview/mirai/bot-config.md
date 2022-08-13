@@ -13,20 +13,20 @@ import Label from '@site/src/components/Label'
 
 mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-schema.org/) 。
 
-> 当前 `schema` 版本：[<Label>0.0.1</Label>](/schema/component/mirai/bot/0.0.1/bot.config.json)
+> 当前 `schema` 版本：[<Label>0.0.1</Label>](/schema/component/mirai/bot/0.1.0/bot.config.json)
 
 ### 架构资源
 
-你可以通过 [此处](/schema/component/mirai/bot/0.0.1/bot.config.json) 下载 `bot.config.json` 文件，
+你可以通过 [此处](/schema/component/mirai/bot/0.1.0/bot.config.json) 下载 `bot.config.json` 文件，
 或者使用远程资源路径：
 
-**`$host/schema/component/mirai/bot/0.0.1/bot.config.json`**
+**`$host/schema/component/mirai/bot/0.1.0/bot.config.json`**
 
 :::note
 
 远程资源路径的 `$host` 即为当前站点，例如：
 
-<https://simbot.forte.love/schema/component/mirai/bot/0.0.1/bot.config.json>
+<https://simbot.forte.love/schema/component/mirai/bot/0.1.0/bot.config.json>
 
 :::
 
@@ -270,6 +270,23 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
             同原生mirai配置，是否处理接受到的特殊换行符, 默认为 true。
             <li>若为 true, 会将收到的 CRLF(\r\n) 和 CR(\r) 替换为 LF(\n)</li>
             <li>若为 false, 则不做处理</li>
+        </td>
+    </tr>
+    <tr>
+        <td>config.<b>recallMessageCacheStrategy</b></td>
+        <td><Label>enum</Label></td>
+        <td>
+            用于 <b>消息撤回事件(<code>MiraiMessageRecallEvent</code>)</b> 的消息缓存策略。
+            可选值为枚举类型 <code>MiraiBotVerifyInfoConfiguration.RecallMessageCacheStrategyType</code> 中的可选元素：
+            <table>
+                <thead>
+                    <tr><th>元素名</th><th>释义</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>INVALID</code></td><td>无效的缓存策略，即<b>不进行缓存。</b></td></tr>
+                    <tr><td><code>MEMORY_LRU</code></td><td>基于内存的 LRU 缓存策略</td></tr>
+                </tbody>
+            </table>
         </td>
     </tr>
     <tr>
@@ -563,6 +580,60 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 当使用前缀 `classpath*:` 时，指定其后的路径为资源路径，但是会获取可能得到的**所有**资源并取首个结果。
 
+#### file_based
+
+`file_based` 代表使用类似于mirai原生配置中的 `BotConfiguration.fileBasedDeviceInfo` 来进行配置。
+
+```json
+{
+  "deviceInfo": {
+    "type": "file_based",
+    "file": "device.json",
+    "fromResource": null
+  }
+}
+```
+
+与 [`resource`](#resource) 不同的是，`file_based` 是基于 `DeviceInfo.loadAsDeviceInfo()` 的，
+其最终结果与行为会类似于使用 `BotConfiguration.fileBasedDeviceInfo()`。
+
+`file_based` **仅支持** 使用本地文件，且所需要读取的设备信息文件的格式也与`DeviceInfo` 的结构存在些许不同，
+它们是存在"版本号"的信息格式。因此 `file_based` 的所需格式与 [`resource`](#resource)的所需格式可能并不通用。
+
+不过，虽然"仅支持"本地文件，但是它提供了一个可选参数 `fromResource` 来允许在读取文件之前进行检测：
+当 `file` 处的文件**不存在**或**内容为空**时，会尝试从资源路径中寻找 `fromResource` 并将其复制到 `file` 处。
+如果此行为尝试失败，则会输出警告日志，但不会终止流程。
+
+```json
+{
+  "deviceInfo": {
+    "type": "file_based",
+    "file": "device.json",
+    "fromResource": "device.json"
+  }
+}
+```
+
+上述配置中，如果当前项目根目录中不存在 `device.json` 文件，则会尝试从资源目录中读取 `device.json` 并将其内容复制到项目根目录的 `device.json` 文件中。
+
+<br />
+
+与mirai原生配置 `BotConfiguration.fileBasedDeviceInfo()` 不同的是，`file_based` 的属性 `file` **不会** 被限制在 `workingDir` 中，而是会被**直接使用**。
+因此在配置的时候请注意相对路径或绝对路径的使用，以及系统权限等问题。
+
+<br />
+
+`file` 和 `fromResource` 支持占位符替换，例如：
+
+```json
+{
+  "deviceInfo": {
+    "type": "file_based",
+    "file": "$CODE$-device.json",
+    "fromResource": "$CODE$-device.json"
+  }
+}
+```
 
 #### object
 
