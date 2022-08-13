@@ -2011,19 +2011,20 @@ config.deviceInfo.value.baseDir=devices-$CODE$
 <TabItem value="Yaml">
 
 ```yaml
-contactListCache:
-  saveIntervalMillis: 60000
-  friendListCacheEnabled: false
-  groupMemberListCacheEnabled: false
+config:
+  contactListCache:
+    saveIntervalMillis: 60000
+    friendListCacheEnabled: false
+    groupMemberListCacheEnabled: false
 ```
 
 </TabItem>
 <TabItem value="Properties">
 
 ```properties
-contactListCache.saveIntervalMillis=60000
-contactListCache.friendListCacheEnabled=false
-contactListCache.groupMemberListCacheEnabled=false
+config.contactListCache.saveIntervalMillis=60000
+config.contactListCache.friendListCacheEnabled=false
+config.contactListCache.groupMemberListCacheEnabled=false
 ```
 
 </TabItem>
