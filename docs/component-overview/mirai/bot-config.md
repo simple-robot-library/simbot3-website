@@ -46,7 +46,7 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 ### 明文密码
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json title="my-bot.bot.json"
 {
@@ -60,7 +60,7 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml title='my-bot.bot.yaml'
 component: "simbot.mirai"
@@ -85,7 +85,7 @@ passwordInfo.value.text=你的密码
 ### MD5密码
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json title="my-bot.bot.json"
 {
@@ -99,7 +99,7 @@ passwordInfo.value.text=你的密码
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml title='my-bot.bot.yaml'
 component: "simbot.mirai"
@@ -136,7 +136,7 @@ passwordInfo.value.text=e807f1fcf82d132f9bb018ca6738a19f
 > 下述部分属性不会提供所有的可能（例如 `passwordInfo`），对所有属性的完整解释参见后续说明。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json title="my-bot.bot.json"
 {
@@ -178,7 +178,7 @@ passwordInfo.value.text=e807f1fcf82d132f9bb018ca6738a19f
 
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml title='my-bot.bot.yaml'
 component: "simbot.mirai"
@@ -436,7 +436,7 @@ config.accountSecrets=false
 `PasswordInfoConfiguration` 是用于配置账号密码的配置类型。其大致结构如下：
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -449,7 +449,7 @@ config.accountSecrets=false
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 passwordInfo: !<password_type>
@@ -478,7 +478,7 @@ passwordInfo.value.paramB=valueB
 当 `type` 值为 `text` 时，代表所配置的内容为 **明文密码**。 
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -490,7 +490,7 @@ passwordInfo.value.paramB=valueB
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 passwordInfo: !<text>
@@ -514,7 +514,7 @@ passwordInfo.value.text=password
 与 [`type=text`](#pwd-text) 时类似，当 `type` 值为 `md5_text` 时，代表所配置的内容为 **MD5密码(字符串)**。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -526,7 +526,7 @@ passwordInfo.value.text=password
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 passwordInfo: !<md5_text>
@@ -549,7 +549,7 @@ passwordInfo.value.md5=e807f1fcf84d112f3bb018ca6738a19f
 与 [`type=md5_text`](#pwd-md5-text) 时类似，当 `type` 值为 `md5_text` 时，代表所配置的内容为 **MD5密码(字节组)**。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -561,7 +561,7 @@ passwordInfo.value.md5=e807f1fcf84d112f3bb018ca6738a19f
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 passwordInfo: !<md5_bytes>
@@ -608,7 +608,7 @@ passwordInfo.value.md5.15=-41
 在环境变量配置中，会存在两个属性：`prop` 和 `env`。比如如下**示例**：
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -622,7 +622,7 @@ passwordInfo.value.md5.15=-41
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 code: 123456
@@ -669,7 +669,7 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 :::danger 缺少属性
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -680,7 +680,7 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 code: 123456
@@ -705,7 +705,7 @@ passwordInfo.type=env_xxx
 通过[环境变量属性](#pwd-env)配置 **明文密码**。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -718,7 +718,7 @@ passwordInfo.type=env_xxx
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 passwordInfo: !<env_text>
@@ -743,7 +743,7 @@ passwordInfo.value.env=xxx
 通过[环境变量属性](#pwd-env)配置 **md5密码(字符串)**。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -756,7 +756,7 @@ passwordInfo.value.env=xxx
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 passwordInfo: !<env_md5_text>
@@ -781,7 +781,7 @@ passwordInfo.value.env=xxx
 `DeviceInfoConfiguration` 是用来配置当前账号所使用的**设备信息(`DeviceInfo`)**的配置类型。其大致结构如下：
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -796,7 +796,7 @@ passwordInfo.value.env=xxx
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -827,7 +827,7 @@ config.deviceInfo.value.paramB=valueB
 `random` 代表使用mirai所提供的随机设备信息API来生成并使用一个随机的设备信息实例。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -841,7 +841,7 @@ config.deviceInfo.value.paramB=valueB
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -868,7 +868,7 @@ config.deviceInfo.type=random
 其中替换了部分属性内容，使得设备信息中留下了一些 simbot 的痕迹。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -882,7 +882,7 @@ config.deviceInfo.type=random
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -908,7 +908,7 @@ config.deviceInfo.value.seed=1
 `resource` 代表寻找并读取一个本地或资源目录中的配置文件。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -922,7 +922,7 @@ config.deviceInfo.value.seed=1
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -949,7 +949,7 @@ config.deviceInfo.value.paths.0=foo/bar/device.json
 下述配置为例：
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -963,7 +963,7 @@ config.deviceInfo.value.paths.0=foo/bar/device.json
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -988,7 +988,7 @@ config.deviceInfo.value.paths.0=foo/bar/device-$CODE$.json
 `path` 在解析时，会首先尝试寻找本地目录，而后寻找资源目录。例如下述配置中：
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1002,7 +1002,7 @@ config.deviceInfo.value.paths.0=foo/bar/device-$CODE$.json
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1029,7 +1029,7 @@ config.deviceInfo.value.paths.0=foo/device-$CODE$.json
 如果你希望指定具体地寻找范围，比如仅寻找本地路径、仅寻找资源路径或者深层寻找资源路径，你可以通过为元素标记**前缀**来完成：
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1047,7 +1047,7 @@ config.deviceInfo.value.paths.0=foo/device-$CODE$.json
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1082,7 +1082,7 @@ config.deviceInfo.value.paths.2=classpath*:device-any.json
 `file_based` 代表使用类似于mirai原生配置中的 `BotConfiguration.fileBasedDeviceInfo` 来进行配置。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1097,7 +1097,7 @@ config.deviceInfo.value.paths.2=classpath*:device-any.json
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1129,7 +1129,7 @@ config.deviceInfo.value.file=device.json
 如果此行为尝试失败，则会输出警告日志，但不会终止流程。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1144,7 +1144,7 @@ config.deviceInfo.value.file=device.json
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1177,7 +1177,7 @@ config.deviceInfo.value.fromResource=device-resource.json
 `file` 和 `fromResource` 支持占位符替换，例如：
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1192,7 +1192,7 @@ config.deviceInfo.value.fromResource=device-resource.json
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1218,7 +1218,7 @@ config.deviceInfo.value.fromResource=device-resource-$CODE$.json
 `object` 代表直接使用最原本的 `DeviceInfo` 序列化结果对象来作为属性值。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1232,7 +1232,7 @@ config.deviceInfo.value.fromResource=device-resource-$CODE$.json
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1259,7 +1259,7 @@ config.deviceInfo.type=object
 :::
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1299,7 +1299,7 @@ config.deviceInfo.type=object
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1684,7 +1684,7 @@ config.deviceInfo.value.object.apn.3=105
 `SimpleDeviceInfo` 属性名与 `DeviceInfo` 基本一致，只不过将 `DeviceInfo` 中所有原本为字节数组的属性变更为了字符串，使得其属性可以相对表现得更直观。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1698,7 +1698,7 @@ config.deviceInfo.value.object.apn.3=105
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1725,7 +1725,7 @@ config.deviceInfo.type=simple_object
 :::
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1765,7 +1765,7 @@ config.deviceInfo.type=simple_object
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1845,7 +1845,7 @@ config.deviceInfo.value.object.apn=wifi
 `auto` 是在未配置的情况下**默认使用**的类型，其代表会尝试自动寻找配置文件，如果找不到则会使用 [`simbot_random`](#simbot_random) 作为生成策略。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1859,7 +1859,7 @@ config.deviceInfo.value.object.apn=wifi
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1890,7 +1890,7 @@ config.deviceInfo.type=auto
 如下示例中，
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1904,7 +1904,7 @@ config.deviceInfo.type=auto
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1935,7 +1935,7 @@ config.deviceInfo.value.baseDir=devices
 例如：
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -1949,7 +1949,7 @@ config.deviceInfo.value.baseDir=devices
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:
@@ -1993,7 +1993,7 @@ config.deviceInfo.value.baseDir=devices-$CODE$
 #### 参考配置
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json
 {
@@ -2008,7 +2008,7 @@ config.deviceInfo.value.baseDir=devices-$CODE$
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml
 config:

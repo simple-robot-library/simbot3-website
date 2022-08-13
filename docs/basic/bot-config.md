@@ -145,75 +145,116 @@ dependencies {
 :::
 
 ## 配置项
-对于一个bot配置文件，其可能存在的属性在每个不同的组件下都是不同的，但是有一个属性必定存在，即 component:
+对于一个bot配置文件，其可能存在的属性在每个不同的组件下都是不同的，但是有一个属性必定存在，即 `component`:
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="json">
 
 ```json title='my-bot.bot'
 {
-  "component": "simbot.mirai"
+  "component": "simbot.xxxx"
 }
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml title='my-bot.bot.yaml'
-component: 'simbot.mirai'
+component: 'simbot.xxxx'
 ```
 
 </TabItem>
-<TabItem value="Properties">
+<TabItem value="properties">
 
 ```properties title='my-bot.properties'
-component=simbot.mirai
+component=simbot.xxxx
+```
+
+</TabItem>
+<TabItem value="HOCON">
+
+:::caution 只是期望
+
+对 `HOCON` 的支持仅在计划中，目前尚未支持。
+
+:::
+
+```hocon title='my-bot.conf'
+component=simbot.xxxx
 ```
 
 </TabItem>
 </Tabs>
 
 
-`component` 属性用来阐明此配置文件是为了哪个组件所服务的，它的值为对应组件的ID值。例如上述示例中的 `simbot.mirai`，
-则代表此配置文件为 [mirai组件](../component-overview/mirai) 所使用的配置。
+`component` 属性用来阐明此配置文件是为了哪个组件所服务的，它的值为对应组件的ID值。
+例如 `simbot.mirai`，则代表此配置文件为 [mirai组件](../component-overview/mirai) 所使用的配置。
 
-而对于一个mirai组件，能够进行登陆的最简配置**之一**如下：
+一个配置文件代表了一个组件下某个bot的特定配置。
+而除了所有配置文件内都应存在的配置项 `component` 以外，其他的所有内容都是组件实现所**定制**的，你需要参考相关组件的说明文档来进行进一步的配置。
+
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 ```json title='my-bot.bot.json'
 {
-  "component": "simbot.mirai",
-  "code": 1145141919,
-  "password": "保护好你的小秘密"
+  "component": "simbot.xxx",
+  "code": 123456,
+  "password": "password"
+  "config": {
+    "type": "normal",
+    "duration": 60000
+  }
 }
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 ```yaml title='my-bot.bot.yml'
-component: 'simbot.mirai'
-code: 1145141919
-password: '保护好你的小秘密'
+component: 'simbot.xxx'
+code: 123456
+password: 'password'
+config:
+  cache: !<normal>
+  duration: 60000
 ```
 
 </TabItem>
 <TabItem value="Properties">
 
 ```properties title='my-bot.properties'
-component=simbot.mirai
-code=1145141919
-password=保护好你的小秘密
+component=simbot.xxx
+code=123456
+password=password
+config.cache.type=normal
+config.cache.value.duration=60000
+```
+
+</TabItem>
+<TabItem value="HOCON">
+
+:::caution 只是期望
+
+对 `HOCON` 的支持仅在计划中，目前尚未支持。
+
+:::
+
+```hocon title='my-bot.conf'
+component=simbot.xxx
+code=123456
+password=password
+config {
+    dataSync {
+        type=normal
+        duration=60000
+    } 
+}
 ```
 
 </TabItem>
 </Tabs>
-
-
-一个 bot 配置文件代表了一个组件下某个bot的特定配置。
-而除了所有配置文件内都应存在的配置项 `component` 以外，其他的所有内容都是组件实现所**定制**的，你需要参考相关组件的说明文档来进行进一步的配置。
 
 ## 解析
 
@@ -233,7 +274,7 @@ password=保护好你的小秘密
 你可以通过构建 `BotVerifyInfo` 来自定义解析一个 bot 配置文件。
 
 <Tabs groupId="bot-config">
-<TabItem value="Json">
+<TabItem value="JSON">
 
 假设一个配置文件如下：
 
@@ -273,7 +314,7 @@ fun main() {
 ```
 
 </TabItem>
-<TabItem value="Yaml">
+<TabItem value="YAML">
 
 假设一个配置文件如下：
 

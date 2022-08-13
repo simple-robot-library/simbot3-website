@@ -239,7 +239,7 @@ public class BarController {
 你可以使用spring的配置文件进行提供：
 
 <Tabs>
-<TabItem value="yaml">
+<TabItem value="YAML">
 
 ```yaml
 simbot:
