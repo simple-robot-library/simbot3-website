@@ -7,13 +7,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Label from '@site/src/components/Label'
 
-有关bot的配置文件相关内容，请先阅读 [BOT配置](../../basic/bot-config) 。
+有关bot的配置文件相关内容，请先阅读 [**BOT配置**](../../basic/bot-config) 。
 
 ## 架构
 
 mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-schema.org/) 。
 
-> 当前 `schema` 版本：[<Label>0.0.1</Label>](/schema/component/mirai/bot/0.1.0/bot.config.json)
+> 当前 `schema` 版本：[<Label>0.1.0</Label>](/schema/component/mirai/bot/0.1.0/bot.config.json)
 
 ### 架构资源
 
@@ -45,6 +45,9 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 
 ### 明文密码
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json title="my-bot.bot.json"
 {
     "component": "simbot.mirai",
@@ -56,7 +59,33 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml title='my-bot.bot.yaml'
+component: "simbot.mirai"
+code: 123456789
+passwordInfo: !<text>
+  text: "你的密码"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties title='my-bot.properties'
+code=123456789
+passwordInfo.type=text
+passwordInfo.value.text=你的密码
+```
+
+</TabItem>
+</Tabs>
+
+
 ### MD5密码
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json title="my-bot.bot.json"
 {
@@ -69,6 +98,31 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml title='my-bot.bot.yaml'
+component: "simbot.mirai"
+code: 123456789
+passwordInfo: !<md5_text>
+  text: "e807f1fcf82d132f9bb018ca6738a19f"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties title='my-bot.properties'
+component=simbot.mirai
+code=123456789
+passwordInfo.type=md5_text
+passwordInfo.value.text=e807f1fcf82d132f9bb018ca6738a19f
+```
+
+</TabItem>
+</Tabs>
+
+
+
 <details>
 <summary>完整配置参考</summary>
 
@@ -80,6 +134,9 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 下述的完整配置参考中，`config.deviceInfo` 将会被**省略**。
 
 > 下述部分属性不会提供所有的可能（例如 `passwordInfo`），对所有属性的完整解释参见后续说明。
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json title="my-bot.bot.json"
 {
@@ -113,10 +170,83 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
       },
       "loginCacheEnabled": true,
       "convertLineSeparator": true,
-      "recallMessageCacheStrategy": "INVALID"
+      "recallMessageCacheStrategy": "INVALID",
+      "accountSecrets": false
   }
 }
 ```
+
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml title='my-bot.bot.yaml'
+component: "simbot.mirai"
+code: 123456789
+passwordInfo: !<text>
+  text: "明文密码"
+config:
+  deviceInfoSeed: 1
+  workingDir: "."
+  heartbeatPeriodMillis: 60000
+  statHeartbeatPeriodMillis: 300000
+  heartbeatTimeoutMillis: 5000
+  heartbeatStrategy: "STAT_HB"
+  reconnectionRetryTimes: 2147483647
+  autoReconnectOnForceOffline: false
+  protocol: "ANDROID_PHONE"
+  highwayUploadCoroutineCount: 8
+  deviceInfo: !<auto>
+  noNetworkLog: false
+  noBotLog: false
+  isShowingVerboseEventLog: false
+  cacheDir: "cache"
+  contactListCache:
+    saveIntervalMillis: 60000
+    friendListCacheEnabled: false
+    groupMemberListCacheEnabled: false
+  loginCacheEnabled: true
+  convertLineSeparator: true
+  recallMessageCacheStrategy: "INVALID"
+  accountSecrets: false
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties title='my-bot.properties'
+component=simbot.mirai
+code=123456789
+passwordInfo.type=text
+passwordInfo.value.text=明文密码
+config.deviceInfoSeed=1
+config.workingDir=.
+config.heartbeatPeriodMillis=60000
+config.statHeartbeatPeriodMillis=300000
+config.heartbeatTimeoutMillis=5000
+config.heartbeatStrategy=STAT_HB
+config.reconnectionRetryTimes=2147483647
+config.autoReconnectOnForceOffline=false
+config.protocol=ANDROID_PHONE
+config.highwayUploadCoroutineCount=8
+config.deviceInfo.type=auto
+config.noNetworkLog=false
+config.noBotLog=false
+config.isShowingVerboseEventLog=false
+config.cacheDir=cache
+config.contactListCache.saveIntervalMillis=60000
+config.contactListCache.friendListCacheEnabled=false
+config.contactListCache.groupMemberListCacheEnabled=false
+config.loginCacheEnabled=true
+config.convertLineSeparator=true
+config.recallMessageCacheStrategy=INVALID
+config.accountSecrets=false
+```
+
+</TabItem>
+</Tabs>
+
+
 
 </details>
 
@@ -290,20 +420,11 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
         </td>
     </tr>
     <tr>
-        <td>config.<b>recallMessageCacheStrategy</b></td>
-        <td><Label>enum</Label></td>
+        <td>config.<b>accountSecrets</b></td>
+        <td><Label>boolean</Label></td>
         <td>
-            用于 <b>消息撤回事件(<code>MiraiMessageRecallEvent</code>)</b> 的消息缓存策略。
-            可选值为枚举类型 <code>MiraiBotVerifyInfoConfiguration.RecallMessageCacheStrategyType</code> 中的可选元素：
-            <table>
-                <thead>
-                    <tr><th>元素名</th><th>释义</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td><code>INVALID</code></td><td>无效的缓存策略，即<b>不进行缓存。</b></td></tr>
-                    <tr><td><code>MEMORY_LRU</code></td><td>基于内存的 LRU 缓存策略</td></tr>
-                </tbody>
-            </table>
+            是否禁用 `account.secrets` 的保存，默认为 `false`。
+            相当于 `BotConfiguration.disableAccountSecretes()`。
         </td>
     </tr>
 
@@ -313,6 +434,9 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 ### PasswordInfoConfiguration
 
 `PasswordInfoConfiguration` 是用于配置账号密码的配置类型。其大致结构如下：
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
@@ -324,12 +448,37 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+passwordInfo: !<password_type>
+  paramA: "valueA"
+  paramB: "valueB"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+passwordInfo.type=password_type
+passwordInfo.value.paramA=valueA
+passwordInfo.value.paramB=valueB
+```
+
+</TabItem>
+</Tabs>
+
+
 上述示例中可见，`passwordInfo` 一定存在一个 `type` 属性来标记当前配置的类型。`type` 是一个具有固定可选范围的字符串值，并且 `type` 的选择会决定其他的可用属性。
 下面会分别介绍所有的type以及它们对应的具体结构。
 
 #### text {#pwd-text}
 
 当 `type` 值为 `text` 时，代表所配置的内容为 **明文密码**。 
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
@@ -340,9 +489,32 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+passwordInfo: !<text>
+  text: "password"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+passwordInfo.type=text
+passwordInfo.value.text=password
+```
+
+</TabItem>
+</Tabs>
+
+
 #### md5_text {#pwd-md5-text}
 
 与 [`type=text`](#pwd-text) 时类似，当 `type` 值为 `md5_text` 时，代表所配置的内容为 **MD5密码(字符串)**。
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
@@ -353,9 +525,31 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+passwordInfo: !<md5_text>
+  md5: "e807f1fcf84d112f3bb018ca6738a19f"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+passwordInfo.type=md5_text
+passwordInfo.value.md5=e807f1fcf84d112f3bb018ca6738a19f
+```
+
+</TabItem>
+</Tabs>
+
 #### md5_bytes
 
 与 [`type=md5_text`](#pwd-md5-text) 时类似，当 `type` 值为 `md5_text` 时，代表所配置的内容为 **MD5密码(字节组)**。
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
@@ -366,6 +560,45 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+passwordInfo: !<md5_bytes>
+  md5: [-117, 26, -103, 83, -60, 97, 18, -106, -88, 39, -85, -8, -60, 120, 4, -41]
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+:::tip 还是看看其他吧
+
+`kotlinx-serialization-properties` 的序列化风格使得它并不太适用于大量元素的"数组"格式，就像下面这个示例一样。
+
+:::
+
+```properties
+passwordInfo.type=md5_bytes
+passwordInfo.value.md5.0=-117
+passwordInfo.value.md5.1=26
+passwordInfo.value.md5.2=-103
+passwordInfo.value.md5.3=83
+passwordInfo.value.md5.4=-60
+passwordInfo.value.md5.5=97
+passwordInfo.value.md5.6=18
+passwordInfo.value.md5.7=-106
+passwordInfo.value.md5.8=-88
+passwordInfo.value.md5.9=39
+passwordInfo.value.md5.10=-85
+passwordInfo.value.md5.11=-8
+passwordInfo.value.md5.12=-60
+passwordInfo.value.md5.13=120
+passwordInfo.value.md5.14=4
+passwordInfo.value.md5.15=-41
+```
+
+</TabItem>
+</Tabs>
 
 #### env {#pwd-env}
 
@@ -373,6 +606,9 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 这类配置方式暂且称其为**环境变量类**的配置。
 
 在环境变量配置中，会存在两个属性：`prop` 和 `env`。比如如下**示例**：
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
@@ -384,6 +620,30 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+code: 123456
+passwordInfo: !<env_xxx>
+  prop: "mirai.$CODE$.password"
+  env: "mirai.$CODE$.password"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+code=123456
+passwordInfo.type=env_xxx
+passwordInfo.value.prop=mirai.$CODE$.password
+passwordInfo.value.env=mirai.$CODE$.password
+```
+
+</TabItem>
+</Tabs>
+
 
 上述配置代表，当前配置的bot的密码，会先通过虚拟机参数，也就是 `System.getProperty("simbot.mirai.123456.password")` 获取。
 如果无法获取，则会尝试通过环境变量，也就是 `System.getenv("simbot.mirai.123456.password")` 获取。
@@ -408,6 +668,9 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 :::danger 缺少属性
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
   "passwordInfo": {
@@ -416,11 +679,33 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+code: 123456
+passwordInfo: !<env_xxx>
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+code=123456
+passwordInfo.type=env_xxx
+```
+
+</TabItem>
+</Tabs>
+
 :::
 
 #### env_text
 
 通过[环境变量属性](#pwd-env)配置 **明文密码**。
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
@@ -432,9 +717,33 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+passwordInfo: !<env_text>
+  prop: "xxx"
+  env: "xxx"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+passwordInfo.type=env_text
+passwordInfo.value.prop=xxx
+passwordInfo.value.env=xxx
+```
+
+</TabItem>
+</Tabs>
+
 #### env_md5_text
 
 通过[环境变量属性](#pwd-env)配置 **md5密码(字符串)**。
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
@@ -446,10 +755,33 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+passwordInfo: !<env_md5_text>
+  prop: "xxx"
+  env: "xxx"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+passwordInfo.type=env_md5_text
+passwordInfo.value.prop=xxx
+passwordInfo.value.env=xxx
+```
+
+</TabItem>
+</Tabs>
 
 ### DeviceInfoConfiguration
 
 `DeviceInfoConfiguration` 是用来配置当前账号所使用的**设备信息(`DeviceInfo`)**的配置类型。其大致结构如下：
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
@@ -463,37 +795,70 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<xxx>
+    paramA: "valueA"
+    paramB: "valueB"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=xxx
+config.deviceInfo.value.paramA=valueA
+config.deviceInfo.value.paramB=valueB
+```
+
+</TabItem>
+</Tabs>
+
+
 上述示例中可见，`deviceInfo` 一定存在一个 `type` 属性来标记当前配置的类型。`type` 是一个具有固定可选范围的字符串值，并且 `type` 的选择会决定其他的可用属性。 
 下面会分别介绍所有的 `type` 可选项以及它们对应的具体结构。
 
-:::info 简化示例
-
-后续相关示例代码会将上述结构中的 `config` 省略，而使用如下结构：
-
-```json
-{
-   "deviceInfo": {
-     "type": "xxx",
-     "paramA": "valueA",
-     "paramB": "valueB"
-   }
-}
-```
-
-:::
 
 #### random
 
 `random` 代表使用mirai所提供的随机设备信息API来生成并使用一个随机的设备信息实例。
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "random",
-    "seed": null
+  "config": {
+    "deviceInfo": {
+      "type": "random",
+      "seed": null
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<random>
+    seed: null
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=random
+# config.deviceInfo.value.seed=
+```
+
+</TabItem>
+</Tabs>
 
 属性 `seed` 是一个 **可选项**，且 **可为空**，默认值为 `null`。其代表进行随机时所需要使用的随机种子。
 
@@ -502,14 +867,39 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 `simbot_random` 代表使用simbot组件所提供的**随机设备信息**。simbot组件所提供的随机设备信息相比较于mirai原生的随机设备信息而言，
 其中替换了部分属性内容，使得设备信息中留下了一些 simbot 的痕迹。
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "simbot_random",
-    "seed": 1
+  "config": {
+    "deviceInfo": {
+      "type": "simbot_random",
+      "seed": 1
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<simbot_random>
+    seed: 1
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=simbot_random
+config.deviceInfo.value.seed=1
+```
+
+</TabItem>
+</Tabs>
 
 属性 `seed` 是一个 **可选项**，默认值为 `1`。其代表进行随机时所需要使用的随机种子。
 
@@ -517,14 +907,40 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 `resource` 代表寻找并读取一个本地或资源目录中的配置文件。
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "resource",
-    "paths": ["foo/bar/device.json"]
+  "config": {
+    "deviceInfo": {
+      "type": "resource",
+      "paths": ["foo/bar/device.json"]
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<resource>
+    paths: 
+    - "foo/bar/device.json"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=resource
+config.deviceInfo.value.paths.0=foo/bar/device.json
+```
+
+</TabItem>
+</Tabs>
 
 属性 `path` 是 **必选项**，且元素数量应当 **至少为1**。`path` 代表了需要按照顺序寻找的资源文件列表，因此 `path` 所指向的路径都应当为一个**具体的文件**，而不是目录。
 
@@ -532,28 +948,79 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 下述配置为例：
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "resource",
-    "paths": ["foo/bar/device-$CODE$.json"]
+  "config": {
+    "deviceInfo": {
+      "type": "resource",
+      "paths": ["foo/bar/device-$CODE$.json"]
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<resource>
+    paths: 
+    - "foo/bar/device-$CODE$.json"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=resource
+config.deviceInfo.value.paths.0=foo/bar/device-$CODE$.json
+```
+
+</TabItem>
+</Tabs>
 
 假设当前bot账号为 `123456`，则上述中配置的路径最终结果为 `"foo/bar/device-123456.json"` 。
 
-
 `path` 在解析时，会首先尝试寻找本地目录，而后寻找资源目录。例如下述配置中：
+
+<Tabs groupId="bot-config">
+<TabItem value="Json">
 
 ```json
 {
-  "deviceInfo": {
-    "type": "resource",
-    "paths": ["foo/device.json"]
+  "config": {
+    "deviceInfo": {
+      "type": "resource",
+      "paths": ["foo/device-$CODE$.json"]
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<resource>
+    paths: 
+    - "foo/device-$CODE$.json"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=resource
+config.deviceInfo.value.paths.0=foo/device-$CODE$.json
+```
+
+</TabItem>
+</Tabs>
 
 解析器首先会去寻找本地目录 `foo/device.json`，也就是项目根目录下 `foo` 目录下的 `device.json` 文件。
 假如未寻得，则会通过类加载器尝试加载当前资源目录下的 `foo/device.json` 结果。如果上述过程结束且 `paths` 所有内容都无命中结果，
@@ -561,18 +1028,48 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 如果你希望指定具体地寻找范围，比如仅寻找本地路径、仅寻找资源路径或者深层寻找资源路径，你可以通过为元素标记**前缀**来完成：
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "resource",
-    "paths": [
-      "file:device-local.json",
-      "classpath:device-resource.json",
-      "classpath*:device-any.json"
-    ]
+  "config": {
+    "deviceInfo": {
+      "type": "resource",
+      "paths": [
+        "file:device-local.json",
+        "classpath:device-resource.json",
+        "classpath*:device-any.json"
+      ]
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<resource>
+    paths:
+    - "file:device-local.json"
+    - "classpath:device-resource.json"
+    - "classpath*:device-any.json"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=resource
+config.deviceInfo.value.paths.0=file:device-local.json
+config.deviceInfo.value.paths.1=classpath:device-resource.json
+config.deviceInfo.value.paths.2=classpath*:device-any.json
+```
+
+</TabItem>
+</Tabs>
 
 当使用前缀 `file:` 时，指定其后的路径为本地文件。
 
@@ -584,15 +1081,42 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 `file_based` 代表使用类似于mirai原生配置中的 `BotConfiguration.fileBasedDeviceInfo` 来进行配置。
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "file_based",
-    "file": "device.json",
-    "fromResource": null
+  "config": {
+    "deviceInfo": {
+      "type": "file_based",
+      "file": "device.json",
+      "fromResource": null
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<file_based>
+    file: "device.json"
+    fromResource: null
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=file_based
+config.deviceInfo.value.file=device.json
+# config.deviceInfo.value.fromResource=device-resource.json
+```
+
+</TabItem>
+</Tabs>
 
 与 [`resource`](#resource) 不同的是，`file_based` 是基于 `DeviceInfo.loadAsDeviceInfo()` 的，
 其最终结果与行为会类似于使用 `BotConfiguration.fileBasedDeviceInfo()`。
@@ -604,17 +1128,44 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 当 `file` 处的文件**不存在**或**内容为空**时，会尝试从资源路径中寻找 `fromResource` 并将其复制到 `file` 处。
 如果此行为尝试失败，则会输出警告日志，但不会终止流程。
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "file_based",
-    "file": "device.json",
-    "fromResource": "device.json"
+  "config": {
+    "deviceInfo": {
+      "type": "file_based",
+      "file": "device.json",
+      "fromResource": "device-resource.json"
+    }
   }
 }
 ```
 
-上述配置中，如果当前项目根目录中不存在 `device.json` 文件，则会尝试从资源目录中读取 `device.json` 并将其内容复制到项目根目录的 `device.json` 文件中。
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<file_based>
+    file: "device.json"
+    fromResource: "device-resource.json"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=file_based
+config.deviceInfo.value.file=device.json
+config.deviceInfo.value.fromResource=device-resource.json
+```
+
+</TabItem>
+</Tabs>
+
+上述配置中，如果当前项目根目录中不存在 `device.json` 文件，则会尝试从资源目录中读取 `device-resource.json` 并将其内容复制到项目根目录的 `device.json` 文件中。
 
 <br />
 
@@ -625,28 +1176,78 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 `file` 和 `fromResource` 支持占位符替换，例如：
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "file_based",
-    "file": "$CODE$-device.json",
-    "fromResource": "$CODE$-device.json"
+  "config": {
+    "deviceInfo": {
+      "type": "file_based",
+      "file": "device-$CODE$.json",
+      "fromResource": "device-resource-$CODE$.json"
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<file_based>
+    file: "device-$CODE$.json"
+    fromResource: "device-resource-$CODE$.json"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=file_based
+config.deviceInfo.value.file=device-$CODE$.json
+config.deviceInfo.value.fromResource=device-resource-$CODE$.json
+```
+
+</TabItem>
+</Tabs>
 
 #### object
 
 `object` 代表直接使用最原本的 `DeviceInfo` 序列化结果对象来作为属性值。
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "object",
-    "object": {}
+  "config": {
+    "deviceInfo": {
+      "type": "object",
+      "object": {}
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<object>
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=object
+```
+
+</TabItem>
+</Tabs>
 
 <details>
 <summary>完整属性示例</summary>
@@ -657,40 +1258,421 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 :::
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-    "deviceInfo": {
-      "type": "object",
-      "object": {
-        "display": [76, 73, 82, 65, 73, 45, 83, 73, 77, 66, 79, 84, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49],
-        "product": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "device": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "board": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "brand": [101, 111, 114, 116, 101],
-        "model": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
-        "bootloader": [117, 110, 107, 110, 111, 119, 110],
-        "fingerprint": [109, 97, 109, 111, 101, 47, 109, 105, 114, 97, 105, 47, 109, 105, 114, 97, 105, 58, 49, 48, 47, 77, 73, 82, 65, 73, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49, 47, 54, 53, 56, 51, 55, 54, 48, 58, 117, 115, 101, 114, 47, 114, 101, 108, 101, 97, 115, 101, 45, 107, 101, 121, 115],
-        "bootId": [-44, 29, -116, -39, -113, 0, -78, 4, -23, -128, 9, -104, -20, -8, 66, 126],
-        "procVersion": [76, 105, 110, 117, 120, 32, 118, 101, 114, 115, 105, 111, 110, 32, 51, 46, 48, 46, 51, 49, 45, 50, 71, 54, 57, 72, 122, 115, 105, 32, 40, 97, 110, 100, 114, 111, 105, 100, 45, 98, 117, 105, 108, 100, 64, 120, 120, 120, 46, 120, 120, 120, 46, 120, 120, 120, 46, 120, 120, 120, 46, 99, 111, 109, 41],
-        "baseBand": [],
-        "version": {
-          "incremental": [53, 56, 57, 49, 57, 51, 56],
-          "release": [49, 48],
-          "codename": [82, 69, 76],
-          "sdk": 29
-        },
-        "simInfo": [84, 45, 77, 111, 98, 105, 108, 101],
-        "osType": [97, 110, 100, 114, 111, 105, 100],
-        "macAddress": [48, 50, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48],
-        "wifiBSSID": [48, 50, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48],
-        "wifiSSID": [60, 117, 110, 107, 110, 111, 119, 110, 32, 115, 115, 105, 100, 62],
-        "imsiMd5": [-44, 29, -116, -39, -113, 0, -78, 4, -23, -128, 9, -104, -20, -8, 66, 126],
-        "imei": "899752952597699",
-        "apn": [119, 105, 102, 105]
+    "config": {
+      "deviceInfo": {
+        "type": "object",
+        "object": {
+          "display": [76, 73, 82, 65, 73, 45, 83, 73, 77, 66, 79, 84, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49],
+          "product": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
+          "device": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
+          "board": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
+          "brand": [101, 111, 114, 116, 101],
+          "model": [108, 105, 114, 97, 105, 45, 115, 105, 109, 98, 111, 116],
+          "bootloader": [117, 110, 107, 110, 111, 119, 110],
+          "fingerprint": [109, 97, 109, 111, 101, 47, 109, 105, 114, 97, 105, 47, 109, 105, 114, 97, 105, 58, 49, 48, 47, 77, 73, 82, 65, 73, 46, 50, 48, 48, 49, 50, 50, 46, 48, 48, 49, 47, 54, 53, 56, 51, 55, 54, 48, 58, 117, 115, 101, 114, 47, 114, 101, 108, 101, 97, 115, 101, 45, 107, 101, 121, 115],
+          "bootId": [-44, 29, -116, -39, -113, 0, -78, 4, -23, -128, 9, -104, -20, -8, 66, 126],
+          "procVersion": [76, 105, 110, 117, 120, 32, 118, 101, 114, 115, 105, 111, 110, 32, 51, 46, 48, 46, 51, 49, 45, 50, 71, 54, 57, 72, 122, 115, 105, 32, 40, 97, 110, 100, 114, 111, 105, 100, 45, 98, 117, 105, 108, 100, 64, 120, 120, 120, 46, 120, 120, 120, 46, 120, 120, 120, 46, 120, 120, 120, 46, 99, 111, 109, 41],
+          "baseBand": [],
+          "version": {
+            "incremental": [53, 56, 57, 49, 57, 51, 56],
+            "release": [49, 48],
+            "codename": [82, 69, 76],
+            "sdk": 29
+          },
+          "simInfo": [84, 45, 77, 111, 98, 105, 108, 101],
+          "osType": [97, 110, 100, 114, 111, 105, 100],
+          "macAddress": [48, 50, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48],
+          "wifiBSSID": [48, 50, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48],
+          "wifiSSID": [60, 117, 110, 107, 110, 111, 119, 110, 32, 115, 115, 105, 100, 62],
+          "imsiMd5": [-44, 29, -116, -39, -113, 0, -78, 4, -23, -128, 9, -104, -20, -8, 66, 126],
+          "imei": "899752952597699",
+          "apn": [119, 105, 102, 105]
+        }
       }
     }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<object>
+    object:
+      display: [77, 73, 82, 65, 73, 46, 55, 48, 52, 52, 55, 48, 46, 48, 48, 49]
+      product: [109, 105, 114, 97, 105]
+      device: [109, 105, 114, 97, 105]
+      board: [109, 105, 114, 97, 105]
+      brand: [109, 97, 109, 111, 101]
+      model: [109, 105, 114, 97, 105]
+      bootloader: [117, 110, 107, 110, 111, 119, 110]
+      fingerprint: [109, 97, 109, 111, 101, 47, 109, 105, 114, 97, 105, 47, 109, 105,
+                    114, 97, 105, 58, 49, 48, 47, 77, 73, 82, 65, 73, 46, 50, 48, 48, 49, 50,
+                    50, 46, 48, 48, 49, 47, 54, 57, 54, 57, 51, 55, 48, 58, 117, 115, 101, 114,
+                    47, 114, 101, 108, 101, 97, 115, 101, 45, 107, 101, 121, 115]
+      bootId: [52, 54, 48, 55, 67, 54, 49, 53, 45, 70, 54, 67, 49, 45, 49, 53, 50,
+               68, 45, 67, 65, 70, 52, 45, 66, 68, 53, 67, 69, 66, 54, 69, 67, 70, 69, 54]
+      procVersion: [76, 105, 110, 117, 120, 32, 118, 101, 114, 115, 105, 111, 110,
+                    32, 51, 46, 48, 46, 51, 49, 45, 105, 81, 66, 48, 50, 86, 52, 109, 32, 40,
+                    97, 110, 100, 114, 111, 105, 100, 45, 98, 117, 105, 108, 100, 64, 120, 120,
+                    120, 46, 120, 120, 120, 46, 120, 120, 120, 46, 120, 120, 120, 46, 99, 111,
+                    109, 41]
+      baseBand: []
+      version:
+        incremental: [53, 56, 57, 49, 57, 51, 56]
+        release: [49, 48]
+        codename: [82, 69, 76]
+        sdk: 29
+      simInfo: [84, 45, 77, 111, 98, 105, 108, 101]
+      osType: [97, 110, 100, 114, 111, 105, 100]
+      macAddress: [48, 50, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48,
+                   48]
+      wifiBSSID: [48, 50, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48, 48, 58, 48,
+                  48]
+      wifiSSID: [60, 117, 110, 107, 110, 111, 119, 110, 32, 115, 115, 105, 100, 62]
+      imsiMd5: [-83, -55, -86, 114, 108, -44, -65, 112, 102, 98, 60, -80, 41, -11,
+                -38, -66]
+      imei: "865456863200190"
+      apn: [119, 105, 102, 105]
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+:::note 如你所见
+
+如上所述。`properties` 格式的文件不适合存在大量多元素数组的场景，
+而原始的 `DeviceInfo` 结构中存在大量的 `byte` 数组。
+这将会导致 `properties` 文件内容非常的...不可控。
+
+:::
+
+<details>
+<summary>一泻千里</summary>
+
+```properties
+config.deviceInfo.type=object
+config.deviceInfo.value.object.display.0=77
+config.deviceInfo.value.object.display.1=73
+config.deviceInfo.value.object.display.2=82
+config.deviceInfo.value.object.display.3=65
+config.deviceInfo.value.object.display.4=73
+config.deviceInfo.value.object.display.5=46
+config.deviceInfo.value.object.display.6=57
+config.deviceInfo.value.object.display.7=53
+config.deviceInfo.value.object.display.8=49
+config.deviceInfo.value.object.display.9=53
+config.deviceInfo.value.object.display.10=49
+config.deviceInfo.value.object.display.11=55
+config.deviceInfo.value.object.display.12=46
+config.deviceInfo.value.object.display.13=48
+config.deviceInfo.value.object.display.14=48
+config.deviceInfo.value.object.display.15=49
+config.deviceInfo.value.object.product.0=109
+config.deviceInfo.value.object.product.1=105
+config.deviceInfo.value.object.product.2=114
+config.deviceInfo.value.object.product.3=97
+config.deviceInfo.value.object.product.4=105
+config.deviceInfo.value.object.device.0=109
+config.deviceInfo.value.object.device.1=105
+config.deviceInfo.value.object.device.2=114
+config.deviceInfo.value.object.device.3=97
+config.deviceInfo.value.object.device.4=105
+config.deviceInfo.value.object.board.0=109
+config.deviceInfo.value.object.board.1=105
+config.deviceInfo.value.object.board.2=114
+config.deviceInfo.value.object.board.3=97
+config.deviceInfo.value.object.board.4=105
+config.deviceInfo.value.object.brand.0=109
+config.deviceInfo.value.object.brand.1=97
+config.deviceInfo.value.object.brand.2=109
+config.deviceInfo.value.object.brand.3=111
+config.deviceInfo.value.object.brand.4=101
+config.deviceInfo.value.object.model.0=109
+config.deviceInfo.value.object.model.1=105
+config.deviceInfo.value.object.model.2=114
+config.deviceInfo.value.object.model.3=97
+config.deviceInfo.value.object.model.4=105
+config.deviceInfo.value.object.bootloader.0=117
+config.deviceInfo.value.object.bootloader.1=110
+config.deviceInfo.value.object.bootloader.2=107
+config.deviceInfo.value.object.bootloader.3=110
+config.deviceInfo.value.object.bootloader.4=111
+config.deviceInfo.value.object.bootloader.5=119
+config.deviceInfo.value.object.bootloader.6=110
+config.deviceInfo.value.object.fingerprint.0=109
+config.deviceInfo.value.object.fingerprint.1=97
+config.deviceInfo.value.object.fingerprint.2=109
+config.deviceInfo.value.object.fingerprint.3=111
+config.deviceInfo.value.object.fingerprint.4=101
+config.deviceInfo.value.object.fingerprint.5=47
+config.deviceInfo.value.object.fingerprint.6=109
+config.deviceInfo.value.object.fingerprint.7=105
+config.deviceInfo.value.object.fingerprint.8=114
+config.deviceInfo.value.object.fingerprint.9=97
+config.deviceInfo.value.object.fingerprint.10=105
+config.deviceInfo.value.object.fingerprint.11=47
+config.deviceInfo.value.object.fingerprint.12=109
+config.deviceInfo.value.object.fingerprint.13=105
+config.deviceInfo.value.object.fingerprint.14=114
+config.deviceInfo.value.object.fingerprint.15=97
+config.deviceInfo.value.object.fingerprint.16=105
+config.deviceInfo.value.object.fingerprint.17=58
+config.deviceInfo.value.object.fingerprint.18=49
+config.deviceInfo.value.object.fingerprint.19=48
+config.deviceInfo.value.object.fingerprint.20=47
+config.deviceInfo.value.object.fingerprint.21=77
+config.deviceInfo.value.object.fingerprint.22=73
+config.deviceInfo.value.object.fingerprint.23=82
+config.deviceInfo.value.object.fingerprint.24=65
+config.deviceInfo.value.object.fingerprint.25=73
+config.deviceInfo.value.object.fingerprint.26=46
+config.deviceInfo.value.object.fingerprint.27=50
+config.deviceInfo.value.object.fingerprint.28=48
+config.deviceInfo.value.object.fingerprint.29=48
+config.deviceInfo.value.object.fingerprint.30=49
+config.deviceInfo.value.object.fingerprint.31=50
+config.deviceInfo.value.object.fingerprint.32=50
+config.deviceInfo.value.object.fingerprint.33=46
+config.deviceInfo.value.object.fingerprint.34=48
+config.deviceInfo.value.object.fingerprint.35=48
+config.deviceInfo.value.object.fingerprint.36=49
+config.deviceInfo.value.object.fingerprint.37=47
+config.deviceInfo.value.object.fingerprint.38=54
+config.deviceInfo.value.object.fingerprint.39=48
+config.deviceInfo.value.object.fingerprint.40=56
+config.deviceInfo.value.object.fingerprint.41=49
+config.deviceInfo.value.object.fingerprint.42=56
+config.deviceInfo.value.object.fingerprint.43=56
+config.deviceInfo.value.object.fingerprint.44=55
+config.deviceInfo.value.object.fingerprint.45=58
+config.deviceInfo.value.object.fingerprint.46=117
+config.deviceInfo.value.object.fingerprint.47=115
+config.deviceInfo.value.object.fingerprint.48=101
+config.deviceInfo.value.object.fingerprint.49=114
+config.deviceInfo.value.object.fingerprint.50=47
+config.deviceInfo.value.object.fingerprint.51=114
+config.deviceInfo.value.object.fingerprint.52=101
+config.deviceInfo.value.object.fingerprint.53=108
+config.deviceInfo.value.object.fingerprint.54=101
+config.deviceInfo.value.object.fingerprint.55=97
+config.deviceInfo.value.object.fingerprint.56=115
+config.deviceInfo.value.object.fingerprint.57=101
+config.deviceInfo.value.object.fingerprint.58=45
+config.deviceInfo.value.object.fingerprint.59=107
+config.deviceInfo.value.object.fingerprint.60=101
+config.deviceInfo.value.object.fingerprint.61=121
+config.deviceInfo.value.object.fingerprint.62=115
+config.deviceInfo.value.object.bootId.0=69
+config.deviceInfo.value.object.bootId.1=70
+config.deviceInfo.value.object.bootId.2=65
+config.deviceInfo.value.object.bootId.3=52
+config.deviceInfo.value.object.bootId.4=51
+config.deviceInfo.value.object.bootId.5=70
+config.deviceInfo.value.object.bootId.6=53
+config.deviceInfo.value.object.bootId.7=48
+config.deviceInfo.value.object.bootId.8=45
+config.deviceInfo.value.object.bootId.9=70
+config.deviceInfo.value.object.bootId.10=65
+config.deviceInfo.value.object.bootId.11=70
+config.deviceInfo.value.object.bootId.12=52
+config.deviceInfo.value.object.bootId.13=45
+config.deviceInfo.value.object.bootId.14=54
+config.deviceInfo.value.object.bootId.15=54
+config.deviceInfo.value.object.bootId.16=57
+config.deviceInfo.value.object.bootId.17=70
+config.deviceInfo.value.object.bootId.18=45
+config.deviceInfo.value.object.bootId.19=48
+config.deviceInfo.value.object.bootId.20=53
+config.deviceInfo.value.object.bootId.21=53
+config.deviceInfo.value.object.bootId.22=57
+config.deviceInfo.value.object.bootId.23=45
+config.deviceInfo.value.object.bootId.24=65
+config.deviceInfo.value.object.bootId.25=48
+config.deviceInfo.value.object.bootId.26=49
+config.deviceInfo.value.object.bootId.27=56
+config.deviceInfo.value.object.bootId.28=55
+config.deviceInfo.value.object.bootId.29=48
+config.deviceInfo.value.object.bootId.30=51
+config.deviceInfo.value.object.bootId.31=48
+config.deviceInfo.value.object.bootId.32=55
+config.deviceInfo.value.object.bootId.33=68
+config.deviceInfo.value.object.bootId.34=66
+config.deviceInfo.value.object.bootId.35=70
+config.deviceInfo.value.object.procVersion.0=76
+config.deviceInfo.value.object.procVersion.1=105
+config.deviceInfo.value.object.procVersion.2=110
+config.deviceInfo.value.object.procVersion.3=117
+config.deviceInfo.value.object.procVersion.4=120
+config.deviceInfo.value.object.procVersion.5=32
+config.deviceInfo.value.object.procVersion.6=118
+config.deviceInfo.value.object.procVersion.7=101
+config.deviceInfo.value.object.procVersion.8=114
+config.deviceInfo.value.object.procVersion.9=115
+config.deviceInfo.value.object.procVersion.10=105
+config.deviceInfo.value.object.procVersion.11=111
+config.deviceInfo.value.object.procVersion.12=110
+config.deviceInfo.value.object.procVersion.13=32
+config.deviceInfo.value.object.procVersion.14=51
+config.deviceInfo.value.object.procVersion.15=46
+config.deviceInfo.value.object.procVersion.16=48
+config.deviceInfo.value.object.procVersion.17=46
+config.deviceInfo.value.object.procVersion.18=51
+config.deviceInfo.value.object.procVersion.19=49
+config.deviceInfo.value.object.procVersion.20=45
+config.deviceInfo.value.object.procVersion.21=88
+config.deviceInfo.value.object.procVersion.22=80
+config.deviceInfo.value.object.procVersion.23=74
+config.deviceInfo.value.object.procVersion.24=80
+config.deviceInfo.value.object.procVersion.25=52
+config.deviceInfo.value.object.procVersion.26=50
+config.deviceInfo.value.object.procVersion.27=57
+config.deviceInfo.value.object.procVersion.28=114
+config.deviceInfo.value.object.procVersion.29=32
+config.deviceInfo.value.object.procVersion.30=40
+config.deviceInfo.value.object.procVersion.31=97
+config.deviceInfo.value.object.procVersion.32=110
+config.deviceInfo.value.object.procVersion.33=100
+config.deviceInfo.value.object.procVersion.34=114
+config.deviceInfo.value.object.procVersion.35=111
+config.deviceInfo.value.object.procVersion.36=105
+config.deviceInfo.value.object.procVersion.37=100
+config.deviceInfo.value.object.procVersion.38=45
+config.deviceInfo.value.object.procVersion.39=98
+config.deviceInfo.value.object.procVersion.40=117
+config.deviceInfo.value.object.procVersion.41=105
+config.deviceInfo.value.object.procVersion.42=108
+config.deviceInfo.value.object.procVersion.43=100
+config.deviceInfo.value.object.procVersion.44=64
+config.deviceInfo.value.object.procVersion.45=120
+config.deviceInfo.value.object.procVersion.46=120
+config.deviceInfo.value.object.procVersion.47=120
+config.deviceInfo.value.object.procVersion.48=46
+config.deviceInfo.value.object.procVersion.49=120
+config.deviceInfo.value.object.procVersion.50=120
+config.deviceInfo.value.object.procVersion.51=120
+config.deviceInfo.value.object.procVersion.52=46
+config.deviceInfo.value.object.procVersion.53=120
+config.deviceInfo.value.object.procVersion.54=120
+config.deviceInfo.value.object.procVersion.55=120
+config.deviceInfo.value.object.procVersion.56=46
+config.deviceInfo.value.object.procVersion.57=120
+config.deviceInfo.value.object.procVersion.58=120
+config.deviceInfo.value.object.procVersion.59=120
+config.deviceInfo.value.object.procVersion.60=46
+config.deviceInfo.value.object.procVersion.61=99
+config.deviceInfo.value.object.procVersion.62=111
+config.deviceInfo.value.object.procVersion.63=109
+config.deviceInfo.value.object.procVersion.64=41
+config.deviceInfo.value.object.version.incremental.0=53
+config.deviceInfo.value.object.version.incremental.1=56
+config.deviceInfo.value.object.version.incremental.2=57
+config.deviceInfo.value.object.version.incremental.3=49
+config.deviceInfo.value.object.version.incremental.4=57
+config.deviceInfo.value.object.version.incremental.5=51
+config.deviceInfo.value.object.version.incremental.6=56
+config.deviceInfo.value.object.version.release.0=49
+config.deviceInfo.value.object.version.release.1=48
+config.deviceInfo.value.object.version.codename.0=82
+config.deviceInfo.value.object.version.codename.1=69
+config.deviceInfo.value.object.version.codename.2=76
+config.deviceInfo.value.object.version.sdk=29
+config.deviceInfo.value.object.simInfo.0=84
+config.deviceInfo.value.object.simInfo.1=45
+config.deviceInfo.value.object.simInfo.2=77
+config.deviceInfo.value.object.simInfo.3=111
+config.deviceInfo.value.object.simInfo.4=98
+config.deviceInfo.value.object.simInfo.5=105
+config.deviceInfo.value.object.simInfo.6=108
+config.deviceInfo.value.object.simInfo.7=101
+config.deviceInfo.value.object.osType.0=97
+config.deviceInfo.value.object.osType.1=110
+config.deviceInfo.value.object.osType.2=100
+config.deviceInfo.value.object.osType.3=114
+config.deviceInfo.value.object.osType.4=111
+config.deviceInfo.value.object.osType.5=105
+config.deviceInfo.value.object.osType.6=100
+config.deviceInfo.value.object.macAddress.0=48
+config.deviceInfo.value.object.macAddress.1=50
+config.deviceInfo.value.object.macAddress.2=58
+config.deviceInfo.value.object.macAddress.3=48
+config.deviceInfo.value.object.macAddress.4=48
+config.deviceInfo.value.object.macAddress.5=58
+config.deviceInfo.value.object.macAddress.6=48
+config.deviceInfo.value.object.macAddress.7=48
+config.deviceInfo.value.object.macAddress.8=58
+config.deviceInfo.value.object.macAddress.9=48
+config.deviceInfo.value.object.macAddress.10=48
+config.deviceInfo.value.object.macAddress.11=58
+config.deviceInfo.value.object.macAddress.12=48
+config.deviceInfo.value.object.macAddress.13=48
+config.deviceInfo.value.object.macAddress.14=58
+config.deviceInfo.value.object.macAddress.15=48
+config.deviceInfo.value.object.macAddress.16=48
+config.deviceInfo.value.object.wifiBSSID.0=48
+config.deviceInfo.value.object.wifiBSSID.1=50
+config.deviceInfo.value.object.wifiBSSID.2=58
+config.deviceInfo.value.object.wifiBSSID.3=48
+config.deviceInfo.value.object.wifiBSSID.4=48
+config.deviceInfo.value.object.wifiBSSID.5=58
+config.deviceInfo.value.object.wifiBSSID.6=48
+config.deviceInfo.value.object.wifiBSSID.7=48
+config.deviceInfo.value.object.wifiBSSID.8=58
+config.deviceInfo.value.object.wifiBSSID.9=48
+config.deviceInfo.value.object.wifiBSSID.10=48
+config.deviceInfo.value.object.wifiBSSID.11=58
+config.deviceInfo.value.object.wifiBSSID.12=48
+config.deviceInfo.value.object.wifiBSSID.13=48
+config.deviceInfo.value.object.wifiBSSID.14=58
+config.deviceInfo.value.object.wifiBSSID.15=48
+config.deviceInfo.value.object.wifiBSSID.16=48
+config.deviceInfo.value.object.wifiSSID.0=60
+config.deviceInfo.value.object.wifiSSID.1=117
+config.deviceInfo.value.object.wifiSSID.2=110
+config.deviceInfo.value.object.wifiSSID.3=107
+config.deviceInfo.value.object.wifiSSID.4=110
+config.deviceInfo.value.object.wifiSSID.5=111
+config.deviceInfo.value.object.wifiSSID.6=119
+config.deviceInfo.value.object.wifiSSID.7=110
+config.deviceInfo.value.object.wifiSSID.8=32
+config.deviceInfo.value.object.wifiSSID.9=115
+config.deviceInfo.value.object.wifiSSID.10=115
+config.deviceInfo.value.object.wifiSSID.11=105
+config.deviceInfo.value.object.wifiSSID.12=100
+config.deviceInfo.value.object.wifiSSID.13=62
+config.deviceInfo.value.object.imsiMd5.0=27
+config.deviceInfo.value.object.imsiMd5.1=108
+config.deviceInfo.value.object.imsiMd5.2=-22
+config.deviceInfo.value.object.imsiMd5.3=115
+config.deviceInfo.value.object.imsiMd5.4=-17
+config.deviceInfo.value.object.imsiMd5.5=70
+config.deviceInfo.value.object.imsiMd5.6=-10
+config.deviceInfo.value.object.imsiMd5.7=26
+config.deviceInfo.value.object.imsiMd5.8=-99
+config.deviceInfo.value.object.imsiMd5.9=-122
+config.deviceInfo.value.object.imsiMd5.10=-104
+config.deviceInfo.value.object.imsiMd5.11=-95
+config.deviceInfo.value.object.imsiMd5.12=125
+config.deviceInfo.value.object.imsiMd5.13=127
+config.deviceInfo.value.object.imsiMd5.14=119
+config.deviceInfo.value.object.imsiMd5.15=34
+config.deviceInfo.value.object.imei=863276296780226
+config.deviceInfo.value.object.apn.0=119
+config.deviceInfo.value.object.apn.1=105
+config.deviceInfo.value.object.apn.2=102
+config.deviceInfo.value.object.apn.3=105
+```
+
+</details>
+
+</TabItem>
+</Tabs>
 
 </details>
 
@@ -701,14 +1683,38 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 `SimpleDeviceInfo` 属性名与 `DeviceInfo` 基本一致，只不过将 `DeviceInfo` 中所有原本为字节数组的属性变更为了字符串，使得其属性可以相对表现得更直观。
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "simple_object",
-    "object": {}
+  "config": {
+    "deviceInfo": {
+      "type": "simple_object",
+      "object": {}
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<simple_object>
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=simple_object
+```
+
+</TabItem>
+</Tabs>
+
 <details>
 <summary>完整属性示例</summary>
 
@@ -718,40 +1724,111 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 :::
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-    "deviceInfo": {
-      "type": "object",
-      "object": {
-        "display": "MIRAI.496596.001",
-        "product": "mirai",
-        "device": "mirai",
-        "board": "mirai",
-        "brand": "mamoe",
-        "model": "mirai",
-        "bootloader": "unknown",
-        "fingerprint": "mamoe/mirai/mirai:10/MIRAI.200122.001/7041834:user/release-keys",
-        "bootId": "8B176CE7-2C0D-554E-440D-1D6FC8F53AD1",
-        "procVersion": "Linux version 3.0.31-o66PpLqf (android-build@xxx.xxx.xxx.xxx.com)",
-        "baseBand": "",
-        "version": {
-          "incremental": "5891938",
-          "release": "10",
-          "codename": "REL",
-          "sdk": 29
-        },
-        "simInfo": "T-Mobile",
-        "osType": "android",
-        "macAddress": "02:00:00:00:00:00",
-        "wifiBSSID": "02:00:00:00:00:00",
-        "wifiSSID": "<unknown ssid>",
-        "imsiMd5": "5df6e66cc541fe594f228c889cd7828b",
-        "imei": "078869213288891",
-        "apn": "wifi"
+    "config": {
+      "deviceInfo": {
+        "type": "simple_object",
+        "object": {
+          "display": "MIRAI.496596.001",
+          "product": "mirai",
+          "device": "mirai",
+          "board": "mirai",
+          "brand": "mamoe",
+          "model": "mirai",
+          "bootloader": "unknown",
+          "fingerprint": "mamoe/mirai/mirai:10/MIRAI.200122.001/7041834:user/release-keys",
+          "bootId": "8B176CE7-2C0D-554E-440D-1D6FC8F53AD1",
+          "procVersion": "Linux version 3.0.31-o66PpLqf (android-build@xxx.xxx.xxx.xxx.com)",
+          "baseBand": "",
+          "version": {
+            "incremental": "5891938",
+            "release": "10",
+            "codename": "REL",
+            "sdk": 29
+          },
+          "simInfo": "T-Mobile",
+          "osType": "android",
+          "macAddress": "02:00:00:00:00:00",
+          "wifiBSSID": "02:00:00:00:00:00",
+          "wifiSSID": "<unknown ssid>",
+          "imsiMd5": "5df6e66cc541fe594f228c889cd7828b",
+          "imei": "078869213288891",
+          "apn": "wifi"
+        }
       }
     }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<simple_object>
+    object:
+      display: "MIRAI.712554.001"
+      product: "mirai"
+      device: "mirai"
+      board: "mirai"
+      brand: "mamoe"
+      model: "mirai"
+      bootloader: "unknown"
+      fingerprint: "mamoe/mirai/mirai:10/MIRAI.200122.001/0712600:user/release-keys"
+      bootId: "14387C75-A130-9CB8-4058-7F9DA76CC8D8"
+      procVersion: "Linux version 3.0.31-D474G48Z (android-build@xxx.xxx.xxx.xxx.com)"
+      baseBand: ""
+      version:
+        incremental: "5891938"
+        release: "10"
+        codename: "REL"
+        sdk: 0
+      simInfo: "T-Mobile"
+      osType: "android"
+      macAddress: "02:00:00:00:00:00"
+      wifiBSSID: "02:00:00:00:00:00"
+      wifiSSID: "<unknown ssid>"
+      imsiMd5: "e919380912a110613d715dbd2a4164f8"
+      imei: "865547659069474"
+      apn: "wifi"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=simple_object
+config.deviceInfo.value.object.display=MIRAI.622716.001
+config.deviceInfo.value.object.product=mirai
+config.deviceInfo.value.object.device=mirai
+config.deviceInfo.value.object.board=mirai
+config.deviceInfo.value.object.brand=mamoe
+config.deviceInfo.value.object.model=mirai
+config.deviceInfo.value.object.bootloader=unknown
+config.deviceInfo.value.object.fingerprint=mamoe/mirai/mirai:10/MIRAI.200122.001/2518688:user/release-keys
+config.deviceInfo.value.object.bootId=DEF2A279-C7D3-FDD1-F17C-942DCA6871B7
+config.deviceInfo.value.object.procVersion=Linux version 3.0.31-52WDrFu6 (android-build@xxx.xxx.xxx.xxx.com)
+config.deviceInfo.value.object.baseBand=
+config.deviceInfo.value.object.version.incremental=5891938
+config.deviceInfo.value.object.version.release=10
+config.deviceInfo.value.object.version.codename=REL
+config.deviceInfo.value.object.version.sdk=0
+config.deviceInfo.value.object.simInfo=T-Mobile
+config.deviceInfo.value.object.osType=android
+config.deviceInfo.value.object.macAddress=02:00:00:00:00:00
+config.deviceInfo.value.object.wifiBSSID=02:00:00:00:00:00
+config.deviceInfo.value.object.wifiSSID=<unknown ssid>
+config.deviceInfo.value.object.imsiMd5=f6d271da5d965644d0e0b635337ef496
+config.deviceInfo.value.object.imei=862054186439299
+config.deviceInfo.value.object.apn=wifi
+```
+
+</TabItem>
+</Tabs>
 
 </details>
 
@@ -767,14 +1844,39 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 `auto` 是在未配置的情况下**默认使用**的类型，其代表会尝试自动寻找配置文件，如果找不到则会使用 [`simbot_random`](#simbot_random) 作为生成策略。
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-    "type": "auto",
-    "baseDir": null
+  "config": {
+    "deviceInfo": {
+      "type": "auto",
+      "baseDir": null
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<auto>
+    baseDir: null
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=auto
+# config.deviceInfo.value.baseDir=devices
+```
+
+</TabItem>
+</Tabs>
 
 `baseDir` 是一个**可选的**，且**可为null**。其代表在自动搜寻配置文件时的基础目录。当为 `null` 的时候将**不会搜寻**配置文件。
 
@@ -787,14 +1889,40 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 如下示例中，
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-     "type": "auto",
-     "baseDir": "devices"
+  "config": {
+    "deviceInfo": {
+      "type": "auto",
+      "baseDir": "devices"
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<auto>
+    baseDir: "devices"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=auto
+config.deviceInfo.value.baseDir=devices
+```
+
+</TabItem>
+</Tabs>
+
 
 假设当前 `code` 为 `123456`，则最终寻找的目标路径为：
 
@@ -806,14 +1934,39 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 例如：
 
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
 ```json
 {
-  "deviceInfo": {
-     "type": "auto",
-     "baseDir": "devices-$CODE$"
+  "config": {
+    "deviceInfo": {
+      "type": "auto",
+      "baseDir": "devices-$CODE$"
+    }
   }
 }
 ```
+
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+config:
+  deviceInfo: !<auto>
+    baseDir: "devices-$CODE$"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.deviceInfo.type=auto
+config.deviceInfo.value.baseDir=devices-$CODE$
+```
+
+</TabItem>
+</Tabs>
 
 假设当前 `code` 为 `123456`, 则上述配置中的的 `baseDir` 最终会被替换为 `devices-123456`，并最终会去寻找如下目标：
 
@@ -839,18 +1992,42 @@ java -jar -Dsimbot.mirai.123456.password=myPassword myBot.jar
 
 #### 参考配置
 
-```json title="my-bot.bot"
+<Tabs groupId="bot-config">
+<TabItem value="Json">
+
+```json
 {
    "config": {
       "contactListCache": {
         "saveIntervalMillis": 60000,
-        "friendListCacheEnabled": true,
-        "groupMemberListCacheEnabled": true
-   }
+        "friendListCacheEnabled": false,
+        "groupMemberListCacheEnabled": false
+      }
    }
 }
 ```
 
+</TabItem>
+<TabItem value="Yaml">
+
+```yaml
+contactListCache:
+  saveIntervalMillis: 60000
+  friendListCacheEnabled: false
+  groupMemberListCacheEnabled: false
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+contactListCache.saveIntervalMillis=60000
+contactListCache.friendListCacheEnabled=false
+contactListCache.groupMemberListCacheEnabled=false
+```
+
+</TabItem>
+</Tabs>
 
 
 ## 占位符替换 {#mark}
