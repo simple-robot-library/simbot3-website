@@ -1,7 +1,6 @@
 ---
 sidebar_position: 30
 title: 持续会话
-toc_min_heading_level: 1
 toc_max_heading_level: 4
 ---
 
@@ -1553,7 +1552,6 @@ public void onEvent(ContinuousSessionContext sessionContext, FriendMessageEvent 
     }
 }
 ```
-
 
 </TabItem>
 </Tabs>
