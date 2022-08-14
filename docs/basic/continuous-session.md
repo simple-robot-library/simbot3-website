@@ -1,11 +1,13 @@
 ---
 sidebar_position: 30
 title: 持续会话
+toc_min_heading_level: 1
+toc_max_heading_level: 4
 ---
 
 当你需要在一个监听函数中，持续的处理连续或多个事件的时候，或许**持续会话**可以为你提供一些微不足道的帮助。
 
-本章节将会试着想你介绍如何使用 **持续会话上下文(`ContinuousSessionContext`)** 来在一个监听函数中等待并处理其他事件。
+本章节将会试着向你介绍如何使用 **持续会话上下文(`ContinuousSessionContext`)** 来在一个监听函数中等待并处理其他事件。
 
 持续会话由 **核心模块**( `simbot-core` ) 中的 **作用域**( `SimpleScope` ) 提供，不属于标准API的一部分。
 
@@ -603,7 +605,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 
 :::
 
-#### 有条件的等待任何事件
+#### 有条件地等待任何事件
 
 当你需要一个事件的时候，通常都是**有条件**的。而上述的几种示例中，你似乎并没有在 `ContinuousSessionContext`
 取用一个事件的时候为此行为提供 **条件**。
@@ -643,7 +645,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 
 当得到过一次 `true` 时，`waitingForNext` 的等待便会结束。
 
-#### 有条件的等待明确类型的事件
+#### 有条件地等待明确类型的事件
 
 
 当然，你也可以在存在匹配条件的时候明确一个所需的事件类型：
@@ -742,29 +744,825 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 </Tabs>
 
 
+#### 有条件地等待任何消息
 
-TODO
+你可以提供一个条件匹配函数来有条件的等待一个消息。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val message: MessageContent = sessionContext.waitingForNextMessage { event ->
+        // 条件判断
+        true
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final MessageContent message = sessionContext.waitingForNextMessage((context, event) -> {
+        // 条件判断
+        return true;
+    });
+}
+```
+
+
+</TabItem>
+</Tabs>
+
+#### 有条件地等待指定类型的任何消息
+
+你可以提供一个条件匹配函数来有条件的等待一个消息，并且明确等待的事件类型。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+import love.forte.simbot.event.waitingForNextMessage
+
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val message: MessageContent = sessionContext.waitingForNextMessage(FooMessageEvent) { event ->
+        // 条件判断
+        true
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final MessageContent message = sessionContext.waitingForNextMessage(FooMessageEvent.Key, (context, event) -> {
+        // 条件判断
+        return true;
+    });
+}
+```
+
+
+</TabItem>
+</Tabs>
+
 
 ### `next`
 
+你可能注意到了，上面所提到的 `waitingForXxx` 类型的API，当你需要有条件的去等待时，对于条件的匹配是需要你直接通过编码来处理的。
+但是大多数情况下，这种条件可能会有一个“来源”。举个例子，在一个好友消息事件中，你想要监听来自**这个好友**的下一个消息，
+而不是一个任意的下一个消息。面对这种情况时，如果使用 `waitingForNextMessage`，那么大致代码逻辑应该是这样的：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+import love.forte.simbot.event.waitingForNextMessage
+
+suspend fun onEvent(sessionContext: ContinuousSessionContext, friendMessageEvent: FriendMessageEvent) {
+    val currentFriendId = friendMessageEvent.friend().id
+    val currentBotId = friendMessageEvent.bot.id
+    
+    val message: MessageContent = sessionContext.waitingForNextMessage(FriendMessageEvent) { event ->
+        // 需要是来自同一个bot的同一个好友
+        event.bot.id == currentBotId && event.friend().id == currentFriendId
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FriendMessageEvent friendMessageEvent) {
+    final ID currentFriendId = friendMessageEvent.getFriend().getId();
+    final ID currentBotId = friendMessageEvent.getBot().getId();
+    
+    final MessageContent message = sessionContext.waitingForNextMessage(FriendMessageEvent.Key, (context, event) -> {
+        // 需要是来自同一个bot的同一个好友
+        return event.getBot().getId().equals(currentBotId) 
+               && event.getFriend().getId().equals(currentFriendId);
+    });
+}
+```
+
+</TabItem>
+</Tabs>
+
+未尝不可，但是略显繁琐。因此当处于 `ContinuousSessionContext` 作用域中时，其提供了另外一种类型的API：`next`。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, friendMessageEvent: FriendMessageEvent) {
+    sessionContext.apply {
+        val next: Event = friendMessageEvent.next()
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FriendMessageEvent friendMessageEvent) {
+    final Event next = sessionContext.next(friendMessageEvent);
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 作用域
+
+在介绍如何使用 `next` API之前，让我们先来简单介绍一下如何进入 `ContinuousSessionContext` 的"作用域"。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+**Scope functions**
+
+你可能在上述代码中已经注意到了这段代码：
+
+```kotlin
+sessionContext.apply {
+    val next: Event = friendMessageEvent.next()
+}
+```
+
+这便是最基本的通过Kotlin的 [**Scope functions**](https://kotlinlang.org/docs/scope-functions.html) 
+来达成进入 `ContinuousSessionContext` 作用域的目的。同样的，你也可以通过如下的类似方式来达成相似的效果：
+
+<Tabs>
+<TabItem value="run1" label="run (inner)">
+
+```kotlin
+sessionContext.run {
+    val next: Event = friendMessageEvent.next()
+}
+```
+
+</TabItem>
+<TabItem value="run2" label="run (outer)">
+
+```kotlin
+val next: Event = sessionContext.run {
+    friendMessageEvent.next()
+}
+```
+
+</TabItem>
+</Tabs>
+
+<Tabs>
+<TabItem value="with1" label="with (inner)">
+
+```kotlin
+with(sessionContext) {
+    val next: Event = friendMessageEvent.next()
+}
+```
+
+</TabItem>
+<TabItem value="with2" label="with (outer)">
+
+```kotlin
+val next: Event = with(sessionContext) {
+    friendMessageEvent.next()
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+
+**`Invoke`**
+
+除了上述的 `Scope functions` 以外，为了方便简化代码，`ContinuousSessionContext` 提供了一个与 `run` 
+十分类似的扩展函数：`invoke`。
+
+<Tabs groupId="continuous-session-scope-invoke">
+<TabItem value="invoke1" label="invoke (inner)">
+
+```kotlin
+sessionContext.invoke {
+    val event: Event = friendMessageEvent.next()
+}
+```
+
+而上述代码可以被简化为：
+
+```kotlin
+sessionContext {
+    val event: Event = friendMessageEvent.next()
+}
+```
+
+</TabItem>
+<TabItem value="invoke2" label="invoke (outer)">
+
+```kotlin
+val event: Event = sessionContext.invoke {
+    friendMessageEvent.next()
+}
+```
+
+而上述代码可以被简化为：
+
+```kotlin
+val event: Event = sessionContext {
+    friendMessageEvent.next()
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+**Receiver**
+
+除了在代码中手动进入作用域，你也可以让你的函数在**一开始**就处于作用域当中，仅需将 `ContinuousSessionContext`
+类型作为监听函数的接收者类型即可。
+
+```kotlin
+suspend fun ContinuousSessionContext.onEvent(friendMessageEvent: FriendMessageEvent) {
+    val event: Event = friendMessageEvent.next()
+}
+```
+
+**EventProcessingContext**
+
+最开始的 [获取](#获取) 篇我们提到过，
+`ContinuousSessionContext` 本质上是通过 `EventProcessingContext.get(SimpleScope.ContinuousSession)`
+而得到的，因此 `EventProcessingContext` 也提供了一个相对应的扩展函数 `inSession` 来进入其作用域：
+
+<Tabs>
+<TabItem value="c1" label="参数 (inner)">
+
+```kotlin
+suspend fun onEvent(eventProcessingContext: EventProcessingContext, friendMessageEvent: FriendMessageEvent) {
+    eventProcessingContext.inSession {
+        val event: Event = friendMessageEvent.next()
+    }
+}
+```
+
+</TabItem>
+<TabItem value="c2" label="参数 (outer)">
+
+```kotlin
+suspend fun onEvent(eventProcessingContext: EventProcessingContext, friendMessageEvent: FriendMessageEvent) {
+    val event: Event = eventProcessingContext.inSession {
+        friendMessageEvent.next()
+    }
+}
+```
+
+</TabItem>
+<TabItem value="c3" label="receiver (inner)">
+
+```kotlin
+suspend fun EventProcessingContext.onEvent(friendMessageEvent: FriendMessageEvent) {
+    inSession {
+        val event: Event = friendMessageEvent.next()
+    }
+}
+```
+
+</TabItem>
+<TabItem value="c4" label="receiver (outer)">
+
+```kotlin
+suspend fun EventProcessingContext.onEvent(friendMessageEvent: FriendMessageEvent) {
+    val event: Event = inSession {
+        friendMessageEvent.next()
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+<hr />
+
+以上就是大部分进入 `ContinuousSessionContext` 的方式了。后续的示例中会以使用 `invoke` 的方式作为主要的示例方式：
+
+```kotlin
+sessionContext {
+    // via invoke
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+对于Java来讲，没有什么作用域概念。这主要适用于在Kotlin中的使用。在Java中，只需要将调用者作为第一个参数填入即可。
+
+</TabItem>
+</Tabs>
+
+
+#### 下一个任意相似事件
+
+回到正题，来继续介绍一下 `next` 函数。与 `waitingForNext` 不同，`next` 需要一个具体的 `Event` 或者 `EventProcessingContext` 
+作为"基准"：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    sessionContext {
+        val next: Event = fooEvent.next()
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final Event next = sessionContext.next(fooEvent);
+}
+```
+
+</TabItem>
+</Tabs>
+
+其中，`fooEvent` 便是一个"基准"，并以其为准来匹配下一个"相似事件"。
+
+那么"基准"是如何进行匹配的呢？首先见下表：
+
+| 当前事件类型                 | 目标事件同类型                                 |   目标事件不同类型 |
+|:-----------------------|-----------------------------------------|-----------:|
+| `Event`                | `Event.bot` 的ID要相同                      | _不会出现不同类型_ |
+| `OrganizationEvent`    | `OrganizationEvent.organization` 的ID要相同 |         放行 |
+| `UserEvent`            | `UserEvent.user` 的ID要相同                 |         放行 |
+| `MessageEvent`         | `MessageEvent.source` 的ID要相同            |         放行 |
+| `ChatRoomMessageEvent` | `ChatRoomMessageEvent.author` 的ID要相同    |         放行 |
+
+> 表格摘选自 `next` 文档注释
+
+简单来解释一下这个表格所代表的含义。首先以**第二行**为例，它代表：
+如果当前事件（即**作为基准**的事件）类型为 `OrganizationEvent`，且在 `next` 中监听到的下一个事件的类型也是 `OrganizationEvent`
+类型，则判断两个事件的 `organization.id` 是否相同。 
+
+而结合整个表，它的行为可以大致被翻译成类似于使用 `waitingForNext` 的如下逻辑：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val currentBot = fooEvent.bot
+    sessionContext.waitingForNext { event ->
+        val eventBot = event.bot
+        // 判断bot是否一致
+        if (currentBot !== eventBot && currentBot.isNotMe(eventBot.id)) {
+            return@waitingForNext false
+        }
+    
+        // 如果都是 OrganizationEvent
+        if (fooEvent is OrganizationEvent && event is OrganizationEvent) {
+            if (fooEvent.organization().id != event.organization().id) {
+                return@waitingForNext false
+            }
+        }
+    
+        // 如果都是 UserEvent
+        if (fooEvent is UserEvent && event is UserEvent) {
+            if (fooEvent.user().id != event.user().id) {
+                return@waitingForNext false
+            }
+        }
+    
+        // 如果都是 UserEvent
+        if (fooEvent is MessageEvent && event is MessageEvent) {
+            if (fooEvent.source().id != event.source().id) {
+                return@waitingForNext false
+            }
+    
+            // 如果都是 ChatRoomMessageEvent
+            if (fooEvent is ChatRoomMessageEvent && event is ChatRoomMessageEvent) {
+                if (fooEvent.author().id != event.author().id) {
+                    return@waitingForNext false
+                }
+            }
+        }
+        
+        true
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent2(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final Bot currentBot = fooEvent.getBot();
+    sessionContext.waitingForNext((context, event) -> {
+        Bot eventBot = event.getBot();
+        // 判断bot是否一致
+        if (currentBot != eventBot && !currentBot.isMe(eventBot.getId())) {
+            return false;
+        }
+
+        // 如果都是 OrganizationEvent
+        if ((fooEvent instanceof OrganizationEvent) && (event instanceof OrganizationEvent)) {
+            if (!((OrganizationEvent) fooEvent).getOrganization().getId().equals(((OrganizationEvent) event).getOrganization().getId())) {
+                return false;
+            }
+        }
+
+        // 如果都是 UserEvent
+        if ((fooEvent instanceof UserEvent) && (event instanceof UserEvent)) {
+            if (((UserEvent) fooEvent).getUser().getId() != ((UserEvent) event).getUser().getId()) {
+                return false;
+            }
+        }
+
+        // 如果都是 UserEvent
+        if ((fooEvent instanceof MessageEvent) && (event instanceof MessageEvent)){
+            if (((MessageEvent) fooEvent).getSource().getId() != ((MessageEvent) event).getSource().getId()) {
+                return false;
+            }
+
+            // 如果都是 ChatRoomMessageEvent
+            if ((fooEvent instanceof ChatRoomMessageEvent) && (event instanceof ChatRoomMessageEvent)){
+                if (((ChatRoomMessageEvent) fooEvent).getAuthor().getId() != ((ChatRoomMessageEvent) event).getAuthor().getId()) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    });
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 下一个指定类型的相似事件
+
+你可以为 `next` 提供一个事件类型来提供进一步约束。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    sessionContext {
+        fooEvent.next(BarEvent)
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final Event next = sessionContext.next(fooEvent, BarEvent.Key);
+}
+```
+
+</TabItem>
+</Tabs>
+
+
 ### `nextMessage`
 
+就像 `waitingForNext` 和 `waitingForNextMessage` 之间一样，`ContinuousSessionContext` 也为 
+`next` 提供了一个类似的变种：`nextMessage`。
+
+#### 下一个指定类型的消息
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    sessionContext {
+        val next: MessageContent = fooEvent.nextMessage(BarMessageEvent)
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final MessageContent next = sessionContext.nextMessage(fooEvent, FooMessageEvent.Key);
+}
+```
+
+</TabItem>
+</Tabs>
 
 ## 超时处理
 
-## Provider
+很多情况下，当你在使用上述API的时候，很有可能会需要为它们提供一个**超时限制**来防止就那么一直等待下去。
 
-## Receiver
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
 
-<br />
-<br />
-<br />
-<br />
-<br />
+在Kotlin中，所有的超时处理都很简单：你可以直接使用Kotlin所提供的 
+[`withTimeout`](https://kotlinlang.org/docs/cancellation-and-timeouts.html#asynchronous-timeout-and-resources)
+来进行超时控制。
 
-:::danger TODO
+<Tabs>
+<TabItem value="milli" label="MILLISECONDS">
 
-**尚在施工中..**
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    // 5s内得到下一个事件，否则会抛出异常。
+    val next = withTimeout(5000) {
+        sessionContext.waitingForNext()
+    }
+}
+```
+
+</TabItem>
+<TabItem value="duration" label="DURATION">
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    // 5s内得到下一个事件，否则会抛出异常。
+    val next = withTimeout(5.seconds) {
+        sessionContext.waitingForNext()
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value='Java'>
+
+在Java中，`ContinuousSessionContext` 为几乎所有的API的参数中都填充了与超时有关的参数。
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FriendMessageEvent fooEvent) {
+    // 下面都代表要在5s内得到下一个事件，否则抛出异常。
+    final Event next1 = sessionContext.waitingForNext(5, TimeUnit.SECONDS);
+    final Event next2 = sessionContext.waitingForNext(Duration.ofSeconds(5));
+}
+```
+
+:::info 略逊一筹 
+
+与Kotlin的 `withTimeout` 相比，在Java中使用超时控制可能不会那么的随心所欲或灵活。
+例如下述Kotlin代码：
+
+```kotlin
+withTimeout(10.seconds) {
+    val next1 = sessionContext.waitingForNext()
+    val next2 = sessionContext.waitingForNext()
+    val next3 = sessionContext.waitingForNext()
+}
+```
+
+这代表要在10秒内得到三个后续事件。可以看出，在Kotlin中使用 `withTimeout` 代码块可以控制更大的范围，
+而Java中的超时参数只能针对指定的一个API。
+
+:::
+
+</TabItem>
+</Tabs>
+
+<hr />
+
+## 持续会话
+
+在 `ContinuousSessionContext` 中，除了直接通过上述各式API进行等待以外，其还提供了几个用于分离结果的推送与获取的
+`provider` 和 `receiver`。
+
+### Provider
+
+在 [waiting](#waiting) 中，我们提到了一个 `provider`。
+
+它的具体类型是 `ContinuousSessionProvider<T>`，它会被使用在 `waiting` 等API的参数中，作为参数函数体的参数之一。
+
+:::note T?
+
+泛型 `T` 即代表为此提供者对外提供的类型。
+
+:::
+
+`ContinuousSessionProvider` 代表为一个等待中的持续会话的结果提供者，当你向一个 `provider` 提供了结果，
+则对应正在等待的会话也将结束。
+
+正常情况下，使用一个 `provider` 是在 `waiting` 等API的函数参数体内进行的：
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val value: String = sessionContext.waiting { provider ->
+        // 使用 provider
+        provider.push("VALUE")
+    }
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+    final String value = sessionContext.waiting((context, provider) -> {
+        // 使用 provider
+        provider.push("VALUE");
+    });
+}
+```
+
+</TabItem>
+</Tabs>
+
+除了通过上述API之外，你可以在进行等待的时候提供一个**id**, 然后在其他地方通过相同的ID来获取 `provider`。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val value: String = sessionContext.waiting("ID") { 
+        // 此处永远不会使用provider, 而是在 [onEvent2] 中使用
+    }
+}
+
+suspend fun onEvent2(sessionContext: ContinuousSessionContext, barEvent: BarEvent) {
+    val provider: ContinuousSessionProvider<String> = sessionContext.getProvider("ID")
+            ?: return // 此ID不存在
+    
+    // 在其他监听函数中推送结果
+    provider.push("VALUE")
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FriendMessageEvent fooEvent) {
+    final String value = sessionContext.waiting("ID", (context, provider) -> {
+        // 此处永远不会使用provider, 而是在 [onEvent2] 中使用
+    });
+}
+
+@Listener
+public void onEvent2(ContinuousSessionContext sessionContext, FriendMessageEvent fooEvent) {
+    final ContinuousSessionProvider<String> provider = sessionContext.getProvider("ID");
+    if (provider == null) {
+        return;
+    }
+
+    provider.push("VALUE");
+}
+```
+
+</TabItem>
+</Tabs>
+
+或者，在同一个监听函数中异步的去使用...?
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val deferred: Deferred<String> = fooEvent.bot.async {
+        sessionContext.waiting("ID") {
+            // 此处永远不会使用provider
+        }
+    }
+    
+    fooEvent.bot.launch {
+       // 得到异步结果时输出到控制台
+       println("VALUE: ${deferred.await()}")
+    }
+    
+    // 等待10s后，尝试推送结果
+    delay(10.seconds)
+    sessionContext.getProvider<String>("ID")?.push("VALUE")
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FriendMessageEvent fooEvent) {
+    final Bot bot = fooEvent.getBot();
+    bot.delayAndCompute(0, () -> {
+        return sessionContext.waiting("ID", (context, provider) -> {
+            // 此处永远不会使用provider
+        });
+    }).thenAccept(value -> {
+        // 得到异步结果时输出到控制台
+        System.out.println("VALUE: " + value);
+    });
+
+    // 等待10s后，尝试推送结果
+    bot.delay(Duration.ofSeconds(10), () -> {
+        final ContinuousSessionProvider<String> provider = sessionContext.getProvider("ID");
+    });
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::info 警惕类型
+
+需要注意，当通过 `getProvider(String)` 获取 `provider` 的时候，请注意其泛型类型。
+如果使用了错误的泛型类型来接收结果会导致出现异常。
+
+:::
+
+### Receiver
+
+与 [`provider`](#provider) 类似，`ContinuousSessionContext` 提供了一个用来获取某个会话结果的类型：
+`ContinuousSessionReceiver<T>`。
+
+`ContinuousSessionReceiver` 与 `ContinuousSessionProvider` 相对，它代表用于获取一个指定ID的结果接收器。
+你可以通过 `receiver` 来在其他地方接收指定会话的结果。
+
+<Tabs groupId='code'>
+<TabItem value='Kotlin'>
+
+```kotlin
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+    val receiver: ContinuousSessionReceiver<String> = sessionContext.getReceiver("ID")
+        ?: return
+    
+    // 挂起并等待结果
+    val value = receiver.await()
+}
+```
+
+</TabItem>
+<TabItem value='Java'>
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext sessionContext, FriendMessageEvent fooEvent) throws InterruptedException {
+    final ContinuousSessionReceiver<String> receiver = sessionContext.getReceiver("ID");
+    if (receiver == null) {
+        return;
+    }
+
+    // 转化为Future来使用
+    final Future<String> valueFuture = receiver.asFuture();
+
+    // 阻塞并等待结果
+    receiver.waiting();
+
+    // 或:
+    // 提供可能的超时时间。
+    try {
+        receiver.waiting(5, TimeUnit.SECONDS);
+    } catch (TimeoutException e) {
+        // 如果超时，则会抛出 TimeoutException
+        throw new RuntimeException(e);
+    }
+}
+```
+
+
+</TabItem>
+</Tabs>
+
+
+:::info 警惕类型
+
+需要注意，当通过 `getReceiver(String)` 获取 `receiver` 的时候，请注意其泛型类型。
+如果使用了错误的泛型类型来接收结果会导致出现异常。
 
 :::
 
