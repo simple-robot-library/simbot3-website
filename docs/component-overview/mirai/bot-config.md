@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 title: Bot配置文件
+toc_max_heading_level: 4
 ---
 
 import Tabs from '@theme/Tabs';
