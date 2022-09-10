@@ -243,12 +243,12 @@ const config = {
             title: '交流&反馈',
             items: [
               {
-                label: 'Issues',
+                label: '问题反馈',
                 href: 'https://github.com/ForteScarlet/simpler-robot/issues',
               },
               {
-                label: 'Discussions',
-                href: 'https://github.com/ForteScarlet/simpler-robot/discussions',
+                label: '交流社区',
+                href: 'https://github.com/simple-robot',
               },
             ],
           },
