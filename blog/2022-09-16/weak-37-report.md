@@ -16,7 +16,8 @@ import Label from '@site/src/components/Label'
 
 ## 🚀 核心库更新
 
-本周 [核心库](https://github.com/simple-robot/simpler-robot) 发布了......哈哈，骗你的，核心库并没有发布新版本。
+本周 [核心库](https://github.com/simple-robot/simpler-robot) 发布了......哈哈，骗你的，核心库本周并没有发布新版本。
+这种我们虽然没有更新核心库或者文档，但是这并不代表我们一直在闲着，终究是有在写什么东西的。
 
 尽管如此，核心库并非毫无变化。在本周，我们完成了将核心库迁移至 [组织库](http://github.com/simple-robot) 的工作，
 现在simbot的聚集地已经相对集中了。
