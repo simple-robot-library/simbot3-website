@@ -38,6 +38,7 @@ const config = {
   organizationName: 'Simple Robot', // Usually your GitHub org/user name.
   projectName: 'simbot', // Usually your repo name.
   plugins: [
+      // https://github.com/flexanalytics/plugin-image-zoom
       'plugin-image-zoom'
   ],
   presets: [
