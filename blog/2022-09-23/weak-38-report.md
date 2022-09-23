@@ -16,7 +16,7 @@ import Label from '@site/src/components/Label'
 
 ## 🚀 核心库更新..?
 
-本周 [核心库](https://github.com/simple-robot/simpler-robot) 依然保持在 `v3.0.0-beta` 版本，暂时没有新地变更。
+本周 [核心库](https://github.com/simple-robot/simpler-robot) 依然保持在 <Label>v3.0.0-beta</Label> 版本，暂时没有新的变更。
 
 这是为什么呢？实际上我们这两周一直在寻找一个针对目前开发中痛点的解决方案。
 那么是什么痛点呢？首先来看如下代码：
