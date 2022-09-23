@@ -20,7 +20,8 @@ import TabItem from '@theme/TabItem';
 在默认情况下， `.bot` 文件等同于 `.json`。因此如果你想使用 `.bot` 格式文件的同时能够拥有IDE的格式高亮，你可以配置你的IDE。
 以IDEA举例，你可以通过 `settings -> File Types` 中左侧搜索 `JSON`，并在右边添加 pattern: `*.bot`，如下图这样：
 
-[![](@site/static/img/bot_config/idea-json-file-config.png)](@site/static/img/bot_config/idea-json-file-config.png)
+![](@site/static/img/bot_config/idea-json-file-config.png)
+
 
 对于其他IDE，请尝试着寻找类似的功能。
 

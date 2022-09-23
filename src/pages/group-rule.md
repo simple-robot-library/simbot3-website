@@ -85,11 +85,11 @@
 :::
 
 
-[![](/img/group-role-resource/xj1.png)](/img/group-role-resource/xj1.png)
+![](/img/group-role-resource/xj1.png)
 
-[![](/img/group-role-resource/xj2.jpg)](/img/group-role-resource/xj2.jpg)
+![](/img/group-role-resource/xj2.jpg)
 
-[![](/img/group-role-resource/xj3.png)](/img/group-role-resource/xj3.png)
+![](/img/group-role-resource/xj3.png)
 
 
 违者禁言 **24小时** 起步，屡教不改、情节严重者赠予飞机票一张。
@@ -104,7 +104,7 @@
 
 例如: 
 
-[![](/img/group-role-resource/yl.png)](/img/group-role-resource/yl.png)
+![](/img/group-role-resource/yl.png)
 
 
 违者禁言 **24小时** 起步，屡教不改、情节严重者赠予飞机票一张。

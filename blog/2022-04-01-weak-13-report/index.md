@@ -12,7 +12,7 @@ tags: [2022周报,周报]
 
 不过嘛。。这周报可从来没有说过这是专供于simbot的周报喔？
 
-[![](chicken.jpg)](chicken.jpg)
+![](chicken.jpg)
 <small><i>等了1小时才出餐的疯狂星期四</i></small>
 
 ## 👑 QQ群要闻
@@ -54,7 +54,7 @@ tags: [2022周报,周报]
 继续十分痛苦但是充满偷懒的复习4月份要考试的东西。😢  
 
 
-[![](study.jpg)](study.jpg)
+![](study.jpg)
 
 <small>
 

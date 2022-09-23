@@ -37,6 +37,9 @@ const config = {
   favicon: 'img/favicon.png',
   organizationName: 'Simple Robot', // Usually your GitHub org/user name.
   projectName: 'simbot', // Usually your repo name.
+  plugins: [
+      'plugin-image-zoom'
+  ],
   presets: [
     [
       'classic',

@@ -25,7 +25,7 @@ public interface Objectives : BotContainer, IDContainer {
 
 核心库提供了 `Objectives` 标准类型实现，其大致结构如下：
 
-[![](@site/static/img/uml/Objectives.png)](@site/static/img/uml/Objectives.png)
+![](@site/static/img/uml/Objectives.png)
 
 可以看到，`User` 和 `Organization` 是 `Objectives` 的主要分支，分别代表了 **用户** 与 **组织** 。
 
@@ -37,7 +37,7 @@ public interface Objectives : BotContainer, IDContainer {
 
 `Organization` 额外实现 [`OrganizationInfo`](Info#organizationinfo) 、`MuteSupport` 、`Structured` ，其具体结构如下所示：
 
-[![](@site/static/img/uml/Organization.png)](@site/static/img/uml/Organization.png)
+![](@site/static/img/uml/Organization.png)
 
 基于上述结构可以得知，**组织** 是结构化的，并且能够获取到 **组织信息** ，同时_期望中_支持 `mute` API。
 
@@ -92,7 +92,7 @@ public interface Objectives : BotContainer, IDContainer {
 
 其结构如下：
 
-[![](@site/static/img/uml/ChatRoom.png)](@site/static/img/uml/ChatRoom.png)
+![](@site/static/img/uml/ChatRoom.png)
 
 
 ### Channel

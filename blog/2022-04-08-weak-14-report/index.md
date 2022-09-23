@@ -57,9 +57,9 @@ tags: [2022周报,周报]
 好吧，闲暇之余，我发现了一个小巧的chrome浏览器插件: [Baidu Exclude Appender](https://github.com/ForteScarlet/baidu-exclude-appender) 。
 如果你有这方面的需求，那么不妨看一看，如果对你有帮助，不妨给作者的GitHub点个星星、谷歌商店送给5🌟好评吧！
 
-[![](option_2.gif)](option_2.gif)
+![](option_2.gif)
 
-[![](option_3.gif)](option_3.gif)
+![](option_3.gif)
 
 
 ## 🚨 群规修订
