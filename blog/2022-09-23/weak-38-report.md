@@ -51,8 +51,7 @@ interface FooEvent {
 ```
 
 但是如果所有的可挂起函数都需要如此额外提供平台兼容性的API，这会使得我们开发中的重复工作量大大提高，严重影响整体的开发效率。
-那么怎么办呢？碰巧的是，我们的某位成员在GitHub上不经意间发现了一个Kotlin编译器插件 
-[Kotlin suspend transform compiler plugin](https://github.com/ForteScarlet/kotlin-suspend-transform-compiler-plugin) ，
+那么怎么办呢？碰巧的是，我们的某位成员在GitHub上不经意间发现了一个[Kotlin编译器插件](https://github.com/ForteScarlet/kotlin-suspend-transform-compiler-plugin)，
 它可以满足我们当下的需求。
 
 我们目前正在尝试与此编译器插件进行整合，如果能够达成解决问题，便会正式投入使用并发布下一个版本来观察其具体表现效果。
