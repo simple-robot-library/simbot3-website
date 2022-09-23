@@ -8,7 +8,7 @@ tags: [2022周报,周报]
 
 <!--truncate-->
 
-这周(以及未来可能的几周)由于下面的复习原因，可能并没有太多的什么针对于 [Simple Robot](https://github.com/ForteScarlet/simpler-robot) 相关信息或者进展。
+这周(以及未来可能的几周)由于下面的复习原因，可能并没有太多的什么针对于 [Simple Robot](https://github.com/simple-robot/simpler-robot) 相关信息或者进展。
 
 不过嘛。。这周报可从来没有说过这是专供于simbot的周报喔？
 
@@ -43,10 +43,10 @@ tags: [2022周报,周报]
 <hr />
 
 ## 💬 计划与讨论
-有些时候，当我们对于部分API的调整有所想法的时候，会将想法发布至 [讨论区](https://github.com/ForteScarlet/simpler-robot/discussions) 
+有些时候，当我们对于部分API的调整有所想法的时候，会将想法发布至 [讨论区](https://github.com/simple-robot/simpler-robot/discussions) 
 以供与大家讨论并得到结果。讨论在一定时间内没有新的观点后将会被固定结果。
 
-如果你有好的想法，也完全欢迎在 [讨论区](https://github.com/ForteScarlet/simpler-robot/discussions) 分享讨论喔！
+如果你有好的想法，也完全欢迎在 [讨论区](https://github.com/simple-robot/simpler-robot/discussions) 分享讨论喔！
 
 <hr />
 

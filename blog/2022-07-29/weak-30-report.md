@@ -22,7 +22,7 @@ import Label from '@site/src/components/Label'
 ## 🚀 版本发布
 
 在本周，我们几位核心成员忙里偷闲的为 [核心库][core-repo] 
-发布了一个新的版本：[**v3.0.0-beta-RC.1**](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-RC.1)
+发布了一个新的版本：[**v3.0.0-beta-RC.1**](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta-RC.1)
 
 这是第一个 **`RC`** 版本，这也代表从此版本开始，api将会被尽可能的保证不发生重大变化了。
 这是个好消息，不是吗？
@@ -39,4 +39,4 @@ import Label from '@site/src/components/Label'
 
 > <small>哦好吧，也许不是刚刚?</small>
 
-[core-repo]: https://github.com/ForteScarlet/simpler-robot
+[core-repo]: https://github.com/simple-robot/simpler-robot

@@ -27,4 +27,4 @@ _人生天地之间，若白驹之过隙，忽然而已。_ 不知不觉已临�
 
 尽管没有什么新版本，不过我们有在偷着更新一些文档内容。也许还没有彻底施工完成，但是也总比一片荒芜要强点儿，不是吗？
 
-[core-repo]: https://github.com/ForteScarlet/simpler-robot
+[core-repo]: https://github.com/simple-robot/simpler-robot

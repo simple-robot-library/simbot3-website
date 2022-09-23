@@ -19,7 +19,7 @@ import Label from '@site/src/components/Label'
 
 :::
 
-在 [v3.0.0-beta-M3](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-M3) 版本发布时，
+在 [v3.0.0-beta-M3](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta-M3) 版本发布时，
 我们承诺过后续的beta版本不会再出现大面积的不兼容更新。而在此版本发布之后，我们又对simbot3的语义化版本产生了自我质疑。
 
 实际上，从simbot最初的版本直至今日，都没有遵循标准的**语义化版本**规则。不论是simbot、simbot2还是目前正在筹备的simbot3，

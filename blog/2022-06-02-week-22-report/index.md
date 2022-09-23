@@ -18,17 +18,17 @@ import CodeBlock from '@theme/CodeBlock';
 
 
 ## 🚀 版本更新
-在本周，[核心库](https://github.com/ForteScarlet/simpler-robot) 发布了几个版本：
-- [**v3.0.0.preview.12.0**](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.12.0)
-- [v3.0.0.preview.11.1](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.11.1)
-- [v3.0.0.preview.11.0](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.11.0)（上周末发布）
+在本周，[核心库](https://github.com/simple-robot/simpler-robot) 发布了几个版本：
+- [**v3.0.0.preview.12.0**](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.12.0)
+- [v3.0.0.preview.11.1](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.11.1)
+- [v3.0.0.preview.11.0](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.11.0)（上周末发布）
 
-在这其中，[**v3.0.0.preview.12.0**](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.12.0)
+在这其中，[**v3.0.0.preview.12.0**](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.12.0)
 是本周内发布的主要重构版本。在这个版本中，我们主要实现了 `Items` 类型来尝试改善原本过于繁杂的 `Flow`、`Sequance`、`Stream`混搭的情况。
 由于是用来改善类型体验的，因此会变更各相关类型的返回值（大概涉及类型有 `Bot` 、`Member`、`Guild`、`Channel`、`Group`），在升级的时候可能需要对代码进行一定的调整。
 
 ## 🎸 Items API
-如上文所属，在 [**v3.0.0.preview.12.0**](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.12.0)
+如上文所属，在 [**v3.0.0.preview.12.0**](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.12.0)
 版本中我们提供了一个新的 `Items` 类型来替代原本不够统一的流式类型。我们希望它能够有效的改善普通开发者对限流操作的使用手感，
 也希望它能够有效的改善组件开发者的体验。
 
@@ -100,7 +100,7 @@ public class Test {
 
 老实说，`v3.0.0.preview.12.0` 版本发布的的确很是仓促，因此 `Items` API 实际上没有进行很细致的打磨，就鬼使神差的被发布了。
 
-因此 `Items` API 发布后，它很有可能存在各种各样的隐患，如果可以还请仔细体验，并积极反馈问题到 [**issue**](https://github.com/ForteScarlet/simpler-robot/issues)，
+因此 `Items` API 发布后，它很有可能存在各种各样的隐患，如果可以还请仔细体验，并积极反馈问题到 [**issue**](https://github.com/simple-robot/simpler-robot/issues)，
 感谢你的协助！
 
 :::

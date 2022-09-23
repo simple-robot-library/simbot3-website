@@ -16,7 +16,7 @@ import Label from '@site/src/components/Label'
 
 ## 🚀 版本更新
 
-截止到本周，[核心库](https://github.com/ForteScarlet/simpler-robot) 发布了如下几个版本：
+截止到本周，[核心库](https://github.com/simple-robot/simpler-robot) 发布了如下几个版本：
 
 - [**v3.0.0-beta-M2**][v3bm2] 
 - [**v3.0.0.preview.20.0**][v3p20.0]
@@ -34,7 +34,7 @@ import Label from '@site/src/components/Label'
 但是很不幸的是，**`v3.0.0-beta-M3`** 中又一次出现了较大范围的不兼容更新💔。。。
 只不过这一次的不兼容更新是针对**包结构**的，对实际上的功能没有影响。
 
-对于这次的包结构变化的细节内容，你可以参阅 [PR<sup>#378</sup>](https://github.com/ForteScarlet/simpler-robot/pull/378) 
+对于这次的包结构变化的细节内容，你可以参阅 [PR<sup>#378</sup>](https://github.com/simple-robot/simpler-robot/pull/378) 
 或者 [《v3.0.0-beta.M3包路径变更公告》](../2022-07-06-announcement-package-rename)。
 
 如果不出意外，**`M3`** 的下一个版本将会是 **`RC`**。
@@ -47,9 +47,9 @@ import Label from '@site/src/components/Label'
 > *欸，这句话是不是说过？*
 
 
-[v2.4.0]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v2.4.0
+[v2.4.0]: https://github.com/simple-robot/simpler-robot/releases/tag/v2.4.0
 
-[v3p20.0]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.20.0
+[v3p20.0]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.20.0
 
-[v3bm2]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-M2
-[v3bm3]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-M3
+[v3bm2]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta-M2
+[v3bm3]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta-M3

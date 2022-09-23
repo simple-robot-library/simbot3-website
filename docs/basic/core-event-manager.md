@@ -156,7 +156,7 @@ final CoreListenerManager manager = CoreListenerManager.newInstance(config);
 :::caution
 
 核心事件管理器与事件的注册流程正在准备发生变更。
-你可以参考 [Simple Robot讨论💬 #235](https://github.com/ForteScarlet/simpler-robot/discussions/235)
+你可以参考 [Simple Robot讨论💬 #235](https://github.com/simple-robot/simpler-robot/discussions/235)
 来了解详情，并可以在讨论结束之前积极参与到讨论中来。
 
 :::

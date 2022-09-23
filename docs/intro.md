@@ -10,7 +10,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 <HeaderShow />
 
-此文档的内容为 [Simple Robot](https://github.com/ForteScarlet/simpler-robot) v3.x 版本的使用手册。
+此文档的内容为 [Simple Robot](https://github.com/simple-robot/simpler-robot) v3.x 版本的使用手册。
 
 
 ## 概述

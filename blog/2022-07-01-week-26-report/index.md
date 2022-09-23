@@ -15,7 +15,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 ## 🚀 版本更新
 
-从[上周周报](../2022-06-22-week-25-report)截止到本周周报，[核心库](https://github.com/ForteScarlet/simpler-robot) 发布了如下几个版本：
+从[上周周报](../2022-06-22-week-25-report)截止到本周周报，[核心库](https://github.com/simple-robot/simpler-robot) 发布了如下几个版本：
 
 - [**v3.0.0-beta-M1**][v3bm1]
 - [**v3.0.0.preview.18.0**][v3p18.0]
@@ -67,7 +67,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 除了代码内的结构，我们还打算重命名[**组织库**](https://github.com/simple-robot)，
 由 **`simple-robot`** 更名为 **`simple-robot-projects`**，
-并考虑将 [**核心库**](https://github.com/ForteScarlet/simpler-robot)
+并考虑将 [**核心库**](https://github.com/simple-robot/simpler-robot)
 由 **`ForteScarlet/simpler-robot`** 迁移至 **`simple-robot-projects/simpler-robot`**。
 
 ## 📖 文档更新
@@ -75,12 +75,12 @@ import CodeBlock from '@theme/CodeBlock';
 文档？有啦，有稍微写写的啦。
 
 
-[v2.3.9]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v2.3.9
+[v2.3.9]: https://github.com/simple-robot/simpler-robot/releases/tag/v2.3.9
 
-[v3p17.0]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.17.0
+[v3p17.0]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.17.0
 
-[v3p17.1]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.17.1
+[v3p17.1]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.17.1
 
-[v3p18.0]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.18.0
+[v3p18.0]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.18.0
 
-[v3bm1]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-M1
+[v3bm1]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta-M1

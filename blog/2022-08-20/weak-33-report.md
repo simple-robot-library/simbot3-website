@@ -26,7 +26,7 @@ import Label from '@site/src/components/Label'
 经常会有人在一些地方发出疑问：_“应该怎么从simbot中发送‘转发消息’呢？”_ 实际上，在当他们提出此问题时，的确没有一个能够直接避免操作Mirai原生对象而进行操作的方式。
 只不过，这些发出疑问的_地方_并没有能够传达意志的能力，直到...
 
-直到(第一个)有关此问题的 [议题(#401)](https://github.com/ForteScarlet/simpler-robot/issues/401) 出现，
+直到(第一个)有关此问题的 [议题(#401)](https://github.com/simple-robot/simpler-robot/issues/401) 出现，
 一个可能被添加的 [特性](https://github.com/simple-robot/simbot-component-mirai/issues/56) 被提上了日程。
 
 #### 密码配置

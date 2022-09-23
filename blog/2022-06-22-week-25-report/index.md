@@ -17,7 +17,7 @@ import CodeBlock from '@theme/CodeBlock';
 即日起，我们将**不会**在其他任何额外的地方（例如各社交软件）中发布我们的任何更新功能、讯息 （例如版本更新、周报更新等）。
 
 如果你希望能够第一时间得到我们的**版本更新**通知或者其他仓库相关信息的通知，可以前往你所需要订阅的仓库
-（例如 [核心库](https://github.com/ForteScarlet/simpler-robot)）处，使用仓库右上角的 **Watch** 按钮来订阅你想要订阅的内容。
+（例如 [核心库](https://github.com/simple-robot/simpler-robot)）处，使用仓库右上角的 **Watch** 按钮来订阅你想要订阅的内容。
 
 [![watch-button.png](watch-button.png)](watch-button.png)。
 
@@ -37,23 +37,23 @@ import CodeBlock from '@theme/CodeBlock';
 
 ## 💬 群聊与其他
 也许你已经发现了，现在simbot不再拥有**任何官方群聊**。现在唯一能够与团队成员交流的地方就是
-[**GitHub仓库**](https://github.com/ForteScarlet/simpler-robot) 中的相关场所，
-例如 [**Issues**](https://github.com/ForteScarlet/simpler-robot/issues)
-或者 [**Discussions**](https://github.com/ForteScarlet/simpler-robot/discussions)。
+[**GitHub仓库**](https://github.com/simple-robot/simpler-robot) 中的相关场所，
+例如 [**Issues**](https://github.com/simple-robot/simpler-robot/issues)
+或者 [**Discussions**](https://github.com/simple-robot/simpler-robot/discussions)。
 
 后续simbot版本进入 **`beta`** 阶段后，也会逐步完善对于仓库的整体建设，包括对于问题、贡献、工作流等内容的更加标准化的改进。
 在第一个稳定版发布后，也许还会根据心情继续更新一下视频之类的东西，谁知道呢。
 
 
 ## 🚀 版本更新
-从[上次周报](../2022-06-17-week-24-report)截止到本次周报，[核心库](https://github.com/ForteScarlet/simpler-robot) 发布了如下几个版本：
+从[上次周报](../2022-06-17-week-24-report)截止到本次周报，[核心库](https://github.com/simple-robot/simpler-robot) 发布了如下几个版本：
 - [**v3.0.0.preview.16.0**][v3.0.0.preview.16.0] 
 - [v3.0.0.preview.15.0][v3.0.0.preview.15.0] 
 
 而现在，也快到了由法欧莉亲自对当前的版本（[v3.0.0.preview.16.0][v3.0.0.preview.16.0] ）进行测试的环节了。
 
-[v3.0.0.preview.15.0]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.15.0
-[v3.0.0.preview.16.0]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.16.0
+[v3.0.0.preview.15.0]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.15.0
+[v3.0.0.preview.16.0]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.16.0
 
 ## 📖 文档更新
 文档最近两周内并没有什么实质性的进展。也许下周可以继续呢？

@@ -17,7 +17,7 @@ import Label from '@site/src/components/Label'
 
 ## 🚀 版本发布
 
-本周, [核心库][core-repo] 发布了版本 [`v3.0.0-beta-RC.2`](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-RC.2)，
+本周, [核心库][core-repo] 发布了版本 [`v3.0.0-beta-RC.2`](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta-RC.2)，
 
 
 此版本中主要进行了一些优化、修复相关的工作。
@@ -90,4 +90,4 @@ love.forte.simbot2:simbot2-xxx:1.x.x
 
 :::
 
-[core-repo]: https://github.com/ForteScarlet/simpler-robot
+[core-repo]: https://github.com/simple-robot/simpler-robot

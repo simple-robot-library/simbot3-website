@@ -19,7 +19,7 @@ export default function HeaderShow({}) {
             </small>
             <br/>
             <span>
-<a href="https://github.com/ForteScarlet/simpler-robot" target="_blank">github</a>
+<a href="https://github.com/simple-robot/simpler-robot" target="_blank">github</a>
 </span> &nbsp; | &nbsp; <span>
 <a href="https://gitee.com/ForteScarlet/simpler-robot" target="_blank">gitee</a>
 </span> <br/>
@@ -29,7 +29,7 @@ export default function HeaderShow({}) {
                 <small> &gt; 走过路过，不要忘记点亮一颗⭐喔~ &lt; </small>
                 <br/>
                 <br/>
-                <a href="https://github.com/ForteScarlet/simpler-robot/releases/latest"><PaddingImg alt="release"
+                <a href="https://github.com/simple-robot/simpler-robot/releases/latest"><PaddingImg alt="release"
                                                                                              src="https://img.shields.io/github/v/release/ForteScarlet/simpler-robot"/></a>
                 <a href="https://repo1.maven.org/maven2/love/forte/simbot/simbot-api/" target="_blank">
                     <PaddingImg alt="release"
@@ -44,7 +44,7 @@ export default function HeaderShow({}) {
                 <PaddingImg alt="search-hit" src="https://img.shields.io/github/search/ForteScarlet/simpler-robot/simbot"/>
                 <PaddingImg alt="top-language"
                      src="https://img.shields.io/github/languages/top/ForteScarlet/simpler-robot"/>
-                <a href="https://github.com/ForteScarlet/simpler-robot">
+                <a href="https://github.com/simple-robot/simpler-robot">
                     <PaddingImg alt="copying"
                          src="https://img.shields.io/github/license/ForteScarlet/simpler-robot"/></a>
                 <br/>

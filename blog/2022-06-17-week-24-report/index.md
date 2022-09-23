@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 ## 🚀 版本更新/计划
-本周中，[核心库](https://github.com/ForteScarlet/simpler-robot) 发布了
+本周中，[核心库](https://github.com/simple-robot/simpler-robot) 发布了
 [v3.0.0.preview.14.0][v3.0.0.preview.14.0] ，
 并预计很快会再发布 **`v3.0.0.preview.15.0`**。
 
@@ -23,7 +23,7 @@ import CodeBlock from '@theme/CodeBlock';
 ## 🚩 v3.0.0.preview.14.0
 这次的更新也是一如既往的 **⚠️不兼容更新**。在这次更新中，有一些值得注意的内容。
 
-### 👉 [#319](https://github.com/ForteScarlet/simpler-robot/pull/319) 移除 `Bot.friend(...)`
+### 👉 [#319](https://github.com/simple-robot/simpler-robot/pull/319) 移除 `Bot.friend(...)`
 移除了 `Bot` 中默认实现的 `Bot.friends` 和 `Bot.friend(...)` api, 取而代之的是 `Bot.contacts()` 和 `Bot.contact(...)`。
 
 <Tabs groupId="code">
@@ -91,7 +91,7 @@ if (bot instanceof FriendsContainer) {
 </TabItem>
 </Tabs>
 
-### 👉 [#320](https://github.com/ForteScarlet/simpler-robot/pull/320) `Objectives` 重命名为 `Objective`
+### 👉 [#320](https://github.com/simple-robot/simpler-robot/pull/320) `Objectives` 重命名为 `Objective`
 字面意思。
 
 <hr/>
@@ -102,7 +102,7 @@ if (bot instanceof FriendsContainer) {
 在 **`v3.0.0.preview.15.0`** 中，也有一些需要特别注意的更新内容。
 
 ### ⛔️ 移除 `UserStatus`
-在 [v3.0.0.preview.14.0][v3.0.0.preview.14.0] 中的 [#328](https://github.com/ForteScarlet/simpler-robot/pull/328)，
+在 [v3.0.0.preview.14.0][v3.0.0.preview.14.0] 中的 [#328](https://github.com/simple-robot/simpler-robot/pull/328)，
 我们将 `UserStatus` 标记过时并准备删除。而在**`v3.0.0.preview.15.0`** 中，我们将会完成删除工作。
 
 ### ⛔️ 移除 `@Filter.or` 和 `@Filter.and`
@@ -113,7 +113,7 @@ if (bot instanceof FriendsContainer) {
 - [**KT-47932**](https://youtrack.jetbrains.com/issue/KT-47932)
 
 
-[v3.0.0.preview.14.0]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.14.0
+[v3.0.0.preview.14.0]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.14.0
 
 
 更多内容还请关注后续的详细更新日志。

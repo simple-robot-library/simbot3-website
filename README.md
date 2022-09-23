@@ -9,7 +9,7 @@
 </small>
 <br>
     <span>
-        <a href="https://github.com/ForteScarlet/simpler-robot" target="_blank">github</a>
+        <a href="https://github.com/simple-robot/simpler-robot" target="_blank">github</a>
     </span> 
     &nbsp;&nbsp; | &nbsp;&nbsp;
     <span>
@@ -17,9 +17,9 @@
     </span> <br />
     <small> &gt; 感谢 <a href="https://github.com/ForteScarlet/CatCode" target="_blank">CatCode</a> 开发团队成员制作的simbot logo &lt; </small>
     <br>
-    <small> &gt; 走过路过，不要忘记去<a href="https://github.com/ForteScarlet/simpler-robot">点亮一颗⭐</a>喔~ &lt; </small> 
+    <small> &gt; 走过路过，不要忘记去<a href="https://github.com/simple-robot/simpler-robot">点亮一颗⭐</a>喔~ &lt; </small> 
     <br>
-   <a href="https://github.com/ForteScarlet/simpler-robot/releases/latest"><img alt="release" src="https://img.shields.io/github/v/release/ForteScarlet/simpler-robot" /></a>
+   <a href="https://github.com/simple-robot/simpler-robot/releases/latest"><img alt="release" src="https://img.shields.io/github/v/release/ForteScarlet/simpler-robot" /></a>
 <a href="https://repo1.maven.org/maven2/love/forte/simbot/simbot-api/" target="_blank">
   <img alt="release" src="https://img.shields.io/maven-central/v/love.forte.simbot/simbot-api" /></a>
 <a href="https://www.yuque.com/simpler-robot/simpler-robot-doc" target="_blank">
@@ -40,7 +40,7 @@
 </div>
 
 
-欢迎！如你所见，这里是 [**Simple Robot**](https://github.com/ForteScarlet/simpler-robot) 框架首页网站的仓库地址！
+欢迎！如你所见，这里是 [**Simple Robot**](https://github.com/simple-robot/simpler-robot) 框架首页网站的仓库地址！
 
 你可以通过 [simbot.forte.love](https://simbot.forte.love) 来访问首页，或者从仓库中寻找进入构建页面的入口，都是可以的~
 

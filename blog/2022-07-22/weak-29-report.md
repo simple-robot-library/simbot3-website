@@ -22,7 +22,7 @@ import Label from '@site/src/components/Label'
 
 ## 🚀 版本计划
 
-好吧，让我们回到正题。对于接下来的版本计划，便是继续推进 [**核心库**](https://github.com/ForteScarlet/simpler-robot)
+好吧，让我们回到正题。对于接下来的版本计划，便是继续推进 [**核心库**](https://github.com/simple-robot/simpler-robot)
 的版本进度。下一个版本将会是 `v3.0.0-beta-RC.1` 版本，并逐步向第一个 `beta` 版本前进。
 
 <hr/>

@@ -45,8 +45,8 @@ import Label from '@site/src/components/Label'
 
 ## 🚀 核心库更新
 
-本周 [核心库](https://github.com/ForteScarlet/simpler-robot) 发布了一个新版本：
-[v3.0.0-beta](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta)
+本周 [核心库](https://github.com/simple-robot/simpler-robot) 发布了一个新版本：
+[v3.0.0-beta](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta)
 
 鉴于近期并未有什么严重问题的反馈，因此发布了这个核心库的第一个 `BETA` 系列版本。`BETA` 系列版本发布后，
 后续版本的更新就不再会想之前的 `preview` 阶段那样的频繁变动了，而是会更多的考虑兼容性。
@@ -56,7 +56,7 @@ import Label from '@site/src/components/Label'
 
 ## 🚚 核心库迁移
 
-曾经我们提到过，我们正计划着将 [核心库](https://github.com/ForteScarlet/simpler-robot) 迁移到 [组织库](http://github.com/simple-robot)
+曾经我们提到过，我们正计划着将 [核心库](https://github.com/simple-robot/simpler-robot) 迁移到 [组织库](http://github.com/simple-robot)
 中。此计划_可能_会在近期实行。
 
 ## 🏢 社区
@@ -65,7 +65,7 @@ import Label from '@site/src/components/Label'
 提供了一个简单的 [社区](https://github.com/orgs/simple-robot/discussions) 。
 日后可能会逐步完善此社区，并时不时地更新一些咨询或F&Q来提供更友好地引导，如果有必要的话。
 
-在这之前，[核心库讨论区](https://github.com/ForteScarlet/simpler-robot/discussions) 一直担任着社区的职责。
+在这之前，[核心库讨论区](https://github.com/simple-robot/simpler-robot/discussions) 一直担任着社区的职责。
 
 
 

@@ -14,15 +14,15 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 ## 🚀 版本更新/计划
-本周中，[核心库](https://github.com/ForteScarlet/simpler-robot) 发布了
-[v3.0.0.preview.13.0](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.13.0) ，
-主要用于更新优化在 [v3.0.0.preview.12.0](https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0.preview.12.0) 
+本周中，[核心库](https://github.com/simple-robot/simpler-robot) 发布了
+[v3.0.0.preview.13.0](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.13.0) ，
+主要用于更新优化在 [v3.0.0.preview.12.0](https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0.preview.12.0) 
 中的 `Items` API。
 
 而在后续计划的 `v3.0.0.preview.14.0` 中，将会有如下的变更计划：
 
 ### 🎓 Bot实现变更
-在 [#280](https://github.com/ForteScarlet/simpler-robot/pull/280) 中，`Bot` 的结构被进行了一次调整，
+在 [#280](https://github.com/simple-robot/simpler-robot/pull/280) 中，`Bot` 的结构被进行了一次调整，
 将原来一部分的api拆分为了 _社交关系容器_ 接口类型并由 `Bot` 进行默认实现。
 
 而在之后的 `v3.0.0.preview.14.0` 中，将不再为 `Bot` 实现 `FriendsContainer`，取而代之的则是 `ContactsContainer` 的实现。

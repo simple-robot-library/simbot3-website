@@ -16,7 +16,7 @@ import Label from '@site/src/components/Label'
 
 ## 🚀 版本更新
 
-截止到本周，[核心库](https://github.com/ForteScarlet/simpler-robot) 发布了如下版本：
+截止到本周，[核心库](https://github.com/simple-robot/simpler-robot) 发布了如下版本：
 
 - [**v3.0.0-beta-M3**][v3bm3]
 
@@ -55,4 +55,4 @@ simbot3版本从开始到现在已经进行了将近1年，我们很是迫切地
 总而言之，就是这样。以目前的形势来看，团队的生产力远远无法弥补当前工作量的缺口，因此我们无法保证此项目的生命力与未来。
 
 
-[v3bm3]: https://github.com/ForteScarlet/simpler-robot/releases/tag/v3.0.0-beta-M3
+[v3bm3]: https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta-M3

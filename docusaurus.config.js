@@ -145,7 +145,7 @@ const config = {
       // 公告
       announcementBar: {
         id: 'still_under_construction',
-        content: `🚧 <b>尚在施工中...</b> 🚧 一切内容以<a href="https://github.com/ForteScarlet/simpler-robot">仓库</a>和代码中实际内容为准。`,
+        content: `🚧 <b>尚在施工中...</b> 🚧 一切内容以<a href="https://github.com/simple-robot/simpler-robot">仓库</a>和代码中实际内容为准。`,
         backgroundColor: '#FFB906',
         textColor: '#142F48',
         isCloseable: false
@@ -177,7 +177,7 @@ const config = {
             dropdownActiveClassDisabled: true,
           },
           {
-            href: 'https://github.com/ForteScarlet/simpler-robot',
+            href: 'https://github.com/simple-robot/simpler-robot',
             label: 'GitHub',
             position: 'right',
           }
@@ -223,7 +223,7 @@ const config = {
             items: [
               {
                 label: 'GitHub ',
-                href: 'https://github.com/ForteScarlet/simpler-robot',
+                href: 'https://github.com/simple-robot/simpler-robot',
               },
               {
                 label: 'Gitee镜像 ',
@@ -244,7 +244,7 @@ const config = {
             items: [
               {
                 label: '问题反馈',
-                href: 'https://github.com/ForteScarlet/simpler-robot/issues',
+                href: 'https://github.com/simple-robot/simpler-robot/issues',
               },
               {
                 label: '交流社区',
