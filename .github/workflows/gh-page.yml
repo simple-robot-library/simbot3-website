@@ -27,4 +27,4 @@ jobs:
           personal_token: ${{ secrets.PUSH_TOKEN }}
 #          publish_branch: gh-pages
           publish_dir: ./build
-          force_orphan: true
+#          force_orphan: true
