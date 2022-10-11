@@ -3,11 +3,11 @@
   "short_name": "simbot3",
   "display": "standalone",
   "scope": "./",
-  "start_url": "./",
+  "start_url": "./index.html",
   "related_applications": [
     {
       "platform": "webapp",
-      "url": "https://simbot.forte.love//manifest.json"
+      "url": "https://simbot.forte.love/manifest.json"
     }
   ],
   "icons": [
