@@ -1,4 +1,4 @@
-name: Deploy gh-page
+name: deploy gh page scheduled
 on:
   schedule:
     - cron: "0 0 * * *"
