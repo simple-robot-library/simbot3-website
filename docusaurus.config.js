@@ -212,7 +212,7 @@ const config = {
             // 公告
             announcementBar: {
                 id: 'still_under_construction',
-                content: `🚧 <b>尚在施工中...</b> 🚧 一切内容以<a href="https://github.com/simple-robot/simpler-robot">仓库</a>和代码中实际内容为准。`,
+                content: `🚧 <b>尚在施工中...</b> 🚧 一切内容以 <a href="https://github.com/simple-robot/simpler-robot"><b>GitHub</b></a> 中源码实际内容为准。`,
                 backgroundColor: '#FFB906',
                 textColor: '#142F48',
                 isCloseable: false
@@ -235,7 +235,8 @@ const config = {
                         position: 'left',
                         label: '文档',
                     },
-                    {to: '/blog', label: 'Blog', position: 'left'},
+                    {to: '/blog', label: '博客', position: 'left'},
+                    {href: 'https://github.com/simple-robot-library', label: '图书馆', position: 'left'},
                     ////////
                     {
                         type: 'docsVersionDropdown',
@@ -245,8 +246,9 @@ const config = {
                     },
                     {
                         href: 'https://github.com/simple-robot/simpler-robot',
-                        label: 'GitHub',
                         position: 'right',
+                        className: 'bi-github',
+                        'aria-label': 'GitHub',
                     }
                 ],
             },

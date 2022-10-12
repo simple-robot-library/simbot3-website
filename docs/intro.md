@@ -34,7 +34,7 @@ Simple Robot(下文简称simbot) 一开始是作为一个机器人标准开发�
 
 ```kotlin
 val friend: Friend = event.friend()  // suspend api
-friend.sendMessage("Hey!")           // suspend api
+friend.send("Hey!")           // suspend api
 ```
 
 </TabItem>
@@ -42,7 +42,8 @@ friend.sendMessage("Hey!")           // suspend api
 
 ```java
 Friend friend = event.getFriend();   // blocking api for java
-friend.sendMessageBlocking("Hey!");  // blocking api for java
+friend.sendBlocking("Hey!");  // blocking api for java
+friend.sendAsync("Hey!");     // async api for java
 ```
 
 </TabItem>
@@ -83,6 +84,7 @@ public void myListener(GroupMessageEvent messageEvent) {
    String groupName = group.getGroupName();
    // ...
    group.sendBlocking("Hey, simbot3");
+   group.sendAsync("Hey, simbot3");
 }
 ```
 

@@ -71,12 +71,18 @@ function HomepageHeader({day}) {
             <div className="container">
                 <h1 className="hero__title">{siteConfig.title} <small>{numberVersionValue}</small></h1>
                 <p className="hero__subtitle">{random(taglines)}</p>
-                {/*<p className="hero__subtitle">{siteConfig.tagline}</p>*/}
                 <div className={styles.buttons}>
                     <Link
                         className="button button--secondary button--lg"
                         to="/docs/intro">
                         {random(documentButtonTexts)}
+                    </Link>
+                </div>
+                <div className={styles.buttons}>
+                    <Link
+                        className="button button--outline button--md"
+                        to="https://github.com/simple-robot/simpler-robot">
+                        {<><span className="bi-github"> GitHub</span> </>}
                     </Link>
                 </div>
             </div>
