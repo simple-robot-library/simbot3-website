@@ -711,16 +711,13 @@ private fun SimpleApplicationBuilder.configApplication() {
  * 配置mirai相关内容
  */
 private fun SimpleApplicationBuilder.configMirai() {
-    useMirai {
-        botManager { completionPerceivable ->
-            // 注册一个你的qq账号
-            register(123, "密码") { bot ->
-                // application启动完成后执行
-                completionPerceivable.onCompletion {
-                    bot.start()
-                }
-            }
+    useMirai()
+        
+    miraiBots {
+        val bot = register(123, "密码") {
+            // more config..?
         }
+        bot.start()
     }
 }
 
@@ -728,18 +725,22 @@ private fun SimpleApplicationBuilder.configMirai() {
  * 配置事件处理器。如果事件很多，最好进行拆分。此处仅作示例
  */
 private fun SimpleApplicationBuilder.configEventProcessor() {
-    eventProcessor {
-        listeners {
-            // 监听好友消息, 如果好友消息中有文本"喵"，回复"喵喵喵"
-            listen(FriendMessageEvent) {
-                // 匹配函数
-                match { event -> "喵" in event.messageContent.plainText.trim() }
-                // 处理函数
-                handle { event ->
-                    event.friend().send("喵喵喵")
-                    EventResult.defaults()
-                }
+    listeners {
+        // 监听好友消息, 如果好友消息中有文本"喵"，回复"喵喵喵"
+        listen(FriendMessageEvent) {
+            // 匹配函数
+            match { event -> "喵" in event.messageContent.plainText.trim() }
+            // 处理函数
+            process { event ->
+                event.friend().send("喵喵喵")
             }
+            
+            // or:
+            // handle { event ->
+            //     event.friend().send("喵喵喵")
+            //     EventResult.invalid() // event result.
+            // }
+            
         }
     }
 }
