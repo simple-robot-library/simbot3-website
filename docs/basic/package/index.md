@@ -70,7 +70,7 @@ plugins {
 
 
 ## Application
-除了将程序打包为一整个Jar以外，你可以将他们所有的依赖Jar全部分离进行打包。
+
 在 `Gradle` 中，你可以使用 `application` 插件进行打包（参考：[gradle-plugin: application](https://docs.gradle.org/current/userguide/application_plugin.html#header)）
 
 在Maven或者IDEA自带打包工具中，应该也有类似的功能，但是我实际没上手过所以这部分各位就先自行探索罢。

@@ -9,24 +9,7 @@ title: Spring Boot Starter
 
 :::note 假设
 
-下文将会 **假设** 你想要使用 [**开黑啦组件**](../component-overview/kaiheila) 和 [**mirai组件**](../component-overview/mirai)。
-
-:::
-
-:::caution 兼容问题
-
-实际上 [**开黑啦组件**](../component-overview/kaiheila) 和 [**mirai组件**](../component-overview/mirai) 并不兼容。说具体点，**mirai组件**
-可能暂时无法与其他大部分组件兼容：因为 **mirai** 使用的 [**Ktor**](https://ktor.io/) 版本为 `v1.x`, 而其他大部分组件使用的为 `v2.x`。
-
-因此下文中的组合使用仅为理想状态并仅做示例用。
-
-:::
-
-:::info 版本要求
-
-simbot 的 `Spring Boot Starter` 对 `Spring Boot` 或者说对 `Spring Framework` 版本存在一定要求。
-
-详细信息请查看 [**simbot 中的 Spring Boot 版本要求**](../overviews/module-overview/spring-boot-starter/version-requirements) 。
+下文将会 **假设** 你想要使用 [**mirai组件**](../component-overview/mirai)。
 
 :::
 
@@ -244,25 +227,25 @@ public class BarController {
 ```yaml
 simbot:
   # 是否在bot注册完成后自动启动他们。
-  # 默认为true
+  # 默认为 true
   auto-start-bots: true
 
   # 自定义配置bot资源文件的扫描路径。
-  # 默认为 simbot-bots/*.bot*
+  # 默认为 'classpath:simbot-bots/*.bot*'
   bot-configuration-resources:
-    - classpath:bots/bot-*.bot
+    - 'classpath:simbot-bots/*.bot*'
    
   # 如果需要，此处配置扫描顶层函数形式的 Binder Factory。
   # 默认不扫描    
   top-level-binder-scan-package:
-    - example.binder.foo
-    - example.binder.bar
+    - 'example.binder.foo'
+    - 'example.binder.bar'
 
   # 如果需要，此处配置扫描顶层函数形式的监听函数。
   # 默认不扫描    
   top-level-listener-scan-package:
-    - example.listener.foo
-    - example.listener.bar
+    - 'example.listener.foo'
+    - 'example.listener.bar'
 
 ```
 
@@ -286,8 +269,8 @@ simbot.top-level-binder-scan-package[1]=example.binder.bar
 simbot.auto-start-bots=true
 
 # 自定义配置bot资源文件的扫描路径。
-# 默认为 simbot-bots/*.bot*
-simbot.bot-configuration-resources[0]=classpath:bots/bot-*.bot
+# 默认为 classpath:simbot-bots/*.bot*
+simbot.bot-configuration-resources[0]=classpath:simbot-bots/*.bot*
 ```
 
 </TabItem>
