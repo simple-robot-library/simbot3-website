@@ -103,7 +103,21 @@ const config = {
                     //   content: 'rgb(37, 194, 160)',
                     // },
                 ],
-            }]
+            }],
+        // '关于本站' 文档
+        [
+            '@docusaurus/plugin-content-docs',
+            {
+                id: 'about',
+                path: 'about',
+                routeBasePath: 'about',
+                sidebarPath: require.resolve('./sidebars.js'),
+                breadcrumbs: true,
+                showLastUpdateAuthor: true,
+                showLastUpdateTime: true,
+                editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/about',
+            },
+        ],
     ],
     presets: [
         [
@@ -111,9 +125,11 @@ const config = {
             /** @type {import('@docusaurus/preset-classic').Options} */
             ({
                 docs: {
+                    breadcrumbs: true,
                     sidebarPath: require.resolve('./sidebars.js'),
-                    // Please change this to your repo.
-                    editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main',
+                    showLastUpdateAuthor: true,
+                    showLastUpdateTime: true,
+                    editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/docs',
                     // version
                     lastVersion: 'current',
                     versions: {
@@ -125,6 +141,8 @@ const config = {
                         },
                     },
                 },
+
+
                 blog: {
                     blogTitle: 'Simbot Blog',
                     blogDescription: '与simbot相关的或者不相关的各种博客！',
@@ -234,6 +252,13 @@ const config = {
                         docId: 'intro',
                         position: 'left',
                         label: '文档',
+                    },
+                    {
+                        // type: 'doc',
+                        // docId: 'intro',
+                        to: '/about',
+                        position: 'left',
+                        label: '关于本站',
                     },
                     {to: '/blog', label: '博客', position: 'left'},
                     {href: 'https://github.com/simple-robot-library', label: '图书馆', position: 'left'},
