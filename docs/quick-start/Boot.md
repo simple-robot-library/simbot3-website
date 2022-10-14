@@ -13,19 +13,9 @@ tags: [快速开始]
 
 :::note 假设
 
-下文将会 **假设** 你想要使用 [**开黑啦组件**](../component-overview/kaiheila) 和 [**mirai组件**](../component-overview/mirai)。
+下文将会 **假设** 你想要使用 [**mirai组件**](../component-overview/mirai)。
 
 :::
-
-:::caution 兼容问题
-
-实际上 [**开黑啦组件**](../component-overview/kaiheila) 和 [**mirai组件**](../component-overview/mirai) 并不兼容。说具体点，**mirai组件**
-可能暂时无法与其他大部分组件兼容：因为 **mirai** 使用的 [**Ktor**](https://ktor.io/) 版本为 `v1.x`, 而其他大部分组件使用的为 `v2.x`。
-
-因此下文中的组合使用仅为理想状态并仅做示例用。
-
-:::
-
 
 # 使用依赖
 
@@ -96,18 +86,16 @@ suspend fun main() {
 
 ### 安装组件标识
 
-构建 `Application` 并不能让你直接使用任何组件。你需要手动安装你所需要的**组件标识**（ `Component` ），这里以mirai组件和开黑啦组件为例：
+构建 `Application` 并不能让你直接使用任何组件。你需要手动安装你所需要的**组件标识**（ `Component` ），这里以mirai组件为例：
 
 
 ```kotlin title='example/BootApp.kt'
-import love.forte.simbot.component.kaiheila.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simboot.core.application.*
 
 suspend fun main() {
     createBootApplication {
         useMiraiComponent()
-        useKaiheilaComponent()
     }.join()
 }
 ```
@@ -115,20 +103,17 @@ suspend fun main() {
 ### 安装BotManager
 
 **组件标识** 通常为作为组件自己的标识以及特殊配置而存在（甚至很多都不需要配置）。 除了组件以外，`Application` 中还需要安装的一种东西为 `EventProvider`。
-开黑啦组件和mirai组件作为与bot相关的组件，通常会提供各自的 `BotManager` 实现，而 `BotManager` 也是 `EventProvider` 的一种。
+mirai组件作为与bot相关的组件，通常会提供各自的 `BotManager` 实现，而 `BotManager` 也是 `EventProvider` 的一种。
 
 ```kotlin title='example/BootApp.kt'
-import love.forte.simbot.component.kaiheila.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simboot.core.application.*
 
 suspend fun main() {
     createBootApplication {
         useMiraiComponent()
-        useKaiheilaComponent()
         
         useMiraiBotManager()
-        useKaiheilaBotManager()
     }.join()
 }
 ```
@@ -136,14 +121,12 @@ suspend fun main() {
 合并组件标识和botManager的配置后：
 
 ```kotlin title='example/BootApp.kt'
-import love.forte.simbot.component.kaiheila.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simboot.core.application.*
 
 suspend fun main() {
     createBootApplication {
         useMirai()
-        useKaiheila()
     }.join()
 }
 ```
