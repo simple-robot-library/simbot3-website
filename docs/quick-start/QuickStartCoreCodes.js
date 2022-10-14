@@ -12,12 +12,6 @@ function mavenCode(version) {
         <artifactId>simbot-core</artifactId>
         <version>${version.simbot.version}</version>
     </dependency>
-    <!-- 开黑啦组件 -->
-    <dependency>
-        <groupId>love.forte.simbot.component</groupId>
-        <artifactId>simbot-component-kaiheila-core</artifactId>
-        <version>${version.simbot.component.khl}</version>
-    </dependency>
     <!-- mirai组件 -->
     <dependency>
         <groupId>love.forte.simbot.component</groupId>
@@ -47,9 +41,6 @@ repositories {
 // simbot核心标准库
 implementation("love.forte.simbot:simbot-core:${version.simbot.version}")
 
-// 开黑啦组件
-implementation("love.forte.simbot.component:simbot-component-kaiheila-core:${version.simbot.component.khl}")
-
 // mirai组件
 implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}")`
 }
@@ -68,9 +59,6 @@ repositories {
 
 // simbot核心标准库
 implementation 'love.forte.simbot:simbot-core:${version.simbot.version}'
-
-// 开黑啦组件
-implementation 'love.forte.simbot.component:simbot-component-kaiheila-core:${version.simbot.component.khl}'
 
 // mirai组件
 implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}'`

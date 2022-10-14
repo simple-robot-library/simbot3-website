@@ -9,7 +9,7 @@ function mavenCode(version) {
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <!-- Spring Boot 版本 -->
-    <version>2.6.6</version>
+    <version>2.7.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -25,12 +25,6 @@ function mavenCode(version) {
         <groupId>love.forte.simbot.boot</groupId>
         <artifactId>simboot-core-spring-boot-starter</artifactId>
         <version>${version.simbot.version}</version>
-    </dependency>
-    <!-- 开黑啦组件 -->
-    <dependency>
-        <groupId>love.forte.simbot.component</groupId>
-        <artifactId>simbot-component-kaiheila-boot</artifactId>
-        <version>${version.simbot.component.khl}</version>
     </dependency>
     <!-- mirai组件 -->
     <dependency>
@@ -54,7 +48,7 @@ function mavenCode(version) {
 
 function gradleKts(version) {
     return `plugins {
-  id("org.springframework.boot") version "2.6.6" // Spring Boot
+  id("org.springframework.boot") version "2.7.0" // Spring Boot
   id("io.spring.dependency-management") version "1.0.11.RELEASE"
   \`java\`
 }
@@ -72,16 +66,13 @@ implementation("org.springframework.boot:spring-boot-starter-web")
 // simbot Spring Boot Starter
 implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}")
 
-// 开黑啦组件
-implementation("love.forte.simbot.component:simbot-component-kaiheila-boot:${version.simbot.component.khl}")
-
 // mirai组件
 implementation("love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}")`
 }
 
 function gradleGroovy(version) {
     return `plugins {
-  id 'org.springframework.boot' version '2.6.6' // Spring Boot
+  id 'org.springframework.boot' version '2.7.0' // Spring Boot
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
 }
@@ -98,9 +89,6 @@ implementation 'org.springframework.boot:spring-boot-starter-web'
 
 // simbot Spring Boot Starter
 implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}'
-
-// 开黑啦组件
-implementation 'love.forte.simbot.component:simbot-component-kaiheila-boot:${version.simbot.component.khl}'
 
 // mirai组件
 implementation 'love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}'`
