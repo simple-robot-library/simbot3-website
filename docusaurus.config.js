@@ -270,6 +270,7 @@ const config = {
                     // },
                     {to: '/blog', label: '博客', position: 'left'},
                     {href: 'https://github.com/simple-robot-library', label: '图书馆', position: 'left'},
+                    {href: 'https://github.com/orgs/simple-robot/discussions', label: '社区', position: 'left'},
                     ////////
                     {
                         type: 'docsVersionDropdown',
@@ -322,7 +323,7 @@ const config = {
                         ]
                     },
                     {
-                        title: '社区',
+                        title: '指路牌',
                         items: [
                             {
                                 label: 'GitHub ',
