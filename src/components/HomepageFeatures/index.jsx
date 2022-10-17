@@ -1,6 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 
 const chicken = 4
 
@@ -72,6 +75,7 @@ function Feature({Svg, title, svgTitle, description}) {
         </div>);
 }
 
+
 function CodeShow({Img, title, svgTitle, description}) {
     return (<div className={clsx('col')}>
             <div className="text--center padding-horiz--md">
@@ -86,13 +90,131 @@ function CodeShow({Img, title, svgTitle, description}) {
         </div>);
 }
 
+const CODE_SIMPLE_SAMPLE = `
+suspend fun main() {
+   createSimpleApplication {
+      listeners {
+         // 监听好友消息事件
+         FriendMessageEvent { event ->
+            event.reply("你也好")
+         } onMatch { textContent = "你好" }
+      }
+      
+      bots {
+         // 注册bot
+         register(
+            File("bots/foo.bot")
+            .toResource()
+            .toBotVerifyInfo(JsonBotVerifyInfoDecoder.create())
+         ).start()
+      }
+   }.join()
+}`
+const CODE_SIMPLER_SAMPLE = `
+@Listener
+@Filter("你好")
+suspend fun FriendMessageEvent.onFriendMessage() {
+   reply("你也好")
+}
+`
+const CONTINUOUS_SESSION = `
+suspend fun main() {
+    createSimpleApplication {
+        listeners {
+            listen(FriendMessageEvent) {
+                match { textContent == "换个称呼" }
+                process { event ->
+                    event.useFriend { friend ->
+                        friend.send("你希望我称呼你什么呢?")
+                        // 等待下一个消息
+                        val newName = inSession {
+                            event.nextMessage(FriendMessageEvent).plainText
+                        }
+                        friend.send("好的，我会称呼你为「$newName」的")
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+`
+const LISTENERS_REGISTER = `
+suspend fun main() {
+    val application = createSimpleApplication {
+        listeners {
+            FriendMessageEvent { event ->
+                event.friend().send("这是一次性监听哦~")
+                // 注销当前监听函数
+                this.listenerHandle.dispose()
+            }
+        }
+    }
+    
+    val handle = application.eventListenerManager.register(simpleListener(FriendMessageEvent) { event ->
+        event.reply("这是5分钟后就消失的监听函数喔")
+        EventResult.invalid() // return event result
+    })
+    
+    // 5min后注销
+    delay(5.minutes)
+    handle.dispose()
+    
+    application.join()
+}
+`
+
+const featureCodeInfos = [
+    {
+        code: CODE_SIMPLE_SAMPLE,
+        title: '简单示例'
+    }, {
+        code: CODE_SIMPLER_SAMPLE,
+        title: '更简单的'
+    }, {
+        code: CONTINUOUS_SESSION,
+        title: '持续会话'
+    }, {
+        code: LISTENERS_REGISTER,
+        title: '动态监听'
+    }
+]
+
 export default function HomepageFeatures() {
     return (<>
             <HomepageFeaturesInternal/>
 
-            <CodeSamples/>
+            {/*<CodeSamples/>*/}
+
+            <FeatureCodes/>
         </>)
 }
+
+function FeatureCodes() {
+    return (<section className={styles.features}>
+        <div className="container">
+            <div className="row">
+                <div className={clsx('col col--1')} />
+                <div className={clsx('col col--10')}>
+                    <div className="padding-horiz--lg">
+                        <Tabs groupId={`feature-code`}>
+                            {featureCodeInfos.map(({code, title}) => {
+                                return <TabItem value={title}>
+                                    <CodeBlock language={`kotlin`}>
+                                        {code.trimStart()}
+                                    </CodeBlock>
+                                </TabItem>
+                            })}
+                        </Tabs>
+                    </div>
+                </div>
+                <div className={clsx('col col--1')} />
+            </div>
+        </div>
+    </section>)
+}
+
+
 
 function HomepageFeaturesInternal() {
     return (<section className={styles.features}>
