@@ -34,16 +34,31 @@ Simple Robot(下文简称simbot) 一开始是作为一个机器人标准开发�
 
 ```kotlin
 val friend: Friend = event.friend()  // suspend api
-friend.send("Hey!")           // suspend api
+friend.send("Hey!")                  // suspend api
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" label="Java Blocking">
+
+simbot3 提供面向Java兼容的阻塞API。
+
+> 稍微地牺牲掉一点点的异步特性，换来简单明了的使用体验。
 
 ```java
 Friend friend = event.getFriend();   // blocking api for java
-friend.sendBlocking("Hey!");  // blocking api for java
-friend.sendAsync("Hey!");     // async api for java
+friend.sendBlocking("Hey!");         // blocking api for java
+```
+
+</TabItem>
+<TabItem value="Java Async">
+
+simbot3 提供面向Java兼容的异步API。这些异步API基于 JDK8 的 `CompletableFuture`，
+
+> 如果你对它足够熟悉，那么就用擅长的方式来进一步发挥异步API的功效吧。
+
+```java
+event.getFriendAsync() // async api for Java
+    .thenCompose(friend -> friend.sendAsync("Hey!"));
 ```
 
 </TabItem>
@@ -74,17 +89,34 @@ suspend fun myListener(messageEvent: GroupMessageEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" label="Java Blocking">
 
 ```java
 @Listener
 public void myListener(GroupMessageEvent messageEvent) {
    Group group = messageEvent.getGroup();
-   String groupCode = group.getGroupCode();
-   String groupName = group.getGroupName();
+   ID groupId = group.getId();
+   String groupName = group.getName();
    // ...
    group.sendBlocking("Hey, simbot3");
-   group.sendAsync("Hey, simbot3");
+}
+```
+
+</TabItem>
+<TabItem value="Java Async">
+
+```java
+@Listener
+public CompletableFuture<?> myListener(GroupMessageEvent messageEvent) {
+    CompletableFuture<? extends Group> groupAsync = event.getGroupAsync();
+    
+    CompletableFuture<ID> groupIdAsync = groupAsync.thenApply(Group::getId);
+    CompletableFuture<String> groupNameAsync = groupAsync.thenApply(Group::getName);
+    
+    
+    // 返回 CompletableFuture 类型的结果时，则会在结果返回后非阻塞地挂起等待此Future结束，然后才会继续下一个监听函数
+    // 如果想要当前监听函数作为一个真正地‘异步监听’（即忽略最终返回值），则不需要返回此结果
+    return groupAsync.thenCompose(group -> group.sendAsync("Hello, simbot3"));
 }
 ```
 
@@ -99,7 +131,7 @@ public void myListener(GroupMessageEvent messageEvent) {
 
 在**simbot2**中，尽管其已经开始使用**Kotlin**进行开发，
 但是所使用的开发模式、风格和思想仍旧停留在**Java**的层面中，
-且整体设计欠佳。
+且整体设计_相对_欠佳。
 
 :::
 
