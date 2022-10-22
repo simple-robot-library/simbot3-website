@@ -5,6 +5,22 @@
     "description": "Simple Robot官方博客喵",
     "items": [
         {
+            "id": "/2022/10/22/weak-42-report",
+            "content_html": "<p>大概是2022年第42周周报喵。</p>",
+            "url": "https://simbot.forte.love/blog/2022/10/22/weak-42-report",
+            "title": "2022年第42周周报",
+            "summary": "大概是2022年第42周周报喵。",
+            "date_modified": "2022-10-22T00:00:00.000Z",
+            "author": {
+                "name": "Scarlet Forliy",
+                "url": "https://github.com/ForliyScarlet"
+            },
+            "tags": [
+                "2022周报",
+                "周报"
+            ]
+        },
+        {
             "id": "/2022/10/16/weak-41-report",
             "content_html": "<p>大概是2022年第41周周报喵。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-核心库更新\">🚀 核心库更新<a class=\"hash-link\" href=\"#-核心库更新\" title=\"Direct link to heading\">​</a></h2><p>本周 <a href=\"https://github.com/simple-robot/simpler-robot\" target=\"_blank\" rel=\"noopener noreferrer\">核心库</a> 暂时没有发布新的版本，因为我们在\n<a href=\"https://github.com/simple-robot/simpler-robot/issues/470\" target=\"_blank\" rel=\"noopener noreferrer\">#470</a>\n中正在将 <code>simbot-logger</code> 模块重构为多平台模块来适应未来可能出现的变化。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-archetypes\">📦 Archetypes<a class=\"hash-link\" href=\"#-archetypes\" title=\"Direct link to heading\">​</a></h2><p>我们正在通过 <a href=\"https://github.com/simple-robot/simbot-archetypes\" target=\"_blank\" rel=\"noopener noreferrer\">这个工程</a>\n来尝试对外提供一种更加便捷的示例项目获取方式：通过 <a href=\"https://maven.apache.org/guides/introduction/introduction-to-archetypes.html\" target=\"_blank\" rel=\"noopener noreferrer\">Maven Archetypes</a>\n来发布并提供Maven原型（模板）。</p><p>这个工程还在尝试与建设阶段，目前仅提供了针对 <code>Maven</code> 环境下 <code>Kotlin</code> 语言的基于 <code>simbot-core</code> 的简单原型。\n不过您完全可以前往 <a href=\"https://github.com/simple-robot/simbot-archetypes\" target=\"_blank\" rel=\"noopener noreferrer\">此原型工程</a> 处进行体验、\n<a href=\"https://github.com/simple-robot/simbot-archetypes/issues\" target=\"_blank\" rel=\"noopener noreferrer\">反馈</a>\n或 <a href=\"https://github.com/simple-robot/simbot-archetypes/pulls\" target=\"_blank\" rel=\"noopener noreferrer\">协助我们</a>\n做得更好，我们再次期待并感谢您的贡献！</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-离线文档\">🎏 离线文档<a class=\"hash-link\" href=\"#-离线文档\" title=\"Direct link to heading\">​</a></h2><p>也许你已经发现了，<strong>本站</strong>现在支持通过 <a href=\"https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps\" target=\"_blank\" rel=\"noopener noreferrer\">PWA</a>\n来通过 <a href=\"https://developer.mozilla.org/en-US/docs/Web/Manifest#browser_compatibility\" target=\"_blank\" rel=\"noopener noreferrer\">支持的浏览器</a> 安装一个<strong>渐进式应用程序</strong>了。</p><p>很有趣，对吗？</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-社区\">🦒 社区！<a class=\"hash-link\" href=\"#-社区\" title=\"Direct link to heading\">​</a></h2><p><a href=\"https://github.com/orgs/simple-robot/discussions\" target=\"_blank\" rel=\"noopener noreferrer\">新的社区</a> 已经公布一段时间了，尽管simbot社区活跃度基本为0，但是我们仍然会在此处偶尔得分享一些内容，并期待着您的参与。</p>",
             "url": "https://simbot.forte.love/blog/2022/10/16/weak-41-report",
