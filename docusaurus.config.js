@@ -244,7 +244,7 @@ const config = {
             // 公告
             announcementBar: {
                 id: 'still_under_construction',
-                content: `🚧 <b>文档尚在施工，仍不全面</b> 🚧 可前往<a href="https://github.com/orgs/simple-robot/discussions" target="_blank">社区</a> 提出问题询问或通过 <a href="https://github.com/simple-robot/simpler-robot/issues" target="_blank">Issues</a> 反馈问题`,
+                content: `🚧 <b>文档尚在施工，仍不全面</b> 🚧 可前往 <a href="https://github.com/orgs/simple-robot/discussions" target="_blank"><b>社区</b></a> 提出问题询问或通过 <a href="https://github.com/simple-robot/simpler-robot/issues" target="_blank"><b>Issues</b></a> 反馈问题`,
                 backgroundColor: '#FFB906',
                 textColor: '#142F48',
                 isCloseable: false
