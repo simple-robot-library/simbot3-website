@@ -35,8 +35,8 @@ const config = {
     onBrokenLinks: 'warn', //  [ignore, log, warn, error, throw]
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.png',
-    organizationName: 'Simple Robot', // Usually your GitHub org/user name.
-    projectName: 'simbot', // Usually your repo name.
+    organizationName: 'Simple Robot', // Usually your GitHub org/username.
+    projectName: 'simbot website', // Usually your repo name.
     plugins: [
         // https://github.com/flexanalytics/plugin-image-zoom
         'plugin-image-zoom',
@@ -106,16 +106,17 @@ const config = {
             }],
         // '关于本站' 文档
         // [
-        //     '@docusaurus/plugin-content-docs',
+        //     'content-docs',
         //     {
         //         id: 'about',
         //         path: 'about',
-        //         // routeBasePath: 'about',
+        //         routeBasePath: 'about',
         //         sidebarPath: require.resolve('./sidebars-about.js'),
-        //         breadcrumbs: true,
-        //         showLastUpdateAuthor: true,
-        //         showLastUpdateTime: true,
-        //         editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/about',
+        //         //breadcrumbs: true,
+        //         // showLastUpdateAuthor: true,
+        //         // showLastUpdateTime: true,
+        //         // editCurrentVersion: true,
+        //         // editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/about',
         //         // lastVersion: 'current',
         //         // versions: {
         //         //     current: {
