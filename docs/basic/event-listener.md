@@ -10,11 +10,6 @@ import TabItem from '@theme/TabItem';
 
 监听函数，用于承载对事件的处理逻辑。
 
-:::danger TODO
-
-施工中
-
-:::
 
 ## 监听函数
 
@@ -56,7 +51,7 @@ if (listener.isTarget(eventContext.event.key) && listener.match(eventContext)) {
 
 :::info Context?
 
-有关 `EventProcessingContext`（和 `EventListenerProcessingContext`） 的描述可参考[**事件监听**](event-listening)。
+有关 `EventProcessingContext`（和 `EventListenerProcessingContext`） 的描述可参考[**事件监听**](event-listening#事件处理上下文)。
 
 :::
 
