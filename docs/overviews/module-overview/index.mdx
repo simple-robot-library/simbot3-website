@@ -58,16 +58,14 @@ spring整合模块为什么只是jvm-only我觉得我就不用解释了吧。
 包括但不限于依赖管理、事件处理全部应依靠spring机制，且应支持 [reactive](https://spring.io/reactive) ([webFlux](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html)) 的支持。
 
 
-import Mermaid from '@theme/Mermaid';
-
-<Mermaid chart={`
+```mermaid
     graph TD
         A[http请求] --> B{协同bot};
         B -->|Yes| C[simbot事件];
         C --> D[simbot响应];
         D --> E;
         B ---->|No| E[http响应];
-`}/>
+```
 
 
 ## 章节列表
