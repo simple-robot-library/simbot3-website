@@ -105,29 +105,29 @@ const config = {
                 ],
             }],
         // '关于本站' 文档
-        // [
-        //     'content-docs',
-        //     {
-        //         id: 'about',
-        //         path: 'about',
-        //         routeBasePath: 'about',
-        //         sidebarPath: require.resolve('./sidebars-about.js'),
-        //         //breadcrumbs: true,
-        //         // showLastUpdateAuthor: true,
-        //         // showLastUpdateTime: true,
-        //         // editCurrentVersion: true,
-        //         // editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/about',
-        //         // lastVersion: 'current',
-        //         // versions: {
-        //         //     current: {
-        //         //         label: '1.0.0',
-        //         //         // path: '3.0.0.preview',
-        //         //         // banner: '',
-        //         //         badge: true
-        //         //     },
-        //         // },
-        //     },
-        // ],
+        [
+            'content-docs',
+            {
+                id: 'about',
+                path: 'about',
+                routeBasePath: 'about',
+                sidebarPath: require.resolve('./sidebars-about.js'),
+                //breadcrumbs: true,
+                // showLastUpdateAuthor: true,
+                // showLastUpdateTime: true,
+                // editCurrentVersion: true,
+                // editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/about',
+                // lastVersion: 'current',
+                // versions: {
+                //     current: {
+                //         label: '1.0.0',
+                //         // path: '3.0.0.preview',
+                //         // banner: '',
+                //         badge: true
+                //     },
+                // },
+            },
+        ],
     ],
     presets: [
         [
@@ -265,17 +265,10 @@ const config = {
                 items: [
                     {
                         type: 'doc',
-                        docId: 'intro',
+                        docId: 'index',
                         position: 'left',
                         label: '文档',
                     },
-                    // {
-                    //     // type: 'doc',
-                    //     // docId: 'intro',
-                    //     to: 'docs/about',
-                    //     position: 'left',
-                    //     label: '关于本站',
-                    // },
                     {to: '/blog', label: '博客', position: 'left'},
                     {href: 'https://github.com/simple-robot-library', label: '图书馆', position: 'left'},
                     {href: 'https://github.com/orgs/simple-robot/discussions', label: '社区', position: 'left'},
@@ -303,7 +296,7 @@ const config = {
                         items: [
                             {
                                 label: '文档',
-                                to: '/docs/intro',
+                                to: '/docs',
                             },
                             {
                                 label: 'API文档',
