@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 :::info 监听函数
 
-在了解事件监听之前，你应当已经了解过了 [监听函数](event-listener)。
+在了解事件监听之前，你应当已经了解过了 [监听函数](event-listener) 和 [事件处理上下文](../defition/event-overview/event-processing-context)。
 
 :::
 
@@ -626,13 +626,6 @@ public CompletableFuture<ID> onEvent(FriendMessageEvent event) {
 
 
 ### 事件拦截
-
-
-## 事件处理上下文
-
-你可能或多或少的已经见过不少 `EventProcessingContext` 这个类型的名字了。
-它代表**事件处理上下文**，是承载了一次事件处理流程中几乎所有信息的中心载体。
-可以说整个事件调度流程下来，大部分信息都是有它提供的，是一个**核心类型**。
 
 
 

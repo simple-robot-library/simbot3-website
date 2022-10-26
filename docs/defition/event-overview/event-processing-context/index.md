@@ -8,9 +8,16 @@ import TabItem from '@theme/TabItem';
 
 事件处理上下文， 即 **`EventProcessingContext`** ，是整个事件调度流程中的 **核心对象**。
 
+
+:::danger TODO
+
+施工中
+
+:::
+
 :::note 起源...
 
-一次事件调度中的事件对象（ **`Event`** ）便是来自于此上下文。
+一次事件调度中的事件对象（ **`Event`** ）便是来自此上下文。
 
 :::
 
@@ -42,7 +49,7 @@ createSimpleApplication {
 
 **`EventProcessingContext`** 的简化版基本定义大概如下：
 ```kotlin
-public interface EventProcessingContext : CoroutineContext.Element, InstantScopeContext {
+public interface EventProcessingContext /* ... */ {
     /**
      * 本次监听流程中的事件主体。
      */
@@ -61,7 +68,7 @@ public interface EventProcessingContext : CoroutineContext.Element, InstantScope
     public val messagesSerializersModule: SerializersModule
     
     /**
-     * 根据一个 [Attribute] 得到一个瞬时属性。
+     * 根据一个 [Attribute] 得到一个属性。
      */
     override fun <T : Any> getAttribute(attribute: Attribute<T>): T?
 }
@@ -168,6 +175,5 @@ public interface EventListenerProcessingContext : EventProcessingContext {
 ### 
 
 
-TODO!
 
 

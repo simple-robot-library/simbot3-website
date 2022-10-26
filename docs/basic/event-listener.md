@@ -51,7 +51,7 @@ if (listener.isTarget(eventContext.event.key) && listener.match(eventContext)) {
 
 :::info Context?
 
-有关 `EventProcessingContext`（和 `EventListenerProcessingContext`） 的描述可参考[**事件监听**](event-listening#事件处理上下文)。
+有关 `EventProcessingContext`（和 `EventListenerProcessingContext`） 的信息可参考[**事件处理上下文**](../defition/event-overview/event-processing-context)。
 
 :::
 
