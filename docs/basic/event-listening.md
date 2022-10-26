@@ -1,7 +1,7 @@
 ---
 sidebar_position: 15
 title: 事件监听
-toc_max_heading_level: 4
+toc_max_heading_level: 3
 ---
 
 import Label from '@site/src/components/Label'
@@ -73,6 +73,17 @@ simbotApplication(Simple) {
 }
 ```
 
+上述的 `eventProcessor { listeners {  } }` 可以被简化，而省略掉外层的
+`eventProcessor`：
+
+```kotlin
+simbotApplication(Simple) { 
+    listeners {
+        // ...
+    }
+}
+```
+
 </TabItem>
 <TabItem value="Java">
 
@@ -89,7 +100,7 @@ Lambdas.suspendConsumer((builder, configuration) -> {
         // 通过 listeners 作用域
         eventProcessorConfiguration.listeners((generator) -> {
             // 构建监听函数
-            generator.listen(Event.Root, listenerBuilder -> {
+            generator.listen(FooEvent.Key, listenerBuilder -> {
                 // 匹配逻辑
                 listenerBuilder.match((context, event) -> true);
                 // 处理逻辑
@@ -112,10 +123,517 @@ Lambdas.suspendConsumer((builder, configuration) -> {
 </TabItem>
 </Tabs>
 
+#### 直接注册
 
+在这其中，通过 `eventProcessor` 的 `addListener` 可能是最直观的监听函数注册方式了。
+就如同你猜的那样，此方法直接提供一个监听函数实例，并注册。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+simbotApplication(Simple) { 
+    eventProcessor { 
+    
+        // 直接添加listener
+        addListener(...)
+        addListenerRegistrationDescription(...)
+    }
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+Applications.simbotApplication(
+Simple.INSTANCE,
+(configuration) -> Unit.INSTANCE,
+Lambdas.suspendConsumer((builder, configuration) -> {
+    builder.eventProcessor((eventProcessorConfiguration, environment) -> {
+        // 直接添加监听函数
+        eventProcessorConfiguration.addListener(...);
+        eventProcessorConfiguration.addListenerRegistrationDescription(...);
+        
+        return Unit.INSTANCE;
+    });
+}));
+```
+
+
+</TabItem>
+</Tabs>
+
+#### listeners
+
+另外一种方式便是在 `listeners { }` 作用域中进行监听函数的构建了。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+`listeners` 作用域中的实际接收者类型为 `EventListenerRegistrationDescriptionsGenerator`，
+代表用于生成 `EventListenerRegistrationDescription` 的生成器。
+
+使用它主要有两种方法.
+
+**方式1:**
+
+```kotlin
+simbotApplication(Simple) {
+    listeners {
+        listen(FooEvent) {
+            match { ... }
+            process { ... }
+            // or handle { ... }
+        }
+    }
+}
+```
+
+通过 `listen(...)` 指定一个事件类型，并通过Builder来进行配置。
+由于这个生成器可以生成 `EventListenerRegistrationDescription`, 所以它也能配置一些额外属性：
+
+```kotlin
+listeners {
+    listen(FooEvent) {
+        isAsync = true
+        priority = PriorityConstant.FIRST
+        
+        match { ... }
+        process { ... }
+        // or handle { ... }
+    }
+}
+```
+
+:::note 都是一家人
+
+这其中的规则与在[监听函数](event-listener)中描述的一样，`match` 可以配置多次，而 `process` 或 `handle` 则必须且**只能**配置一次。
+
+:::
+
+**方式2:**
+
+```kotlin
+simbotApplication(Simple) {
+    listeners {
+        FooEvent { event ->
+            // 事件处理逻辑
+        } onMatch { event ->
+            // 事件匹配逻辑
+        }
+    }
+}
+```
+
+这实际上可以算是上述方式1的一种...简写或扩展。上面这实例实质上是这个样子的：
+
+```kotlin
+simbotApplication(Simple) {
+    listeners {
+        FooEvent.invoke { event ->
+            // 事件处理逻辑
+        }.onMatch { event ->
+            // 事件匹配逻辑
+        }
+    }
+}
+```
+
+而 `invoke` 通常会被省略，因此可以简化为 
+
+```kotlin
+FooEvent { /* 事件处理逻辑 */ } /*  onMatch { 事件匹配逻辑 } */
+```
+
+上述示例中，我们没有在事件处理逻辑的结尾提供 `EventResult` 结果，因此它实际上是相当于使用了 `process`。
+如果你希望通过这种方法的时候指定事件处理结果，你可以这样：
+
+```kotlin
+FooEvent.handle { event ->
+    // ...
+    EventResult.of(...)
+} onMatch { 
+    // 事件匹配逻辑
+}
+```
+
+不使用 `invoke` 或者 `process` 而是使用 **`handle`** 扩展函数。
+
+与方式1一样，`onMatch` 也支持配置多次：
+
+```kotlin
+FooEvent.handle { event ->
+    // ...
+    EventResult.of(...)
+} onMatch { 
+    // 事件匹配逻辑
+} onMatch { 
+    // 事件匹配逻辑
+}
+```
+
+而至于事件处理逻辑...你或许不用担心了。
+
+</TabItem>
+<TabItem value="Java">
+
+`listeners` 作用域中主要提供了一个 `EventListenerRegistrationDescriptionsGenerator`，
+它是用于生成 `EventListenerRegistrationDescription` 的生成器。
+
+你可以通过它的 `listen` 函数来声明一个事件的监听:
+
+```java
+Applications.simbotApplication(
+        Simple.INSTANCE,
+        (configuration) -> Unit.INSTANCE,
+        Lambdas.suspendConsumer((builder, configuration) -> {
+            builder.eventProcessor((eventProcessorConfiguration, environment) -> {
+                // 通过 listeners 作用域
+                eventProcessorConfiguration.listeners((generator) -> {
+                    // 构建监听函数
+                    generator.listen(FooEvent.Key, listenerBuilder -> {
+                        // 匹配逻辑
+                        listenerBuilder.match((context, event) -> true);
+                        // 处理逻辑
+                        listenerBuilder.process((context, event) -> {
+                            // 事件处理逻辑
+                        });
+                    });
+
+                    return Unit.INSTANCE;
+                });
+                return Unit.INSTANCE;
+            });
+        }));
+```
+
+</TabItem>
+</Tabs>
 
 
 ## BOOT监听
 
+看到这里，你可能会想：“这跟宣传的不一样啊！不是加个 `@Listener` 注解就能用了吗？” 
+或者 “这在Java中也太麻烦了吧！” 之类的想法。同样也是为了解决这个问题，我们提供了一个叫做 `BOOT` 的模块，
+它将会拥有轻量级的依赖注入以及监听函数扫描的能力。
+
+:::tip Spring Boot?
+
+本节所述中绝大多数内容**通用**于普通的boot模块和Spring Boot Starter模块。
+但是boot模块的实际意义与命名等内容在我们团队中尚存在争议，未来可能会有所调整。
+
+:::
+
+首先，Boot监听需要使用 `Boot Application`。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+
+```kotlin
+suspend fun main() {
+    simbotApplication(Boot) {
+        beans {
+            scan("love.forte.example.listeners")
+        }
+    }.launch().join()
+}
+
+@Beans
+class MyListenerContainer {
+    @Listener
+    suspend fun onEvent(event: FooEvent) {
+        // ...
+    }
+}
+```
+
+
+</TabItem>
+<TabItem value="Java">
+
+
+```java
+Applications.simbotApplication(Boot.INSTANCE, (configuration) -> Unit.INSTANCE, Lambdas.suspendConsumer((builder, configuration) -> {
+            builder.beans((beansBuilder) -> {
+                beansBuilder.scan("love.forte.example.listeners");
+                return Unit.INSTANCE;
+            });
+        }));
+        
+//// MyListenerContainer.java
+@Beans
+class MyListenerContainer {
+
+    @Listener
+    public void onEvent(FooEvent event) {
+        // ...
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::info 可能更简单
+
+在 Spring Boot Starter 中你可能不需要使用 `Boot Application`, 而是只是仅仅标记一个 `@EnableSimbot` 注解就好了：
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+
+```kotlin
+@EnableSimbot
+@SpringBootApplication
+class MyApplication
+
+fun main(args: Array<String>) {
+    runApplication<MyApplication>(args = args)
+}
+
+@Component
+class MyListenerContainer {
+    @Listener
+    suspend fun onEvent(event: FooEvent) {
+        // ...
+    }
+}
+```
+
+
+</TabItem>
+<TabItem value="Java">
+
+
+```java
+@EnableSimbot
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+        
+//// MyListenerContainer.java
+
+@Component
+class MyListenerContainer {
+
+    @Listener
+    public void onEvent(FooEvent event) {
+        // ...
+    }
+}
+```
+
+不过需要注意，在 Spring Boot 环境下，最好使用 `@Component` 或其他相关注解来代替 `@Beans`。
+
+</TabItem>
+</Tabs>
+
+:::
+
+正如你所见，在 `Boot Application` 下，你可以通过 `beans { }` 作用域中的 `scan(...)` 来进行 **包扫描**。
+
+最终 `Boot Application` 会扫描所有包路径下标记了 `@Beans` 的类型，并将它们作为依赖统一管理，
+然后解析所有标记了 `@Listener` 的方法，并尝试将它们解析为**监听函数**，然后注册。
+
+
+### 监听函数 
+
+刚刚我们提到，通过标记 `@Listener` 将一个方法标记为需要解析的**监听函数**，那么对于这样的函数，它肯定会有一些更多的要求。
+
+#### 可见性
+
+被标记为监听函数的方法的访问级别必须是**公开的**，也就是必须是 `public` 的。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(event: FooEvent) {
+    // ...
+}
+```
+
+:::tip
+
+宽松模式下，Kotlin默认的访问级别就是public。
+
+:::
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(FooEvent event) {
+    // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 监听类型
+
+一个被标记的监听函数需要有0~1个需要监听的目标事件类型，比如好友事件、群消息事件之类的。
+你所需要监听的事件类型直接体现在参数上即可。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+**监听FooEvent**
+
+```kotlin
+@Listener
+suspend fun onEvent(event: FooEvent) {
+    // ...
+}
+```
+
+或
+
+```kotlin
+@Listener
+suspend fun FooEvent.onEvent() {
+    // ...
+}
+```
+
+**监听所有类型事件**
+
+> `Event` 是所有事件类型的父类。
+
+```kotlin
+@Listener
+suspend fun onEvent(event: Event) {
+    // ...
+}
+```
+
+或
+
+```kotlin
+@Listener
+suspend fun Event.onEvent() {
+    // ...
+}
+```
+
+不提供事件类型的参数也将视为监听所有事件。
+
+```kotlin
+@Listener
+suspend fun onEvent() {
+    // ...
+}
+```
+
+
+
+
+
+</TabItem>
+<TabItem value="Java">
+
+**监听FooEvent**
+
+```java
+@Listener
+public void onEvent(FooEvent event) {
+    // ...
+}
+```
+
+**监听所有类型事件**
+
+> `Event` 是所有事件类型的父类。
+
+```java
+@Listener
+public void onEvent(Event event) {
+    // ...
+}
+```
+
+不提供事件类型的参数也将视为监听所有事件。
+
+```java
+@Listener
+public void onEvent() {
+    // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+:::info 以一为准
+
+不建议一个监听函数的参数中出现多于一个的事件类型参数，如果出现了这种情况，
+你应当考虑监听它们共同的某一个父类，或者拆分为多个监听函数来使用。
+
+:::
+
+#### 异步性与返回值
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+simbot绝大多是API都是**可挂起的**，因此在Kotlin中，我们也建议你的监听函数是 `suspend`。
+不过比起函数的 `suspend` 修饰，我们最主要的目的是提醒你尽可能不要使用**阻塞API**。
+
+```kotlin
+@Listener
+suspend fun onEvent(event: FooEvent) {
+    // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+我们在 [监听函数](event-listener) 中的 [可响应式的处理结果](event-listener#可响应式的处理结果) 一节中提到过，
+你可以通过 reactive api 或者 `CompletableFuture` 来通过异步编程来增加异步API的优势，增大资源的利用率。
+
+监听函数的返回值最终会被包装到 `EventResult.of(...)` 中，因此你可以返回一个异步结果并让函数执行结束后挂起等待：
+
+```java
+@Listener
+public CompletableFuture<ID> onEvent(FriendMessageEvent event) {
+    // 收到好友的消息，则对好友发送'你好'，
+    // 然后向后续监听函数传递消息发送回执中的 ID 。
+    return event.getFriendAsync()
+            .thenCompose(friend -> friend.sendAsync("你好"))
+            .thenApply(receipt -> receipt.getId());
+    // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+虽然监听函数的返回值会被包装到 `EventResult.of(...)` 中或者在没有返回值的情况下得到 `EventResult.Invalid`，
+但是假如函数返回的类型本身就是 `EventResult` 类型，则不会再被包装，而是直接使用。
+
+因此如果你希望返回一个自定义的 `EventResult`，直接返回就完事儿了。
+
+### 事件过滤
+
+
+### 事件拦截
+
 
 ## 事件处理上下文
+
+你可能或多或少的已经见过不少 `EventProcessingContext` 这个类型的名字了。
+它代表**事件处理上下文**，是承载了一次事件处理流程中几乎所有信息的中心载体。
+可以说整个事件调度流程下来，大部分信息都是有它提供的，是一个**核心类型**。
+
+
+
+
