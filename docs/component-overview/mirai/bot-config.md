@@ -171,7 +171,9 @@ passwordInfo.value.text=e807f1fcf82d132f9bb018ca6738a19f
       },
       "loginCacheEnabled": true,
       "convertLineSeparator": true,
-      "recallMessageCacheStrategy": "INVALID",
+      "recallMessageCacheStrategyConfig": {
+        "type": "invalid"
+      },
       "accountSecrets": false
   }
 }
@@ -208,7 +210,7 @@ config:
     groupMemberListCacheEnabled: false
   loginCacheEnabled: true
   convertLineSeparator: true
-  recallMessageCacheStrategy: "INVALID"
+  recallMessageCacheStrategyConfig: !<invalid>
   accountSecrets: false
 ```
 
@@ -240,7 +242,7 @@ config.contactListCache.friendListCacheEnabled=false
 config.contactListCache.groupMemberListCacheEnabled=false
 config.loginCacheEnabled=true
 config.convertLineSeparator=true
-config.recallMessageCacheStrategy=INVALID
+config.recallMessageCacheStrategyConfig.type=invalid
 config.accountSecrets=false
 ```
 
@@ -404,9 +406,11 @@ config.accountSecrets=false
         </td>
     </tr>
     <tr>
-        <td>config.<b>recallMessageCacheStrategy</b></td>
+        <td><s>config.<b>recallMessageCacheStrategy</b></s></td>
         <td><Label>enum</Label></td>
         <td>
+            <b>已弃用 </b>  
+            <s>
             用于 <b>消息撤回事件(<code>MiraiMessageRecallEvent</code>)</b> 的消息缓存策略。
             可选值为枚举类型 <code>MiraiBotVerifyInfoConfiguration.RecallMessageCacheStrategyType</code> 中的可选元素：
             <table>
@@ -418,6 +422,14 @@ config.accountSecrets=false
                     <tr><td><code>MEMORY_LRU</code></td><td>基于内存的 LRU 缓存策略</td></tr>
                 </tbody>
             </table>
+            </s>
+        </td>
+    </tr>
+    <tr>
+        <td>config.<b>recallMessageCacheStrategyConfiguration</b></td>
+        <td><a href="#recallmessagecachestrategyconfiguration"><Label>RecallMessageCacheStrategyConfiguration</Label></a></td>
+        <td>
+            用于 <b>消息撤回事件(<code>MiraiMessageRecallEvent</code>)</b> 的消息缓存策略，详见下文。
         </td>
     </tr>
     <tr>
@@ -1843,7 +1855,7 @@ config.deviceInfo.value.object.apn=wifi
 
 #### auto <Label>默认</Label>
 
-`auto` 是在未配置的情况下**默认使用**的类型，其代表会尝试自动寻找配置文件，如果找不到则会使用 [`simbot_random`](#simbot_random) 作为生成策略。
+`auto` 是在未配置的情况下**默认使用**的类型，其代表会尝试自动寻找配置文件，如果找不到则会使用 [`file_based`](#file_based) 作为生成策略。
 
 <Tabs groupId="bot-config">
 <TabItem value="JSON">
@@ -1853,7 +1865,8 @@ config.deviceInfo.value.object.apn=wifi
   "config": {
     "deviceInfo": {
       "type": "auto",
-      "baseDir": null
+      "baseDir": null,
+      "fileBasedFilename": "device.json"
     }
   }
 }
@@ -1866,6 +1879,7 @@ config.deviceInfo.value.object.apn=wifi
 config:
   deviceInfo: !<auto>
     baseDir: null
+    fileBasedFilename: device.json
 ```
 
 </TabItem>
@@ -1874,6 +1888,7 @@ config:
 ```properties
 config.deviceInfo.type=auto
 # config.deviceInfo.value.baseDir=devices
+config.deviceInfo.value.fileBasedFilename=device.json
 ```
 
 </TabItem>
@@ -2030,6 +2045,183 @@ config.contactListCache.groupMemberListCacheEnabled=false
 
 </TabItem>
 </Tabs>
+
+### RecallMessageCacheStrategyConfiguration
+
+`RecallMessageCacheStrategyConfiguration` 是用于配置对撤回消息内容缓存策略的配置类型。
+其大致结构如下：
+
+<Tabs groupId="bot-config">
+<TabItem value="JSON">
+
+```json
+{
+   "config": {
+      "recallMessageCacheStrategyConfig": {
+        "type": "type",
+        "param1": "value1"
+      }
+   }
+}
+```
+
+</TabItem>
+<TabItem value="YAML">
+
+```yaml
+config:
+  recallMessageCacheStrategyConfig: !<type>
+    paramA: "valueA"
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.recallMessageCacheStrategyConfig.type=type
+config.recallMessageCacheStrategyConfig.value.paramA=valueA
+```
+
+
+</TabItem>
+</Tabs>
+
+上述示例中可见，`recallMessageCacheStrategyConfig` 一定存在一个 `type` 属性来标记当前配置的类型。`type` 是一个具有固定可选范围的字符串值，并且 `type` 的选择会决定其他的可用属性。 下面会分别介绍所有的 `type` 以及它们对应的具体结构。
+
+#### invalid
+
+代表**无效**的缓存策略，即**不进行**缓存。
+
+<Tabs groupId="bot-config">
+<TabItem value="JSON">
+
+```json
+{
+   "config": {
+      "recallMessageCacheStrategyConfig": {
+        "type": "invalid"
+      }
+   }
+}
+```
+
+</TabItem>
+<TabItem value="YAML">
+
+```yaml
+config:
+  recallMessageCacheStrategyConfig: !<invalid>
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.recallMessageCacheStrategyConfig.type=invalid
+```
+
+</TabItem>
+</Tabs>
+
+#### memory_lru
+
+即通过在内存中使用LRU缓存的策略。
+
+<Tabs groupId="bot-config">
+<TabItem value="JSON">
+
+```json
+{
+   "config": {
+      "recallMessageCacheStrategyConfig": {
+        "type": "memory_lru",
+        "groupMaxSize": 1536,
+        "friendMaxSize": 96,
+        "loadFactor": 0.75
+      }
+   }
+}
+```
+
+</TabItem>
+<TabItem value="YAML">
+
+```yaml
+config:
+  recallMessageCacheStrategyConfig: !<memory_lru>
+  groupMaxSize: 1536
+  friendMaxSize: 96
+  loadFactor: 0.75
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.recallMessageCacheStrategyConfig.type=memory_lru
+config.recallMessageCacheStrategyConfig.value.groupMaxSize=1536
+config.recallMessageCacheStrategyConfig.value.friendMaxSize=96
+config.recallMessageCacheStrategyConfig.value.loadFactor=0.75
+```
+
+</TabItem>
+</Tabs>
+
+`memory_lru` 的本质即在内部通过 `Map` 进行缓存，提供的属性 `loadFactor` 也是使用在Map中的属性。
+
+`groupMaxSize` 和 `friendMaxSize` 分别代表对群消息和好友消息的缓存数量上限。
+
+所有属性均有默认值。
+
+#### custom_properties
+
+指定一个自定义实现类和自定义属性来自行实现缓存效果的配置。
+
+<Tabs groupId="bot-config">
+<TabItem value="JSON">
+
+```json
+{
+   "config": {
+      "recallMessageCacheStrategyConfig": {
+        "type": "custom_properties",
+        "className": "com.example.xxx.CustomPropertiesMiraiRecallMessageCacheStrategyImpl",
+        "properties": {
+          "foo": "bar"
+        }
+      }
+   }
+}
+```
+
+</TabItem>
+<TabItem value="YAML">
+
+```yaml
+config:
+  recallMessageCacheStrategyConfig: !<custom_properties>
+  className: 'com.example.xxx.CustomPropertiesMiraiRecallMessageCacheStrategyImpl'
+  properties:
+    foo: bar
+```
+
+</TabItem>
+<TabItem value="Properties">
+
+```properties
+config.recallMessageCacheStrategyConfig.type=custom_properties
+config.recallMessageCacheStrategyConfig.value.className=com.example.xxx.CustomPropertiesMiraiRecallMessageCacheStrategyImpl
+config.recallMessageCacheStrategyConfig.value.properties.foo=bar
+```
+
+</TabItem>
+</Tabs>
+
+`custom_properties` 代表使用者自行提供一个实现，并自行解析所有提供的配置属性来实现一个缓存器。
+其中 `className` 属性是必须的，且需要保证此实现类**至少存在一个无参公开构造**用来进行实例化。
+
+`properties` 属性为可自定义的键值对配置集，但是需要注意键与值都应为**字符串**格式。
+
 
 
 ## 占位符替换 {#mark}
