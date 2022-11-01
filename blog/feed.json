@@ -5,6 +5,22 @@
     "description": "Simple Robot官方博客喵",
     "items": [
         {
+            "id": "/2022/11/01/weak-43-report",
+            "content_html": "<p>虽然有点儿晚了，但大概是2022年第43周周报喵。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-核心库更新\">🎉 核心库更新<a class=\"hash-link\" href=\"#-核心库更新\" title=\"Direct link to heading\">​</a></h2><p>核心库本周更新了 <a href=\"https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-M1\" target=\"_blank\" rel=\"noopener noreferrer\">v3.0.0-M1</a>,\n毕竟我们看也没什么人反馈问题，我想一定是因为都非常完善了罢（</p><p>总而言之，文档也会在这时开始慢慢的补充了，会尽量跟上代码的实际内容。</p><p>同时，核心库更新了一个 <a href=\"https://github.com/simple-robot/simple-robot-v2/releases/tag/v2.5.0\" target=\"_blank\" rel=\"noopener noreferrer\">v2.5.0</a>\n修补版本，具体内容可以前往 <a href=\"https://github.com/simple-robot/simple-robot-v2/releases/tag/v2.5.0\" target=\"_blank\" rel=\"noopener noreferrer\">Release</a>\n查看。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-仓库迁移\">🚚 仓库迁移<a class=\"hash-link\" href=\"#-仓库迁移\" title=\"Direct link to heading\">​</a></h2><p>如果你看了上面的 <a href=\"https://github.com/simple-robot/simple-robot-v2/releases/tag/v2.5.0\" target=\"_blank\" rel=\"noopener noreferrer\">v2.5.0</a>，\n你可能会发现 v2.x 的内容已经被迁移到了 <a href=\"https://github.com/simple-robot/simple-robot-v2\" target=\"_blank\" rel=\"noopener noreferrer\">新的仓库</a>\n中。</p><p>当 v3 基本稳定后，v2则会择机归档。</p>",
+            "url": "https://simbot.forte.love/blog/2022/11/01/weak-43-report",
+            "title": "2022年第43周周报",
+            "summary": "虽然有点儿晚了，但大概是2022年第43周周报喵。",
+            "date_modified": "2022-11-01T00:00:00.000Z",
+            "author": {
+                "name": "Scarlet Forliy",
+                "url": "https://github.com/ForliyScarlet"
+            },
+            "tags": [
+                "2022周报",
+                "周报"
+            ]
+        },
+        {
             "id": "/2022/10/22/weak-42-report",
             "content_html": "<p>大概是2022年第42周周报喵。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"️-和平万岁\">☁️ 和平万岁<a class=\"hash-link\" href=\"#️-和平万岁\" title=\"Direct link to heading\">​</a></h2><p>时间就这么流淌着，何尝不是一件喜事。对于核心库来说，本周没有什么<strong>重大</strong>更新，但是对于现实生活倒是有些繁忙。</p><small><i>星星睡了，我的心还在奔波。</i></small><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-核心库更新\">🎉 核心库更新<a class=\"hash-link\" href=\"#-核心库更新\" title=\"Direct link to heading\">​</a></h2><p>好吧，核心库其实本周还是有所更新的。核心库本周更新了 <a href=\"https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-beta.3\" target=\"_blank\" rel=\"noopener noreferrer\">v3.0.0-beta.3</a>,\n完善了一些内容，并实际的调整了我们在第40周周报时所述的内容。</p><p>目前来看，核心库的版本已经逐渐迈向第一个稳定版了，只要不出意外的话。</p>",
             "url": "https://simbot.forte.love/blog/2022/10/22/weak-42-report",

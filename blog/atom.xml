@@ -2,12 +2,32 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://simbot.forte.love/blog</id>
     <title>Simple Robot Blog</title>
-    <updated>2022-10-22T00:00:00.000Z</updated>
+    <updated>2022-11-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://simbot.forte.love/blog"/>
     <subtitle>Simple Robot官方博客喵</subtitle>
     <icon>https://simbot.forte.love/img/favicon.png</icon>
     <rights>Copyright © 2022 Forte Scarlet.</rights>
+    <entry>
+        <title type="html"><![CDATA[2022年第43周周报]]></title>
+        <id>/2022/11/01/weak-43-report</id>
+        <link href="https://simbot.forte.love/blog/2022/11/01/weak-43-report"/>
+        <updated>2022-11-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[虽然有点儿晚了，但大概是2022年第43周周报喵。]]></summary>
+        <content type="html"><![CDATA[<p>虽然有点儿晚了，但大概是2022年第43周周报喵。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-核心库更新">🎉 核心库更新<a class="hash-link" href="#-核心库更新" title="Direct link to heading">​</a></h2><p>核心库本周更新了 <a href="https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-M1" target="_blank" rel="noopener noreferrer">v3.0.0-M1</a>,
+毕竟我们看也没什么人反馈问题，我想一定是因为都非常完善了罢（</p><p>总而言之，文档也会在这时开始慢慢的补充了，会尽量跟上代码的实际内容。</p><p>同时，核心库更新了一个 <a href="https://github.com/simple-robot/simple-robot-v2/releases/tag/v2.5.0" target="_blank" rel="noopener noreferrer">v2.5.0</a>
+修补版本，具体内容可以前往 <a href="https://github.com/simple-robot/simple-robot-v2/releases/tag/v2.5.0" target="_blank" rel="noopener noreferrer">Release</a>
+查看。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-仓库迁移">🚚 仓库迁移<a class="hash-link" href="#-仓库迁移" title="Direct link to heading">​</a></h2><p>如果你看了上面的 <a href="https://github.com/simple-robot/simple-robot-v2/releases/tag/v2.5.0" target="_blank" rel="noopener noreferrer">v2.5.0</a>，
+你可能会发现 v2.x 的内容已经被迁移到了 <a href="https://github.com/simple-robot/simple-robot-v2" target="_blank" rel="noopener noreferrer">新的仓库</a>
+中。</p><p>当 v3 基本稳定后，v2则会择机归档。</p>]]></content>
+        <author>
+            <name>Scarlet Forliy</name>
+            <email>ForliyScarlet@163.com</email>
+            <uri>https://github.com/ForliyScarlet</uri>
+        </author>
+        <category label="2022周报" term="2022周报"/>
+        <category label="周报" term="周报"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2022年第42周周报]]></title>
         <id>/2022/10/22/weak-42-report</id>
