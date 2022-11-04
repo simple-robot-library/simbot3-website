@@ -10,15 +10,13 @@ https://infima.dev/docs/components/badge
 <span class="badge badge--primary">Primary</span>
  */
 
+const currentVersion = '3.0.0-Milestone'
+
 const firstYear = 2022
 const currentYear = new Date().getFullYear()
 const copyrightYear = currentYear === firstYear ? firstYear : firstYear + '-' + currentYear
 
 const styles = ['primary', 'dark', undefined]
-
-// const day = new Date().getDay()
-
-// const navbarStyle = styles[day % 3]
 const navbarStyle = styles['dark']
 
 // https://docusaurus.io/zh-CN
@@ -146,7 +144,7 @@ async function createConfig() {
                         lastVersion: 'current',
                         versions: {
                             current: {
-                                label: '3.0.0-beta',
+                                label: currentVersion,
                                 // path: '3.0.0.preview',
                                 // banner: '',
                                 badge: true
