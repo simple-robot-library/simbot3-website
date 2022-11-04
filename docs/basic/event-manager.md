@@ -1,10 +1,16 @@
 ---
 sidebar_position: 40
-title: 核心事件处理器
+title: 事件处理器
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::danger TODO
+
+内容待更新
+
+:::
 
 事件管理器，也称为监听函数管理器（`EventListenerManager`），是最为基础也是最为核心的内容之一，应当是你在基础核心模块中最先应构建的内容。
 
