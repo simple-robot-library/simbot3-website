@@ -4,11 +4,22 @@
         <title>Simple Robot Blog</title>
         <link>https://simbot.forte.love/blog</link>
         <description>Simple Robot官方博客喵</description>
-        <lastBuildDate>Tue, 01 Nov 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 05 Nov 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
         <copyright>Copyright © 2022 Forte Scarlet.</copyright>
+        <item>
+            <title><![CDATA[2022年第44周周报]]></title>
+            <link>https://simbot.forte.love/blog/2022/11/05/weak-44-report</link>
+            <guid>/2022/11/05/weak-44-report</guid>
+            <pubDate>Sat, 05 Nov 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[大概是2022年第44周周报喵。]]></description>
+            <content:encoded><![CDATA[<p>大概是2022年第44周周报喵。</p><blockquote><i><small>生活的苦涩，石激碧波般响彻。</small></i></blockquote><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-核心库">📦 核心库<a class="hash-link" href="#-核心库" title="Direct link to heading">​</a></h2><p>本周 <small>截止到目前为止</small> 还没有新的版本发布，但是会在近期发布一个 <code>v3.0.0-M2</code>，其内容主要包括一些问题的修正和调整（主要来自 <a href="https://github.com/simple-robot/simbot-component-kook/issues/62" target="_blank" rel="noopener noreferrer">kook#62</a>）。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-kook">🔧 Kook<a class="hash-link" href="#-kook" title="Direct link to heading">​</a></h2><p>上文提到了对 <a href="https://github.com/simple-robot/simbot-component-kook/issues/62" target="_blank" rel="noopener noreferrer">kook#62</a> 的修正，这也是我们这周的主要行动。总而言之，除了对它的修正之外，还有包括Kook组件的内部小调整之类的内容，以后也会更利于我们团队对其的更新与维护。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-还有什么">🍵 还有什么？<a class="hash-link" href="#-还有什么" title="Direct link to heading">​</a></h2><p>我们还做了什么？也许没有了，也许忘记了。在维持更新的同时，或许我们应该先解决组内成员的就业问题。</p><blockquote><i><small>生活总是高于理想。</small></i></blockquote>]]></content:encoded>
+            <author>ForliyScarlet@163.com (Scarlet Forliy)</author>
+            <category>2022周报</category>
+            <category>周报</category>
+        </item>
         <item>
             <title><![CDATA[2022年第43周周报]]></title>
             <link>https://simbot.forte.love/blog/2022/11/01/weak-43-report</link>
