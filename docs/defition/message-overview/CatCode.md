@@ -7,19 +7,18 @@ tags: [消息]
 猫猫码 ( `CatCode` ) 是一个具有特殊格式的字符串，是CQ码的精神延续。
 
 
-CatCode2 或许会重构为基于 [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) 
+[CatCode2](https://github.com/ForteScarlet/CatCode2) 重构为基于 [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) 
 的多平台序列化库。
 
-其实不难发现，猫猫码的最终数据形式，十分类似于一个存在额外参数 `code_type` 的 `properties` 。
-所以我们计划参考着 [kotlinx.serialization-properties](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/formats.md#properties-experimental) 
-实现猫猫码的多平台序列化库，并保留核心库及其中的高性能字符串解析器。
+其实不难发现，猫猫码的最终数据形式，十分类似于一个存在额外参数 `code_type` 的 `properties`。
+我们将 CatCode2 实现为多平台序列化库，并保留核心库及其中的高性能字符串解析器。
 
 simbot3中的消息实体将会基于 [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) 实现序列化，
 届时你想要将消息序列化为 `CatCode`、`JSON`、`properties` 或者 `ProtoBuf` , 那就可以完全看你自己的心情了。
 
 :::info 序列化途径
 
-猫猫码不再是simbot3中序列化消息的途径，它将会仅仅作为一个普通的序列化库发布（而且不知道会鸽多久）。
+猫猫码不再是simbot3中序列化消息的途径，它仅仅作为一个普通的序列化库发布。
 
 想要在simbot3中实现消息序列化，只需要在注意消息实体是否支持序列化的前提下直接通过 [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
 完成。
