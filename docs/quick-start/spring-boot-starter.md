@@ -47,7 +47,7 @@ simbot的 `Spring Boot Starter` 模块不会主动传递任何与 spring 相关�
 :::
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="Kotlin">
 
 ```kotlin title='example/Main.kt'
@@ -88,7 +88,7 @@ public class Main {
 
 在 `Spring Boot Starter` 模块下，依赖注入功能直接依赖与spring自身。因此，你应当直接使用spring的相关注解。
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="Kotlin">
 
 ```kotlin title='example/listener/BarListener.kt'
@@ -141,7 +141,7 @@ public class BarListener {
 下面将会以 监听 `FriendMessageEvent(好友消息事件)` 作为示例。
 
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="Kotlin">
 
 ```kotlin title='MyListener.kt'
@@ -176,7 +176,7 @@ public class MyListener {
 在 `Spring Boot` 中，有关于依赖注入等相关内容，就像普通的 `Spring Boot` 项目那样就好。
 举个其他例子，你可以与一个 `Controller` 配合使用：
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="Kotlin">
 
 ```kotlin title='BarController.kt'
@@ -221,7 +221,7 @@ public class BarController {
 `Spring Boot Starter` 中实际上也存在相关的 `Application` 信息，只不过这次不再需要你来处理这些内容了。而对于一些可配置内容，
 你可以使用spring的配置文件进行提供：
 
-<Tabs>
+<Tabs groupId="code">
 <TabItem value="YAML">
 
 ```yaml
