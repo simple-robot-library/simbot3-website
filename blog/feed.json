@@ -5,6 +5,22 @@
     "description": "Simple Robot官方博客喵",
     "items": [
         {
+            "id": "/2022/11/11/weak-45-report",
+            "content_html": "<p>2022年第45周周报。</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>待业三个月，暂未找到工作。</p>",
+            "url": "https://simbot.forte.love/blog/2022/11/11/weak-45-report",
+            "title": "2022年第45周周报",
+            "summary": "2022年第45周周报。",
+            "date_modified": "2022-11-11T00:00:00.000Z",
+            "author": {
+                "name": "Scarlet Forte",
+                "url": "https://github.com/ForteScarlet"
+            },
+            "tags": [
+                "2022周报",
+                "周报"
+            ]
+        },
+        {
             "id": "/2022/11/05/weak-44-report",
             "content_html": "<p>大概是2022年第44周周报喵。</p><blockquote><i><small>生活的苦涩，石激碧波般响彻。</small></i></blockquote><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-核心库\">📦 核心库<a class=\"hash-link\" href=\"#-核心库\" title=\"Direct link to heading\">​</a></h2><p>本周 <small>截止到目前为止</small> 还没有新的版本发布，但是会在近期发布一个 <code>v3.0.0-M2</code>，其内容主要包括一些问题的修正和调整（主要来自 <a href=\"https://github.com/simple-robot/simbot-component-kook/issues/62\" target=\"_blank\" rel=\"noopener noreferrer\">kook#62</a>）。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-kook\">🔧 Kook<a class=\"hash-link\" href=\"#-kook\" title=\"Direct link to heading\">​</a></h2><p>上文提到了对 <a href=\"https://github.com/simple-robot/simbot-component-kook/issues/62\" target=\"_blank\" rel=\"noopener noreferrer\">kook#62</a> 的修正，这也是我们这周的主要行动。总而言之，除了对它的修正之外，还有包括Kook组件的内部小调整之类的内容，以后也会更利于我们团队对其的更新与维护。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-还有什么\">🍵 还有什么？<a class=\"hash-link\" href=\"#-还有什么\" title=\"Direct link to heading\">​</a></h2><p>我们还做了什么？也许没有了，也许忘记了。在维持更新的同时，或许我们应该先解决组内成员的就业问题。</p><blockquote><i><small>生活总是高于理想。</small></i></blockquote>",
             "url": "https://simbot.forte.love/blog/2022/11/05/weak-44-report",

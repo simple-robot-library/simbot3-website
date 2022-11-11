@@ -4,11 +4,22 @@
         <title>Simple Robot Blog</title>
         <link>https://simbot.forte.love/blog</link>
         <description>Simple Robot官方博客喵</description>
-        <lastBuildDate>Sat, 05 Nov 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 11 Nov 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
         <copyright>Copyright © 2022 Forte Scarlet.</copyright>
+        <item>
+            <title><![CDATA[2022年第45周周报]]></title>
+            <link>https://simbot.forte.love/blog/2022/11/11/weak-45-report</link>
+            <guid>/2022/11/11/weak-45-report</guid>
+            <pubDate>Fri, 11 Nov 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[2022年第45周周报。]]></description>
+            <content:encoded><![CDATA[<p>2022年第45周周报。</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>待业三个月，暂未找到工作。</p>]]></content:encoded>
+            <author>ForteScarlet@163.com (Scarlet Forte)</author>
+            <category>2022周报</category>
+            <category>周报</category>
+        </item>
         <item>
             <title><![CDATA[2022年第44周周报]]></title>
             <link>https://simbot.forte.love/blog/2022/11/05/weak-44-report</link>
