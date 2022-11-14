@@ -74,7 +74,7 @@ function HomepageHeader({day}) {
                 <div className={styles.buttons}>
                     <Link
                         className="button button--secondary button--lg"
-                        to="/docs/intro">
+                        to="/docs">
                         {random(documentButtonTexts)}
                     </Link>
                 </div>
