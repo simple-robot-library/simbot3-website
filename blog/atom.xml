@@ -2,12 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://simbot.forte.love/blog</id>
     <title>Simple Robot Blog</title>
-    <updated>2022-11-20T00:00:00.000Z</updated>
+    <updated>2022-11-26T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://simbot.forte.love/blog"/>
     <subtitle>Simple Robot官方博客喵</subtitle>
     <icon>https://simbot.forte.love/img/favicon.png</icon>
     <rights>Copyright © 2022 Forte Scarlet.</rights>
+    <entry>
+        <title type="html"><![CDATA[2022年第47周周报]]></title>
+        <id>/2022/11/26/weak-47-report</id>
+        <link href="https://simbot.forte.love/blog/2022/11/26/weak-47-report"/>
+        <updated>2022-11-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[大概是2022年第47周周报喵。]]></summary>
+        <content type="html"><![CDATA[<p>大概是2022年第47周周报喵。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-核心库">📦 核心库<a class="hash-link" href="#-核心库" title="Direct link to heading">​</a></h2><p>核心库最近更新了版本 <a href="https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-M4" target="_blank" rel="noopener noreferrer">v3.0.0-M4</a>，
+更新内容看似很多，不过其实大部分内容我们之前的周报中都提到过了。</p><p>由于本次更新涉及一些可能的不兼容更新，所以相关组件也会陆陆续续的跟随更新。</p><br><br><br><p>其他的？不知道。也许星星会有更多故事。</p>]]></content>
+        <author>
+            <name>Scarlet Forliy</name>
+            <email>ForliyScarlet@163.com</email>
+            <uri>https://github.com/ForliyScarlet</uri>
+        </author>
+        <category label="2022周报" term="2022周报"/>
+        <category label="周报" term="周报"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2022年第46周周报]]></title>
         <id>/2022/11/20/weak-46-report</id>
