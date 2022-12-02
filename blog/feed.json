@@ -5,6 +5,22 @@
     "description": "Simple Robot官方博客喵",
     "items": [
         {
+            "id": "/2022/12/02/weak-48-report",
+            "content_html": "<p>大概是2022年第48周周报喵。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-核心库\">📦 核心库<a class=\"hash-link\" href=\"#-核心库\" title=\"Direct link to heading\">​</a></h2><p>核心库目前的版本还维持在 <a href=\"https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-M4\" target=\"_blank\" rel=\"noopener noreferrer\">v3.0.0-M4</a>，暂时没有什么新的版本。\n其实也是因为<strong>暂时</strong>没有什么能想到的在正式版之前需要去修改、增加的功能或特性了，也没有什么其他的问题反馈。</p><p>总而言之，如果在文档编写的差不多的时候仍然没有什么新东西，可能正式版就在不远处了。</p><hr><p>讲道理，也不知道该写些什么了。周报也持续了将近一年的时间，正式版发布后，也许会在某个时候考虑将\"周报\"变更为月报，或者不定期的杂谈。反正也没什么人看，\n与其分享一些我们那些梧鼠之技，不如给自己再留下更多的时间，以防囿于此限而行偏途岐。</p>",
+            "url": "https://simbot.forte.love/blog/2022/12/02/weak-48-report",
+            "title": "2022年第48周周报",
+            "summary": "大概是2022年第48周周报喵。",
+            "date_modified": "2022-12-02T00:00:00.000Z",
+            "author": {
+                "name": "Scarlet Forliy",
+                "url": "https://github.com/ForliyScarlet"
+            },
+            "tags": [
+                "2022周报",
+                "周报"
+            ]
+        },
+        {
             "id": "/2022/11/26/weak-47-report",
             "content_html": "<p>大概是2022年第47周周报喵。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-核心库\">📦 核心库<a class=\"hash-link\" href=\"#-核心库\" title=\"Direct link to heading\">​</a></h2><p>核心库最近更新了版本 <a href=\"https://github.com/simple-robot/simpler-robot/releases/tag/v3.0.0-M4\" target=\"_blank\" rel=\"noopener noreferrer\">v3.0.0-M4</a>，\n更新内容看似很多，不过其实大部分内容我们之前的周报中都提到过了。</p><p>由于本次更新涉及一些可能的不兼容更新，所以相关组件也会陆陆续续的跟随更新。</p><br><br><br><p>其他的？不知道。也许星星会有更多故事。</p>",
             "url": "https://simbot.forte.love/blog/2022/11/26/weak-47-report",
