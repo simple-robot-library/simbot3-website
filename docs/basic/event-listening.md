@@ -8,18 +8,12 @@ import Label from '@site/src/components/Label'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 事件监听可能是你最需要了解的功能。本章将会为你介绍如何去监听一个事件。换言之，即如何写一个监听函数。
 
 :::info 监听函数
 
-在了解事件监听之前，你应当已经了解过了 [监听函数](event-listener) 和 [事件处理上下文](../defition/event-overview/event-processing-context)。
-
-:::
-
-:::danger TODO
-
-施工中
+在了解事件监听之前，你应当已经了解过了 [监听函数](event-listener)
+和 [事件处理上下文](../defition/event-overview/event-processing-context)。
 
 :::
 
@@ -73,7 +67,7 @@ simbotApplication(Simple) {
 }
 ```
 
-上述的 `eventProcessor { listeners {  } }` 可以被简化，而省略掉外层的
+上述的 `eventProcessor { listeners { } }` 可以被简化，而省略掉外层的
 `eventProcessor`：
 
 ```kotlin
@@ -119,7 +113,6 @@ Lambdas.suspendConsumer((builder, configuration) -> {
 }));
 ```
 
-
 </TabItem>
 </Tabs>
 
@@ -159,7 +152,6 @@ Lambdas.suspendConsumer((builder, configuration) -> {
     });
 }));
 ```
-
 
 </TabItem>
 </Tabs>
@@ -208,7 +200,8 @@ listeners {
 
 :::note 都是一家人
 
-这其中的规则与在[监听函数](event-listener)中描述的一样，`match` 可以配置多次，而 `process` 或 `handle` 则必须且**只能**配置一次。
+这其中的规则与在[监听函数](event-listener)中描述的一样，`match` 可以配置多次，而 `process` 或 `handle` 则必须且**只能**
+配置一次。
 
 :::
 
@@ -240,7 +233,7 @@ simbotApplication(Simple) {
 }
 ```
 
-而 `invoke` 通常会被省略，因此可以简化为 
+而 `invoke` 通常会被省略，因此可以简化为
 
 ```kotlin
 FooEvent { /* 事件处理逻辑 */ } /*  onMatch { 事件匹配逻辑 } */
@@ -311,10 +304,80 @@ Applications.simbotApplication(
 </TabItem>
 </Tabs>
 
+### 动态注册
+
+除了我们前文一直在讲的“预注册”，在application启动后也支持**动态注册**监听函数。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+val launcher = simbotApplication(Simple) { 
+  // ...
+}
+
+val application = launcher.launch()
+
+// 注册监听函数
+val handle = application.eventListenerManager.listeners {
+    // 方式1
+    listen(FooEvent) {
+        match { true }
+        process { 
+            // 事件处理逻辑...
+        }
+    }
+    
+    // 方式2
+    FooEvent {
+        // 事件处理逻辑...
+    } onMatch { 
+        true
+    }
+    
+    // 通过运算符直接添加listener
+    val listener: EventListener = ...
+    
+    +listener   
+    +listener.toRegistrationDescription { 
+        // ...
+    }
+        
+    // 直接添加listener
+    listener(listener)
+    listener(listener.toRegistrationDescription { 
+        // ...
+    })
+}
+```
+
+:::tip 差不多
+
+在 `eventListenerManager.listeners` 作用域中的API基本与 `application.eventProcessor.listeners` 中的API一致。
+
+:::
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+ApplicationLauncher<SimpleApplication> launcher = Applications.simbotApplication(Simple.INSTANCE);
+SimpleApplication application = launcher.launchBlocking();
+SimpleEventListenerManager manager = application.getEventListenerManager();
+
+// 注册监听函数
+EventListenerHandle handle = manager.register(SimpleListeners.listener(FriendMessageEvent.Key, (context, event) -> {
+     // ...
+}));
+```
+
+</TabItem>
+</Tabs>
+
 
 ## 注解监听
 
-看到这里，你可能会想：“这跟宣传的不一样啊！不是加个 `@Listener` 注解就能用了吗？” 
+看到这里，你可能会想：“这跟宣传的不一样啊！不是加个 `@Listener` 注解就能用了吗？”
 或者 “这在Java中也太麻烦了吧！” 之类的想法。同样也是为了解决这个问题，我们提供了一个叫做 `BOOT` 的模块，
 它将会拥有**轻量级**的依赖注入以及监听函数扫描的能力。
 
@@ -329,7 +392,6 @@ Applications.simbotApplication(
 
 <Tabs groupId="code">
 <TabItem value="Kotlin">
-
 
 ```kotlin
 suspend fun main() {
@@ -349,10 +411,8 @@ class MyListenerContainer {
 }
 ```
 
-
 </TabItem>
 <TabItem value="Java">
-
 
 ```java
 Applications.simbotApplication(Boot.INSTANCE, (configuration) -> Unit.INSTANCE, Lambdas.suspendConsumer((builder, configuration) -> {
@@ -383,7 +443,6 @@ class MyListenerContainer {
 <Tabs groupId="code">
 <TabItem value="Kotlin">
 
-
 ```kotlin
 @EnableSimbot
 @SpringBootApplication
@@ -402,10 +461,8 @@ class MyListenerContainer {
 }
 ```
 
-
 </TabItem>
 <TabItem value="Java">
-
 
 ```java
 @EnableSimbot
@@ -442,8 +499,7 @@ class MyListenerContainer {
 最终 `Boot Application` 会扫描所有包路径下标记了 `@Beans` 的类型，并将它们作为依赖统一管理，
 然后解析所有标记了 `@Listener` 的方法，并尝试将它们解析为**监听函数**，然后注册。
 
-
-### 监听函数 
+### 监听函数
 
 刚刚我们提到，通过标记 `@Listener` 将一个方法标记为需要解析的**监听函数**，那么对于这样的函数，它肯定会有一些更多的要求。
 
@@ -534,10 +590,6 @@ suspend fun onEvent() {
     // ...
 }
 ```
-
-
-
-
 
 </TabItem>
 <TabItem value="Java">
@@ -802,7 +854,8 @@ public void onEvent(FooEvent event) {
 
 #### 目标过滤
 
-如果你希望对触发此事件的**对象目标**做过滤（例如只能由指定的人或群或bot触发），那么你可以使用 `@Filter(targets = @Filter.Targets(...))` 。
+如果你希望对触发此事件的**对象目标**
+做过滤（例如只能由指定的人或群或bot触发），那么你可以使用 `@Filter(targets = @Filter.Targets(...))` 。
 
 <Tabs groupId="code">
 <TabItem value="Kotlin">
@@ -934,9 +987,25 @@ public void onEvent(FooEvent event) {
 
 #### 动态参数
 
+:::danger TODO
+
+TODO
+
+:::
+
 ### 事件拦截
+
+:::danger TODO
+
+TODO
+
+:::
 
 ### 参数绑定
 
+:::danger TODO
 
+TODO
+
+:::
 

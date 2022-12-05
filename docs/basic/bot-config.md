@@ -49,14 +49,13 @@ import TabItem from '@theme/TabItem';
 
 ```xml title=pom.xml
 <dependencies>
-
     <!-- https://mvnrepository.com/artifact/com.charleskorn.kaml/kaml -->
     <dependency>
         <groupId>com.charleskorn.kaml</groupId>
         <artifactId>kaml</artifactId>
-        <version>0.46.0</version>
+        <!-- 参考 https://github.com/charleskorn/kaml -->
+        <version>${kaml-version}</version>
     </dependency>
-
 </dependencies>
 ```
 
@@ -65,7 +64,8 @@ import TabItem from '@theme/TabItem';
 
 ```kotlin title=gradle.build.kts
 dependencies {
-    implementation("com.charleskorn.kaml:kaml:0.46.0")
+    // 参考 https://github.com/charleskorn/kaml
+    implementation("com.charleskorn.kaml:kaml:$kaml_version")
 }
 ```
 
@@ -74,7 +74,8 @@ dependencies {
 
 ```groovy title=gradle.build
 dependencies {
-    implementation 'com.charleskorn.kaml:kaml:0.46.0'
+    // 参考 https://github.com/charleskorn/kaml
+    implementation 'com.charleskorn.kaml:kaml:$kaml_version'
 }
 ```
 
@@ -101,15 +102,13 @@ dependencies {
 
 ```xml title=pom.xml
 <dependencies>
-
     <!-- https://mvnrepository.com/artifact/com.charleskorn.kaml/kaml -->
     <dependency>
         <groupId>org.jetbrains.kotlinx</groupId>
         <artifactId>kotlinx-serialization-properties</artifactId>
-        <version>1.3.3</version>
-        <scope>runtime</scope>
+        <!-- 参考 https://github.com/Kotlin/kotlinx.serialization -->
+        <version>${ktx-serialization-properties-version}</version>
     </dependency>
-
 </dependencies>
 ```
 
@@ -118,7 +117,8 @@ dependencies {
 
 ```kotlin title=gradle.build.kts
 dependencies {
-    runtimeOnly("org.jetbrains.kotlinx:kotlinx-serialization-properties:1.3.3")
+    // 参考 https://github.com/Kotlin/kotlinx.serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-properties:$ktx_serialization_properties_version")
 }
 ```
 
@@ -127,7 +127,8 @@ dependencies {
 
 ```groovy title=gradle.build
 dependencies {
-    runtimeOnly 'org.jetbrains.kotlinx:kotlinx-serialization-properties:1.3.3'
+    // 参考 https://github.com/Kotlin/kotlinx.serialization
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-properties:$ktx_serialization_properties_version'
 }
 ```
 
@@ -138,9 +139,11 @@ dependencies {
 :::note 日志
 
 如果无法在你的运行时环境中找到此依赖，那么你有可能会在控制台中发现类似于如下内容的警告日志：
+
 ```log
 [WARN] Unable to find the kotlinx-serialization-properties in current classpath, the bot configuration parser in *.bot.properties format will not be available.
 ```
+
 假如你没有使用 **Properties** 格式文件的计划，那么大可以无视此警告。
 
 :::
@@ -202,7 +205,7 @@ component=simbot.xxxx
 {
   "component": "simbot.xxx",
   "code": 123456,
-  "password": "password"
+  "password": "password",
   "config": {
     "type": "normal",
     "duration": 60000

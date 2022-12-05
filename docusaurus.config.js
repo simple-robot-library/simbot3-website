@@ -48,7 +48,7 @@ async function createConfig() {
                     debug: true,
                     offlineModeActivationStrategies: [
                         'appInstalled',
-                        'standalone',
+                        // 'standalone',
                         'queryString',
                     ],
                     pwaHead: [

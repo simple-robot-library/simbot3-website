@@ -110,8 +110,8 @@ public void myListener(GroupMessageEvent messageEvent) {
 public CompletableFuture<?> myListener(GroupMessageEvent messageEvent) {
     CompletableFuture<? extends Group> groupAsync = event.getGroupAsync();
     
-    CompletableFuture<ID> groupIdAsync = groupAsync.thenApply(Group::getId);
-    CompletableFuture<String> groupNameAsync = groupAsync.thenApply(Group::getName);
+    CompletableFuture<? extends ID> groupIdAsync = groupAsync.thenApply(Group::getId);
+    CompletableFuture<? extends String> groupNameAsync = groupAsync.thenApply(Group::getName);
     
     
     // 返回 CompletableFuture 类型的结果时，则会在结果返回后非阻塞地挂起等待此Future结束，然后才会继续下一个监听函数
@@ -131,7 +131,7 @@ public CompletableFuture<?> myListener(GroupMessageEvent messageEvent) {
 
 在**simbot2**中，尽管其已经开始使用**Kotlin**进行开发，
 但是所使用的开发模式、风格和思想仍旧停留在**Java**的层面中，
-且整体设计_相对_欠佳。
+且整体设计相对欠佳。
 
 :::
 
@@ -145,7 +145,7 @@ fun myListener(messageEvent: GroupMsg, sender: Sender) {
     val groupCode = groupInfo.groupCode
     val groupName = groupInfo.groupName
     // ...
-    sender.SENDER.sendGroupMsg(messageEvent, "Bye, simbot2")
+    sender.SENDER.groupMsg(messageEvent, "Bye, simbot2")
 }
 
 ```
