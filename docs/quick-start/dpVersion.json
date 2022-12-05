@@ -3,10 +3,10 @@
     "version": "3.0.0-M2",
     "snapshotVersion": "3.0.0-M2-SNAPSHOT",
     "component": {
-      "mirai": "3.0.0.0-beta.4",
+      "mirai": "3.0.0.0-beta.3",
       "tcg": "3.0.0.0-alpha.2",
       "khl": "3.0.0.0-alpha.2",
-      "miraiSnap": "3.0.0.0-beta.4-SNAPSHOT",
+      "miraiSnap": "3.0.0.0-beta.3-SNAPSHOT",
       "tcgSnap": "3.0.0.0-alpha.2-SNAPSHOT",
       "khlSnap": "3.0.0.0-alpha.2-SNAPSHOT"
     }

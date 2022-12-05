@@ -29,7 +29,7 @@ function mavenCode(version) {
     <!-- mirai组件 -->
     <dependency>
         <groupId>love.forte.simbot.component</groupId>
-        <artifactId>simbot-component-mirai-boot</artifactId>
+        <artifactId>simbot-component-mirai-core</artifactId>
         <version>${version.simbot.component.mirai}</version>
     </dependency>
     
@@ -67,7 +67,7 @@ implementation("org.springframework.boot:spring-boot-starter-web")
 implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}")
 
 // mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}")`
+implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}")`
 }
 
 function gradleGroovy(version) {
@@ -91,7 +91,7 @@ implementation 'org.springframework.boot:spring-boot-starter-web'
 implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}'
 
 // mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-boot:${version.simbot.component.mirai}'`
+implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}'`
 }
 
 export default function QuickStartSpringBootStarterCodes({version}) {
