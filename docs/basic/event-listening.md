@@ -987,19 +987,335 @@ public void onEvent(FooEvent event) {
 
 #### 动态参数
 
-:::danger TODO
+也许你会有一个苦恼：我要如何将一个事件中文本消息内容中的一部分提取出来呢？这种场景很常见，
+尤其是在一些具有目的性、参数化的监听中。
 
-TODO
+举个例子，假设你希望用户输入一个 `.h{n}`，而你根据数字 `n` 来发送一个对应编号的帮助信息。
+这种情况下，以目前的情报来说能够实施解决方案大概有如下这些：
+
+> 我们假设在 `GroupMessageEvent` 事件中
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+**通过字符串截取并转化**:
+
+```kotlin
+private val helps = mutableMapOf(
+    1 to "帮助1",
+    2 to "帮助2",
+    10 to "帮助10"
+)
+
+@Filter(value = ".h\\d+")
+@Listener
+suspend fun EventListenerProcessingContext.onEvent(event: GroupMessageEvent) {
+    // 尝试通过字符串截取获取数字编号
+    // tips: textContent 在 **消息类型事件** 中中基本不会为null，除非有拦截器对其进行了额外操作。
+    //  此处保险起见，假若 textContent 为null则使用 event.messageContent.plainText
+    val numberValue = (textContent ?: event.messageContent.plainText).substring(2)
+    
+    val number = numberValue.toInt()
+    
+    event.reply(helps[number] ?: "没有找到编号[$number]的帮助")
+}
+```
+
+**通过正则提取**:
+
+```kotlin
+private val helps = mutableMapOf(
+    1 to "帮助1",
+    2 to "帮助2",
+    10 to "帮助10"
+)
+
+private const val REGEX_VALUE = ".h(?<number>\\d+)"
+private val regex = Regex(REGEX_VALUE)
+
+@Filter(value = REGEX_VALUE)
+@Listener
+suspend fun EventListenerProcessingContext.onEvent(event: GroupMessageEvent) {
+    val numberValue = regex.matchEntire(textContent ?: event.messageContent.plainText)?.groups?.get("number")?.value
+    if (numberValue == null) {
+        event.reply("没有找到编号")
+        return
+    }
+
+    val number = numberValue.toInt()
+
+    event.reply(helps[number] ?: "没有找到编号[$number]的帮助")
+}
+```
+
+或许这种割裂的方式你不喜欢，那么就不再使用 `@Filter` 了:
+
+```kotlin
+private val helps = mutableMapOf(
+    1 to "帮助1",
+    2 to "帮助2",
+    10 to "帮助10"
+)
+
+private val regex = Regex(".h(?<number>\\d+)")
+
+@Listener
+suspend fun EventListenerProcessingContext.onEvent(event: GroupMessageEvent) {
+    val text = textContent ?: event.messageContent.plainText
+    // 自行逻辑匹配，不再借助 @Filter
+    val matchResult = regex.matchEntire(text) ?: return
+
+    val numberValue = matchResult.groups["number"]?.value
+    if (numberValue == null) {
+        event.reply("没有找到编号")
+        return
+    }
+
+    val number = numberValue.toInt()
+
+    event.reply(helps[number] ?: "没有找到编号[$number]的帮助")
+}
+```
+
+
+</TabItem>
+<TabItem value="Java">
+
+**通过字符串截取并转化**:
+
+```java
+// class ...
+
+private static final Map<Integer, String> helps;
+static {
+    helps = new HashMap<>(8);
+    helps.put(1, "帮助1");
+    helps.put(2, "帮助2");
+    helps.put(10, "帮助10");
+}
+
+@Listener
+@Filter(value = ".h\\d+")
+public void onEvent(EventListenerProcessingContext context, GroupMessageEvent event) {
+    // 尝试通过字符串截取获取数字编号
+    // tips: textContent 在 **消息类型事件** 中中基本不会为null，除非有拦截器对其进行了额外操作。
+    // 此处保险起见，假若 textContent 为null则使用 event.messageContent.plainText
+    String numberValue = getText(context, event).substring(2);
+
+    int number = Integer.parseInt(numberValue);
+
+    event.replyBlocking(helps.getOrDefault(number, "没有找到编号["+ number +"]的帮助"));
+}
+
+private static String getText(EventListenerProcessingContext context, GroupMessageEvent event) {
+    String textContent = context.getTextContent();
+    if (textContent != null) {
+        return textContent;
+    }
+
+    return event.getMessageContent().getPlainText();
+}
+```
+
+**通过正则提取**:
+
+```java
+// class ...
+
+private static final Map<Integer, String> helps;
+static {
+    helps = new HashMap<>(8);
+    helps.put(1, "帮助1");
+    helps.put(2, "帮助2");
+    helps.put(10, "帮助10");
+}
+
+private static final String REGEX_VALUE = ".h(?<number>\\d+)";
+private static final Pattern regex = Pattern.compile(REGEX_VALUE);
+
+@Listener
+@Filter(value = REGEX_VALUE)
+public void onEvent(EventListenerProcessingContext context, GroupMessageEvent event) {
+    Matcher matcher = regex.matcher(getText(context, event));
+    if (!matcher.matches()) {
+        event.replyBlocking("没有找到编号");
+        return;
+    }
+
+    String numberValue = matcher.group("number");
+    if (numberValue == null) {
+        event.replyBlocking("没有找到编号");
+        return;
+    }
+
+    int number = Integer.parseInt(numberValue);
+
+    event.replyBlocking(helps.getOrDefault(number, "没有找到编号["+ number +"]的帮助"));
+}
+
+private static String getText(EventListenerProcessingContext context, GroupMessageEvent event) {
+    String textContent = context.getTextContent();
+    if (textContent != null) {
+        return textContent;
+    }
+
+    return event.getMessageContent().getPlainText();
+}
+```
+
+或许这种割裂的方式你不喜欢，那么就不再使用 `@Filter` 了:
+
+```java
+// class ...
+
+private static final Map<Integer, String> helps;
+static {
+    helps = new HashMap<>(8);
+    helps.put(1, "帮助1");
+    helps.put(2, "帮助2");
+    helps.put(10, "帮助10");
+}
+
+private static final Pattern regex = Pattern.compile(".h(?<number>\\d+)");
+
+@Listener
+public void onEvent(EventListenerProcessingContext context, GroupMessageEvent event) {
+    Matcher matcher = regex.matcher(getText(context, event));
+    if (!matcher.matches()) {
+        event.replyBlocking("没有找到编号");
+        return;
+    }
+
+    String numberValue = matcher.group("number");
+    if (numberValue == null) {
+        event.replyBlocking("没有找到编号");
+        return;
+    }
+
+    int number = Integer.parseInt(numberValue);
+
+    event.replyBlocking(helps.getOrDefault(number, "没有找到编号["+ number +"]的帮助"));
+}
+
+private static String getText(EventListenerProcessingContext context, GroupMessageEvent event) {
+    String textContent = context.getTextContent();
+    if (textContent != null) {
+        return textContent;
+    }
+
+    return event.getMessageContent().getPlainText();
+}
+```
+
+</TabItem>
+</Tabs>
+
+但是总而言之，都会多多少少有些...麻烦。因此，boot模块为开发者提供了一个或许比较有用的注解 `@FilterValue`。
+让我们如下示例：
+
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+private val helps = mutableMapOf(
+    1 to "帮助1",
+    2 to "帮助2",
+    10 to "帮助10"
+)
+
+@Filter(value = ".h(?<number>\\d+)")
+@Listener
+suspend fun onEvent(event: GroupMessageEvent, @FilterValue("number") number: Int) {
+     event.reply(helps[number] ?: "没有找到编号[$number]的帮助")
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+// class ...
+
+private static final Map<Integer, String> helps;
+static {
+    helps = new HashMap<>(8);
+    helps.put(1, "帮助1");
+    helps.put(2, "帮助2");
+    helps.put(10, "帮助10");
+}
+
+@Filter(value = ".h(?<number>\\d+)")
+@Listener
+public void onEvent(GroupMessageEvent event, @FilterValue("number") int number) {
+    event.replyBlocking(helps.getOrDefault(int, "没有找到编号["+ number +"]的帮助"))
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+可以看到，当通过**正则**匹配文本内容时，`@FilterValue` 可以通过指定一个 group name 来获取此正则匹配的对应结果。
+通过这种方式便可以在一定程度上简化样板代码。
+
+当然，除了 `(?<NAME>REGEX)` 这种形式以外，还有一个较为简化的写法：
+
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+private val helps = mutableMapOf(
+    1 to "帮助1",
+    2 to "帮助2",
+    10 to "帮助10"
+)
+
+@Filter(value = ".h{{number,\\d+}}")
+@Listener
+suspend fun onEvent(event: GroupMessageEvent, @FilterValue("number") number: Int) {
+     event.reply(helps[number] ?: "没有找到编号[$number]的帮助")
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+// class ...
+
+private static final Map<Integer, String> helps;
+static {
+    helps = new HashMap<>(8);
+    helps.put(1, "帮助1");
+    helps.put(2, "帮助2");
+    helps.put(10, "帮助10");
+}
+
+@Filter(value = ".h{{number,\\d+}}")
+@Listener
+public void onEvent(GroupMessageEvent event, @FilterValue("number") int number) {
+    event.replyBlocking(helps.getOrDefault(int, "没有找到编号["+ number +"]的帮助"))
+}
+```
+
+</TabItem>
+</Tabs>
+
+通过使用 `{{` 和 `}}` 进行包裹，并指定名称与其对应的表达式，也可以达到与正则相同结果。
+
+- `{{hello,\\d+}}` 和 `(?<hello>\\d+)` 的效果是一样的。
+- `{{hello}}` 和 `(?<hello>.+)` 的效果是一样的。
+
+使用正则原生的能力还是通过 `{{...}}` 进行一层转化，完全就看你的心情了。如果你对正则比较熟悉，那不妨直接使用 `(?<NAME>REGEX)` 吧。
+
+:::tip 正则限定
+
+`@FilterValue` 仅支持匹配默认为 **正则** 相关的类型，例如 `REGEX_MATCHES` 或 `REGEX_CONTAINS`。
 
 :::
 
-### 事件拦截
-
-:::danger TODO
-
-TODO
-
-:::
 
 ### 参数绑定
 
