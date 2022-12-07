@@ -22,13 +22,13 @@ function mavenCode(version) {
     <dependency>
         <groupId>love.forte.simbot</groupId>
         <artifactId>simbot-core</artifactId>
-        <version>${version.simbot.version}</version>
+        <version>${version.simbot.snapshotVersion}</version>
     </dependency>
     <!-- mirai组件 -->
     <dependency>
         <groupId>love.forte.simbot.component</groupId>
         <artifactId>simbot-component-mirai-core</artifactId>
-        <version>${version.simbot.component.mirai}</version>
+        <version>${version.simbot.component.miraiSnap}</version>
     </dependency>
     
     <!-- 或许还需要其他依赖...? -->
@@ -58,10 +58,10 @@ repositories {
 }
 
 // simbot核心标准库
-implementation("love.forte.simbot:simbot-core:${version.simbot.version}")
+implementation("love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}")
 
 // mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}")`
+implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.miraiSnap}")`
 }
 
 function gradleGroovy(version) {
@@ -84,10 +84,10 @@ repositories {
 }
 
 // simbot核心标准库
-implementation 'love.forte.simbot:simbot-core:${version.simbot.version}'
+implementation 'love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}'
 
 // mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}'`
+implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.miraiSnap}'`
 }
 
 export default function QuickStartCoreSnapshotCodes({version}) {

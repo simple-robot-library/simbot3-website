@@ -107,10 +107,11 @@ public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationLauncher<SimpleApplication> launcher = Applications.simbotApplication(
                 Simple.INSTANCE,
-                c -> Unit.INSTANCE,
-                Lambdas.suspendConsumer((builder, configuration) -> {
+                c -> {
+                },
+                (builder, configuration) -> {
                     // ...
-                }));
+                });
 
         final SimpleApplication application = launcher.launchBlocking();
         // or use launcher.launchAsync()
@@ -138,12 +139,12 @@ public class SimpleApp {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
         appBuilder.config(configuration -> {
             // ...
-            return Unit.INSTANCE;
+            
         });
         
-        appBuilder.build(Lambdas.suspendConsumer((builder, configuration) -> {
+        appBuilder.build((builder, configuration) -> {
             // build..
-        }));
+        });
 
         final SimpleApplication application = appBuilder.createBlocking();
         application.joinBlocking();
@@ -202,10 +203,10 @@ import love.forte.simbot.utils.Lambdas;
 public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
-        appBuilder.build(Lambdas.suspendConsumer((builder, configuration) -> {
+        appBuilder.build((builder, configuration) -> {
             // 安装MiraiComponent
             builder.install(MiraiComponent.Factory, (config, perceivable) -> Unit.INSTANCE);
-        }));
+        });
 
         appBuilder.createBlocking().joinBlocking();
     }
@@ -228,7 +229,7 @@ mirai组件作为与bot相关的组件，通常会提供各自的 `BotManager` �
 <TabItem value="Kotlin">
 
 ```kotlin title='SimpleApp.kt'
-import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.kook.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simbot.core.application.*
 
@@ -243,7 +244,7 @@ suspend fun main() {
 同样的，大多数组件也会为这个行为提供进行简化扩展：
 
 ```kotlin title='SimpleApp.kt'
-import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.kook.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simbot.core.application.*
 
@@ -258,7 +259,7 @@ suspend fun main() {
 而对于安装**组件标识**和安装**BotManager**的操作，各组件又通常会提供整合扩展。因此上述流程可以简化为：
 
 ```kotlin title='SimpleApp.kt'
-import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.kook.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simbot.core.application.*
 
@@ -267,8 +268,8 @@ suspend fun main() {
         // 安装mirai组件标识，安装miraiBotManager
         useMirai()
     
-        // 安装kaiheila组件标识，安装kaiheilaBotManager
-        useKaiheila()
+        // 安装kook组件标识，安装KookBotManager
+        useKook()
     }.join()
 }
 ```
@@ -276,7 +277,7 @@ suspend fun main() {
 如果想要对各自组件下的部分进行配置，可以：
 
 ```kotlin title='SimpleApp.kt'
-import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.kook.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simbot.core.application.*
 
@@ -288,10 +289,10 @@ suspend fun main() {
             botManager { /* mirai botManager配置 */ }
         }
     
-        // 安装kaiheila组件标识，安装kaiheilaBotManager
-        useKaiheila {
-            component { /* kaiheila 组件标识配置 */ }
-            botManager { /* kaiheila botManager配置 */ }
+        // 安装kook组件标识，安装KookBotManager
+        useKook {
+            component { /* Kook 组件标识配置 */ }
+            botManager { /* Kook botManager配置 */ }
         }
     }.join()
 }
@@ -311,11 +312,11 @@ import love.forte.simbot.utils.Lambdas;
 public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
-        appBuilder.build(Lambdas.suspendConsumer((builder, configuration) -> {
+        appBuilder.build((builder, configuration) -> {
             // 安装MiraiComponent
             builder.install(MiraiComponent.Factory, (config, perceivable) -> Unit.INSTANCE);
             builder.install(MiraiBotManager.Factory, (config, perceivable) -> Unit.INSTANCE);
-        }));
+        });
 
         appBuilder.createBlocking().joinBlocking();
     }
@@ -375,13 +376,13 @@ import love.forte.simbot.utils.Lambdas;
 public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
-        appBuilder.build(Lambdas.suspendConsumer((builder, configuration) -> {
+        appBuilder.build((builder, configuration) -> {
             // 尝试安装所有支持的组件
             Components.installAllComponents(builder, SimpleApp.class.getClassLoader());
             
             // 尝试安装所有支持的事件提供者
             EventProviders.installAllEventProviders(builder, SimpleApp.class.getClassLoader());
-        }));
+        });
 
         appBuilder.createBlocking().joinBlocking();
     }
@@ -398,10 +399,10 @@ import love.forte.simbot.utils.Lambdas;
 public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
-        appBuilder.build(Lambdas.suspendConsumer((builder, configuration) -> {
+        appBuilder.build((builder, configuration) -> {
             // 尝试安装所有支持自动加载的内容, 既同时使用上述两个方法
             SimbotKt.installAll(builder, SimpleApp.class.getClassLoader());
-        }));
+        });
 
         appBuilder.createBlocking().joinBlocking();
     }
@@ -426,7 +427,7 @@ public class SimpleApp {
 既然安装了 `BotManager`, 通常情况下组件实现中会提供对bot的预注册api。
 
 ```kotlin title='SimpleApp.kt'
-import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.kook.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simbot.core.application.*
 
@@ -463,7 +464,7 @@ import love.forte.simbot.utils.Lambdas;
 public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
-        appBuilder.build(Lambdas.suspendConsumer((builder, configuration) -> {
+        appBuilder.build((builder, configuration) -> {
             // 安装mirai组件
             builder.install(MiraiComponent.Factory, (config, perceivable) -> Unit.INSTANCE);
             // 安装mirai的bot管理器
@@ -481,11 +482,76 @@ public class SimpleApp {
                         break;
                     }
                 }
-            }));
+            });
 
         }));
 
         appBuilder.createBlocking().joinBlocking();
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+当然，你也可以在 `Application` 启动完成后再去进行这一操作。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin title='SimpleApp.kt'
+import love.forte.simbot.component.kook.*
+import love.forte.simbot.component.mirai.*
+import love.forte.simbot.core.application.*
+
+suspend fun main() {
+    val application = createSimpleApplication {
+        // 安装mirai组件标识，安装miraiBotManager
+        useMirai()
+    }
+    
+    application.miraiBots {
+        val bot = register(code = 123456L, password = "PASSWORD")
+        bot.start()
+    }
+    
+    application.join()
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java title='SimpleApp.java'
+import kotlin.Unit;
+import love.forte.simbot.application.*;
+import love.forte.simbot.component.mirai.*;
+import love.forte.simbot.component.mirai.bot.*;
+import love.forte.simbot.core.application.*;
+
+public class SimpleApp {
+    public static void main(String[] args) {
+        final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
+        appBuilder.build((builder, configuration) -> {
+            // 安装mirai组件
+            builder.install(MiraiComponent.Factory, (config, perceivable) -> Unit.INSTANCE);
+            // 安装mirai的bot管理器
+            builder.install(MiraiBotManager.Factory, (config, perceivable) -> Unit.INSTANCE);
+        });
+
+        SimpleApplication application = appBuilder.createBlocking();
+
+        // 寻找mirai的bot管理器，并注册bot
+        for (BotManager<?> botManager : application.getBotManagers()) {
+            if (botManager instanceof MiraiBotManager miraiBotManager) {
+                final MiraiBot bot = miraiBotManager.register(123456, "PASSWORD");
+                bot.startBlocking();
+                // or bot.startAsync();
+                break;
+            }
+        }
+
+        application.joinBlocking();
     }
 }
 ```
@@ -499,22 +565,22 @@ public class SimpleApp {
 <Tabs groupId="code">
 <TabItem value="Kotlin">
 
-除了针对于指定的组件进行特定的预注册以外，`Application` 也提供了全局通用的注册函数 `bots { ... }`：
+除了针对于指定的组件进行特定的预注册以外，`Application` 中的 `BotManagers` 也提供了通用的注册函数 `register(BotVerifyInfo)`：
 
 ```kotlin title='SimpleApp.kt'
-import love.forte.simbot.component.kaiheila.*
+import love.forte.simbot.component.kook.*
 import love.forte.simbot.component.mirai.*
 import love.forte.simbot.core.application.*
 
 suspend fun main() {
-    createSimpleApplication {
+    val application = createSimpleApplication {
         useMirai()
-        
-        bots {
-            val botVerifyInfo = File("fooBot.bot").toResource().toBotVerifyInfo(StandardBotVerifyInfoDecoderFactory.Json.create())
-            register(botVerifyInfo)
-        }
     }
+    
+    val botVerifyInfo = File("fooBot.bot").toResource().toBotVerifyInfo(StandardBotVerifyInfoDecoderFactory.Json.create())
+    application.botManagers.register(botVerifyInfo)
+    
+    application.join()
 }
 ```
 
@@ -538,35 +604,33 @@ import java.io.IOException;
 public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
-        appBuilder.build(Lambdas.suspendConsumer((builder, configuration) -> {
+        appBuilder.build((builder, configuration) -> {
             // 安装mirai组件
             builder.install(MiraiComponent.Factory, (config, perceivable) -> Unit.INSTANCE);
             // 安装mirai的bot管理器
             builder.install(MiraiBotManager.Factory, (config, perceivable) -> Unit.INSTANCE);
+        });
 
-            // 寻找mirai的bot管理器，并注册bot
-            builder.bots(Lambdas.suspendConsumer(botRegistrar -> {
-                final File file = new File("bots/foo.bot");
-                try (
-                        final FileResource fileResource = Resource.of(file);
-                        final BotVerifyInfo botVerifyInfo = BotVerifyInfos.toBotVerifyInfo(fileResource, JsonBotVerifyInfoDecoder.Factory.create(jsonBuilder -> Unit.INSTANCE))
-                ) {
+        SimpleApplication application = appBuilder.createBlocking();
 
-                    final Bot bot = botRegistrar.register(botVerifyInfo);
-                    if (bot != null) {
-                        bot.startBlocking();
-                    } else {
-                        throw new NoSuchComponentException();
-                    }
+        final File file = new File("bots/foo.bot");
+        try (
+                final FileResource fileResource = Resource.of(file);
+                final BotVerifyInfo botVerifyInfo = BotVerifyInfos.toBotVerifyInfo(fileResource, JsonBotVerifyInfoDecoder.Factory.create(jsonBuilder -> Unit.INSTANCE))
+        ) {
 
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }));
+            final Bot bot = application.getBotManagers().register(botVerifyInfo);
+            if (bot != null) {
+                bot.startBlocking();
+            } else {
+                throw new NoSuchComponentException();
+            }
 
-        }));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        appBuilder.createBlocking().joinBlocking();
+        application.joinBlocking();
     }
 }
 ```
@@ -593,40 +657,45 @@ import love.forte.simbot.core.event.*
 import love.forte.simbot.event.*
 
 suspend fun main() {
-    createSimpleApplication {
-        eventProcessor {
-            listeners {
-                // 方式一
-                listen(FriendMessageEvent) {
-                    // 匹配函数
-                    match { event -> "喵" in event.messageContent.plainText.trim() }
-                    // 处理函数
-                    handle { event ->
-                        event.friend().send("喵喵喵")
-                        EventResult.defaults()
-                    }
-                }
-                // 方式二
-                // 匹配逻辑在监听逻辑之后。
-                FriendMessageEvent { event ->
-                    event.friend().send("喵喵喵")
-                    EventResult.defaults()
-                } onMatch {
-                   "喵" in event.messageContent.plainText.trim()
-                }
-                
-                // 方式三
-                // 直接提供一个 EventListener 对象，不通过builder
-                // 这里借助 simpleListener 函数构建对象
-                listener(simpleListener(FriendMessageEvent, matcher = { event ->
-                    "喵" in event.messageContent.plainText.trim()
-                }) { event ->
-                    event.friend().send("喵喵喵")
-                    EventResult.defaults()
-                })
+    val application = createSimpleApplication {
+        useMirai()
+    }
+
+    // 注册监听函数
+    application.eventListenerManager.listeners {
+        // 👉 方式一
+        listen(FriendMessageEvent) {
+            // 匹配函数
+            match { event -> "喵" in event.messageContent.plainText.trim() }
+            // 处理函数
+            handle { event ->
+                event.friend().send("喵喵喵")
+                EventResult.defaults()
             }
         }
+
+        // 👉 方式二
+        // 匹配逻辑在监听逻辑之后。
+        FriendMessageEvent { event ->
+            event.friend().send("喵喵喵")
+            EventResult.defaults()
+        } onMatch { event ->
+            "喵" in event.messageContent.plainText.trim()
+        }
+
+        // 👉 方式三
+        // 直接提供一个 EventListener 对象，不通过builder
+        // 这里借助 simpleListener 函数构建对象
+        listener(simpleListener(FriendMessageEvent, matcher = { event ->
+            "喵" in event.messageContent.plainText.trim()
+        }) { event ->
+            event.friend().send("喵喵喵")
+            EventResult.defaults()
+        })
     }
+
+
+    application.join()
 }
 ```
 
@@ -646,31 +715,38 @@ import love.forte.simbot.utils.RandomIDUtil;
 public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
-        appBuilder.build(Lambdas.suspendConsumer((builder, configuration) -> {
-            builder.eventProcessor((listenerManagerConfiguration, environment) -> {
-                listenerManagerConfiguration.addListener(SimpleListeners.listener(
-                        FriendMessageEvent.Key,  // target =
-                        RandomIDUtil.randomID(), // id =
-                        false,                   // isAsync =
-                        PriorityConstant.NORMAL, // priority =
-                        // match function
-                        (context, event) -> {
-                            final String textContent = context.getTextContent();
-                            return "喵".equals(textContent);
-                        },
-                        // process function
-                        (context, event) -> {
-                            event.replyBlocking("喵喵喵");
-                            // or use: event.replyAsync("喵喵喵")
-                            // or use: event.getFriend().sendBlocking("喵喵喵")
-                            // or use: event.getFriend().sendAsync("喵喵喵")
-                            // or use: event.getFriendAsync().thenAccept(friend -> friend.sendAsync("喵喵喵"));
-                        }));
-                return Unit.INSTANCE;
-            });
-        }));
+        appBuilder.build((builder, configuration) -> {
+            // 安装mirai组件和BotManager
+            builder.install(MiraiComponent.Factory, ($1, $2) -> Unit.INSTANCE);
+            builder.install(MiraiBotManager.Factory, ($1, $2) -> Unit.INSTANCE);
+        });
 
-        appBuilder.createBlocking().joinBlocking();
+        SimpleApplication application = appBuilder.createBlocking();
+        
+        // 得到监听函数管理器
+        SimpleEventListenerManager eventListenerManager = application.getEventListenerManager();
+
+        // 注册一个监听函数。此处通过 SimpleListeners.listener 构建一个简易的监听函数实例并注册
+        eventListenerManager.register(SimpleListeners.listener(
+                // target
+                FriendMessageEvent.Key,
+
+                // 匹配函数
+                (context, event) -> {
+                    final String textContent = context.getTextContent();
+                    return "喵".equals(textContent);
+                },
+
+                // 处理函数
+                (context, event) -> {
+                    event.replyBlocking("喵喵喵");
+                    // or use: event.replyAsync("喵喵喵")
+                    // or use: event.getFriend().sendBlocking("喵喵喵")
+                    // or use: event.getFriend().sendAsync("喵喵喵")
+                    // or use: event.getFriendAsync().thenAccept(friend -> friend.sendAsync("喵喵喵"));
+                }));
+
+        application.joinBlocking();
     }
 }
 ```
@@ -681,21 +757,32 @@ public class SimpleApp {
 
 
 ## 完整示例
-在最后，提供一个简单而完整的示例如下：
+在最后，提供一个 _Kotlin_ 的简单而完整的示例如下：
 
 ```kotlin title='SimpleApp.kt'
-import love.forte.simbot.application.*
-import love.forte.simbot.component.kaiheila.*
-import love.forte.simbot.component.mirai.*
-import love.forte.simbot.core.application.*
-import love.forte.simbot.event.*
+
+import love.forte.simbot.application.Application
+import love.forte.simbot.component.mirai.miraiBots
+import love.forte.simbot.component.mirai.useMirai
+import love.forte.simbot.core.application.SimpleApplicationBuilder
+import love.forte.simbot.core.application.createSimpleApplication
+import love.forte.simbot.core.event.listeners
+import love.forte.simbot.event.FriendMessageEvent
+
 
 /**
  * main入口。
  */
 suspend fun main() {
     createSimpleApplication {
+        // 基础配置
         configApplication()
+    }.apply {
+        // 注册监听函数
+        configEventProcessor()
+        // 注册bot
+        // tips: 最好先注册监听函数在注册bot，这样如果监听函数中存在例如 BotStartedEvent, 其才能正常被触发
+        configBots()
     }.join()
 }
 
@@ -704,7 +791,6 @@ suspend fun main() {
  */
 private fun SimpleApplicationBuilder.configApplication() {
     configMirai()
-    configEventProcessor()
 }
 
 /**
@@ -712,20 +798,13 @@ private fun SimpleApplicationBuilder.configApplication() {
  */
 private fun SimpleApplicationBuilder.configMirai() {
     useMirai()
-        
-    miraiBots {
-        val bot = register(123, "密码") {
-            // more config..?
-        }
-        bot.start()
-    }
 }
 
 /**
- * 配置事件处理器。如果事件很多，最好进行拆分。此处仅作示例
+ * 注册监听函数。如果监听函数很多，最好进行拆分。此处仅作示例
  */
-private fun SimpleApplicationBuilder.configEventProcessor() {
-    listeners {
+private fun Application.configEventProcessor() {
+    eventListenerManager.listeners {
         // 监听好友消息, 如果好友消息中有文本"喵"，回复"喵喵喵"
         listen(FriendMessageEvent) {
             // 匹配函数
@@ -734,17 +813,23 @@ private fun SimpleApplicationBuilder.configEventProcessor() {
             process { event ->
                 event.friend().send("喵喵喵")
             }
-            
+
             // or:
             // handle { event ->
             //     event.friend().send("喵喵喵")
             //     EventResult.invalid() // event result.
             // }
-            
+
         }
     }
 }
 
+private suspend fun Application.configBots() {
+    miraiBots {
+        val bot = register(123, "密码")
+        bot.start()
+    }
+}
 ```
 
 
