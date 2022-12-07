@@ -175,19 +175,6 @@ component=simbot.xxxx
 ```
 
 </TabItem>
-<TabItem value="HOCON">
-
-:::caution 只是期望
-
-对 `HOCON` 的支持仅在计划中，目前尚未支持。
-
-:::
-
-```hocon title='my-bot.conf'
-component=simbot.xxxx
-```
-
-</TabItem>
 </Tabs>
 
 
@@ -234,27 +221,6 @@ code=123456
 password=password
 config.cache.type=normal
 config.cache.value.duration=60000
-```
-
-</TabItem>
-<TabItem value="HOCON">
-
-:::caution 只是期望
-
-对 `HOCON` 的支持仅在计划中，目前尚未支持。
-
-:::
-
-```hocon title='my-bot.conf'
-component=simbot.xxx
-code=123456
-password=password
-config {
-    dataSync {
-        type=normal
-        duration=60000
-    } 
-}
 ```
 
 </TabItem>

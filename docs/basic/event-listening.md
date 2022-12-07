@@ -1310,18 +1310,324 @@ public void onEvent(GroupMessageEvent event, @FilterValue("number") int number) 
 
 使用正则原生的能力还是通过 `{{...}}` 进行一层转化，完全就看你的心情了。如果你对正则比较熟悉，那不妨直接使用 `(?<NAME>REGEX)` 吧。
 
-:::tip 正则限定
+:::info 正则限定
 
 `@FilterValue` 仅支持匹配默认为 **正则** 相关的类型，例如 `REGEX_MATCHES` 或 `REGEX_CONTAINS`。
 
 :::
 
+:::info 类型转化
+
+默认情况下 `@FilterValue` 的结果仅支持最低限度的简单类型转化（字符串转数字、基础数据类型与包装类型的转化等），而不支持诸如序列化等复杂的类型转化。
+
+:::
 
 ### 参数绑定
 
-:::danger TODO
+你可能会好奇，通过注解监听的时候，到底什么参数能被自动注入、什么参数不能呢？
+下面罗列了默认情况下能够被自动注入的监听函数参数：
 
-TODO
+#### 💠 Event 事件对象
 
-:::
+当前监听函数要监听的事件类型。
+
+> 通过 `EventProcessingContext.event` 获取并进行类型转化。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(event: Event) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(Event event) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 💠 EventListenerProcessingContext
+
+监听函数的事件处理上下文（是 `EventProcessingContext` 的子类）。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(context: EventListenerProcessingContext) { // 或 EventProcessingContext
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(EventListenerProcessingContext context) { // 或 EventProcessingContext
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 💠 Application
+
+当前事件所属的 `Application`。
+
+> 通过 `EventProcessingContext.getAttribute(ApplicationAttributes.Application)` 获取。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(application: Application) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(Application application) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 💠 EventListener
+
+当前监听函数自身。
+
+> 通过 `EventListenerProcessingContext.listener` 获取。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(listener: EventListener) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(EventListener listener) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 💠 GlobalScopeContext
+
+当前事件中的全局作用域。
+
+> 通过 `EventProcessingContext.getAttribute(SimpleScope.Global)` 获取。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(globalScope: GlobalScopeContext) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(GlobalScopeContext globalScope) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 💠 ContinuousSessionContext
+
+当前事件中提供的 `ContinuousSessionContext` 实例。
+
+> 通过 `EventProcessingContext.getAttribute(SimpleScope.ContinuousSession)` 获取。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(continuousSessionContext: ContinuousSessionContext) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(ContinuousSessionContext continuousSessionContext) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 💠 SerializersModule
+
+当前事件所属的 `Application` 中的序列化模块信息。
+
+> 通过 `EventProcessingContext.messagesSerializersModule` 获取。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(serializersModule: SerializersModule) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(SerializersModule serializersModule) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 💠 KFunction
+
+当前监听函数（如果是来自 `KFunction`）的原始的 `KFunction` 函数对象。
+
+> 通过 `EventProcessingContext.listener.getAttribute(BootListenerAttributes.RawFunction)` 获取。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Listener
+suspend fun onEvent(function: KFunction<*>) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Listener
+public void onEvent(KFunction<*> function) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### FilterValue(...)
+
+标记了 `@FilterValue` 的参数。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Filter("foo(?<value>.+)")
+@Listener
+suspend fun onEvent(@FilterValue("value") value: Int) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+@Filter("foo(?<value>.+)")
+@Listener
+public void onEvent(@FilterValue("value") String value) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### 其他
+
+当其余所有绑定器都无法进行绑定时，会有一个最终的绑定器来尝试通过依赖注入寻找匹配类型并注入。
+以 Spring Boot 项目为例：
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+@Component
+class Foo
+
+// ...
+
+@Listener
+suspend fun onEvent(foo: Foo) {
+  // ...
+}
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+// Foo.java
+@Component
+public class Foo {
+}
+
+// ...
+
+// xxx.java
+@Listener
+public void onEvent(Foo foo) {
+  // ...
+}
+```
+
+</TabItem>
+</Tabs>
+
+而如果直至最终都无法决定最终注入的内容，则会抛出异常。
+
+
 
