@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 例如下述代码：
 
 ```kotlin
-suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+suspend fun EventProcessingContext.onEvent(event: Event) {
       // Here ...
 }
 ```
@@ -48,7 +48,7 @@ suspend fun EventProcessingContext.onEvent(event: FooEvent) {
 suspend fun main() {
     createSimpleApplication {
         listeners {
-            listen(FooEvent) {
+            listen(Event) {
                // highlight-start
                 process { event -> // this: EventListenerProcessingContext
                     // Here ...
@@ -68,7 +68,7 @@ _或其他类似的事件监听形式_
 
 ```kotlin
 @Listener
-suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+suspend fun EventProcessingContext.onEvent(event: Event) {
       // Here ...
 }
 ```
@@ -86,7 +86,7 @@ suspend fun EventProcessingContext.onEvent(event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     // Here ...
 }
 ```
@@ -108,7 +108,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+suspend fun EventProcessingContext.onEvent(event: Event) {
     val sessionContext: ContinuousSessionContext? = this[SimpleScope.ContinuousSession]
     // ...
 }
@@ -161,7 +161,7 @@ public void onEvent(EventProcessingContext context, FriendEvent event) {
 获取 `EventProcessingContext` 中的 `ContinuousSessionContext`。当无法获取、不存在或不支持时将会**抛出异常**。
 
 ```kotlin
-suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+suspend fun EventProcessingContext.onEvent(event: Event) {
     val sessionContext: ContinuousSessionContext = this.continuousSession
 }
 ```
@@ -171,7 +171,7 @@ suspend fun EventProcessingContext.onEvent(event: FooEvent) {
 获取 `EventProcessingContext` 中的 `ContinuousSessionContext`。当无法获取、不存在或不支持时将会得到null。
 
 ```kotlin
-suspend fun EventProcessingContext.onEvent(event: FooEvent) {
+suspend fun EventProcessingContext.onEvent(event: Event) {
     val sessionContext: ContinuousSessionContext? = this.continuousSessionOrNull
 }
 ```
@@ -185,7 +185,7 @@ suspend fun EventProcessingContext.onEvent(event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(EventProcessingContext context, FooEvent event) {
+public void onEvent(EventProcessingContext context, Event event) {
     final ContinuousSessionContext continuousSession = SimpleScope.getContinuousSession(context);
 }
 ```
@@ -196,7 +196,7 @@ public void onEvent(EventProcessingContext context, FooEvent event) {
 
 ```java
 @Listener
-public void onEvent(EventProcessingContext context, FooEvent event) {
+public void onEvent(EventProcessingContext context, Event event) {
     final ContinuousSessionContext continuousSession = SimpleScope.getContinuousSessionOrNull(context);
 }
 ```
@@ -219,7 +219,7 @@ public void onEvent(EventProcessingContext context, FooEvent event) {
 
 ```kotlin
 @Listener
-suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     // Here ...
 }
 ```
@@ -237,7 +237,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     // Here ...
 }
 ```
@@ -277,7 +277,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, Event event) {
     val value: Int = sessionContext.waiting { provider -> // this: EventProcessingContext
         provider.push(1)
     }
@@ -288,7 +288,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 其中，`this` 即为触发此回调函数时的事件处理上下文。
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent fooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, Event fooEvent) {
     val event: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
         // 当前事件
         val currentEvent: Event = this.event
@@ -305,7 +305,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent fooEvent)
 你可以有条件的/选择性的推送：
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, Event event) {
     val value: String = sessionContext.waiting { provider -> // this: EventProcessingContext
         // 当前事件
         val currentEvent: Event = this.event
@@ -320,7 +320,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 或者推送一个异常：
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, Event event) {
     val event: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
         // 当前事件
         val currentEvent: Event = this.event
@@ -345,7 +345,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     final Integer next = sessionContext.waiting((c, provider) -> {
          provider.push(1);
     });
@@ -357,7 +357,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     final Event received = sessionContext.waiting((c, provider) -> {
         final Event currentEvent = c.getEvent();
         provider.push(currentEvent);
@@ -374,7 +374,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 
 ```java
 @Listener
-public void onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+public void onEvent(sessionContext: ContinuousSessionContext, Event event) {
     final String received = sessionContext.waiting((c, provider) -> {
         final Event currentEvent = c.getEvent();
         if ("foo".equals(currentEvent.getComponent().getId())) {
@@ -388,7 +388,7 @@ public void onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 
 ```java
 @Listener
-public void onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
+public void onEvent(sessionContext: ContinuousSessionContext, Event event) {
     final String received = sessionContext.waiting((c, provider) -> {
         final Event currentEvent = c.getEvent();
         if ("foo".equals(currentEvent.getComponent().getId())) {
@@ -435,7 +435,7 @@ public void onEvent(sessionContext: ContinuousSessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun EventProcessingContext.onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun EventProcessingContext.onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val event: Event = sessionContext.waitingForNext()
 }
 ```
@@ -445,7 +445,7 @@ suspend fun EventProcessingContext.onEvent(sessionContext: ContinuousSessionCont
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     final Event next = sessionContext.waitingForNext();
 }
 ```
@@ -469,7 +469,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val next: Event = sessionContext.waiting { provider -> // this: EventProcessingContext
         provider.push(this.event)
     }
@@ -481,7 +481,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     final Event received = sessionContext.waiting((c, provider) -> {
         provider.push(c.getEvent());
     });
@@ -504,7 +504,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 ```kotlin
 import love.forte.simbot.event.waitingForNext
 
-suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val event: BarEvent = sessionContext.waitingForNext(BarEvent)
 }
 ```
@@ -512,7 +512,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 或者显式的指定事件类型的参数名：
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val event: BarEvent = sessionContext.waitingForNext(key = BarEvent)
 }
 ```
@@ -522,7 +522,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     final BarEvent next = sessionContext.waitingForNext(BarEvent.Key);
 }
 ```
@@ -540,7 +540,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     // success-start
     val event: BarEvent = sessionContext.waitingForNext(key = BarEvent)
     // success-end
@@ -552,7 +552,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     // success-start
     final BarEvent next = sessionContext.waitingForNext(BarEvent.Key);
     // success-end
@@ -568,7 +568,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     // error-start
     val event: Event = sessionContext.waitingForNext(key = event.key)
     // error-end
@@ -580,7 +580,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
+public void onEvent(ContinuousSessionContext sessionContext, Event event) {
     // error-start
     final Event next = sessionContext.waitingForNext(event.getKey());
     // error-end
@@ -615,7 +615,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent event) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val next: Event = sessionContext.waitingForNext { event -> // this: EventProcessingContext
         // match ...
         true
@@ -628,7 +628,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final Event next = sessionContext.waitingForNext((context, event) -> {
         // match ...
         return true;
@@ -653,7 +653,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val next: FooEvent = sessionContext.waitingForNext(FooEvent) { event -> // this: EventProcessingContext
         // match ...
         true
@@ -666,7 +666,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final FooEvent next = sessionContext.waitingForNext(FooEvent.Key, (context, event) -> {
         // match ...
         return true;
@@ -697,7 +697,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val message: MessageContent = sessionContext.waitingForNextMessage()
 }
 ```
@@ -707,7 +707,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final MessageContent message = sessionContext.waitingForNextMessage();
 }
 ```
@@ -724,7 +724,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val message: MessageContent = sessionContext.waitingForNextMessage(FooMessageEvent)
 }
 ```
@@ -734,7 +734,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final MessageContent message = sessionContext.waitingForNextMessage(FooMessageEvent);
 }
 ```
@@ -751,7 +751,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val message: MessageContent = sessionContext.waitingForNextMessage { event ->
         // 条件判断
         true
@@ -764,7 +764,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final MessageContent message = sessionContext.waitingForNextMessage((context, event) -> {
         // 条件判断
         return true;
@@ -786,7 +786,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 ```kotlin
 import love.forte.simbot.event.waitingForNextMessage
 
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: Event) {
     val message: MessageContent = sessionContext.waitingForNextMessage(FooMessageEvent) { event ->
         // 条件判断
         true
@@ -799,7 +799,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final MessageContent message = sessionContext.waitingForNextMessage(FooMessageEvent.Key, (context, event) -> {
         // 条件判断
         return true;
@@ -1080,9 +1080,9 @@ sessionContext {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, event: FooEvent) {
     sessionContext {
-        val next: Event = fooEvent.next()
+        val next: Event = event.next()
     }
 }
 ```
@@ -1092,7 +1092,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final Event next = sessionContext.next(fooEvent);
 }
 ```
@@ -1124,7 +1124,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     val currentBot = fooEvent.bot
     sessionContext.waitingForNext { event ->
         val eventBot = event.bot
@@ -1171,7 +1171,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent2(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent2(ContinuousSessionContext sessionContext, Event fooEvent) {
     final Bot currentBot = fooEvent.getBot();
     sessionContext.waitingForNext((context, event) -> {
         Bot eventBot = event.getBot();
@@ -1224,7 +1224,7 @@ public void onEvent2(ContinuousSessionContext sessionContext, FooEvent fooEvent)
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     sessionContext {
         fooEvent.next(BarEvent)
     }
@@ -1236,7 +1236,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final Event next = sessionContext.next(fooEvent, BarEvent.Key);
 }
 ```
@@ -1256,7 +1256,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     sessionContext {
         val next: MessageContent = fooEvent.nextMessage(BarMessageEvent)
     }
@@ -1268,7 +1268,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final MessageContent next = sessionContext.nextMessage(fooEvent, FooMessageEvent.Key);
 }
 ```
@@ -1291,7 +1291,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value="milli" label="MILLISECONDS">
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     // 5s内得到下一个事件，否则会抛出异常。
     val next = withTimeout(5000) {
         sessionContext.waitingForNext()
@@ -1303,7 +1303,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 <TabItem value="duration" label="DURATION">
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     // 5s内得到下一个事件，否则会抛出异常。
     val next = withTimeout(5.seconds) {
         sessionContext.waitingForNext()
@@ -1377,7 +1377,7 @@ withTimeout(10.seconds) {
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     val value: String = sessionContext.waiting { provider ->
         // 使用 provider
         provider.push("VALUE")
@@ -1390,7 +1390,7 @@ suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent
 
 ```java
 @Listener
-public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) {
+public void onEvent(ContinuousSessionContext sessionContext, Event fooEvent) {
     final String value = sessionContext.waiting((context, provider) -> {
         // 使用 provider
         provider.push("VALUE");
@@ -1407,7 +1407,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FooEvent fooEvent) 
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     val value: String = sessionContext.waiting("ID") { 
         // 此处永远不会使用provider, 而是在 [onEvent2] 中使用
     }
@@ -1453,7 +1453,7 @@ public void onEvent2(ContinuousSessionContext sessionContext, FriendMessageEvent
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     val deferred: Deferred<String> = fooEvent.bot.async {
         sessionContext.waiting("ID") {
             // 此处永远不会使用provider
@@ -1516,7 +1516,7 @@ public void onEvent(ContinuousSessionContext sessionContext, FriendMessageEvent 
 <TabItem value='Kotlin'>
 
 ```kotlin
-suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: FooEvent) {
+suspend fun onEvent(sessionContext: ContinuousSessionContext, fooEvent: Event) {
     val receiver: ContinuousSessionReceiver<String> = sessionContext.getReceiver("ID")
         ?: return
     
