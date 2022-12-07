@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 :::info 监听函数
 
 在了解事件监听之前，你应当已经了解过了 [监听函数](event-listener)
-和 [事件处理上下文](../defition/event-overview/event-processing-context)。
+和 [事件处理上下文](../definition/event-overview/event-processing-context)。
 
 :::
 

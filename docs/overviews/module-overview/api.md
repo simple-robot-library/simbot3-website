@@ -11,7 +11,7 @@ sidebar_position: 10
 
 - `love.forte.simbot.*`
 
-此路径下（不含深层级路径）的内容一般是一些通用内容，比如 [唯一标识](../../defition/ID.md)
+此路径下（不含深层级路径）的内容一般是一些通用内容，比如 [唯一标识](../../definition/ID.md)
 
 
 - `love.forte.simbot.event`

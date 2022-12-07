@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 `EventListenerManager` 是事件注册的入口，也应当是所有Bot管理器 `BotManager` 的所需内容。
 
-有关事件管理器的概述，你可以参考 [定义概述: 事件管理器](../defition/event-manager) 。
+有关事件管理器的概述，你可以参考 [定义概述: 事件管理器](../definition/event-manager) 。
 
 
 你可以通过如下方式构建一个基础核心模块所提供的实现：
@@ -157,7 +157,7 @@ final CoreListenerManager manager = CoreListenerManager.newInstance(config);
 
 
 ## 事件监听
-当你得到 `EventListenerManager` 实例之后，便可以通过此实例来注册各种监听函数来监听事件了。有关事件相关的细节，你可以参考 [事件概述](../defition/event-overview)。
+当你得到 `EventListenerManager` 实例之后，便可以通过此实例来注册各种监听函数来监听事件了。有关事件相关的细节，你可以参考 [事件概述](../definition/event-overview)。
 
 :::caution
 

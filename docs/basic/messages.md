@@ -17,7 +17,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 :::info
 
-在阅读本章节之前，你应当已经了解过了 [**消息的定义**](../defition/message-overview)。
+在阅读本章节之前，你应当已经了解过了 [**消息的定义**](../definition/message-overview)。
 
 :::
 
@@ -29,8 +29,8 @@ import CodeBlock from '@theme/CodeBlock';
 
 ### 构建消息对象
 
-对一个消息对象的构建方式取决于消息类型本身。举几个例子，[标准消息类型](../defition/message-overview/standard-message)
-中的 [文本消息](../defition/message-overview/standard-message#text) 
+对一个消息对象的构建方式取决于消息类型本身。举几个例子，[标准消息类型](../definition/message-overview/standard-message)
+中的 [文本消息](../definition/message-overview/standard-message#text) 
 的构建方式是使用其静态工厂方法 `Text.of` 或 `Text.getEmptyText()`：
 
 <Tabs groupId="code">
@@ -53,7 +53,7 @@ final Text emptyText = Text.getEmptyText();
 </TabItem>
 </Tabs>
 
-而 [AT](../defition/message-overview/standard-message#at) 则直接创建一个新实例即可：
+而 [AT](../definition/message-overview/standard-message#at) 则直接创建一个新实例即可：
 
 
 <Tabs groupId="code">
@@ -75,7 +75,7 @@ final At atMember = new At(event.getAuthor().getId());
 </TabItem>
 </Tabs>
 
-对于 [AT所有](../defition/message-overview/standard-message#atall)，其作为一个 `object` 则可以直接使用：
+对于 [AT所有](../definition/message-overview/standard-message#atall)，其作为一个 `object` 则可以直接使用：
 
 
 <Tabs groupId="code">
@@ -95,7 +95,7 @@ final AtAll atAll = AtAll.INSTANCE;
 </TabItem>
 </Tabs>
 
-因此，具体问题具体分析，不管是[标准消息类型](../defition/message-overview/standard-message)还是由组件或第三方提供的额外消息类型，
+因此，具体问题具体分析，不管是[标准消息类型](../definition/message-overview/standard-message)还是由组件或第三方提供的额外消息类型，
 阅读其相关文档或注释来了解如果构建它们。
 
 ### 构建消息链
@@ -276,7 +276,7 @@ final Messages newMessages = messages.plus(AtAll.INSTANCE);
 
 ## 消息发送
 
-大部分消息的发送能力由 [SendSupport](../defition/ability-support#sendsupport) 或 [ReplySupport](../defition/ability-support#replysupport) 提供。
+大部分消息的发送能力由 [SendSupport](../definition/ability-support#sendsupport) 或 [ReplySupport](../definition/ability-support#replysupport) 提供。
 
 TODO
 

@@ -279,8 +279,7 @@ Image<?> image = bot.resolveImageBlocking(id);
 上传后的链接地址。
 
 因此需要根据所使用的具体组件并结合相关的文档注释说明来使用。不过直接通过 `Bot.resolveImage(ID)` 来构建图片对象的情况并不是很常见。
-defition
-definition
+
 ## Emoji
 Emoji是一个 _保留类型_ ，它类似于 [Face](#face)，用来表示一个 `emoji`。但是通常情况下，你并不需要使用 `Emoji` 来发送 `emoji`，
 因为从2010年开始 `Unicode` 便开始收录emoji编码，你可以直接将 `emoji` 表情作为字符串发送。

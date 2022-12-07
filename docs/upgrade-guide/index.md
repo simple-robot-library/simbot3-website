@@ -216,7 +216,7 @@ public void useBotManager() {
 :::caution 注意
 `OriginBotManager` 无关任何环境，属于 **全局** 性API。你应该谨慎考虑是否应该使用任何 **全局** 相关的API，并且这些API未来都有可能发生变更。
 
-相关内容可参考 [BOT管理器](../defition/bot-manager) 。
+相关内容可参考 [BOT管理器](../definition/bot-manager) 。
 :::
 
 实际上，`OriginBotManager` 并不是特别被建议使用。在 simbot3 中，
@@ -310,6 +310,6 @@ public void onEvent(EventProcessingContext context, FriendMessageEvent event) th
 
 :::info
 
-更多请参考 [**消息概述**](../defition/message-overview)。
+更多请参考 [**消息概述**](../definition/message-overview)。
 
 :::
