@@ -15,7 +15,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 ## 🚀 版本更新
 
-从[上周周报](../2022-06-22-week-25-report)截止到本周周报，[核心库](https://github.com/simple-robot/simpler-robot) 发布了如下几个版本：
+从[上周周报](../06-22-week-25-report)截止到本周周报，[核心库](https://github.com/simple-robot/simpler-robot) 发布了如下几个版本：
 
 - [**v3.0.0-beta-M1**][v3bm1]
 - [**v3.0.0.preview.18.0**][v3p18.0]
