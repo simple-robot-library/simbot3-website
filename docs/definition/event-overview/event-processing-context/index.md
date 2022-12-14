@@ -9,12 +9,6 @@ import TabItem from '@theme/TabItem';
 事件处理上下文， 即 **`EventProcessingContext`** ，是整个事件调度流程中的 **核心对象**。
 
 
-:::danger TODO
-
-施工中
-
-:::
-
 :::note 起源...
 
 一次事件调度中的事件对象（ **`Event`** ）便是来自此上下文。

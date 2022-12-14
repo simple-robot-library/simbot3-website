@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: 端点变更事件
+title: 端点变更/增减事件
 tags: [标准事件]
 ---
 

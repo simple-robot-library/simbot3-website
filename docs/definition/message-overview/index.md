@@ -41,33 +41,11 @@ tags: [消息]
 
 ## Messages
 `Messages` 代表了多个 `Message.Element`，你可以将其理解为消息元素的列表，是 `Message` 类型的实现之一。
-当然，实际上它也确实就是一个消息元素的列表，因为 `Messages` 实现了 `List<Message.Element<*>>`。
+它可以表示为一个消息元素列表，因为 `Messages` 实现了 `View<Message.Element<*>>`，间接实现了 `Iterable<Message.Element<*>>`。
 
 ### 不可变性
 `Messages` 在列表的角度上是不可变的，当你要调整一个 `Messages` (增加、删除) 的时候，你需要获取新的实例。
-在 `Kotlin` 中，这由其语言特性所限制，但是在 `Java` 中则可能出现错误操作。
 
-:::danger 错误示范
-
-```java
-Messages messages = ....;
-// This will error
-messages.add(Text.of("Hello")); // error
-```
-直接使用 `.add` 将会导致抛出异常。
-
-:::
-
-
-:::tip 正确方向
-
-```java
-Messages messages = ....;
-Messages newMessages = messages.plus(Text.of("World"));
-```
-使用 `Messages.plus(...)` 拼接并得到一个新的消息链。
-
-:::
 
 ### 构建
 
@@ -94,6 +72,11 @@ val messagesOfList = messageElementList.toMessages()
 
 // 空实现
 val emptyMessage = EmptyMessages
+
+// 通过builder
+buildMessages {
+  // ...
+}
 ```
 
 </TabItem>
@@ -120,6 +103,11 @@ final Messages messages = Messages.getMessages(
                             new At(Identifies.ID(114514)),
                             AtAll.INSTANCE
                         );
+                        
+// 通过builder
+MessagesBuilder builder = new MessagesBuilder();
+// ...
+Messages built = builder.build();
 ```
 
 </TabItem>
