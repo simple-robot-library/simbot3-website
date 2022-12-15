@@ -109,15 +109,15 @@ async function createConfig() {
             [
                 'content-docs',
                 {
-                    id: 'about',
-                    path: 'about',
-                    routeBasePath: 'about',
+                    id: 'faq',
+                    path: 'faq',
+                    routeBasePath: 'faq',
                     sidebarPath: require.resolve('./sidebars-about.js'),
                     breadcrumbs: true,
                     showLastUpdateAuthor: true,
                     showLastUpdateTime: true,
                     // editCurrentVersion: true,
-                    // editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/about',
+                    // editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/faq',
                     // lastVersion: 'current',
                     // versions: {
                     //     current: {
@@ -276,6 +276,7 @@ async function createConfig() {
                             label: '文档',
                         },
                         {to: '/blog', label: '博客', position: 'left'},
+                        {to: '/faq', label: '常见问题', position: 'left'},
                         {href: 'https://github.com/simple-robot-library', label: '图书馆', position: 'left'},
                         {href: 'https://github.com/orgs/simple-robot/discussions', label: '社区', position: 'left'},
                         ////////
@@ -303,6 +304,9 @@ async function createConfig() {
                                 {
                                     label: '文档',
                                     to: '/docs',
+                                },{
+                                    label: '常见问题',
+                                    to: '/faq',
                                 },
                                 {
                                     label: 'API文档',
