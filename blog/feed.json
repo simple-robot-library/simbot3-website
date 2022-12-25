@@ -5,6 +5,22 @@
     "description": "Simple Robot官方博客喵",
     "items": [
         {
+            "id": "/2022/12/25/weak-51-report",
+            "content_html": "<p>大概是2022年第51周周报喵。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-圣诞节\">🎄 圣诞节<a class=\"hash-link\" href=\"#-圣诞节\" title=\"Direct link to heading\">​</a></h2><p>将袜子放在床头，将心愿藏于其中 ———— 「愿 世界和平」。</p>",
+            "url": "https://simbot.forte.love/blog/2022/12/25/weak-51-report",
+            "title": "2022年第51周周报",
+            "summary": "大概是2022年第51周周报喵。",
+            "date_modified": "2022-12-25T00:00:00.000Z",
+            "author": {
+                "name": "Scarlet Forliy",
+                "url": "https://github.com/ForliyScarlet"
+            },
+            "tags": [
+                "2022周报",
+                "周报"
+            ]
+        },
+        {
             "id": "/2022/12/18/weak-50-report",
             "content_html": "<p>大概是2022年第50周周报喵。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-核心库\">📦 核心库<a class=\"hash-link\" href=\"#-核心库\" title=\"Direct link to heading\">​</a></h2><p>核心库本周没什么更新，因为它目前来说好像也没有什么可更新的，岁月静好。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-常见问题\">💡 常见问题<a class=\"hash-link\" href=\"#-常见问题\" title=\"Direct link to heading\">​</a></h2><p>文档增加了一个新的 <a href=\"/faq\">常见问题</a> 板块，后续可能会从此注记录一些常见问题以供查阅。</p>",
             "url": "https://simbot.forte.love/blog/2022/12/18/weak-50-report",

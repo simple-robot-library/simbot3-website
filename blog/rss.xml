@@ -4,11 +4,22 @@
         <title>Simple Robot Blog</title>
         <link>https://simbot.forte.love/blog</link>
         <description>Simple Robot官方博客喵</description>
-        <lastBuildDate>Sun, 18 Dec 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 25 Dec 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
         <copyright>Copyright © 2022 Forte Scarlet.</copyright>
+        <item>
+            <title><![CDATA[2022年第51周周报]]></title>
+            <link>https://simbot.forte.love/blog/2022/12/25/weak-51-report</link>
+            <guid>/2022/12/25/weak-51-report</guid>
+            <pubDate>Sun, 25 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[大概是2022年第51周周报喵。]]></description>
+            <content:encoded><![CDATA[<p>大概是2022年第51周周报喵。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-圣诞节">🎄 圣诞节<a class="hash-link" href="#-圣诞节" title="Direct link to heading">​</a></h2><p>将袜子放在床头，将心愿藏于其中 ———— 「愿 世界和平」。</p>]]></content:encoded>
+            <author>ForliyScarlet@163.com (Scarlet Forliy)</author>
+            <category>2022周报</category>
+            <category>周报</category>
+        </item>
         <item>
             <title><![CDATA[2022年第50周周报]]></title>
             <link>https://simbot.forte.love/blog/2022/12/18/weak-50-report</link>
