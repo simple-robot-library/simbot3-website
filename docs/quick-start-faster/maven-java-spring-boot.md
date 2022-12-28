@@ -1,9 +1,9 @@
 ---
-title: Maven & Java
-sidebar_position: 1
+title: Maven & SpringBoot
+sidebar_position: 2
 ---
 
-本章节介绍通过 [simple-robot/simbot-archetypes](https://github.com/simple-robot/simbot-archetypes) 快速搭建基于Maven的Java样板项目。
+本章节介绍通过 [simple-robot/simbot-archetypes](https://github.com/simple-robot/simbot-archetypes) 快速搭建基于Maven的Java SpringBoot样板项目。
 
 :::caution 注意
 
@@ -24,7 +24,7 @@ sidebar_position: 1
 ```shell
 mvn archetype:generate \
   -DarchetypeGroupId="love.forte.simbot.archetypes" \
-  -DarchetypeArtifactId="simbot-maven-java-archetype" \
+  -DarchetypeArtifactId="simbot-maven-java-spring-boot-archetype" \
   -DarchetypeVersion="<version>" \
   -DgroupId=<my.groupid> \
   -DartifactId=<my-artifactId>
@@ -35,6 +35,12 @@ mvn archetype:generate \
 :::tip 版本?
 
 `version` 信息可前往[**原仓库**](https://github.com/simple-robot/simbot-archetypes)查看。
+
+:::
+
+:::tip 不能省略...
+
+当使用SpringBoot样板的时候，`groupId` 不能省略为空。
 
 :::
 

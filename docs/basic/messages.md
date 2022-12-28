@@ -15,9 +15,9 @@ import CodeBlock from '@theme/CodeBlock';
 
 :::
 
-:::info
+:::info 定义为先
 
-在阅读本章节之前，你应当已经了解过了 [**消息的定义**](../definition/message-overview)。
+在阅读本章节之前，你应当已经了解过了 [**消息的定义**](../definition/message-overview) 的相关内容。
 
 :::
 
@@ -284,8 +284,6 @@ TODO
 
 TODO
 
-## 序列化
 
-TODO
 
 

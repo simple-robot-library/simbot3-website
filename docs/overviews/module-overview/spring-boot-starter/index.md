@@ -11,11 +11,6 @@ simbot3对 `Spring Boot`, 或者说对 `Spring Framework` 有最低要求，否�
 详细内容请参考：
 
 
-import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
-
-<DocCardList items={useCurrentSidebarCategory().items.filter(it => it.docId == 'module-overview/spring-boot-starter/version-requirements')} />
- 
 
 
 

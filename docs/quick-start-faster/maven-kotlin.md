@@ -1,9 +1,9 @@
 ---
-title: Maven & Java
-sidebar_position: 1
+title: Maven & Kotlin
+sidebar_position: 3
 ---
 
-本章节介绍通过 [simple-robot/simbot-archetypes](https://github.com/simple-robot/simbot-archetypes) 快速搭建基于Maven的Java样板项目。
+本章节介绍通过 [simple-robot/simbot-archetypes](https://github.com/simple-robot/simbot-archetypes) 快速搭建基于Maven的Kotlin样板项目。
 
 :::caution 注意
 
@@ -24,7 +24,7 @@ sidebar_position: 1
 ```shell
 mvn archetype:generate \
   -DarchetypeGroupId="love.forte.simbot.archetypes" \
-  -DarchetypeArtifactId="simbot-maven-java-archetype" \
+  -DarchetypeArtifactId="simbot-maven-kotlin-archetype" \
   -DarchetypeVersion="<version>" \
   -DgroupId=<my.groupid> \
   -DartifactId=<my-artifactId>
