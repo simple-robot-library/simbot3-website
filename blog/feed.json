@@ -5,6 +5,22 @@
     "description": "Simple Robot官方博客喵",
     "items": [
         {
+            "id": "/2022/12/31/weak-52-report",
+            "content_html": "<p>2022年第52周周报, 元旦快乐。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-元旦\">🎉 元旦<a class=\"hash-link\" href=\"#-元旦\" title=\"Direct link to heading\">​</a></h2><p>不算十分太平的一年，尾声也如期而至；面对未知的前路，仍需砥砺前行。</p><p>也算是难得一次的本命年，还希望一切都好。</p><p><strong>总而言之，元旦快乐🎉</strong></p><p><img loading=\"lazy\" alt=\"元旦快乐\" src=\"/assets/images/happy-3b828b5882cf8bfb058d0779e5d5062b.png\" width=\"577\" height=\"350\" class=\"img_ev3q\"></p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-周报\">📚 周报？<a class=\"hash-link\" href=\"#-周报\" title=\"Direct link to heading\">​</a></h2><p>现在的simbot3（v3.0.0）已经进入了收尾阶段，也可以说暂时没有什么可更新的东西了，因此持续了将近一年的周报也显得有些密集了。\n在新的一年，在2023年，将不会再继续更新周报，而可能会转而尝试发布周期较长的<strong>月报</strong>。毕竟，每周那么空荡荡的周报，也没什么实际价值，不是吗？</p>",
+            "url": "https://simbot.forte.love/blog/2022/12/31/weak-52-report",
+            "title": "2022年第52周周报",
+            "summary": "2022年第52周周报, 元旦快乐。",
+            "date_modified": "2022-12-31T00:00:00.000Z",
+            "author": {
+                "name": "Scarlet Forte",
+                "url": "https://github.com/ForteScarlet"
+            },
+            "tags": [
+                "2022周报",
+                "周报"
+            ]
+        },
+        {
             "id": "/2022/12/25/weak-51-report",
             "content_html": "<p>大概是2022年第51周周报喵。</p><h2 class=\"anchor anchorWithHideOnScrollNavbar_WYt5\" id=\"-圣诞节\">🎄 圣诞节<a class=\"hash-link\" href=\"#-圣诞节\" title=\"Direct link to heading\">​</a></h2><p>将袜子放在床头，将心愿藏于其中 ———— 「愿 世界和平」。</p>",
             "url": "https://simbot.forte.love/blog/2022/12/25/weak-51-report",

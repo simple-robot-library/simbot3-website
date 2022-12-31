@@ -2,12 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://simbot.forte.love/blog</id>
     <title>Simple Robot Blog</title>
-    <updated>2022-12-25T00:00:00.000Z</updated>
+    <updated>2022-12-31T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://simbot.forte.love/blog"/>
     <subtitle>Simple Robot官方博客喵</subtitle>
     <icon>https://simbot.forte.love/img/favicon.png</icon>
     <rights>Copyright © 2022 Forte Scarlet.</rights>
+    <entry>
+        <title type="html"><![CDATA[2022年第52周周报]]></title>
+        <id>/2022/12/31/weak-52-report</id>
+        <link href="https://simbot.forte.love/blog/2022/12/31/weak-52-report"/>
+        <updated>2022-12-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[2022年第52周周报, 元旦快乐。]]></summary>
+        <content type="html"><![CDATA[<p>2022年第52周周报, 元旦快乐。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-元旦">🎉 元旦<a class="hash-link" href="#-元旦" title="Direct link to heading">​</a></h2><p>不算十分太平的一年，尾声也如期而至；面对未知的前路，仍需砥砺前行。</p><p>也算是难得一次的本命年，还希望一切都好。</p><p><strong>总而言之，元旦快乐🎉</strong></p><p><img loading="lazy" alt="元旦快乐" src="/assets/images/happy-3b828b5882cf8bfb058d0779e5d5062b.png" width="577" height="350" class="img_ev3q"></p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-周报">📚 周报？<a class="hash-link" href="#-周报" title="Direct link to heading">​</a></h2><p>现在的simbot3（v3.0.0）已经进入了收尾阶段，也可以说暂时没有什么可更新的东西了，因此持续了将近一年的周报也显得有些密集了。
+在新的一年，在2023年，将不会再继续更新周报，而可能会转而尝试发布周期较长的<strong>月报</strong>。毕竟，每周那么空荡荡的周报，也没什么实际价值，不是吗？</p>]]></content>
+        <author>
+            <name>Scarlet Forte</name>
+            <email>ForteScarlet@163.com</email>
+            <uri>https://github.com/ForteScarlet</uri>
+        </author>
+        <category label="2022周报" term="2022周报"/>
+        <category label="周报" term="周报"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2022年第51周周报]]></title>
         <id>/2022/12/25/weak-51-report</id>
