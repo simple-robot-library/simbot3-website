@@ -188,14 +188,8 @@ final Messages messages = messagesBuilder
 
 ### 遍历消息链
 
-消息链 `Messages` 实现了 `List` 接口，因此你可以将其视为一个普通的**不可变**列表使用。
+消息链 `Messages` 实现了 `View` 接口，你可以将其视为一个近似于**不可变**列表使用。
 
-:::caution 更高的...
-
-`Messages` 未来有可能会通过实现一个**类似于** `List` 的不可变视图类型来代替 `List` 的实现，因此尽可能避免直接将 `Messages` 作为 `List` 使用。
-尽量仅且少量地使用 `get(int)` 、`iterator()` 等基础API，避免未来可能出现的不兼容维护问题。
-
-:::
 
 <Tabs groupId="code">
 <TabItem value="Kotlin" label="Kotlin" default>
@@ -253,15 +247,6 @@ val newMessages: Messages = messages + AtAll
 </TabItem>
 <TabItem value="Java" label="Java">
 
-:::caution 真的不可变
-
-在 Java 中你需要格外注意，虽然消息链实现了 `List` 接口，但是它本质上是不可变的，
-因此使用任何修改API（例如 `add`、`remove` 等）都会引发异常。
-
-这也是为什么上文我们提到会考虑改变实现的类型，就是为了降低误引发此问题的可能。
-
-:::
-
 ```java
 final Messages messages = Messages.messages();
 
@@ -278,12 +263,178 @@ final Messages newMessages = messages.plus(AtAll.INSTANCE);
 
 大部分消息的发送能力由 [SendSupport](../definition/ability-support#sendsupport) 或 [ReplySupport](../definition/ability-support#replysupport) 提供。
 
-TODO
+### SendSupport
+
+`SendSupport` 是接口类型，其代表为一个“可以发送消息的目标”，由 `ChatRoom` (聊天室) 和 `Contact` (联系人) 默认实现。`ChatRoom` 是 `Group`、`Guild`、`Channel` 的父类型，而 `Contact` 则为 `Friend`、`Member` 的父类。
+简单来讲，基本上常见的可联系对象都是实现了 `SendSupport` 的。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin" label="Kotlin" default>
+
+```kotlin
+val messages: Messages = ...
+val group: Group = ...
+
+val receipt = group.send(messages)
+```
+
+
+</TabItem>
+<TabItem value="Java" label="Java">
+
+```java
+final Messages messages = ...;
+final Group group = ...;
+
+final MessageReceipt receipt = group.sendBlocking(messages);
+// 或者
+final CompletableFuture<? extends MessageReceipt> future = group.sendAsync(messages);
+```
+
+</TabItem>
+</Tabs>
+
+### ReplySupport
+
+`ReplySupport` 是接口类型，其代表为一个“可以回复消息的目标”，由 `MessageEvent` 默认实现。与 `SendSupport` 不同，`ReplySupport` 的默认实现是**消息事件**类型。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin" label="Kotlin" default>
+
+```kotlin
+val messages: Messages = ...
+val event: MessageEvent = ...
+
+val receipt = event.reply(messages)
+```
+
+
+</TabItem>
+<TabItem value="Java" label="Java">
+
+```java
+final Messages messages = ...;
+final MessageEvent event = ...;
+
+final MessageReceipt receipt = event.replyBlocking(messages);
+// 或者
+final CompletableFuture<? extends MessageReceipt> future = event.replyAsync(messages);
+
+```
+
+</TabItem>
+</Tabs>
+
+<hr />
+
+_"发送消息"_ 和 _"回复消息"_ 的功能行为类似，但又不太一样。比如在mirai组件中，使用 `reply` 会尝试默认携带一个"引用回复"对象。
+在实际开发中，根据你的实际需求和具体语义来选择一个合适的消息发送方式吧。
 
 ## 消息回执
 
-TODO
+当通过 `SenSupport.send` 或 `ReplySupport.reply` 发送消息后，会得到一个 `MessageReceipt` 类型的返回值，这就是 **"消息回执"**。
+
+消息回执通常情况下来用于得知消息发送的情况、它们的标识，和进行删除（撤回）操作。
+不过对于不同组件中的实现来讲，也许它们还会提供更多的特殊能力。
+
+### DeleteSupport
+
+`MessageReceipt` 实现接口 `DeleteSupport`，代表其是可以被 _"删除"_ 的。通常情况下，这种删除即代表了常说的**消息撤回**。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin" label="Kotlin" default>
+
+```kotlin
+val messages: Messages = ...
+val event: MessageEvent = ...
+
+val receipt = event.reply(messages)
+receipt.delete()
+```
+
+
+</TabItem>
+<TabItem value="Java" label="Java">
+
+```java
+final Messages messages = ...;
+final MessageEvent event = ...;
+
+final MessageReceipt receipt = event.replyBlocking(messages);
+receipt.deleteBlocking();
+
+// 或者
+final CompletableFuture<? extends MessageReceipt> future = event.replyAsync(messages);
+future.thenCompose(DeleteSupport::deleteAsync);
+```
+
+</TabItem>
+</Tabs>
+
+### 独立与聚合
+
+在不同的组件中，消息发送的具体逻辑可能并不相同。发送的 `Messages` 可能会根据组件的不同而被**拆分**为多条实际消息发送（例如 Kook 组件中发送一个既有图片又有文字的消息）。 
+但是一次发送只会得到一个 `MessageReceipt` ，那么应该如何判断此回执中实际的数量呢？
+
+`MessageReceipt` 提供了两个标准子类型：`SingleMessageReceipt` 和 `AggregatedMessageReceipt`。
+
+#### SingleMessageReceipt
+
+如同字面意思，`SingleMessageReceipt` 代表为**一个或零个**实际消息发送后的回执。
+`SingleMessageReceipt` 额外提供了一个属性 `id`，其代表这个具体消息发送后的回执标识。
 
 
 
+#### AggregatedMessageReceipt
 
+`AggregatedMessageReceipt` 意为**聚合回执**，代表为**多个**实际消息发送后的回执。
+首先来简单看一下 `AggregatedMessageReceipt` 的简化版定义：
+
+```kotlin
+
+/**
+ * 聚合消息回执，代表多个 [SingleMessageReceipt] 的聚合体。
+ *
+ * @see StandardMessageReceipt
+ * @see SingleMessageReceipt
+ * @see aggregation
+ */
+public abstract class AggregatedMessageReceipt : StandardMessageReceipt(), Iterable<SingleMessageReceipt> {
+    
+    /**
+     * 聚合消息中的 [isSuccess] 代表是否存在**任意**回执的 [MessageReceipt.isSuccess] 为 `true`。
+     */
+    abstract override val isSuccess: Boolean
+    
+    /**
+     * 当前聚合消息中包含的所有 [MessageReceipt] 的数量。
+     */
+    public abstract val size: Int
+    
+    /**
+     * 根据索引值获取到指定位置的 [SingleMessageReceipt]。
+     */
+    public abstract operator fun get(index: Int): SingleMessageReceipt
+    
+    /**
+     * 删除其所代表的所有消息回执。
+     */
+    override suspend fun delete(): Boolean
+    
+    /**
+     * 删除其所代表的所有消息回执。
+     */
+    public suspend fun deleteAll(): Int
+}
+```
+
+可以看出，`AggregatedMessageReceipt` 实现了 `Iterable<SingleMessageReceipt>`，说明 `AggregatedMessageReceipt` 实际上就是多个 `SingleMessageReceipt` 的聚合体。
+它提供了一些额外的元素获取API（`get`）和集合属性（`size`），并同样实现 `delete`。
+
+此处的 `delete` 便代表**删除所有**，它会依次遍历内部的所有独立回执，并尝试删除它。
+
+:::info 可能的中断
+
+需要注意的时，如果在删除所有的过程中发生了异常，则可能会导致这个删除所有过程执行的**不完整**。如果想要避免这种情况，则需要自行通过循环来精准控制。
+
+:::
