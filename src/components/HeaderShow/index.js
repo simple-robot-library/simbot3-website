@@ -19,9 +19,9 @@ export default function HeaderShow({}) {
             </small>
             <br/>
             <span>
-<a href="https://github.com/simple-robot/simpler-robot" target="_blank">github</a>
+<a href="https://github.com/simple-robot/simpler-robot" target="_blank">GitHub</a>
 </span> &nbsp; | &nbsp; <span>
-<a href="https://gitee.com/ForteScarlet/simpler-robot" target="_blank">gitee</a>
+<a href="https://gitee.com/simple-robot/simpler-robot" target="_blank">Gitee</a>
 </span> <br/>
             <small> &gt; 感谢 <a href="https://github.com/ForteScarlet/CatCode"
                                target="_blank">CatCode</a> 开发团队成员制作的simbot logo &lt; </small>
@@ -30,23 +30,23 @@ export default function HeaderShow({}) {
                 <br/>
                 <br/>
                 <a href="https://github.com/simple-robot/simpler-robot/releases/latest"><PaddingImg alt="release"
-                                                                                             src="https://img.shields.io/github/v/release/ForteScarlet/simpler-robot"/></a>
+                                                                                             src="https://img.shields.io/github/v/release/simple-robot/simpler-robot"/></a>
                 <a href="https://repo1.maven.org/maven2/love/forte/simbot/simbot-api/" target="_blank">
                     <PaddingImg alt="release"
                          src="https://img.shields.io/maven-central/v/love.forte.simbot/simbot-api"/></a>
-                <PaddingImg alt="stars" src="https://img.shields.io/github/stars/ForteScarlet/simpler-robot"/>
-                <PaddingImg alt="forks" src="https://img.shields.io/github/forks/ForteScarlet/simpler-robot"/>
-                <PaddingImg alt="watchers" src="https://img.shields.io/github/watchers/ForteScarlet/simpler-robot"/>
-                <PaddingImg alt="repo-size" src="https://img.shields.io/github/repo-size/ForteScarlet/simpler-robot"/>
+                <PaddingImg alt="stars" src="https://img.shields.io/github/stars/simple-robot/simpler-robot"/>
+                <PaddingImg alt="forks" src="https://img.shields.io/github/forks/simple-robot/simpler-robot"/>
+                <PaddingImg alt="watchers" src="https://img.shields.io/github/watchers/simple-robot/simpler-robot"/>
+                <PaddingImg alt="repo-size" src="https://img.shields.io/github/repo-size/simple-robot/simpler-robot"/>
                 <PaddingImg alt="issues"
-                     src="https://img.shields.io/github/issues-closed/ForteScarlet/simpler-robot?color=green"/>
-                <PaddingImg alt="last-commit" src="https://img.shields.io/github/last-commit/ForteScarlet/simpler-robot"/>
-                <PaddingImg alt="search-hit" src="https://img.shields.io/github/search/ForteScarlet/simpler-robot/simbot"/>
+                     src="https://img.shields.io/github/issues-closed/simple-robot/simpler-robot?color=green"/>
+                <PaddingImg alt="last-commit" src="https://img.shields.io/github/last-commit/simple-robot/simpler-robot"/>
+                <PaddingImg alt="search-hit" src="https://img.shields.io/github/search/simple-robot/simpler-robot/simbot"/>
                 <PaddingImg alt="top-language"
-                     src="https://img.shields.io/github/languages/top/ForteScarlet/simpler-robot"/>
+                     src="https://img.shields.io/github/languages/top/simple-robot/simpler-robot"/>
                 <a href="https://github.com/simple-robot/simpler-robot">
                     <PaddingImg alt="copying"
-                         src="https://img.shields.io/github/license/ForteScarlet/simpler-robot"/></a>
+                         src="https://img.shields.io/github/license/simple-robot/simpler-robot"/></a>
                 <br/>
             <hr />
         </div>
