@@ -485,12 +485,14 @@ class MyListenerContainer {
 }
 ```
 
-不过需要注意，在 Spring Boot 环境下，最好使用 `@Component` 或其他相关注解来代替 `@Beans`。
+**需要注意，在 Spring Boot 环境下，最好使用 `@Component` 或其他相关注解来代替 `@Beans`。**
 
 </TabItem>
 </Tabs>
 
-我们不会在本章节讨论 `Spring Boot` 环境下的应用。这会在 [**单独的章节**](spring-boot) 中讨论。
+我们不会在本章节讨论 `Spring Boot` 环境下的应用。
+
+[//]: # (这会在 [**单独的章节**]&#40;spring-boot&#41; 中讨论。)
 
 :::
 

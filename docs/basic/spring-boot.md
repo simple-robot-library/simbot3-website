@@ -1,6 +1,7 @@
 ---
 sidebar_position: 50
 title: Spring Boot
+draft: true
 ---
 
 import Tabs from '@theme/Tabs';

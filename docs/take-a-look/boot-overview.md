@@ -17,8 +17,8 @@ import TabItem from '@theme/TabItem';
 ```kotlin title="ExampleListener.kt"
 // 监听函数
 @Listener
-suspend fun ChannelMessageEvent.myListener1(): Unit {
-    replyIfSupport(AtAll + "Hello World".toText())
+suspend fun ChannelMessageEvent.myListener1() {
+    reply(AtAll + "Hello World".toText())
 
 }
 
@@ -27,17 +27,17 @@ suspend fun ChannelMessageEvent.myListener1(): Unit {
         matchType = MatchType.REGEX_CONTAINS, 
         conponent = "simbot.tencentguild")
 @Listener
-suspend fun GroupMessageEvent.myListener2(): Unit {
+suspend fun GroupMessageEvent.myListener2() {
     
-    group().send("I Love You.".toText() + At(author.id) )
+    group().send("I Love You.".toText() + At(author.id))
 
 }
 
 
 // 拦截器。此处为监听函数拦截器
 @Interceptor
-suspend fun myInterceptor() = listenerInterceptor("abc".ID) { context ->
-    println("Interceptor $context")
+suspend fun myInterceptor() = listenerInterceptor("abc") { context ->
+    logger.info("Interceptor {}", context)
     context.proceed() // pass
 }
 ```
@@ -52,15 +52,12 @@ public class ExampleListener {
     // 监听函数
     @Listener
     public void myListener1(ChannelMessageEvent event) {
-        // reply if support
-        if (event instanceof MessageReplySupport) {
-            final Messages messages = Messages.getMessages(
+        // reply
+        final Messages messages = Messages.toMessages(
                     AtAll.INSTANCE,
-                    Text.getText("Hello World")
+                    Text.of("Hello World")
             );
-
-            ((MessageReplySupport) event).replyBlocking(messages);
-        }
+        event.replyBlocking(messages);
     }
     
    
@@ -75,7 +72,7 @@ public class ExampleListener {
     @Listener 
     @Filter(value = ".*Hi", matchType = MatchType.REGEX_MATCHES, conponent = "simbot.tencentguild")
     public void myListener3(GroupMessageEvent event) {
-        final Messages messages = Messages.getMessages(
+        final Messages messages = Messages.toMessages(
                 Text.of("I Love You."),
                 new At(event.getAuthor().getId())
         );

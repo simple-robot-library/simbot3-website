@@ -123,6 +123,7 @@ String avatar = friend.getAvatar();
 @Listener
 suspend fun FriendMessageEvent.listen(@FilterValue("name") name: String) {
     val friend = friend()
+    // 当然，不异步也行
     bot.launch {
         delay(3000)
         friend.send("Hello, $name")
@@ -145,14 +146,14 @@ java中不建议使用 `Thread.sleep(...)` 来达成延迟效果。
 public void listen(FriendMessageEvent event, @FilterValue("name") String name) throws Exception {
     Friend friend = event.getFriend();
     // 部分类型(比如「Bot」)提供了面向Java用户使用的非阻塞延迟api, 并返回得到 DelayableCompletableFuture 对象.
-    // 对于 DelayableCompletableFuture 类型，你可以将它视为一个拥有 `delay` api的 CompletableFuture.
+    // 对于 DelayableCompletableFuture 类型，你可以将它视为一个拥有 `delay` api的CompletableFuture.
     event.getBot()
             .delay(Duration.ofSeconds(3), () -> {
                 // 延迟 「3s」, 然后发送消息.
                 friend.sendBlocking("Hello, " + name);
             }).delay(3000, () -> {
-                // 再延迟「3000ms」, 控制台输出信息
-                System.out.println("发送消息3秒后");
+                // 再延迟「3000ms」, 输出日志
+                logger.info("发送消息3秒后");
             });
 }
 ```
@@ -171,13 +172,12 @@ public void listen(FriendMessageEvent event, @FilterValue("name") String name) t
 ```kotlin
 @Listener
 suspend fun FriendMessageEvent.listen() {
-    val img = Path("img/example.png")
-    val imgResource = Resource.of(img)
-
-    val imgForSend = bot.uploadImage(imgResource)
+    val imgPath = Path("img/example.png")
+    val imgResource = Resource.of(imgPath)
+    val img = imgResource.toImage()
 
     // send img to friend
-    friend().send(imgForSend)
+    friend().send(img)
 }
 ```
 
@@ -187,12 +187,9 @@ suspend fun FriendMessageEvent.listen() {
 ```java
 @Listener
 public void listen(FriendMessageEvent event) {
-    Path img = Paths.get("img/example.png");
-    Resource imgResource = Resource.of(img);
-    
-    Image<?> imgForSend = bot.uploadImageBlocking(imgResource);
-    
-    event.getFriend().sendBlocking(imgForSend);
+    PathResource resource = Resource.of(Paths.get("image.png"));
+    ResourceImage resourceImage = Image.of(resource);
+    event.getFriend().sendBlocking(resourceImage);
 }
 ```
 
@@ -224,7 +221,7 @@ public void listen(GroupMessageEvent event) {
     ID authorId = event.getAuthor().getId();
     At at = new At(authorId);
     
-    Messages messages = Messages.getMessages(at, Text.of(" 你好?"))
+    Messages messages = Messages.toMessages(at, Text.of(" 你好?"));
     
     event.getGroup().sendBlocking(messages);
 }

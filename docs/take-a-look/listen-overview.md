@@ -25,7 +25,7 @@ suspend fun GroupMessageEvent.listener() {
 ```java title="ExampleListener.java"
 @Listener // if use simboot
 public void listener(GroupMessageEvent event) {
- 	   event.getGroup().sendBlocking("Hello Simbot")
+ 	  event.getGroup().sendBlocking("Hello Simbot")
 }
 ```
 
@@ -39,7 +39,7 @@ public void listener(GroupMessageEvent event) {
 ```kotlin title="ExampleListener.kt"
 @Listener
 suspend fun FriendMessageEvent.listener() {
-    replyIfSupport("Hello Simbot")
+    reply("Hello Simbot")
 }
 ```
 
@@ -49,9 +49,7 @@ suspend fun FriendMessageEvent.listener() {
 ```java title="ExampleListener.java"
 @Listener
 public void listener(FriendMessageEvent event) {
-    if (event instanceof ReplySupport) {
-        ((ReplySupport) event).replyBlocking("Hello Simbot");
-    }
+    event.replyBlocking("Hello Simbot");
 }
 ```
 
@@ -67,7 +65,7 @@ public void listener(FriendMessageEvent event) {
 @Listener
 suspend fun GroupMessageEvent.listener() {
     group().members().collect {
-        println("Member: $it")
+        logger.info("Member: {}", it)
     }
 }
 ```
@@ -78,7 +76,7 @@ suspend fun GroupMessageEvent.listener() {
 ```java title="ExampleListener.java"
 @Listener
 public void listener(GroupMessageEvent event) {
-    event.getGroup().getMembers().forEach(member -> System.out.println("Member: " + member));
+    event.getGroup().getMembers().forEach(member -> logger.info("Member: {}", member));
 }
 ```
 

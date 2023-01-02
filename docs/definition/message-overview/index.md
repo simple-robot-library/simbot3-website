@@ -97,8 +97,8 @@ final Messages messagesOfList = Messages.listToMessages(messageList);
 // 需要通过 plus 得到新的消息链
 final Messages newMessagesOfList = messagesOfList.plus(AtAll.INSTANCE);
 
-// 通过 Messages.getMessages 得到消息链
-final Messages messages = Messages.getMessages(
+// 通过 Messages.toMessages 得到消息链
+final Messages messages = Messages.toMessages(
                             Text.of("forte"),
                             new At(Identifies.ID(114514)),
                             AtAll.INSTANCE
@@ -114,7 +114,7 @@ Messages built = builder.build();
 </Tabs>
 
 
-在 `Java` 中，用来构建一条消息链的主要方式为 `Messages.listToMessages` 和 `Messages.getMessages` 以及 `Messages.plus`。
+在 `Java` 中，用来构建一条消息链的主要方式为 `Messages.listToMessages` 和 `Messages.toMessages` 以及 `Messages.plus`。
 
 
 
