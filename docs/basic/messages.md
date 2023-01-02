@@ -9,12 +9,6 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 
-:::danger TODO
-
-施工中
-
-:::
-
 :::info 定义为先
 
 在阅读本章节之前，你应当已经了解过了 [**消息的定义**](../definition/message-overview) 的相关内容。

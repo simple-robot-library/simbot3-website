@@ -8,7 +8,11 @@ title: 组件概览
 你可以在 GitHub 的 [Simple Robot 附属库](http://github.com/simple-robot) 组织首页找到与Simple Robot相关的各**附属**的代码仓库。
 这其中便包括下述的各组件的仓库。
 
+:::caution 独立...
 
+有关于组件的文档，未来可能会各自独立为单独的网站。
+
+:::
 
 ## 章节列表
 
