@@ -6,7 +6,9 @@ title: Kook组件
 
 import Label from '@site/src/components/Label'
 
-> 组件ID: <Label>simbot.kook</Label>
+> **组件ID**：<Label>simbot.kook</Label>
+> 
+> **当前状态**：<Label title='无法保证可用性、未来可能会频发发生破坏性改动'>alpha</Label>
 
 :::info 链接引导
 

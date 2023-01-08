@@ -6,7 +6,10 @@ Mirai组件是 simbot3 下使用simbot标准针对 [Mirai](https://github.com/ma
 
 import Label from '@site/src/components/Label'
 
-> 组件ID: <Label>simbot.mirai</Label>
+> **组件ID**：<Label>simbot.mirai</Label>
+> 
+> **当前状态**：<Label title='可用性较高，但是仍可能存在较多问题或在未来发生的改动'>beta</Label>
+
 
 :::info 链接引导
 
