@@ -77,6 +77,43 @@ MessageReceipt receipt = event.replyBlocking(message);
 </TabItem>
 </Tabs>
 
+
+### DeleteSupport
+
+`MessageEvent` 中的 `MessageContent` 实现 `DeleteSupport`。在预期内且权限允许的情况下，代表其能够对此消息进行 **删除** 。
+通常这种行为可以理解为 **撤回**。
+
+:::info 并非其本身
+
+事件类型**本身**并不实现 `DeleteSupport`。
+
+:::
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+<Tabs groupId="code">
+<TabItem value="Kotlin">
+
+```kotlin
+val messageContent: MessageContent = event.messageContent
+
+val isDeleted: Boolean = messageContent.delete()
+```
+
+</TabItem>
+<TabItem value="Java">
+
+```java
+MessageContent messageContent = event.getMessageContent();
+messageContent.deleteBlocking();
+// or messageContent.deleteAsync();
+```
+
+</TabItem>
+</Tabs>
+
+
 ## ContactMessageEvent
 > <Label>api.contact_message</Label>
 > <a href='#messageevent'><Label type='success'>MessageEvent</Label></a>
@@ -139,11 +176,11 @@ Friend source = event.getSource();
 </Tabs>
 
 ## ChatRoomMessageEvent
+
 > <Label>api.chat_room_message</Label>
 > <a href='#messageevent'><Label type='success'>MessageEvent</Label></a>
 > <a href='#organizationevent'><Label type='success'>OrganizationEvent</Label></a>
-> <Label type='success'>DeleteSupport</Label>
-> <Label type='success'>RemoteMessageContainer</Label>
+> <Label type='success'>MessageContainer</Label>
 
 在 `ChatRoomMessageEvent` 中，属性 `source` 为 `ChatRoom` 类型。
 
@@ -154,21 +191,6 @@ Friend source = event.getSource();
 | `organization`   | 同上                       | 同上               |
 
 
-### DeleteSupport
-
-`ChatRoomMessageEvent` 继承 `DeleteSupport`，因此在预期内，在权限允许的情况下能够对本次事件的消息进行 **删除** 。
-通常这种行为可以理解为 **撤回**。
-
-<Tabs groupId="code">
-<TabItem value="Kotlin">
-
-```kotlin
-val author: Member = event.author()
-val source: ChatRoom = event.source()
-val messageContent: RemoteMessageContent = event.messageContent
-
-val isDeleted: Boolean = event.delete()
-```
 
 在 Kotlin 中，`ChatRoomMessageEvent` 为属性 `author` 提供了 `in/use` 扩展函数：
 
@@ -256,6 +278,7 @@ Channel channel = event.getChannel();
 </TabItem>
 </Tabs>
 
-### MessageReactedEvent
-> <Label>尚未投入使用</Label>
 
+## _MessageReactedEvent_
+
+> 尚未投入使用
