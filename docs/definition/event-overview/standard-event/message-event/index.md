@@ -13,6 +13,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 ## MessageEvent
+
 > <Label>api.message</Label>
 > <Label type='success'>RemoteMessageContainer</Label>
 > <Label type='success'>ReplySupport</Label>
@@ -77,7 +78,6 @@ MessageReceipt receipt = event.replyBlocking(message);
 </TabItem>
 </Tabs>
 
-
 ### DeleteSupport
 
 `MessageEvent` 中的 `MessageContent` 实现 `DeleteSupport`。在预期内且权限允许的情况下，代表其能够对此消息进行 **删除** 。
@@ -88,9 +88,6 @@ MessageReceipt receipt = event.replyBlocking(message);
 事件类型**本身**并不实现 `DeleteSupport`。
 
 :::
-
-<Tabs groupId="code">
-<TabItem value="Kotlin">
 
 <Tabs groupId="code">
 <TabItem value="Kotlin">
@@ -113,8 +110,8 @@ messageContent.deleteBlocking();
 </TabItem>
 </Tabs>
 
-
 ## ContactMessageEvent
+
 > <Label>api.contact_message</Label>
 > <a href='#messageevent'><Label type='success'>MessageEvent</Label></a>
 > <a href='../objective-event/#userevent'><Label type='success'>UserEvent</Label></a>
@@ -142,7 +139,9 @@ User source = event.getSource();
 </TabItem>
 </Tabs>
 
+
 ## FriendMessageEvent
+
 > <Label>api.friend_message</Label>
 > <a href='#contactmessageevent'><Label type='success'>ContactMessageEvent</Label></a>
 > <a href='../objective-event/#friendevent'><Label type='success'>FriendEvent</Label></a>
@@ -175,6 +174,7 @@ Friend source = event.getSource();
 </TabItem>
 </Tabs>
 
+
 ## ChatRoomMessageEvent
 
 > <Label>api.chat_room_message</Label>
@@ -202,20 +202,6 @@ event.useAuthor { author: Author ->
    // ...
 }
 ```
-
-</TabItem>
-<TabItem value="Java">
-
-```java
-Member author = event.getAuthor();
-ChatRoom source = event.getSource();
-RemoteMessageContent messageContent = event.getMessageContent();
-
-boolean isDeleted = event.deleteBlocking();
-```
-
-</TabItem>
-</Tabs>
 
 ## GroupMessageEvent
 > <Label>api.group_message</Label>
