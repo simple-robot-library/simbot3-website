@@ -14,7 +14,7 @@ import Label from '@site/src/components/Label'
 
 组件仓库地址：<a href='https://github.com/simple-robot/simbot-component-tencent-guild'><b><span class='bi-github'></span> simple-robot/simbot-component-tencent-guild</b></a>
 
-在线Api Doc：**<https://simple-robot-library.github.io/simbot3-component-tencent-guild-apiDoc>**
+在线API Doc：**<https://docs.simbot.forte.love/components/tencent-guild>**
 
 :::
 

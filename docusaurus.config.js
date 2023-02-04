@@ -279,7 +279,7 @@ async function createConfig() {
                         {to: '/faq', label: '常见问题', position: 'left'},
                         {href: 'https://github.com/simple-robot-library', label: '图书馆', position: 'left'},
                         {href: 'https://github.com/orgs/simple-robot/discussions', label: '社区', position: 'left'},
-                        {href: 'https://simple-robot-library.github.io/simbot3-main-apiDoc', label: 'API文档', position: 'left'},
+                        {href: 'https://docs.simbot.forte.love', label: 'API文档', position: 'left'},
                         ////////
                         {
                             type: 'docsVersionDropdown',
@@ -308,7 +308,7 @@ async function createConfig() {
                                 },
                                 {
                                     label: 'API文档',
-                                    to: 'https://simple-robot-library.github.io/simbot3-main-apiDoc/',
+                                    to: 'https://docs.simbot.forte.love',
                                 },
                                 {
                                     label: '常见问题',
