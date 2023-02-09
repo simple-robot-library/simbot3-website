@@ -12,9 +12,9 @@ import Label from '@site/src/components/Label'
 
 :::danger
 
-mirai组件的独立文档网站已经发布，当前页面将**不再更新**并暂做保留，一段时间后将会移除。
+mirai组件的[**独立文档网站**](https://component-mirai.simbot.forte.love)已经发布，当前页面将**不再更新**并暂做保留，一段时间后将会移除。
 
-请前往mirai组件的 [**独立文档网站**](https://component-mirai.simbot.forte.love) 阅读。 
+请前往mirai组件的[新文档网站](https://component-mirai.simbot.forte.love/docs/bot-config)阅读。
 
 :::
 
