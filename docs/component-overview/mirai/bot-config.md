@@ -10,6 +10,14 @@ import Label from '@site/src/components/Label'
 
 有关bot的配置文件相关内容，请先阅读 [**BOT配置**](../../basic/bot-config) 。
 
+:::danger
+
+mirai组件的独立文档网站已经发布，当前页面将**不再更新**并暂做保留，一段时间后将会移除。
+
+请前往mirai组件的 [**独立文档网站**](https://component-mirai.simbot.forte.love) 阅读。 
+
+:::
+
 ## 架构
 
 mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-schema.org/) 。
