@@ -38,6 +38,15 @@ async function createConfig() {
         favicon: 'img/favicon.png',
         organizationName: 'Simple Robot', // Usually your GitHub org/username.
         projectName: 'simbot website', // Usually your repo name.
+
+        // Even if you don't use internalization, you can use this field to set useful
+        // metadata like html lang. For example, if your site is Chinese, you may want
+        // to replace "en" with "zh-Hans".
+        i18n: {
+            defaultLocale: 'zh-Hans',
+            locales: ['zh-Hans'],
+        },
+
         plugins: [
             // https://github.com/flexanalytics/plugin-image-zoom
             'plugin-image-zoom',
@@ -105,7 +114,7 @@ async function createConfig() {
                         // },
                     ],
                 }],
-            // '关于本站' 文档
+            // '常见问题' 文档
             [
                 'content-docs',
                 {
