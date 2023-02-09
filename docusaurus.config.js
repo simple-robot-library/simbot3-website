@@ -121,7 +121,7 @@ async function createConfig() {
                     id: 'faq',
                     path: 'faq',
                     routeBasePath: 'faq',
-                    sidebarPath: require.resolve('./sidebars-about.js'),
+                    sidebarPath: require.resolve('./sidebars-faq.js'),
                     breadcrumbs: true,
                     showLastUpdateAuthor: true,
                     showLastUpdateTime: true,
@@ -179,7 +179,7 @@ async function createConfig() {
                             title: 'Simple Robot Blog',
                             description: 'Simple Robot官方博客喵',
                             copyright: `Copyright © ${copyrightYear} Forte Scarlet.`,
-                            language: 'zh'
+                            language: 'zh-Hans'
                         }
                     },
 
@@ -209,7 +209,7 @@ async function createConfig() {
                 require.resolve("@easyops-cn/docusaurus-search-local"),
                 {
                     hashed: true,
-                    language: ['zh'],
+                    language: ['zh-Hans'],
                     explicitSearchResultPath: true
                 }
             ]
