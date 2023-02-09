@@ -179,7 +179,7 @@ async function createConfig() {
                             title: 'Simple Robot Blog',
                             description: 'Simple Robot官方博客喵',
                             copyright: `Copyright © ${copyrightYear} Forte Scarlet.`,
-                            language: 'zh-Hans'
+                            language: 'zh'
                         }
                     },
 
@@ -209,7 +209,7 @@ async function createConfig() {
                 require.resolve("@easyops-cn/docusaurus-search-local"),
                 {
                     hashed: true,
-                    language: ['zh-Hans'],
+                    language: ['zh'],
                     explicitSearchResultPath: true
                 }
             ]
@@ -288,7 +288,7 @@ async function createConfig() {
                         {to: '/faq', label: '常见问题', position: 'left'},
                         {href: 'https://github.com/simple-robot-library', label: '图书馆', position: 'left'},
                         {href: 'https://github.com/orgs/simple-robot/discussions', label: '社区', position: 'left'},
-                        {href: 'https://docs.simbot.forte.love', label: 'API文档', position: 'left'},
+                        {href: 'https://docs.simbot.forte.love', label: 'API文档站', position: 'left'},
                         ////////
                         {
                             type: 'docsVersionDropdown',
@@ -374,7 +374,7 @@ async function createConfig() {
                                 },
                                 {
                                     label: '交流社区',
-                                    href: 'https://github.com/simple-robot',
+                                    href: 'https://github.com/orgs/simple-robot/discussions',
                                 },
                             ],
                         },
