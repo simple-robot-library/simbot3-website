@@ -10,7 +10,7 @@ https://infima.dev/docs/components/badge
 <span class="badge badge--primary">Primary</span>
  */
 
-const currentVersion = '3.0.0-RC'
+const currentVersion = '3.0.0-RC.2'
 
 const firstYear = 2022
 const currentYear = new Date().getFullYear()
