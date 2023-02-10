@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 tags: [快速开始]
+draft: true
 ---
 
 此章节示例使用基础的 `Boot` 模块。有关相关模块的说明，可以参考 [Boot模块概述](../overviews/module-overview/boot)

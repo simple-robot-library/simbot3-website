@@ -13,18 +13,12 @@ function mavenCode(version) {
         <version>${version.simbot.version}</version>
     </dependency>
 
-    <!-- mirai组件 -->
-    <dependency>
-        <groupId>love.forte.simbot.component</groupId>
-        <artifactId>simbot-component-mirai-core</artifactId>
-        <version>${version.simbot.component.mirai}</version>
-    </dependency>
-    
-    <!-- 或许还需要其他依赖...? -->
+    <!-- 给其他组件留个盘子 -->
+    <!-- ... -->
 
 </dependencies>
 
-`
+`.trim()
 }
 
 function gradleKts(version) {
@@ -42,8 +36,9 @@ repositories {
 // simbot Boot
 implementation("love.forte.simbot.boot:simboot-core:${version.simbot.version}on")
 
-// mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}")`
+// 给其他组件留个盘子
+// ...
+`.trim()
 }
 
 function gradleGroovy(version) {
@@ -61,19 +56,15 @@ repositories {
 // simbot Boot
 implementation 'love.forte.simbot.boot:simboot-core:${version.simbot.version}'
 
-// mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}'`
+// 给其他组件留个盘子
+// ...
+`.trim()
 }
 
 export default function QuickStartBootCodes({version}) {
     return <Tabs groupId="use-dependency">
-        <TabItem value="Maven" label="Maven" default>
-            <CodeBlock language="xml">
-                { mavenCode(version) }
-            </CodeBlock>
-        </TabItem>
 
-        <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
+        <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL" default>
             <CodeBlock language="kotlin">
                 { gradleKts(version) }
             </CodeBlock>
@@ -82,6 +73,12 @@ export default function QuickStartBootCodes({version}) {
         <TabItem value="Gradle Groovy" label="Gradle Groovy">
             <CodeBlock language="groovy">
                 { gradleGroovy(version) }
+            </CodeBlock>
+        </TabItem>
+
+        <TabItem value="Maven" label="Maven">
+            <CodeBlock language="xml">
+                { mavenCode(version) }
             </CodeBlock>
         </TabItem>
     </Tabs>

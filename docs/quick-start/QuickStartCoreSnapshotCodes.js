@@ -22,20 +22,14 @@ function mavenCode(version) {
     <dependency>
         <groupId>love.forte.simbot</groupId>
         <artifactId>simbot-core</artifactId>
-        <version>${version.simbot.snapshotVersion}</version>
+        <version>${version.simbot.version}-SNAPSHOT</version>
     </dependency>
-    <!-- mirai组件 -->
-    <dependency>
-        <groupId>love.forte.simbot.component</groupId>
-        <artifactId>simbot-component-mirai-core</artifactId>
-        <version>${version.simbot.component.miraiSnap}</version>
-    </dependency>
-    
-    <!-- 或许还需要其他依赖...? -->
+    <!-- 给其他组件预留一个座位... -->
+    <!-- ... -->
 
 </dependencies>
 
-`
+`.trim()
 }
 
 function gradleKts(version) {
@@ -60,8 +54,9 @@ repositories {
 // simbot核心标准库
 implementation("love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}")
 
-// mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.miraiSnap}")`
+// 给其他组件预留一个座位...
+// ...
+`.trim()
 }
 
 function gradleGroovy(version) {
@@ -86,19 +81,14 @@ repositories {
 // simbot核心标准库
 implementation 'love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}'
 
-// mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.miraiSnap}'`
+// 给其他组件预留一个座位...
+// ...
+`.trim()
 }
 
 export default function QuickStartCoreSnapshotCodes({version}) {
     return <Tabs groupId="use-dependency">
-        <TabItem value="Maven" label="Maven" default>
-            <CodeBlock language="xml">
-                {mavenCode(version)}
-            </CodeBlock>
-        </TabItem>
-
-        <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
+        <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL" default>
             <CodeBlock language="kotlin">
                 {gradleKts(version)}
             </CodeBlock>
@@ -107,6 +97,12 @@ export default function QuickStartCoreSnapshotCodes({version}) {
         <TabItem value="Gradle Groovy" label="Gradle Groovy">
             <CodeBlock language="groovy">
                 {gradleGroovy(version)}
+            </CodeBlock>
+        </TabItem>
+
+        <TabItem value="Maven" label="Maven" >
+            <CodeBlock language="xml">
+                {mavenCode(version)}
             </CodeBlock>
         </TabItem>
     </Tabs>

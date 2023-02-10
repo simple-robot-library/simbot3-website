@@ -1,5 +1,6 @@
 ---
 title: 依赖注入
+draft: true
 ---
 
 simbot3 依旧保留的依赖注入的功能，但是相对于 simbot2 而言**有所简化**。

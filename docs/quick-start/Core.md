@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Core
+title: 使用核心库
 description: 使用核心库进行开发。
 tags: [快速开始]
 ---
@@ -10,25 +10,15 @@ tags: [快速开始]
 核心库是更贴近于原生使用习惯的库，能够让你可以更好地控制你所编写的一切。
 
 
-:::note 假设
+:::info 还差一点
 
-下述示例内容建立在你想要使用 [**mirai组件**](../component-overview/mirai) 的 **假设** 之上。
+simbot核心库本身没有任何平台功能。当你阅读完本章节后，你需要在核心库依赖之外添加一个你所需要的组件。
 
-:::
-
-:::tip 注解?
-
-如果你希望使用类似于simbot2中以注解作为主要开发风格的库，或者希望能拥有简单依赖注入功能和扫描功能的库以便于规模化开发的话，你可以参考 [**快速开始 - Boot**](Boot.md)。
+你可以前往[**《组件》**](../component-overview)章节了解各个由simbot团队提供的组件实现，
+比如对接QQ机器人的[**mirai组件**](../component-overview/mirai)。
 
 :::
 
-:::info Java?
-
-需要注意的是，Core模块不会 **过于关心** Java相关的兼容API。虽然这并不代表不兼容，但是总体使用体验可能会略逊一筹。
-
-如果你希望使用Java进行开发，那么可以直接去参考 [**Spring Boot Starter**](spring-boot-starter) 的快速启动 —— 这个是兼容Java的（毕竟是Spring Boot）。
-
-:::
 
 # 使用依赖
 
@@ -55,7 +45,6 @@ import TabItem from '@theme/TabItem';
 
 </details>
 
-# 开始
 ## 使用Application
 
 `Application` 是simbot应用程序的门户。在核心模块中提供了一个其工厂的最基础实现：`Simple`。
@@ -69,7 +58,7 @@ import love.forte.simbot.core.application.*
 
 suspend fun main() {
     val launcher: ApplicationLauncher<SimpleApplication> = simbotApplication(Simple) {
-        // ...
+        // build...
     }
     
     val application: SimpleApplication = launcher.launch()
@@ -88,7 +77,7 @@ import love.forte.simbot.core.application.*
 
 suspend fun main() {
     val application: SimpleApplication = createSimpleApplication {
-        // ...
+        // build...
     }
     application.join()
 }
@@ -108,16 +97,15 @@ public class SimpleApp {
         final ApplicationLauncher<SimpleApplication> launcher = Applications.simbotApplication(
                 Simple.INSTANCE,
                 c -> {
+                    // config...
                 },
                 (builder, configuration) -> {
-                    // ...
+                    // build...
                 });
 
-        final SimpleApplication application = launcher.launchBlocking();
-        // or use launcher.launchAsync()
+        final SimpleApplication application = launcher.launchBlocking(); // or use launcher.launchAsync()
         
-        application.joinBlocking();
-        // or use application.asFuture()
+        application.joinBlocking(); // or use application.asFuture().get()
     }
 }
 ```
@@ -161,7 +149,8 @@ public class SimpleApp {
 
 ### 安装组件标识
 
-构建 `Application` 并不能让你直接使用任何组件。你需要手动安装你所需要的**组件标识**（ `Component` ），这里以mirai组件为例：
+构建 `Application` 并不能让你直接使用任何组件。你需要手动安装你所需要的**组件标识**（ `Component` ）。
+这里让我们以mirai组件为例，你可以在实际应用中将其替换为其他组件，它们的概念是相似的。
 
 <Tabs groupId="code">
 <TabItem value="Kotlin">

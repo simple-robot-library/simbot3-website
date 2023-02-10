@@ -9,7 +9,7 @@ function mavenCode(version) {
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <!-- Spring Boot 版本 -->
-    <version>2.7.0</version>
+    <version>3.0.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -26,14 +26,8 @@ function mavenCode(version) {
         <artifactId>simboot-core-spring-boot-starter</artifactId>
         <version>${version.simbot.version}</version>
     </dependency>
-    <!-- mirai组件 -->
-    <dependency>
-        <groupId>love.forte.simbot.component</groupId>
-        <artifactId>simbot-component-mirai-core</artifactId>
-        <version>${version.simbot.component.mirai}</version>
-    </dependency>
-    
-    <!-- 或许还需要其他依赖...? -->
+    <!-- 给其他组件留个板凳... -->
+    <!-- ... -->
     
 </dependencies>
   <build>
@@ -43,12 +37,13 @@ function mavenCode(version) {
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
-  </build>`
-}
+  </build>
+  
+`.trim()}
 
 function gradleKts(version) {
     return `plugins {
-  id("org.springframework.boot") version "2.7.0" // Spring Boot
+  id("org.springframework.boot") version "3.0.0" // Spring Boot
   id("io.spring.dependency-management") version "1.0.11.RELEASE"
   \`java\`
 }
@@ -66,13 +61,13 @@ implementation("org.springframework.boot:spring-boot-starter-web")
 // simbot Spring Boot Starter
 implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}")
 
-// mirai组件
-implementation("love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}")`
-}
+// 给其他组件留个板凳...
+// ...
+`.trim()}
 
 function gradleGroovy(version) {
     return `plugins {
-  id 'org.springframework.boot' version '2.7.0' // Spring Boot
+  id 'org.springframework.boot' version '3.0.0' // Spring Boot
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
 }
@@ -90,19 +85,13 @@ implementation 'org.springframework.boot:spring-boot-starter-web'
 // simbot Spring Boot Starter
 implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}'
 
-// mirai组件
-implementation 'love.forte.simbot.component:simbot-component-mirai-core:${version.simbot.component.mirai}'`
-}
+// 给其他组件留个板凳...
+// ...
+`.trim()}
 
 export default function QuickStartSpringBootStarterCodes({version}) {
     return <Tabs groupId="use-dependency">
-        <TabItem value="Maven" label="Maven" default>
-            <CodeBlock language="xml">
-                { mavenCode(version) }
-            </CodeBlock>
-        </TabItem>
-
-        <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL">
+        <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL" default>
             <CodeBlock language="kotlin">
                 { gradleKts(version) }
             </CodeBlock>
@@ -111,6 +100,11 @@ export default function QuickStartSpringBootStarterCodes({version}) {
         <TabItem value="Gradle Groovy" label="Gradle Groovy">
             <CodeBlock language="groovy">
                 { gradleGroovy(version) }
+            </CodeBlock>
+        </TabItem>
+        <TabItem value="Maven" label="Maven">
+            <CodeBlock language="xml">
+                { mavenCode(version) }
             </CodeBlock>
         </TabItem>
     </Tabs>

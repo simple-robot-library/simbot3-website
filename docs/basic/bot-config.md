@@ -7,9 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## BOT文件
-
-在simbot3中，所有的配置文件都交由 `*.bot*` 文件进行定义，例如：`forliy.bot` 、 `forliy.bot.json` 、 `forliy.bot.yaml` 等。
+在simbot3中，所有的配置文件都交由 `*.bot*` 格式的文件进行定义，例如：`forliy.bot` 、 `forliy.bot.json` 、 `forliy.bot.yaml` 等。
 
 
 在 simbot 中，这些文件最终都会被封装为 `BotVerifyInfo` 对象提供给组件进行解析。
@@ -184,47 +182,17 @@ component=simbot.xxxx
 一个配置文件代表了一个组件下某个bot的特定配置。
 而除了所有配置文件内都应存在的配置项 `component` 以外，其他的所有内容都是组件实现所**定制**的，你需要参考相关组件的说明文档来进行进一步的配置。
 
+前往 [**《组件》**](../component-overview) 章节选择你需要使用的组件，并阅读它们的文档来了解这个组件的配置文件的具体格式。
 
-<Tabs groupId="bot-config">
-<TabItem value="JSON">
+:::info 懒人最爱
 
-```json title='my-bot.bot.json'
-{
-  "component": "simbot.xxx",
-  "code": 123456,
-  "password": "password",
-  "config": {
-    "type": "normal",
-    "duration": 60000
-  }
-}
-```
+此处是不定期更新的快速链接，可以将你直接引导到一些组件对于**BOT配置**的说明页。
 
-</TabItem>
-<TabItem value="YAML">
+- 👉 [mirai组件的Bot配置文档](https://component-mirai.simbot.forte.love/docs/bot-config)
 
-```yaml title='my-bot.bot.yml'
-component: 'simbot.xxx'
-code: 123456
-password: 'password'
-config:
-  cache: !<normal>
-  duration: 60000
-```
+:::
 
-</TabItem>
-<TabItem value="Properties">
 
-```properties title='my-bot.properties'
-component=simbot.xxx
-code=123456
-password=password
-config.cache.type=normal
-config.cache.value.duration=60000
-```
-
-</TabItem>
-</Tabs>
 
 ## 解析
 
