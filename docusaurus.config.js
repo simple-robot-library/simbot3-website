@@ -19,6 +19,8 @@ const copyrightYear = currentYear === firstYear ? firstYear : firstYear + '-' + 
 const styles = ['primary', 'dark', undefined]
 const navbarStyle = styles['dark']
 
+const keywords = ['forte', 'forte-scarlet', 'simbot', 'simple-robot', '机器人', 'qq机器人', 'kook机器人', 'qq频道机器人', 'bot', 'simple robot', '法欧特']
+
 // https://docusaurus.io/zh-CN
 // https://mui.com/zh/getting-started/installation/
 
@@ -219,7 +221,7 @@ async function createConfig() {
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
             ({
                 metadata: [{
-                    name: 'keywords', content: 'forte, forte-scarlet, fortescarlet, simbot, simple-robot, bot'
+                    name: 'keywords', content: keywords.join(',')
                 }],
 
                 image: 'img/logo.png',
