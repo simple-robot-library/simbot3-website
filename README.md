@@ -10,3 +10,9 @@
 你可以通过 [simbot.forte.love](https://simbot.forte.love) 来访问首页，或者从仓库中寻找进入构建页面的入口，都是可以的~
 
 那么，祝你拥有美好的一天，再会~
+
+<details><summary><small><i>还得迁..?</i></small></summary>
+
+后续可能会以 `git sub modules` 的形式将**源码**重新交予当前仓库管理。
+
+</details>
