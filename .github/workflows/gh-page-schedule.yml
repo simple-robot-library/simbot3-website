@@ -1,0 +1,30 @@
+name: deploy gh page scheduled
+on:
+  schedule:
+    - cron: "0 1 * * *"
+
+jobs:
+  deploy-doc:
+    name: Deploy-doc
+    runs-on: ubuntu-latest
+    steps:
+      # 检出仓库代码
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Build website
+        run: npm run build
+
+      # https://github.com/marketplace/actions/github-pages-action
+      - name: Push to doc repository
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PUSH_TOKEN }}
+          #          publish_branch: gh-pages
+          publish_dir: ./build
+#          force_orphan: true
