@@ -19,7 +19,7 @@ const copyrightYear = currentYear === firstYear ? firstYear : firstYear + '-' + 
 const styles = ['primary', 'dark', undefined]
 const navbarStyle = styles['dark']
 
-const keywords = ['forte', 'forte-scarlet', 'simbot', 'simple-robot', '机器人', 'qq机器人', 'kook机器人', 'qq频道机器人', 'bot', 'simple robot', '法欧特']
+const keywords = ['forte', 'forte-scarlet', 'simbot', 'simbot3', 'simple-robot', 'simple-robot v3', '机器人', 'qq机器人', 'kook机器人', 'qq频道机器人', 'bot', 'simple robot', '法欧特']
 
 // https://docusaurus.io/zh-CN
 // https://mui.com/zh/getting-started/installation/
