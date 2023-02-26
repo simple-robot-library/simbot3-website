@@ -12,7 +12,7 @@ export default function HeaderShow({}) {
         <div align="center">
             <img src={img} alt="logo" className={`${style.headLogo}`} draggable="false" />
             <h2>
-                ✨ simply-robot ✨
+                ✨ Simple Robot ✨
             </h2>
             <small>
                 ~ simbot v3 ~
