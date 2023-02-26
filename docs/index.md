@@ -190,6 +190,11 @@ public void myListener(GroupMsg messageEvent, Sender sender) {
 
 :::
 
+### 血量"充"足
+
+我们（自认为）simbot3整体设计中采用了充血模型，使得功能对象更饱满，能力更直观，职责更具体。
+
+
 ### 还有更多...
 **simbot3** 与 **simbot2** 相比，基本上是推翻重来的。而这个过程使得 **simbot3** 中诞生了很多比曾经更优秀的特性。
 也许，你会在使用过程中逐渐发现...
