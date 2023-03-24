@@ -10,13 +10,15 @@ import Label from '@site/src/components/Label'
 
 有关bot的配置文件相关内容，请先阅读 [**BOT配置**](../../basic/bot-config) 。
 
-:::danger
+:::danger 新地址
 
 mirai组件的[**独立文档网站**](https://component-mirai.simbot.forte.love)已经发布，当前页面将**不再更新**并暂做保留，一段时间后将会移除。
 
-请前往mirai组件的[新文档网站](https://component-mirai.simbot.forte.love/docs/bot-config)阅读。
+请前往mirai组件的 👉 [**组件文档网站**](https://component-mirai.simbot.forte.love/docs/bot-config) 👈 阅读。
 
 :::
+
+<hr/>
 
 ## 架构
 
