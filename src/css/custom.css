@@ -13,18 +13,40 @@
 }
 
 @font-face {
-    font-family: "iconfont";
-    src: url("iconfont.ttf") format('truetype');
+    font-family: "iconfont-link";
+    src: url("iconfont-link.ttf") format('truetype');
 }
 
-a:not([class])::before {
-    content: '\f010b';
-    font-family: "iconfont" !important;
+/* 外链 */
+a[href^='http']:not([class])::before {
+    content: '\e600';
+    font-family: "iconfont-link" !important;
     font-size: 0.75em;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
 
+/* 非外链 */
+a:not([class],[href^='http'])::after {
+    content: '\e685';
+    font-family: "iconfont-link" !important;
+    font-style: normal;
+    margin-right: 2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code:not([class]) {
+    margin-left: 2px;
+    margin-right: 2px;
+    transition: color;
+    transition-duration: 0.8s;
+}
+
+code:not([class]):hover {
+    transition-duration: 0.3s;
+    color: #25C2A0FF;
 }
 
 strong[dark-theme='dark'] {
@@ -40,24 +62,24 @@ strong {
 
 strong code {
     text-decoration-line: underline;
-    text-decoration-color: #ef5d84;
+    text-decoration-color: var(--ifm-color-primary-dark);
     /*#ef5d84: rgba(239,93,132,0.25)*/
 }
 
 strong code[dark-theme='dark'] {
     text-decoration-line: underline;
-    text-decoration-color: #f339a9;
+    text-decoration-color: var(--ifm-color-primary-light);
     /*#f339a9*/
 }
 
 code {
     border-color: rgba(0, 0, 0, 0.02);
-    color: #f339a9;
+    color: var(--ifm-color-primary-light);
 
 }
 code[dark-theme='dark'] {
     border-color: rgba(0, 0, 0, 0.02);
-    color: #ef5d84;
+    color: var(--ifm-color-primary-dark);
 }
 
 :root {

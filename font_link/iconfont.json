@@ -1,0 +1,79 @@
+{
+  "id": "3994895",
+  "name": "链接图标字体",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "9241143",
+      "name": "跳转",
+      "font_class": "iconzhengli_tiaozhuan",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "16853978",
+      "name": "跳转/退出",
+      "font_class": "tiaozhuan",
+      "unicode": "e685",
+      "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "6550625",
+      "name": "移动",
+      "font_class": "yidong",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "12316665",
+      "name": "移动",
+      "font_class": "yidong1",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "22960797",
+      "name": "跳转-转曲",
+      "font_class": "tiaozhuan-zhuanqu",
+      "unicode": "e823",
+      "unicode_decimal": 59427
+    },
+    {
+      "icon_id": "24633074",
+      "name": "跳转",
+      "font_class": "tiaozhuan1",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "108773",
+      "name": "链接",
+      "font_class": "lianjie2",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "673794",
+      "name": "链接",
+      "font_class": "lianjie3",
+      "unicode": "e6c8",
+      "unicode_decimal": 59080
+    },
+    {
+      "icon_id": "1305476",
+      "name": "链接",
+      "font_class": "lianjie4",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "77403",
+      "name": "链接",
+      "font_class": "lianjie",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

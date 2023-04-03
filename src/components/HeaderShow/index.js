@@ -19,19 +19,19 @@ export default function HeaderShow({}) {
             </small>
             <br/>
             <span>
-<a href="https://github.com/simple-robot/simpler-robot" target="_blank">GitHub</a>
+<a className='_home_header_label_link' href="https://github.com/simple-robot/simpler-robot" target="_blank">GitHub</a>
 </span> &nbsp; | &nbsp; <span>
-<a href="https://gitee.com/simple-robot/simpler-robot" target="_blank">Gitee</a>
+<a className='_home_header_label_link' href="https://gitee.com/simple-robot/simpler-robot" target="_blank">Gitee</a>
 </span> <br/>
-            <small> &gt; 感谢 <a href="https://github.com/ForteScarlet/CatCode"
+            <small> &gt; 感谢 <a className='_home_header_label_link' href="https://github.com/ForteScarlet/CatCode"
                                target="_blank">CatCode</a> 开发团队成员制作的simbot logo &lt; </small>
             <br />
                 <small> &gt; 走过路过，不要忘记点亮一颗⭐喔~ &lt; </small>
                 <br/>
                 <br/>
-                <a href="https://github.com/simple-robot/simpler-robot/releases/latest"><PaddingImg alt="release"
+                <a className='_home_header_label_link' href="https://github.com/simple-robot/simpler-robot/releases/latest"><PaddingImg alt="release"
                                                                                              src="https://img.shields.io/github/v/release/simple-robot/simpler-robot"/></a>
-                <a href="https://repo1.maven.org/maven2/love/forte/simbot/simbot-api/" target="_blank">
+                <a className='_home_header_label_link' href="https://repo1.maven.org/maven2/love/forte/simbot/simbot-api/" target="_blank">
                     <PaddingImg alt="release"
                          src="https://img.shields.io/maven-central/v/love.forte.simbot/simbot-api"/></a>
                 <PaddingImg alt="stars" src="https://img.shields.io/github/stars/simple-robot/simpler-robot"/>
@@ -44,7 +44,7 @@ export default function HeaderShow({}) {
                 <PaddingImg alt="search-hit" src="https://img.shields.io/github/search/simple-robot/simpler-robot/simbot"/>
                 <PaddingImg alt="top-language"
                      src="https://img.shields.io/github/languages/top/simple-robot/simpler-robot"/>
-                <a href="https://github.com/simple-robot/simpler-robot">
+                <a className='_home_header_label_link' href="https://github.com/simple-robot/simpler-robot">
                     <PaddingImg alt="copying"
                          src="https://img.shields.io/github/license/simple-robot/simpler-robot"/></a>
                 <br/>
