@@ -82,6 +82,10 @@ code[dark-theme='dark'] {
     color: var(--ifm-color-primary-dark);
 }
 
+code .token-line {
+    line-height: 24px;
+}
+
 :root {
     --ifm-color-primary-darkest: #f494ae;
     --ifm-color-primary-darker: #f06b8e;
