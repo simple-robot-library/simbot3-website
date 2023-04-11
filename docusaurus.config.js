@@ -127,8 +127,8 @@ async function createConfig() {
                     breadcrumbs: true,
                     showLastUpdateAuthor: true,
                     showLastUpdateTime: true,
-                    // editCurrentVersion: true,
-                    // editUrl: 'https://github.com/simple-robot-library/simbot3-website/blob/main/faq',
+                    editCurrentVersion: true,
+                    editUrl: 'https://github.com/simple-robot-library/simbot3-website/tree/main/',
                     // lastVersion: 'current',
                     // versions: {
                     //     current: {
@@ -221,7 +221,7 @@ async function createConfig() {
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
             ({
                 metadata: [{
-                    name: 'keywords', content: keywords.join(',')
+                    name: 'keywords', content: keywords.join(', ')
                 }],
 
                 image: 'img/logo.png',
