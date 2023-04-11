@@ -40,13 +40,6 @@ a:not([class],[href^='http'])::after {
 code:not([class]) {
     margin-left: 2px;
     margin-right: 2px;
-    transition: color;
-    transition-duration: 0.8s;
-}
-
-code:not([class]):hover {
-    transition-duration: 0.3s;
-    color: #25C2A0FF;
 }
 
 strong[dark-theme='dark'] {
