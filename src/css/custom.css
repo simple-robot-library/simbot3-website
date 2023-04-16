@@ -17,10 +17,33 @@
     src: url("iconfont-link.ttf") format('truetype');
 }
 
+@font-face {
+    font-family: "LXGWNeoXiHeiScreen";
+    src: url("LXGWNeoXiHeiScreen.ttf");
+}
+
+@font-face {
+    font-family: "SmileySans-Oblique";
+    src: url("SmileySans-Oblique.otf.woff2");
+}
+
+body {
+    text-rendering: optimizeLegibility;
+    font-family: 'LXGWNeoXiHeiScreen', serif;
+}
+
+h1,h2,h3,h4 {
+    font-family: 'SmileySans-Oblique', serif;
+}
+
+header,h1,h2 {
+    text-align: center;
+}
+
 /* 外链 */
 a[href^='http']:not([class])::before {
     content: '\e600';
-    font-family: "iconfont-link" !important;
+    font-family: "iconfont-link", serif !important;
     font-size: 0.75em;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -30,7 +53,7 @@ a[href^='http']:not([class])::before {
 /* 非外链 */
 a:not([class],[href^='http'])::after {
     content: '\e685';
-    font-family: "iconfont-link" !important;
+    font-family: "iconfont-link", serif !important;
     font-style: normal;
     margin-right: 2px;
     -webkit-font-smoothing: antialiased;
@@ -38,19 +61,19 @@ a:not([class],[href^='http'])::after {
 }
 
 code:not([class]) {
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
-strong[dark-theme='dark'] {
-    text-decoration-line: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.9);
+strong:not([class]) {
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 strong {
     text-decoration-line: underline;
-    text-decoration-color: rgba(0,0,0,0.25);
-
+    text-decoration-thickness: from-font;
+    text-underline-offset: auto;
 }
 
 strong code {
@@ -59,11 +82,11 @@ strong code {
     /*#ef5d84: rgba(239,93,132,0.25)*/
 }
 
-strong code[dark-theme='dark'] {
-    text-decoration-line: underline;
-    text-decoration-color: var(--ifm-color-primary-light);
+/*strong code[dark-theme='dark'] {*/
+    /*text-decoration-line: underline;*/
+    /*text-decoration-color: var(--ifm-color-primary-light);*/
     /*#f339a9*/
-}
+/*}*/
 
 code {
     border-color: rgba(0, 0, 0, 0.02);
@@ -80,6 +103,8 @@ code .token-line {
 }
 
 :root {
+    text-rendering: optimizeLegibility;
+
     --ifm-color-primary-darkest: #f494ae;
     --ifm-color-primary-darker: #f06b8e;
     --ifm-color-primary-dark: #ef5d84;
