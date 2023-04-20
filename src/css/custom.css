@@ -27,6 +27,11 @@
     src: url("/static/fonts/SmileySans-Oblique.otf.woff2") format('woff');
 }
 
+@font-face {
+    font-family: "ZCOOLKuaiLe-Regular";
+    src: url("/static/fonts/ZCOOLKuaiLe-Regular.ttf") format('truetype');
+}
+
 body {
     text-rendering: optimizeLegibility;
     font-family: 'LXGWNeoXiHeiScreen', serif;
@@ -38,6 +43,10 @@ h1,h2,h3,h4 {
 
 header,h1,h2 {
     text-align: center;
+}
+
+.theme-admonition {
+    font-family: 'ZCOOLKuaiLe-Regular', 'LXGWNeoXiHeiScreen', serif;
 }
 
 /* 外链 */
@@ -91,8 +100,8 @@ strong code {
 code {
     border-color: rgba(0, 0, 0, 0.02);
     color: var(--ifm-color-primary-light);
-
 }
+
 code[dark-theme='dark'] {
     border-color: rgba(0, 0, 0, 0.02);
     color: var(--ifm-color-primary-dark);

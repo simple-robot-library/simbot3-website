@@ -354,10 +354,6 @@ async function createConfig() {
                                     href: 'https://github.com/simple-robot/simpler-robot',
                                 },
                                 {
-                                    label: 'Gitee镜像 ',
-                                    href: 'https://gitee.com/ForteScarlet/simpler-robot',
-                                },
-                                {
                                     label: '组织库 🏢',
                                     href: 'https://github.com/simple-robot',
                                 },
@@ -381,7 +377,7 @@ async function createConfig() {
                             ],
                         },
                     ],
-                    copyright: `Built with <a href="https://www.docusaurus.io/zh-CN/">Docusaurus</a>. <br> Copyright © ${copyrightYear} Forte Scarlet.`,
+                    copyright: `Built with <a href="https://www.docusaurus.io/zh-CN/" target="_blank">Docusaurus</a>. <br> Copyright © ${copyrightYear} Forte Scarlet.`,
                 },
                 prism: {
                     additionalLanguages: ['java', 'kotlin', 'groovy', 'properties'],
