@@ -107,8 +107,6 @@ code .token-line {
 }
 
 :root {
-    text-rendering: optimizeLegibility;
-
     --ifm-color-primary-darkest: #f494ae;
     --ifm-color-primary-darker: #f06b8e;
     --ifm-color-primary-dark: #ef5d84;
