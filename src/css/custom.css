@@ -9,7 +9,7 @@
 /* You can override the default Infima variables here. */
 @font-face {
     font-family: "JetBrains Mono";
-    src: url("JetBrainsMono-SemiBold.woff2");
+    src: url("JetBrainsMono-SemiBold.woff2") format('woff');
 }
 
 @font-face {
@@ -18,18 +18,22 @@
 }
 
 @font-face {
-    font-family: "LXGWNeoXiHeiScreen";
-    src: url("LXGWNeoXiHeiScreen.ttf");
+    font-family: "ZCOOLKuaiLe-Regular";
+    src: url("ZCOOLKuaiLe-Regular.ttf") format('truetype');
 }
 
 @font-face {
     font-family: "SmileySans-Oblique";
-    src: url("SmileySans-Oblique.otf.woff2");
+    src: url("SmileySans-Oblique.otf.woff2") format('woff');
 }
 
 body {
     text-rendering: optimizeLegibility;
-    font-family: 'LXGWNeoXiHeiScreen', serif;
+    font-family: 'ZCOOLKuaiLe-Regular', serif;
+    font-size: large;
+    font-weight: normal;
+    letter-spacing: 1px;
+
 }
 
 h1,h2,h3,h4 {
