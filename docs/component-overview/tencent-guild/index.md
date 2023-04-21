@@ -6,15 +6,15 @@ title: QQ频道组件
 
 import Label from '@site/src/components/Label'
 
-> **组件ID**：<Label>simbot.tencentguild</Label>
+> **组件ID**：<Label>simbot.qqguild</Label>
 >
 > **版本状态**：<Label title='无法保证可用性、未来可能会频发发生破坏性改动'>alpha</Label>
 
 :::info 链接引导
 
-组件仓库地址：<a href='https://github.com/simple-robot/simbot-component-tencent-guild'><b><span class='bi-github'></span> simple-robot/simbot-component-tencent-guild</b></a>
+组件仓库地址：<a href='https://github.com/simple-robot/simbot-component-qq-guild'><b><span class='bi-github'></span> simple-robot/simbot-component-qq-guild</b></a>
 
-在线API Doc：**<https://docs.simbot.forte.love/components/tencent-guild>**
+在线API Doc：**<https://docs.simbot.forte.love/components/qq-guild>**
 
 :::
 
