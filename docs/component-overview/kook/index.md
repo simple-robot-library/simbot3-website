@@ -1,5 +1,5 @@
 ---
-title: Kook组件
+title: KOOK组件
 ---
 
 针对 [KOOK](https://www.kookapp.cn/) 机器人所实现的组件，对接[官方API](https://developer.kookapp.cn/doc/reference)，提供强大全面的 **KOOK BOT** 能力支持。
