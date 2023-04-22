@@ -201,7 +201,7 @@ simbot.bot-configuration-resources[0]=classpath:simbot-bots/*.bot*
 
 - 比如对接QQ机器人的[**mirai组件**](../component-overview/mirai)。
 - 比如对接KOOK的[**kook组件**](../component-overview/kook)。
-- 比如对接QQ频道的[**QQ频道组件**](../component-overview/tencent-guild)。
+- 比如对接QQ频道的[**QQ频道组件**](../component-overview/qq-guild)。
 
 :::
 

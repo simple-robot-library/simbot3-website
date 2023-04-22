@@ -2,28 +2,26 @@
 title: Kook组件
 ---
 
-针对 [Kook](https://www.kookapp.cn/) 机器人所实现的组件，对接[官方API](https://developer.kookapp.cn/doc/reference)，无额外的第三方API依赖。
+针对 [KOOK](https://www.kookapp.cn/) 机器人所实现的组件，对接[官方API](https://developer.kookapp.cn/doc/reference)，提供强大全面的 **KOOK BOT** 能力支持。
 
 import Label from '@site/src/components/Label'
 
 > **组件ID**：<Label>simbot.kook</Label>
-> 
-> **版本状态**：<Label title='无法保证可用性、未来可能会频发发生破坏性改动'>alpha</Label>
 
-:::info 链接引导
+**仓库**: <a class="bi-github" href="https://github.com/simple-robot/simbot-component-kook"> https://github.com/simple-robot/simbot-component-kook</a>
 
-组件仓库地址：<a href='https://github.com/simple-robot/simbot-component-kook'><b><span class='bi-github'></span> simple-robot/simbot-component-kook</b></a>
+**手册**: 📖 <https://simple-robot.github.io/simbot-component-kook/>
 
-在线API Doc：**<https://docs.simbot.forte.love/components/kook>**
+**API文档**：[引导站](https://docs.simbot.forte.love/)
 
-:::
 
 :::tip 😊
 
 ### 组件优势
 
-- 对接**官方API**，更可靠、更稳定，功能丰富。
-- 无额外的 _第三方API_ 依赖，更新节奏更好把控，内容可控性强。
+- 对接**官方API**，可靠、稳定，功能丰富。
+- 无额外的第三方API依赖。
+- 事件推送完整，易建立内部缓存。
 
 :::
 
@@ -31,8 +29,8 @@ import Label from '@site/src/components/Label'
 
 ### 组件劣势
 
-- 大部分API存在[**速率限制**](https://developer.kookapp.cn/doc/rate-limit)。（这是可以理解并接受的做法，但是这亦算是一种**限制**）
+- 大部分API存在[**速率限制**](https://developer.kookapp.cn/doc/rate-limit)。
 - 官方API存在一小部分内容与文档中描述不符或反直觉，增加组件开发难度。
-- 官方API结构设计略微繁琐冗杂。
+- 官方API的设计略显繁琐冗杂，不易封装。
 
 :::

@@ -284,7 +284,7 @@ Image<?> image = bot.resolveImageBlocking(id);
 Emoji是一个 _保留类型_ ，它类似于 [Face](#face)，用来表示一个 `emoji`。但是通常情况下，你并不需要使用 `Emoji` 来发送 `emoji`，
 因为从2010年开始 `Unicode` 便开始收录emoji编码，你可以直接将 `emoji` 表情作为字符串发送。
 
-那么 `Emoji` 现在更多的用于表示一些平台下的特殊表情，例如只能在一定范围内使用的 `emoji`，比如 [腾讯频道组件](../../component-overview/tencent-guild) 中用于reaction消息的表情。
+那么 `Emoji` 现在更多的用于表示一些平台下的特殊表情，例如只能在一定范围内使用的 `emoji`，比如 [腾讯频道组件](../../component-overview/qq-guild) 中用于reaction消息的表情。
 
 :::note
 
