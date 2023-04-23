@@ -24,7 +24,7 @@ simbot核心库本身没有任何平台功能。当你阅读完本章节后，�
 
 # 安装
 
-import version from './dpVersion.json';
+import {version} from '@site/static/version.json';
 import QuickStartSpringBootStarterCodes from './QuickStartSpringBootStarterCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

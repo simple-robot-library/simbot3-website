@@ -22,7 +22,7 @@ simbot核心库本身没有任何平台功能。当你阅读完本章节后，�
 
 # 使用依赖
 
-import version from './dpVersion.json'
+import {version} from '@site/static/version.json';
 import QuickStartCoreCodes from './QuickStartCoreCodes';
 import QuickStartCoreSnapshotCodes from './QuickStartCoreSnapshotCodes';
 import Tabs from '@theme/Tabs';

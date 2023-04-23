@@ -10,7 +10,7 @@ https://infima.dev/docs/components/badge
 <span class="badge badge--primary">Primary</span>
  */
 
-const currentVersion = '3.0.0-RC.3'
+const currentVersion = require("./static/version.json").version
 
 const firstYear = 2022
 const currentYear = new Date().getFullYear()
@@ -380,7 +380,7 @@ async function createConfig() {
                     copyright: `Built with <a href="https://www.docusaurus.io/zh-CN/" target="_blank">Docusaurus</a>. <br> Copyright © ${copyrightYear} Forte Scarlet.`,
                 },
                 prism: {
-                    additionalLanguages: ['java', 'kotlin', 'groovy', 'properties'],
+                    additionalLanguages: ['java', 'kotlin', 'gradle', 'properties'],
                     theme: lightCodeTheme,
                     darkTheme: darkCodeTheme,
                     magicComments: [

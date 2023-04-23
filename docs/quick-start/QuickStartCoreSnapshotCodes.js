@@ -22,7 +22,7 @@ function mavenCode(version) {
     <dependency>
         <groupId>love.forte.simbot</groupId>
         <artifactId>simbot-core</artifactId>
-        <version>${version.simbot.version}-SNAPSHOT</version>
+        <version>${version}-SNAPSHOT</version>
     </dependency>
     <!-- 给其他组件预留一个座位... -->
     <!-- ... -->
@@ -52,7 +52,7 @@ repositories {
 }
 
 // simbot核心标准库
-implementation("love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}")
+implementation("love.forte.simbot:simbot-core:${version}-SNAPSHOT")
 
 // 给其他组件预留一个座位...
 // ...
@@ -79,7 +79,7 @@ repositories {
 }
 
 // simbot核心标准库
-implementation 'love.forte.simbot:simbot-core:${version.simbot.snapshotVersion}'
+implementation 'love.forte.simbot:simbot-core:${version}-SNAPSHOT'
 
 // 给其他组件预留一个座位...
 // ...

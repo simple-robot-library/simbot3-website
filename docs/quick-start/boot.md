@@ -20,7 +20,7 @@ draft: true
 
 # 使用依赖
 
-import version from './dpVersion.json';
+import {version} from '@site/static/version.json';
 import QuickStartBootCodes from './QuickStartBootCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

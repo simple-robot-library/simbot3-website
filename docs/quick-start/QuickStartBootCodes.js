@@ -10,7 +10,7 @@ function mavenCode(version) {
     <dependency>
         <groupId>love.forte.simbot.boot</groupId>
         <artifactId>simboot-core</artifactId>
-        <version>${version.simbot.version}</version>
+        <version>${version}</version>
     </dependency>
 
     <!-- 给其他组件留个盘子 -->
@@ -34,7 +34,7 @@ repositories {
 }
 
 // simbot Boot
-implementation("love.forte.simbot.boot:simboot-core:${version.simbot.version}on")
+implementation("love.forte.simbot.boot:simboot-core:${version}")
 
 // 给其他组件留个盘子
 // ...
@@ -54,7 +54,7 @@ repositories {
 }
 
 // simbot Boot
-implementation 'love.forte.simbot.boot:simboot-core:${version.simbot.version}'
+implementation 'love.forte.simbot.boot:simboot-core:${version}'
 
 // 给其他组件留个盘子
 // ...

@@ -24,7 +24,7 @@ function mavenCode(version) {
     <dependency>
         <groupId>love.forte.simbot.boot</groupId>
         <artifactId>simboot-core-spring-boot-starter</artifactId>
-        <version>${version.simbot.version}</version>
+        <version>${version}</version>
     </dependency>
     <!-- 给其他组件留个板凳... -->
     <!-- ... -->
@@ -59,7 +59,7 @@ repositories {
 implementation("org.springframework.boot:spring-boot-starter-web")
 
 // simbot Spring Boot Starter
-implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}")
+implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version}")
 
 // 给其他组件留个板凳...
 // ...
@@ -83,7 +83,7 @@ repositories {
 implementation 'org.springframework.boot:spring-boot-starter-web'
 
 // simbot Spring Boot Starter
-implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.simbot.version}'
+implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version}'
 
 // 给其他组件留个板凳...
 // ...
