@@ -262,7 +262,7 @@ async function createConfig() {
                 // 公告
                 announcementBar: {
                     id: 'announcementBar-still_under_construction',
-                    content: `文档尚不完全，但也够用 🍵 v3.0.0 发布在即，可前往 <a href="https://github.com/orgs/simple-robot/discussions" target="_blank"><b>社区</b></a> 交流或通过 <a href="https://github.com/simple-robot/simpler-robot/issues" target="_blank"><b>Issues</b></a> 反馈问题 😊😊😊‍`,
+                    content: `🎉🎉🎉 <b>v3.0.0</b> 已经发布，可前往 <a href="https://github.com/orgs/simple-robot/discussions" target="_blank"><b>社区</b></a> 交流或通过 <a href="https://github.com/simple-robot/simpler-robot/issues" target="_blank"><b>Issues</b></a> 反馈问题 😎😎😎`,
                     // backgroundColor: '#FFB906',
                     // backgroundColor: 'linear-gradient(0deg,red 50%,green 50%)',
                     // textColor: '#142F48',
