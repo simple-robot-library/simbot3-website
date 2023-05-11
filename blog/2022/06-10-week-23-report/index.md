@@ -36,17 +36,17 @@ import CodeBlock from '@theme/CodeBlock';
 :::
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin"  attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 // error-start
 - val friends: Items<Friend> = bot.friends
-- val friend: Friend? = bot.friend(id)
+- val friend: Friend = bot.friend(id)
 // error-end
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" default attributes={{'data-value': `Java`}}>
 
 ```java
 // error-start
@@ -61,17 +61,19 @@ import CodeBlock from '@theme/CodeBlock';
 并在 `Bot` 中增加了如下的默认api实现：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin"  attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 // success-start
-+ val contacts: Items<Contact> = bot.contacts
-+ val Contact: Contact? = bot.contact(id)
++
+val contacts: Items<Contact> = bot.contacts
++
+val Contact: Contact = bot.contact(id)
 // success-end
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" default attributes={{'data-value': `Java`}}>
 
 ```java
 // success-start

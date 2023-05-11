@@ -53,7 +53,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 // 通过用 '+' 拼接消息元素来得到结果。
@@ -80,7 +80,7 @@ buildMessages {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 List<Message.Element<?>> messageList = new ArrayList<>(3);

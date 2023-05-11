@@ -91,18 +91,18 @@ implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${versio
 
 export default function QuickStartSpringBootStarterCodes({version}) {
     return <Tabs groupId="use-dependency">
-        <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL" default>
+        <TabItem value="Gradle Kotlin DSL" label="Gradle Kotlin DSL" default attributes={{'data-value': 'Kts'}}>
             <CodeBlock language="kotlin">
                 { gradleKts(version) }
             </CodeBlock>
         </TabItem>
 
-        <TabItem value="Gradle Groovy" label="Gradle Groovy">
-            <CodeBlock language="groovy">
+        <TabItem value="Gradle Groovy" label="Gradle Groovy" attributes={{'data-value': 'Gradle'}}>
+            <CodeBlock language="gradle">
                 { gradleGroovy(version) }
             </CodeBlock>
         </TabItem>
-        <TabItem value="Maven" label="Maven">
+        <TabItem value="Maven" label="Maven" attributes={{'data-value': 'Maven'}}>
             <CodeBlock language="xml">
                 { mavenCode(version) }
             </CodeBlock>

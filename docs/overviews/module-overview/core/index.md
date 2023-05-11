@@ -2,21 +2,47 @@
 title: 基础核心模块
 ---
 
-核心模块是对 [api模块](../api.md) 的基本完整实现模块。
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
+核心模块 (`core`) 是对 [`api` 模块](../api.md) 的基本完整实现模块。
 
 ## 概述
 
-普通的基础核心模块不存在诸如依赖注入、扫描等这类的辅助化功能，其所有功能均需要手动配置、执行，是一套更加贴合“原生”使用手感的库。
-你可以通过基础核心模块与对应的组件来使用更灵活、更精确的方式来实现你自己的整套系统。
+`core` 模块的全名是 `simbot-core`。
 
-基础核心模块则是对 [api模块](../api.md) 的完整实现，提供api模块下所有预期内的功能。
+`core` 模块可能是最具“功能”的模块了。他是 `api` 模块的完整实现，为simbot3提供了实际的能力表现。
+它依赖 `api` 模块（和 `logger` 模块），大多数情况下你可以直接使用 `core` 模块而不需要再关系 `api` 模块。
 
+当然，你也可以引入 `api` 模块的同时，将 `core` 模块作为 **仅运行时** (`runtimeOnly`) 来引用。
 
-## 使用
+## 依赖参考
 
-:::danger
+<Tabs groupId="use-dependency">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
-TODO
+```kotlin
+implementation("love.forte.simbot:simbot-core:$VERSION")
+```
 
-:::
+</TabItem>
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
+
+```gradle
+implementation 'love.forte.simbot:simbot-core:$VERSION'
+```
+
+</TabItem>
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
+
+```xml
+<dependency>
+  <groupId>love.forte.simbot</groupId>
+  <artifactId>simbot-core</artifactId>
+  <version>${VERSION}</version>
+</dependency>
+```
+
+</TabItem>
+</Tabs>
+

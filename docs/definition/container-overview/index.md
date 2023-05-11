@@ -15,7 +15,7 @@ import CodeBlock from '@theme/CodeBlock';
 **`Container`** 接口应当是所有（或者说大部分）容器接口的父接口。`Container` 接口的定义如下：
 
 ```kotlin
-public interface Container
+ interface Container
 ```
 
 可以看到，`Container` 接口中不存在任何约束，仅仅用作为标记。
@@ -42,14 +42,14 @@ simbot在核心库中提供了部分内部常用一些容器类型，并由部�
 在这其中，`bar` 属性代表为一个普通的属性，其获取方式通常如下所示：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val bar: Bar = container.bar
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Bar bar = container.getBar();
@@ -62,14 +62,14 @@ Bar bar = container.getBar();
 当然，这可能不是严格意义上的"属性"，但这无伤大雅。对于这种属性，它的获取方式通常如下所示：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val foo: Foo = container.foo() // suspend
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Foo foo = container.getFoo(); // blocking
@@ -169,7 +169,7 @@ Foo foo = container.getFoo(); // blocking
 获取与当前bot相关的 [`Friend`](../base-objective/Objectives#friend) 信息的社交容器。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 | API                                 | 返回值                                                               | 描述           |
 |-------------------------------------|-------------------------------------------------------------------|--------------|
@@ -184,7 +184,7 @@ val friend: Friend = container.friend(id)
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 | API             | 返回值                                                               | 描述           |
 |-----------------|-------------------------------------------------------------------|--------------|
@@ -207,7 +207,7 @@ Friend friend = container.getFriend(id);
 获取与当前bot相关的 `Group` 信息的社交容器。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 | API                                | 返回值                                                             | 描述          |
 |------------------------------------|-----------------------------------------------------------------|-------------|
@@ -223,7 +223,7 @@ val group: Group = container.group(id)
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 | API            | 返回值                                                             | 描述          |
 |----------------|-----------------------------------------------------------------|-------------|
@@ -246,7 +246,7 @@ Group group = container.getGroup(id);
 获取与当前bot相关的 `Guild` 信息的社交容器。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 
 | API                                | 返回值                                                             | 描述              |
@@ -263,7 +263,7 @@ val guild: Guild = container.guild(id)
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 
 | API            | 返回值                                                             | 描述              |

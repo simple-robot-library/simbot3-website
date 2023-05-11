@@ -27,7 +27,7 @@ import CodeBlock from '@theme/CodeBlock';
 移除了 `Bot` 中默认实现的 `Bot.friends` 和 `Bot.friend(...)` api, 取而代之的是 `Bot.contacts()` 和 `Bot.contact(...)`。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin"  attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
   val bot: Bot = ...
@@ -43,7 +43,7 @@ import CodeBlock from '@theme/CodeBlock';
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" default attributes={{'data-value': `Java`}}>
 
 ```java
   Bot bot = ...;
@@ -66,7 +66,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin"  attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val bot: Bot = ...
@@ -77,7 +77,7 @@ if (bot is FriendsContainer) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" default attributes={{'data-value': `Java`}}>
 
 ```java
 Bot bot = ...;

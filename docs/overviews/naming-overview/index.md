@@ -34,11 +34,13 @@ id：`simboot-xxx` <br />
 group：`love.forte.simbot.component` <br />
 id：`simbot-component-xxx` <br />
 例如：
-- 腾讯频道组件模块：`love.forte.simbot.component:simbot-component-tencent-guild-core`
+- QQ频道组件模块：`love.forte.simbot.component:simbot-component-qq-guild-core`
+- KOOK组件模块：`love.forte.simbot.component:simbot-component-kook-core`
+- mirai组件模块：`love.forte.simbot.component:simbot-component-mirai-core`
 
 
 ## 版本命名
-版本将会使用最常见的 MAJOR.MINOR.PATCH[.STATUS][-SNAPSHOT]规则，并规定：
+版本将会使用最常见的 `MAJOR.MINOR.PATCH[.STATUS][-SNAPSHOT]` 规则，并规定：
 - `MAJOR` 、`MINOR` 、`PATCH` 为非负整数，例如 3.0.0。
 - `STATUS` 为可选的状态版本，常见状态有 `preview` 、`alpha` 、`beta` 等。状态字符串后面可以在跟随子版本 `MINOR.PATCH` 。当状态版本存在的时候，通常此版本不视为release版本。例如：3.0.0.preview.2.0、3.0.0.beta.5.1。
 - `SNAPSHOT` 为可选标记，标记于版本最后，代表为一个快照版本。
@@ -74,7 +76,7 @@ id：`simbot-component-xxx` <br />
 其为simbot核心本身所提供的组件，则它将会伴随着核心一起更新，不会存在独立版本号。
 
 ### 后缀
-除了基本的版本号，对于后缀 .STATUS 和 -SNAPSHOT，组件的后缀应该与其内部所对应的simbot核心依赖的后缀一致。
+除了基本的版本号，对于后缀 `.STATUS` 和 `-SNAPSHOT` ，组件的后缀应该与其内部所对应的simbot核心依赖的后缀一致。
 
 ### 例外
 不一定所有的组件都需要第三方或独立更新的API，
@@ -85,17 +87,19 @@ id：`simbot-component-xxx` <br />
 
 
 ### 示例
-#### tencent-guild组件 
-`love.forte.simbot.component:simbot-component-tencent-guild-api:3.0.0.1` <br />
-`love.forte.simbot.component:simbot-component-tencent-guild-stdlib:3.0.0.1` <br />
-`love.forte.simbot.component:simbot-component-tencent-guild-core:3.0.0.1` <br />
+#### qq-guild组件 
+
+- `love.forte.simbot.component:simbot-component-qq-guild-api:3.0.0.1`
+- `love.forte.simbot.component:simbot-component-qq-guild-stdlib:3.0.0.1`
+- `love.forte.simbot.component:simbot-component-qq-guild-core:3.0.0.1`
 
 #### mirai组件 
-`love.forte.simbot.component:simbot-component-mirai:3.0.1.2` <br />
 
+- `love.forte.simbot.component:simbot-component-mirai-core:3.0.1.2`
 
 
 ## 快照版本
+
 在上述 模块与版本 中描述的基础上，当版本为 快照版本 的时候，版本号应当有且仅有结尾处存在 `-SNAPSHOT` 标记。
 在组件版本中，同样只保留结尾处的快照标记，其余标记将会被清除。
 

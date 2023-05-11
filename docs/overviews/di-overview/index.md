@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="直接注入"
 @Beans class Foo
@@ -44,7 +44,7 @@ class FooConfig {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="直接注入"
 @Beans class Foo {}

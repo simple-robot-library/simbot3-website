@@ -1,0 +1,65 @@
+{
+  "id": "4061557",
+  "name": "Tab语言图标",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-tab-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12600762",
+      "name": "kts",
+      "font_class": "kts",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "13303526",
+      "name": "json",
+      "font_class": "json",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "25853103",
+      "name": "box_maven",
+      "font_class": "maven",
+      "unicode": "e700",
+      "unicode_decimal": 59136
+    },
+    {
+      "icon_id": "28048695",
+      "name": "maven",
+      "font_class": "pluginIcon",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "15378527",
+      "name": "kotlin",
+      "font_class": "kotlin1",
+      "unicode": "ebed",
+      "unicode_decimal": 60397
+    },
+    {
+      "icon_id": "12600749",
+      "name": "java",
+      "font_class": "java",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "13303497",
+      "name": "gradle",
+      "font_class": "gradle",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "30055893",
+      "name": "kotlin",
+      "font_class": "kotlin",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    }
+  ]
+}

@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 （或者说**事件调度器**）来提供配置，而对事件的预注册便可以在这其中完成：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 simbotApplication(Simple) { 
@@ -79,7 +79,7 @@ simbotApplication(Simple) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Applications.simbotApplication(
@@ -122,7 +122,7 @@ Lambdas.suspendConsumer((builder, configuration) -> {
 就如同你猜的那样，此方法直接提供一个监听函数实例，并注册。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 simbotApplication(Simple) { 
@@ -136,7 +136,7 @@ simbotApplication(Simple) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Applications.simbotApplication(
@@ -161,7 +161,7 @@ Lambdas.suspendConsumer((builder, configuration) -> {
 另外一种方式便是在 `listeners { }` 作用域中进行监听函数的构建了。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 `listeners` 作用域中的实际接收者类型为 `EventListenerRegistrationDescriptionsGenerator`，
 代表用于生成 `EventListenerRegistrationDescription` 的生成器。
@@ -269,7 +269,7 @@ FooEvent.handle { event ->
 而至于事件处理逻辑...你或许不用担心了。
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 `listeners` 作用域中主要提供了一个 `EventListenerRegistrationDescriptionsGenerator`，
 它是用于生成 `EventListenerRegistrationDescription` 的生成器。
@@ -309,7 +309,7 @@ Applications.simbotApplication(
 除了我们前文一直在讲的“预注册”，在application启动后也支持**动态注册**监听函数。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val launcher = simbotApplication(Simple) { 
@@ -358,7 +358,7 @@ val handle = application.eventListenerManager.listeners {
 :::
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 ApplicationLauncher<SimpleApplication> launcher = Applications.simbotApplication(Simple.INSTANCE);
@@ -391,7 +391,7 @@ EventListenerHandle handle = manager.register(SimpleListeners.listener(FriendMes
 首先，Boot监听需要使用 `Boot Application`。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 suspend fun main() {
@@ -412,7 +412,7 @@ class MyListenerContainer {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Applications.simbotApplication(Boot.INSTANCE, (configuration) -> Unit.INSTANCE, Lambdas.suspendConsumer((builder, configuration) -> {
@@ -441,7 +441,7 @@ class MyListenerContainer {
 在 Spring Boot Starter 中你可能不需要使用 `Boot Application`, 而是只是仅仅标记一个 `@EnableSimbot` 注解就好了：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @EnableSimbot
@@ -462,7 +462,7 @@ class MyListenerContainer {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @EnableSimbot
@@ -510,7 +510,7 @@ class MyListenerContainer {
 被标记为监听函数的方法的访问级别必须是**公开的**，也就是必须是 `public` 的。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -526,7 +526,7 @@ suspend fun onEvent(event: FooEvent) {
 :::
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -544,7 +544,7 @@ public void onEvent(FooEvent event) {
 你所需要监听的事件类型直接体现在参数上即可。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 **监听FooEvent**
 
@@ -594,7 +594,7 @@ suspend fun onEvent() {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 **监听FooEvent**
 
@@ -638,7 +638,7 @@ public void onEvent() {
 #### 异步性与返回值
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 simbot绝大多是API都是**可挂起的**，因此在Kotlin中，我们也建议你的监听函数是 `suspend`。
 不过比起函数的 `suspend` 修饰，我们最主要的目的是提醒你尽可能不要使用**阻塞API**。
@@ -651,7 +651,7 @@ suspend fun onEvent(event: FooEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 我们在 [监听函数](event-listener) 中的 [可响应式的处理结果](event-listener#可响应式的处理结果) 一节中提到过，
 你可以通过 reactive api 或者 `CompletableFuture` 来通过异步编程来增加异步API的优势，增大资源的利用率。
@@ -727,7 +727,7 @@ public CompletableFuture<ID> onEvent(FriendMessageEvent event) {
 `@Filter` 注解是一个可以提供部分参数来快速过滤消息内容的注解，他需要配合 `@Listener` 使用，并标记在方法上：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Filter("你好")
@@ -738,7 +738,7 @@ suspend fun onEvent(event: FooEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Filter("你好")
@@ -754,7 +754,7 @@ public void onEvent(FooEvent event) {
 上述示例中，即代表事件的 `EventListenerProcessingContext.textContext == "你好"` 的时候才会触发事件，相当于：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -767,7 +767,7 @@ suspend fun onEvent(context: EventListenerProcessingContext, event: FooEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -789,7 +789,7 @@ public void onEvent(EventListenerProcessingContext context, FooEvent event) {
 那么可以配置属性 `@Filter(value = "xx", ifNullPass = true)`
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Filter(value = "你好", ifNullPass = true)
@@ -800,7 +800,7 @@ suspend fun onEvent(event: FooEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Filter(value = "你好", ifNullPass = true)
@@ -830,7 +830,7 @@ public void onEvent(FooEvent event) {
 由上可见，之前示例中的 `Filter("你好")` 实际上是通过**正则匹配**完成的。下面的示例中，我们将改为直接使用字符串全等匹配来实现：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Filter(value = "你好", matcher = MatchType.TEXT_EQUALS)
@@ -841,7 +841,7 @@ suspend fun onEvent(event: FooEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Filter(value = "你好", matcher = MatchType.TEXT_EQUALS)
@@ -860,7 +860,7 @@ public void onEvent(FooEvent event) {
 做过滤（例如只能由指定的人或群或bot触发），那么你可以使用 `@Filter(targets = @Filter.Targets(...))` 。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Filter(targets = @Filter.Targets(bots = ["123", "456"]))
@@ -871,7 +871,7 @@ suspend fun onEvent(event: FooEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Filter(targets = @Filter.Targets(bots = {"123", "456"}))
@@ -915,7 +915,7 @@ public void onEvent(FooEvent event) {
 如果你想要为一个监听函数提供多个过滤条件，那么多写两次就好了：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Filter(value = "你", matchType = MatchType.TEXT_STARTS_WITH)
@@ -927,7 +927,7 @@ suspend fun onEvent(event: FooEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Filter(value = "你", matchType = MatchType.TEXT_STARTS_WITH)
@@ -946,7 +946,7 @@ public void onEvent(FooEvent event) {
 但是如果你希望多个条件必须**全部满足**，或者**全不满足**时该怎么做呢？此时你需要使用 `@Filters`：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Filters(value = [
@@ -962,7 +962,7 @@ suspend fun onEvent(event: FooEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Filters(value = {
@@ -998,7 +998,7 @@ public void onEvent(FooEvent event) {
 > 我们假设在 `GroupMessageEvent` 事件中
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 **通过字符串截取并转化**:
 
@@ -1081,7 +1081,7 @@ suspend fun EventListenerProcessingContext.onEvent(event: GroupMessageEvent) {
 
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 **通过字符串截取并转化**:
 
@@ -1217,7 +1217,7 @@ private static String getText(EventListenerProcessingContext context, GroupMessa
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 private val helps = mutableMapOf(
@@ -1234,7 +1234,7 @@ suspend fun onEvent(event: GroupMessageEvent, @FilterValue("number") number: Int
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 // class ...
@@ -1265,7 +1265,7 @@ public void onEvent(GroupMessageEvent event, @FilterValue("number") int number) 
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 private val helps = mutableMapOf(
@@ -1282,7 +1282,7 @@ suspend fun onEvent(event: GroupMessageEvent, @FilterValue("number") number: Int
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 // class ...
@@ -1336,7 +1336,7 @@ public void onEvent(GroupMessageEvent event, @FilterValue("number") int number) 
 > 通过 `EventProcessingContext.event` 获取并进行类型转化。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -1346,7 +1346,7 @@ suspend fun onEvent(event: Event) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -1363,7 +1363,7 @@ public void onEvent(Event event) {
 监听函数的事件处理上下文（是 `EventProcessingContext` 的子类）。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -1373,7 +1373,7 @@ suspend fun onEvent(context: EventListenerProcessingContext) { // 或 EventProce
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -1392,7 +1392,7 @@ public void onEvent(EventListenerProcessingContext context) { // 或 EventProces
 > 通过 `EventProcessingContext.getAttribute(ApplicationAttributes.Application)` 获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -1402,7 +1402,7 @@ suspend fun onEvent(application: Application) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -1421,7 +1421,7 @@ public void onEvent(Application application) {
 > 通过 `EventListenerProcessingContext.listener` 获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -1431,7 +1431,7 @@ suspend fun onEvent(listener: EventListener) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -1450,7 +1450,7 @@ public void onEvent(EventListener listener) {
 > 通过 `EventProcessingContext.getAttribute(SimpleScope.Global)` 获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -1460,7 +1460,7 @@ suspend fun onEvent(globalScope: GlobalScopeContext) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -1479,7 +1479,7 @@ public void onEvent(GlobalScopeContext globalScope) {
 > 通过 `EventProcessingContext.getAttribute(SimpleScope.ContinuousSession)` 获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -1489,7 +1489,7 @@ suspend fun onEvent(continuousSessionContext: ContinuousSessionContext) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -1508,7 +1508,7 @@ public void onEvent(ContinuousSessionContext continuousSessionContext) {
 > 通过 `EventProcessingContext.messagesSerializersModule` 获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -1518,7 +1518,7 @@ suspend fun onEvent(serializersModule: SerializersModule) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -1537,7 +1537,7 @@ public void onEvent(SerializersModule serializersModule) {
 > 通过 `EventProcessingContext.listener.getAttribute(BootListenerAttributes.RawFunction)` 获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -1547,7 +1547,7 @@ suspend fun onEvent(function: KFunction<*>) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -1564,7 +1564,7 @@ public void onEvent(KFunction<*> function) {
 标记了 `@FilterValue` 的参数。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Filter("foo(?<value>.+)")
@@ -1575,7 +1575,7 @@ suspend fun onEvent(@FilterValue("value") value: Int) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Filter("foo(?<value>.+)")
@@ -1594,7 +1594,7 @@ public void onEvent(@FilterValue("value") String value) {
 以 Spring Boot 项目为例：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Component
@@ -1609,7 +1609,7 @@ suspend fun onEvent(foo: Foo) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 // Foo.java

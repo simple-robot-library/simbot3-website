@@ -28,7 +28,7 @@ import Label from '@site/src/components/Label'
 目前，simbot2的坐标大概是这个样子的：
 
 <Tabs groupId="use-dependency">
-<TabItem value="Maven">
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
 
 ```xml
 <dependency>
@@ -39,16 +39,14 @@ import Label from '@site/src/components/Label'
 ```
 
 </TabItem>
-
-<TabItem value="Gradle Kotlin DSL">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
 ```kotlin
 implementation("love.forte.simple-robot:xxx:2.x.x")
 ```
 
 </TabItem>
-
-<TabItem value="Gradle Groovy">
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
 ```groovy
 implementation 'love.forte.simple-robot:xxx:2.x.x'
@@ -60,7 +58,7 @@ implementation 'love.forte.simple-robot:xxx:2.x.x'
 而目前的simbot3的坐标大概是这个样子的：
 
 <Tabs groupId="use-dependency">
-<TabItem value="Maven">
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
 
 ```xml
 <dependency>
@@ -71,16 +69,14 @@ implementation 'love.forte.simple-robot:xxx:2.x.x'
 ```
 
 </TabItem>
-
-<TabItem value="Gradle Kotlin DSL">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
 ```kotlin
 implementation("love.forte.simbot:simbot-xxx:3.x.x")
 ```
 
 </TabItem>
-
-<TabItem value="Gradle Groovy">
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
 ```groovy
 implementation 'love.forte.simbot:simbot-xxx:3.x.x'
@@ -93,7 +89,7 @@ implementation 'love.forte.simbot:simbot-xxx:3.x.x'
 因此，我们认为，实际上对于simbot3使用如下形式的定义可能会更加合适：
 
 <Tabs groupId="use-dependency">
-<TabItem value="Maven">
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
 
 ```xml
 <dependency>
@@ -104,16 +100,14 @@ implementation 'love.forte.simbot:simbot-xxx:3.x.x'
 ```
 
 </TabItem>
-
-<TabItem value="Gradle Kotlin DSL">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
 ```kotlin
 implementation("love.forte.simbot3:simbot3-xxx:0.x.x")
 ```
 
 </TabItem>
-
-<TabItem value="Gradle Groovy">
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
 ```groovy
 implementation 'love.forte.simbot3:simbot3-xxx:0.x.x'
@@ -138,7 +132,7 @@ implementation 'love.forte.simbot3:simbot3-xxx:0.x.x'
 :::
 
 <Tabs groupId="use-dependency">
-<TabItem value="Maven">
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
 
 ```xml
 <dependency>
@@ -149,16 +143,14 @@ implementation 'love.forte.simbot3:simbot3-xxx:0.x.x'
 ```
 
 </TabItem>
-
-<TabItem value="Gradle Kotlin DSL">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
 ```kotlin
 implementation("love.forte.simbot4:simbot4-xxx:0.x.x")
 ```
 
 </TabItem>
-
-<TabItem value="Gradle Groovy">
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
 ```groovy
 implementation 'love.forte.simbot4:simbot4-xxx:0.x.x'

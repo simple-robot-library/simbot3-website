@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 plainText的基础实现，用来描述一个最基础的纯文本消息。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val text1: Text = "Hello".toText()
@@ -26,7 +26,7 @@ val emptyText: Text = Text()
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Text text = Text.of("Hello");
@@ -43,7 +43,7 @@ final Text emptyText = Text.getEmptyText();
 如果某组件存在较为复杂、无法由 `At` 满足的通知消息类型，则需要由对应组件自行实现另外的消息，并尽可能提供针对于解析 `At` 的兼容。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val at: At = At(123.ID)
@@ -51,7 +51,7 @@ val atMember: At = At(event.author().id)
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final At at = new At(Identifies.ID(123));
@@ -68,14 +68,14 @@ final At atMember = new At(event.getAuthor().getId());
 假如某组件存在更为细粒度的“复数At”，那么需要提供额外的实现类型，并尽可能提供针对于解析 `AtAll` 的兼容。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val atAll: AtAll = AtAll
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final AtAll atAll = AtAll.INSTANCE;
@@ -97,14 +97,14 @@ final AtAll atAll = AtAll.INSTANCE;
 核心库提供了一个 `Image` 的标准实现类型：`ResourceImage`，用于提供一个资源对象并作为你想要发送的图片资源。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val image = Path("xxx/image.jpg").toResource().toImage()
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Path path = Paths.get("xxx/image.jpg");
@@ -125,7 +125,7 @@ ResourceImage image = Image.of(resource);
 为了避免频繁的IO操作，或许你可以提前将图片文件读取为字节数组。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val image = Path("xxx/image.jpg").let {
@@ -134,7 +134,7 @@ val image = Path("xxx/image.jpg").let {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Path path = Paths.get("xxx/image.jpg");
@@ -162,18 +162,18 @@ ResourceImage image = Image.of(resource);
 将图片上传到服务器的方式是通过 `MiraiSendOnlyImage.upload` 实现的：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
 suspend fun onEvent(event: MiraiGroupMessageEvent) {
     val sendOnlyImage = MiraiSendOnlyImage.of(Path("xxx/image.jpg").toResource())
-    val uploadedImage = sendOnlyImage.upload(event.group());
+    val uploadedImage = sendOnlyImage.upload(event.group())
 }
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -193,7 +193,7 @@ public void onEvent(MiraiGroupMessageEvent event) {
 来完成：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -203,7 +203,7 @@ suspend fun onEvent(event: KookMessageEvent.Channel) {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -249,7 +249,7 @@ public void onEvent(KookMessageEvent.Channel event) {
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val bot: Bot = ...
@@ -257,7 +257,7 @@ val image = bot.resolveImage("xxxx".ID)
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Bot bot = ...;
@@ -294,14 +294,14 @@ Emoji是一个 _保留类型_ ，它类似于 [Face](#face)，用来表示一个
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val emoji: Emoji = Emoji(123.ID)
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Emoji emoji = new Emoji(Identifies.ID(123));
@@ -315,14 +315,14 @@ final Emoji emoji = new Emoji(Identifies.ID(123));
 假如平台的表情较为复杂，或者存在很多不同种类的表情消息，则需要由组件提供其他额外的实现，并尽可能提供针对于解析 `Face` 的兼容。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val face: Face = Face(123.ID)
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Face face = new Face(Identifies.ID(123));

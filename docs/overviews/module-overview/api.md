@@ -3,24 +3,44 @@ title: api模块
 sidebar_position: 10
 ---
 
-`api` 模块是simbot最基础的模块，对绝大部分基础内容进行定义约束。
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-## 命名空间
-说是命名空间，实际上只是“包路径”的定义方式。
+`api` 模块是simbot3中最基础的模块，用于提供对simbot3中各种功能API的定义。
 
+## 描述
 
-- `love.forte.simbot.*`
+`api` 模块的全名为 `simbot-api`。
 
-此路径下（不含深层级路径）的内容一般是一些通用内容，比如 [唯一标识](../../definition/ID.md)
+它是simbot3核心能力的主要组成部分，比如 `simbot-core` 便依赖并实现了 `api` 模块中提供的大多数能力与接口。
+在文档中你能看到的大多数基础内容介绍中出现的东西（比如 `ID`、`Event` 等）也都是由 `api` 模块定义并提供的。
 
+## 依赖参考
 
-- `love.forte.simbot.event`
+<Tabs groupId="use-dependency">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
-一切与事件调度相关的内容。比如事件拦截器、事件过滤器、事件执行器、事件管理器、监听函数等。
+```kotlin
+implementation("love.forte.simbot:simbot-api:$VERSION")
+```
 
+</TabItem>
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
+```gradle
+implementation 'love.forte.simbot:simbot-api:$VERSION'
+```
 
-:::danger
-TODO
-:::
+</TabItem>
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
 
+```xml
+<dependency>
+  <groupId>love.forte.simbot</groupId>
+  <artifactId>simbot-api</artifactId>
+  <version>${VERSION}</version>
+</dependency>
+```
+
+</TabItem>
+</Tabs>

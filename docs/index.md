@@ -30,7 +30,7 @@ Simple Robot(下文简称simbot) 一开始是作为一个机器人标准开发�
 提供基本全异步的API，保证整体性能； 并向Java开发者提供兼容API，提供兼容性的同时通过显式的函数语义向开发者描述两套API之间的异同。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val friend: Friend = event.friend()  // suspend api
@@ -38,7 +38,7 @@ friend.send("Hey!")                  // suspend api
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java Blocking">
+<TabItem value="Java" label="Java Blocking" attributes={{'data-value': `Java`}}>
 
 simbot3 提供面向Java兼容的阻塞API。
 
@@ -50,7 +50,7 @@ friend.sendBlocking("Hey!");         // blocking api for java
 ```
 
 </TabItem>
-<TabItem value="Java Async">
+<TabItem value="Java Async" attributes={{'data-value': `Java`}}>
 
 simbot3 提供面向Java兼容的异步API。这些异步API基于 JDK8 的 `CompletableFuture`，
 
@@ -75,7 +75,7 @@ event.getFriendAsync() // async api for Java
 <TabItem value="simbot3">
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -89,7 +89,7 @@ suspend fun myListener(messageEvent: GroupMessageEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java Blocking">
+<TabItem value="Java" label="Java Blocking" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -103,7 +103,7 @@ public void myListener(GroupMessageEvent messageEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java Async">
+<TabItem value="Java Async" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -124,7 +124,6 @@ public CompletableFuture<?> myListener(GroupMessageEvent messageEvent) {
 </Tabs>
 
 </TabItem>
-
 <TabItem value="simbot2">
 
 :::note 实际上...
@@ -136,7 +135,7 @@ public CompletableFuture<?> myListener(GroupMessageEvent messageEvent) {
 :::
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @OnGroup
@@ -151,7 +150,7 @@ fun myListener(messageEvent: GroupMsg, sender: Sender) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @OnGroup

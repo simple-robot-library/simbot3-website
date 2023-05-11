@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="ExampleListener.kt"
 // 监听函数
@@ -43,7 +43,7 @@ suspend fun myInterceptor() = listenerInterceptor("abc") { context ->
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="ExampleListener.java"
 @Beans

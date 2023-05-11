@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 在 `Maven` 或 `Gradle` 下，你可以通过 [Spring Boot 构建应用(打包)](https://spring.io/guides/gs/spring-boot/) 的方式将你的程序打包为一个 `Fat Jar` 并部署到你希望的地方。
 
 <Tabs groupId="build-tool">
-<TabItem value="Maven" default>
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
 
 ```xml title=pom.xml
 <build>
@@ -42,7 +42,7 @@ import TabItem from '@theme/TabItem';
 然后执行 `mvn package` 。
 
 </TabItem>
-<TabItem value="Gradle Kotlin DSL">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
 ```kotlin title=gradle.build.kts
 plugins {
@@ -54,7 +54,7 @@ plugins {
 然后执行 Task: `bootJar`。
 
 </TabItem>
-<TabItem value="Gradle Groovy">
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
 ```groovy title=gradle.build
 plugins {

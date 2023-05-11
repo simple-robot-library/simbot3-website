@@ -18,27 +18,27 @@ title: 时间戳
 如下为 `Timestamp` 的基本定义（简化版）：
 
 ```kotlin
-public sealed class Timestamp : Comparable<Timestamp> {
+ sealed class Timestamp : Comparable<Timestamp> {
 
     /**
      * 秒值。
      */
-    public abstract val second: Long
+    abstract val second: Long
 
     /**
      * 毫秒值。
      */
-    public abstract val millisecond: Long
+    abstract val millisecond: Long
 
     /**
      * 此时间戳是否是一个被支持的真实时间戳。
      * 如果得到false，则代表此时间戳本质上不存在，且上述秒值和毫秒值最终结果应为-1。
      */
-    public abstract fun isSupport(): Boolean
+    abstract fun isSupport(): Boolean
 
 
-    public object NotSupport : Timestamp() {
-       // 细节省略...
+    object NotSupport : Timestamp() {
+        // 细节省略...
     }
 }
 ```
@@ -53,7 +53,7 @@ import TabItem from '@theme/TabItem';
 `Timestamp` 实际上的应用也很简单，主要就是用于获取两种时间戳类型。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val timestamp: Timestamp = ...
@@ -71,7 +71,7 @@ val instant: Instant = timestamp.instantValue // 转化为 java.time.Instant 对
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Timestamp timestamp = ...
@@ -90,7 +90,7 @@ final boolean support = timestamp.isSupport();       // 是否为有效时间
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 Timestamp.now()                             // 获取当前时间对应的时间戳
@@ -103,7 +103,7 @@ Timestamp.notSupport()                      // 得到一个代表"无效"的时�
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Timestamp.now();                            // 获取当前时间对应的时间戳

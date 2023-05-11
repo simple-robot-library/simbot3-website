@@ -3,8 +3,9 @@ sidebar_position: 10
 title: 唯一标识 ID
 ---
 
-import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
-
+import Tabs from '@theme/Tabs'; 
+import TabItem from '@theme/TabItem';
+import Label from '@site/src/components/Label';
 
 ID，用于代表一个目标的唯一标识。ID一个大家都熟悉的内容，它常常表现为一串数字，或者一串字符。
 
@@ -20,7 +21,7 @@ sealed class ID : Comparable<ID> {
 	fun toString(): String
   
   // 比较
-  fun compareTo(other ID): Int
+  fun compareTo(other: ID): Int
 }
 ```
 
@@ -51,25 +52,25 @@ sealed class NumericalID<N : Number> : ID() {
 }
 ```
 
-`NumericalID`提供了6个基本的类型实现：
+`NumericalID`提供了很多基本的类型实现，但是实际上只有整型类型才是最常用的类型。
+
 - `IntID`
 - `LongID`
-- `DoubleID`
-- `FloatID`
-- `BigDecimalID`
-- `BigIntegerID`
+- `UIntID` <Label>3.1.0</Label>
+- `ULongID` <Label>3.1.0</Label>
+
+在未来，也可能在 simbot 4.0，ID类型会进一步被简化。
 
 简单的使用示例：
 
-
-
 <!-- 展示类型 -->
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
+
+[//]: # ( attributes={{'data-value': 'Kotlin'}})
 
 <!-- id类型 -->
 <Tabs groupId="id-type">
-
 <TabItem value="Int">
 
 ```kotlin
@@ -84,43 +85,32 @@ val longId = 123456L.ID
 ```
 
 </TabItem>
-<TabItem value="Double">
+<TabItem value="UInt">
+
+> <Label>3.1.0</Label>
 
 ```kotlin
-val doubleId = 123.456.ID
+val longId = 123456u.ID
 ```
 
 </TabItem>
-<TabItem value="Float">
+<TabItem value="ULong">
+
+> <Label>3.1.0</Label>
 
 ```kotlin
-val floatId = 123.456F.ID
+val ul: ULong = 123456u
+val longId = ul.ID
 ```
 
 </TabItem>
-<TabItem value="BigDecimal">
-
-```kotlin
-val bdId = BigDecimal("123,456").ID
-```
-
-</TabItem>
-<TabItem value="BigInteger">
-
-```kotlin
-val biId = BigInteger.valueOf(123456).ID
-```
-
-</TabItem>
-
 </Tabs>
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 <!-- id类型 -->
 <Tabs groupId="id-type">
-
 <TabItem value="Int">
 
 ```java
@@ -135,35 +125,6 @@ final LongID longId = Identifies.ID(123456L);
 ```
 
 </TabItem>
-<TabItem value="Double">
-
-```java
-final DoubleID doubleId = Identifies.ID(123.456);
-```
-
-</TabItem>
-<TabItem value="Float">
-
-```java
-final FloatID floatId = Identifies.ID(123.456F);
-```
-
-</TabItem>
-<TabItem value="BigDecimal">
-
-```java
-final BigDecimalID bdId = Identifies.ID(new BigDecimal("123.456").setScale(1, RoundingMode.HALF_UP));
-```
-
-</TabItem>
-<TabItem value="BigInteger">
-
-```java
-final BigIntegerID biId = Identifies.ID(BigInteger.valueOf(500L));
-```
-
-</TabItem>
-
 </Tabs>
 
 </TabItem>
@@ -175,7 +136,7 @@ final BigIntegerID biId = Identifies.ID(BigInteger.valueOf(500L));
 除了数字ID，最常见的就是字符序列ID了，比如一串UUID。`CharSequenceID` 是一个独立实现，表示一个最基础的字符串ID。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val id: CharSequenceID = "HelloWorld".ID
@@ -184,7 +145,7 @@ val anyId: CharSequenceID = 123.ID.toCharSequenceID() // 所有ID理论上都可
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final CharSequenceID helloId = Identifies.ID("HelloWorld");

@@ -64,7 +64,7 @@ import TabItem from '@theme/TabItem';
 让我们来看一下对照。首先，假如在simbot2中，你编写的内容如果是：
 
 <Tabs groupId="code" class="shadow--md">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="simbot2✌"
 @Beans
@@ -77,7 +77,7 @@ class MyListener {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="simbot2✌"
 @Beans
@@ -95,7 +95,7 @@ public class MyListener {
 那么在simbot3中其表现为（在boot相关模块下）：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="simbot3👌"
 @Beans
@@ -108,7 +108,7 @@ class MyListener {
 ```
 
 </TabItem>
-<TabItem value="KotlinTop" label="Kotlin(Top-Level)">
+<TabItem value="KotlinTop" label="Kotlin(Top-Level)" attributes={{'data-value': `Kotlin`}}>
 
 :::caution 实验性
 `boot` 模块下对于Kotlin顶层函数的扫描与加载功能尚处于**实验阶段**。
@@ -122,7 +122,7 @@ suspend fun FriendMessageEvent.listen() {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="simbot3👌"
 @Beans
@@ -148,7 +148,7 @@ public class MyListener {
 在simbot2中，你如果需要在非监听函数环境中使用bot或者需要botManager并寻找其他bot，那么你需要借助依赖注入功能：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="simbot2✌"
 @Beans
@@ -164,7 +164,7 @@ class External {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="simbot2✌"
 @Beans
@@ -185,7 +185,7 @@ public class External {
 而在v3中，因为所有的 `BotManager` 都是由 `OriginBotManager` 进行管理的，因此你可以考虑直接使用 `OriginBotManager`：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="simbot3👌"
 fun useBotManager() {
@@ -198,7 +198,7 @@ fun useBotManager() {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="simbot3👌"
 public void useBotManager() {
@@ -224,7 +224,7 @@ public void useBotManager() {
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 从bot：
 
@@ -255,7 +255,7 @@ suspend fun onEvent(context: EventProcessingContext,  event: FooEvent){
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 从bot：
 

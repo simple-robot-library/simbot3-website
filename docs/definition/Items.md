@@ -20,46 +20,46 @@ import CodeBlock from '@theme/CodeBlock';
 > 下述定义内容有所简化。
 
 ```kotlin title='love/forte/simbot/utils/item/Items.kt'
-public interface Items<out T> {
-    
+ interface Items<out T> {
+
     /**
      * 数据限流。取得的数据条数的最大上限。当 [count] > 0 时有效。
      */
-    public fun limit(count: Int): Items<T>
-    
-    
+    fun limit(count: Int): Items<T>
+
+
     /**
      * 数据偏移。从 [offset] 数量之后的数据后开始获取。当 [offset] > 0 时有效。
      */
-    public fun offset(count: Int): Items<T>
-    
-    
+    fun offset(count: Int): Items<T>
+
+
     /**
      * 批次大小。如果支持批次获取的话，则每批次获取 [size] 的元素数量。通常 [size] > 0 时有效。
      */
-    public fun batch(size: Int): Items<T>
-    
-    
+    fun batch(size: Int): Items<T>
+
+
     /**
      * 收集当前数据序列中的元素. [collectTo] 可能会产生挂起，会直到当前序列中的所有可能产生的元素收集完毕后结束挂起。
      */
-    public suspend fun collect(collector: suspend (T) -> Unit)
-    
+    suspend fun collect(collector: suspend (T) -> Unit)
+
     /**
      * 将当前元素序列转化为 [Flow].
      */
-    public fun asFlow(): Flow<T>
-    
+    fun asFlow(): Flow<T>
+
     /**
      * 将当前元素序列转化为 [Sequence].
      */
-    public fun asSequence(): Sequence<T>
-    
+    fun asSequence(): Sequence<T>
+
     /**
      * 将当前元素序列转化为 [Stream].
      */
-    public fun asStream(): Stream<out T>
-    
+    fun asStream(): Stream<out T>
+
     // 省略部分其他兼容性API
 }
 ```
@@ -107,7 +107,7 @@ items内部最终记录的 `limit` 值为 `20`，即后者覆盖前者。
 `Items` 中的收集函数有：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 | API                                                 | 描述             |
 |-----------------------------------------------------|----------------|
@@ -123,7 +123,7 @@ items内部最终记录的 `limit` 值为 `20`，即后者覆盖前者。
 
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 | API                        | 描述                           |
 |----------------------------|------------------------------|
@@ -154,7 +154,7 @@ items内部最终记录的 `limit` 值为 `20`，即后者覆盖前者。
 `Items` 中的转化函数的使用参考：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 class Bar
@@ -185,7 +185,7 @@ fun foo(items: Items<Bar>) {
 :::
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 class Bar{ /* ... */ }

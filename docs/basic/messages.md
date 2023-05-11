@@ -28,7 +28,7 @@ import CodeBlock from '@theme/CodeBlock';
 的构建方式是使用其静态工厂方法 `Text.of` 或 `Text.getEmptyText()`：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val text1: Text = "Hello".toText()
@@ -37,7 +37,7 @@ val emptyText: Text = Text()
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Text text = Text.of("Hello");
@@ -51,7 +51,7 @@ final Text emptyText = Text.getEmptyText();
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val at: At = At(123.ID)
@@ -59,7 +59,7 @@ val atMember: At = At(event.author().id)
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final At at = new At(Identifies.ID(123));
@@ -73,14 +73,14 @@ final At atMember = new At(event.getAuthor().getId());
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val atAll: AtAll = AtAll
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final AtAll atAll = AtAll.INSTANCE;
@@ -97,7 +97,7 @@ final AtAll atAll = AtAll.INSTANCE;
 上述我们讲的是一个独立消息元素（`Message.Element`）的构建方式。将多个消息元素“组合”起来，便形成了**消息链**（`Messages`）。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 在Kotlin中，合并消息元素为一个消息链的最基本方式便是使用 `plus` 操作符直接进行拼接。不过需要注意，前文我们提到过消息是**不可变**的，消息链也是，
 因此通过操作符合并后将会得到一个**新的消息（链）**。
@@ -115,7 +115,7 @@ val messages = listOf("文字".toText(), At(123.ID), AtAll).toMessages()
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 在Java中，你可以通过 `Messages.toMessages(...)` 将多条消息元素合并为一个消息链。
 
@@ -131,7 +131,7 @@ final Messages messages = Messages.toMessages(Text.of("文字"), new At(Identifi
 除了直接转化，核心库也提供了一个用于构建消息链的构建器 `MessageBuilder`。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 在Kotlin中，直接使用 `buildMessages` 来通过构建器构建你的消息链：
 
@@ -153,7 +153,7 @@ val messages = buildMessages {
 
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 在Java中，你可以直接构建它并使用：
 
@@ -186,7 +186,7 @@ final Messages messages = messagesBuilder
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val messages: Messages = ...
@@ -204,7 +204,7 @@ val ats: List<At> = messages[At]
 
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Messages messages = ...;
@@ -228,7 +228,7 @@ final List<At> ats = messages.get(At.Key);
 上文提到过，消息是**不可变**的，因此如果你想要向一个消息链中_**"追加"**_一个消息，其实你需要的是得到一个增加了目标消息元素的新消息链。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val messages: Messages = ...
@@ -239,7 +239,7 @@ val newMessages: Messages = messages + AtAll
 
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Messages messages = Messages.messages();
@@ -263,7 +263,7 @@ final Messages newMessages = messages.plus(AtAll.INSTANCE);
 简单来讲，基本上常见的可联系对象都是实现了 `SendSupport` 的。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val messages: Messages = ...
@@ -274,7 +274,7 @@ val receipt = group.send(messages)
 
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Messages messages = ...;
@@ -293,7 +293,7 @@ final CompletableFuture<? extends MessageReceipt> future = group.sendAsync(messa
 `ReplySupport` 是接口类型，其代表为一个“可以回复消息的目标”，由 `MessageEvent` 默认实现。与 `SendSupport` 不同，`ReplySupport` 的默认实现是**消息事件**类型。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val messages: Messages = ...
@@ -304,7 +304,7 @@ val receipt = event.reply(messages)
 
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Messages messages = ...;
@@ -336,7 +336,7 @@ _"发送消息"_ 和 _"回复消息"_ 的功能行为类似，但又不太一样
 `MessageReceipt` 实现接口 `DeleteSupport`，代表其是可以被 _"删除"_ 的。通常情况下，这种删除即代表了常说的**消息撤回**。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val messages: Messages = ...
@@ -348,7 +348,7 @@ receipt.delete()
 
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final Messages messages = ...;
@@ -393,32 +393,32 @@ future.thenCompose(DeleteSupport::deleteAsync);
  * @see SingleMessageReceipt
  * @see aggregation
  */
-public abstract class AggregatedMessageReceipt : StandardMessageReceipt(), Iterable<SingleMessageReceipt> {
-    
+abstract class AggregatedMessageReceipt : StandardMessageReceipt(), Iterable<SingleMessageReceipt> {
+
     /**
      * 聚合消息中的 [isSuccess] 代表是否存在**任意**回执的 [MessageReceipt.isSuccess] 为 `true`。
      */
     abstract override val isSuccess: Boolean
-    
+
     /**
      * 当前聚合消息中包含的所有 [MessageReceipt] 的数量。
      */
-    public abstract val size: Int
-    
+    abstract val size: Int
+
     /**
      * 根据索引值获取到指定位置的 [SingleMessageReceipt]。
      */
-    public abstract operator fun get(index: Int): SingleMessageReceipt
-    
+    abstract operator fun get(index: Int): SingleMessageReceipt
+
     /**
      * 删除其所代表的所有消息回执。
      */
     override suspend fun delete(): Boolean
-    
+
     /**
      * 删除其所代表的所有消息回执。
      */
-    public suspend fun deleteAll(): Int
+    suspend fun deleteAll(): Int
 }
 ```
 

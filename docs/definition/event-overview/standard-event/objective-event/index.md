@@ -29,7 +29,7 @@ import CodeBlock from '@theme/CodeBlock';
 继承 `UserInfoContainer` 并提供属性 `user` 的获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val user = event.user()
@@ -47,7 +47,7 @@ event.useUser { user: User ->
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 User user = event.getUser();
@@ -67,7 +67,7 @@ User user = event.getUser();
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val member: Member = event.member()
@@ -86,7 +86,7 @@ event.useUser { member: Member ->
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Member member = event.getMember();
@@ -105,7 +105,7 @@ Member member = event.getMember();
 继承 `FriendInfoContainer` 并提供属性 `friend` 的获取。通常情况下，`user` 的值与 `friend` 的值一致。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val friend: Friend = event.friend()
@@ -124,7 +124,7 @@ event.useFriend { friend: Friend ->
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Friend friend = event.getFriend();
@@ -142,7 +142,7 @@ Friend friend = event.getFriend();
 提供属性 `organization` 的获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val organization: Organization = event.organization()
@@ -161,7 +161,7 @@ event.useOrganization { organization: Organization ->
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Organization organization = event.getOrganization();
@@ -178,7 +178,7 @@ Organization organization = event.getOrganization();
 一个与 **群** 相关的事件。继承 `GroupInfoContainer` 并提供属性 `group` 的获取。通常情况下 `group` 的值与 `organization` 的值一致。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val group: Group = event.group()
@@ -197,7 +197,7 @@ event.useGroup { group: Group ->
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Group group = event.getGroup();
@@ -213,7 +213,7 @@ Group group = event.getGroup();
 一个与 **频道服务器** 相关的事件。提供属性 `guild` 的获取。通常情况下 `guild` 的值与 `organization` 的值一致。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val guild: Guild = event.guild()
@@ -232,7 +232,7 @@ event.useGuild { guild: Guild ->
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Guild guild = event.getGuild();
@@ -248,7 +248,7 @@ Guild guild = event.getGuild();
 一个与 **子频道** 相关的事件。提供属性 `channel` 的获取。通常情况下 `channel` 的值与 `organization` 的值一致。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val channel: Channel = event.channel()
@@ -267,7 +267,7 @@ event.useChannel { channel: Channel ->
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Channel channel = event.getChannel();

@@ -1,5 +1,6 @@
 ---
 title: boot模块
+draft: true
 ---
 
 `boot`模块，快速起步模块。

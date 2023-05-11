@@ -42,24 +42,25 @@ createSimpleApplication {
 ## EventProcessingContext
 
 **`EventProcessingContext`** 的简化版基本定义大概如下：
+
 ```kotlin
-public interface EventProcessingContext /* ... */ {
+ interface EventProcessingContext /* ... */ {
     /**
      * 本次监听流程中的事件主体。
      */
-    public val event: Event
+    val event: Event
     
     /**
      * 已经执行过的所有监听函数的结果。
      *
      * 此列表仅由事件处理器内部操作，是一个对外不可变视图。
      */
-    public val results: List<EventResult>
+    val results: List<EventResult>
     
     /**
      * 当前事件所处环境中所能够提供的消息序列化模块信息。
      */
-    public val messagesSerializersModule: SerializersModule
+    val messagesSerializersModule: SerializersModule
     
     /**
      * 根据一个 [Attribute] 得到一个属性。
@@ -90,7 +91,7 @@ public interface EventProcessingContext /* ... */ {
 这两个属性继承自 `InstantScopeContext`，可以用于在流程中传递属性。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 class Foo   // 保存元素类型
@@ -110,7 +111,7 @@ fun useAttr(context: EventProcessingContext) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 public class Example {
@@ -145,12 +146,12 @@ public class Example {
 一个 `EventListenerProcessingContext` 的简化版定义如下：
 
 ```kotlin
-public interface EventListenerProcessingContext : EventProcessingContext {
+ interface EventListenerProcessingContext : EventProcessingContext {
     /**
      * 当前（将要）被执行的监听函数。
      */
-    public val listener: EventListener
-    
+    val listener: EventListener
+
     /**
      * 当前监听函数的主要文本内容，一般可用于在拦截器、过滤器、监听函数相互组合时进行一些过滤内容匹配。
      *
@@ -158,8 +159,8 @@ public interface EventListenerProcessingContext : EventProcessingContext {
      * 其他情况下默认为null。
      *
      */
-    public var textContent: String?
-    
+    var textContent: String?
+
 }
 ```
 

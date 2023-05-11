@@ -44,10 +44,10 @@ import CodeBlock from '@theme/CodeBlock';
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
-val message: String? = event.message
+val message: String = event.message
 val requester: UserInfo = event.requester()
 val user: UserInfo = event.user()
 val type: RequestEvent.Type = event.type
@@ -57,7 +57,7 @@ val isRejected: Boolean = event.reject()
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 String message = event.getMessage();

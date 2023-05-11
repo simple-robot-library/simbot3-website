@@ -39,7 +39,7 @@ import TabItem from '@theme/TabItem';
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin 原始" default>
+<TabItem value="Kotlin" label="Kotlin 原始" default attributes={{'data-value': `Kotlin`}}>
 
 ## 使用Application
 
@@ -305,7 +305,7 @@ suspend fun main() {
 有关 `*.bot` 配置文件内的具体格式、内容或具体应用，参考下文的 **Bot配置** 。
 
 </TabItem>
-<TabItem value="Kotlin App">
+<TabItem value="Kotlin App" label="Kotlin App" attributes={{'data-value': `Kotlin`}}>
 
 ## 使用SimbootApp
 
@@ -463,7 +463,7 @@ suspend fun main(vararg args: String) { /* ... */ }
 :::
 
 </TabItem>
-<TabItem value="Java" label="Java App">
+<TabItem value="Java" label="Java App" attributes={{'data-value': `Java`}}>
 
 ## 使用SimbootApp
 

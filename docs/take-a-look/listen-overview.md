@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 ## 消息发送
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="ExampleListener.kt"
 @Listener // if use simboot
@@ -20,7 +20,7 @@ suspend fun GroupMessageEvent.listener() {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="ExampleListener.java"
 @Listener // if use simboot
@@ -34,7 +34,7 @@ public void listener(GroupMessageEvent event) {
 
 ## 消息回复
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="ExampleListener.kt"
 @Listener
@@ -44,7 +44,7 @@ suspend fun FriendMessageEvent.listener() {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="ExampleListener.java"
 @Listener
@@ -59,7 +59,7 @@ public void listener(FriendMessageEvent event) {
 
 ## 成员获取
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="ExampleListener.kt"
 @Listener
@@ -71,7 +71,7 @@ suspend fun GroupMessageEvent.listener() {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="ExampleListener.java"
 @Listener

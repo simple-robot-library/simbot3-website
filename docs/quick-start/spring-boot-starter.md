@@ -5,7 +5,7 @@ title: 使用SpringBoot
 ---
 
 此章节演示simbot以 `Spring Boot Starter` 的形式整合 [`spring`](http://spring.io/)
-。有关相关模块的说明，可以参考 [Simple Robot: Spring Boot Starter 模块概述](../overviews/module-overview/spring-boot-starter)
+。有关相关模块的说明，可以参考 [Simple Robot: Spring Boot Starter 模块概述](../overviews/module-overview/spring-boot)
 
 :::caution 别忘了组件
 
@@ -14,12 +14,22 @@ simbot核心库本身没有任何平台功能。当你阅读完本章节后，�
 你可以前往[**《组件》**](../component-overview)章节了解各个由simbot团队提供的组件实现，
 比如对接QQ机器人的[**mirai组件**](../component-overview/mirai)。
 
-
-
 对于组件的引用来说，不管是使用核心库还是使用SpringBoot都没有区别。
 
 :::
 
+export const L = ({children, href}) => (<a style={{fontSize: '1.18em'}} href={href}><b>{children}</b></a>)
+
+:::tip 单一组件
+
+
+
+对于单一组件的应用，你也可以参考如下链接：
+- <L href="https://simple-robot.github.io/simbot-component-qq-guild/docs/quick-start/spring-boot">QQ频道组件的SpringBoot快速开始</L>
+- <L href="https://simple-robot.github.io/simbot-component-kook/docs/quick-start/spring-boot">KOOK组件的SpringBoot快速开始</L>
+- <L href="https://component-mirai.simbot.forte.love/docs/quick-start/use-with-spring-boot">mirai组件的SpringBoot快速开始</L>
+
+:::
 
 
 # 安装
@@ -48,7 +58,7 @@ import TabItem from '@theme/TabItem';
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title='example/Main.kt'
 @EnableSimbot // 👈
@@ -61,7 +71,7 @@ fun main(args: Array<String>) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title='example/Main.java'
 @EnableSimbot // 👈
@@ -74,7 +84,6 @@ public class Main {
 ```
 
 </TabItem>
-
 </Tabs>
 
 :::caution 要坚持
@@ -96,7 +105,7 @@ public class Main {
 [anno-listener]: https://docs.simbot.forte.love/main/simboot-core-annotation/love.forte.simboot.annotation/-listener/
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title='MyListener.kt'
 @Component
@@ -110,7 +119,7 @@ class MyListener {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title='MyListener.java'
 @Component
@@ -160,7 +169,6 @@ simbot:
 ```
 
 </TabItem>
-
 <TabItem value="properties">
 
 ```properties
@@ -199,9 +207,9 @@ simbot.bot-configuration-resources[0]=classpath:simbot-bots/*.bot*
 
 :::note 比如..
 
-- 比如对接QQ机器人的[**mirai组件**](../component-overview/mirai)。
-- 比如对接KOOK的[**kook组件**](../component-overview/kook)。
 - 比如对接QQ频道的[**QQ频道组件**](../component-overview/qq-guild)。
+- 比如对接QQ机器人的[**mirai组件**](../component-overview/mirai)。
+- 比如对接KOOK的[**KOOK组件**](../component-overview/kook)。
 
 :::
 
@@ -217,9 +225,9 @@ simbot.bot-configuration-resources[0]=classpath:simbot-bots/*.bot*
 
 :::info 快速引导
 
-- 对于 mirai 组件，可前往参考 [**mirai组件: 《BOT配置文件》**](https://component-mirai.simbot.forte.love/docs/bot-config/)
-- 对于 KOOK 组件，_暂无_
-- 对于 QQ频道 组件，_暂无_
+- 对于 QQ频道 组件，[**QQ频道组件: 《BOT配置文件》**](https://simple-robot.github.io/simbot-component-qq-guild/docs/bot-config/)
+- 对于 mirai 组件，[**mirai组件: 《BOT配置文件》**](https://component-mirai.simbot.forte.love/docs/bot-config/)
+- 对于 KOOK 组件，[**KOOK组件: 《BOT配置文件》**](https://simple-robot.github.io/simbot-component-kook/docs/bot-config/)
 
 :::
 

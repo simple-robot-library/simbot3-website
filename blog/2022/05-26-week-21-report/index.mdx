@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 顾名思义，`BotMember` 即代表此bot在目标组织中所扮演的角色。它实现 `Bot` 和 `Member`，可以作为bot或成员使用。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin"  attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 suspend fun onEvent(event: GroupEvent) {
@@ -41,7 +41,7 @@ suspend fun onEvent(event: GroupEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" default attributes={{'data-value': `Java`}}>
 
 ```java
 public void onEvent(GroupEvent event) {

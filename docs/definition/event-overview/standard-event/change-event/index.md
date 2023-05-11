@@ -35,16 +35,16 @@ import CodeBlock from '@theme/CodeBlock';
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val source: Any = event.source
-val before: Any? = event.before
-val after: Any? = event.after
+val before: Any = event.before
+val after: Any = event.after
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Object source = event.getSource();

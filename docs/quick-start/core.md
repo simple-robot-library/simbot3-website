@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
 `Application` 是simbot应用程序的门户。在核心模块中提供了一个其工厂的最基础实现：`Simple`。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title='SimpleApp.kt'
 import love.forte.simbot.application.*
@@ -84,7 +84,7 @@ suspend fun main() {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title='SimpleApp.java'
 import kotlin.Unit;
@@ -154,10 +154,9 @@ public class SimpleApp {
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 <Tabs>
-
 <TabItem value="方式1">
 
 ```kotlin title='SimpleApp.kt'
@@ -184,7 +183,6 @@ suspend fun main() {
 ```
 
 </TabItem>
-
 <TabItem value="方式2">
 
 ```kotlin title='SimpleApp.kt'
@@ -209,7 +207,6 @@ suspend fun main() {
 ```
 
 </TabItem>
-
 <TabItem value="方式3">
 
 ```kotlin title='SimpleApp.kt'
@@ -235,12 +232,10 @@ suspend fun main() {
 ```
 
 </TabItem>
-
 </Tabs>
 
 </TabItem>
-
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title='SimpleApp.java'
 public class SimpleApp {
@@ -248,8 +243,8 @@ public class SimpleApp {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
         appBuilder.build((builder, configuration) -> {
             // 安装组件和BotManager
-            builder.install(...);
-            builder.install(...);
+            builder.install(...)
+            builder.install(...)
         });
 
         SimpleApplication application = appBuilder.createBlocking();
@@ -283,7 +278,6 @@ public class SimpleApp {
 ```
 
 </TabItem>
-
 </Tabs>
 
 
@@ -309,7 +303,7 @@ public class SimpleApp {
 :::
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 createSimpleApplication {
@@ -319,7 +313,7 @@ createSimpleApplication {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
@@ -336,7 +330,7 @@ ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, 
 它的实现分别为 `MiraiComponent` 和 `MiraiBotManager`，那么就会是下面这个样子：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 createSimpleApplication {
@@ -346,8 +340,7 @@ createSimpleApplication {
 ```
 
 </TabItem>
-
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 SimpleApplication application = Applications.buildSimbotApplication(Simple.INSTANCE)
@@ -369,7 +362,7 @@ SimpleApplication application = Applications.buildSimbotApplication(Simple.INSTA
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 suspend fun main() {
@@ -398,7 +391,7 @@ suspend fun main() {
 :::
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 public class SimpleApp {
@@ -455,7 +448,7 @@ MiraiBot = MiraiBotManager.register(long, String, Config)
 ### 通用Bot注册
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 除了针对于指定的组件进行特定的预注册以外，`Application` 中的 `BotManagers` 也提供了通用的注册函数 `register(BotVerifyInfo)`：
 
@@ -474,15 +467,15 @@ suspend fun main() {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title='SimpleApp.java'
 public class SimpleApp {
     public static void main(String[] args) {
         final ApplicationDslBuilder<SimpleApplicationConfiguration, SimpleApplicationBuilder, SimpleApplication> appBuilder = Applications.buildSimbotApplication(Simple.INSTANCE);
         appBuilder.build((builder, configuration) -> {
-            builder.install(...);
-            builder.install(...);
+            builder.install(...)
+            builder.install(...)
         });
 
         SimpleApplication application = appBuilder.createBlocking();

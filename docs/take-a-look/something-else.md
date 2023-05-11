@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 ### 好友
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -21,7 +21,7 @@ suspend fun FriendEvent.event() {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -37,7 +37,7 @@ public void event(FriendEvent event) {
 
 ### 群
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -47,7 +47,7 @@ suspend fun GroupEvent.event() {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -62,7 +62,7 @@ public void event(GroupEvent event) {
 
 ### 频道与子频道
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener 
@@ -73,7 +73,7 @@ suspend fun GuildEvent.event() {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -90,7 +90,7 @@ public void event(GuildEvent event) {
 ## 从对象中获取属性
 ### 好友属性
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val id = friend.id
@@ -100,7 +100,7 @@ val avatar = friend.avatar
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 ID id = friend.getId();
@@ -116,7 +116,7 @@ String avatar = friend.getAvatar();
 
 ## 延时发送&动态参数
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Filter("我叫{{name}}")
@@ -132,7 +132,7 @@ suspend fun FriendMessageEvent.listen(@FilterValue("name") name: String) {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 :::caution 注意
 
@@ -167,7 +167,7 @@ public void listen(FriendMessageEvent event, @FilterValue("name") String name) t
 ## 特殊消息
 ### 上传并发送图片
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -182,7 +182,7 @@ suspend fun FriendMessageEvent.listen() {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener
@@ -200,7 +200,7 @@ public void listen(FriendMessageEvent event) {
 
 ### 群里at + 文本
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 @Listener
@@ -213,7 +213,7 @@ suspend fun GroupMessageEvent.listen() {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 @Listener

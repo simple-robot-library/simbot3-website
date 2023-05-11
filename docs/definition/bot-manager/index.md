@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 `OriginBotManager` 本身实现了 `Set<BotManager<*>>`，因此你可以将其视为一个 `Set` 使用 —— 当然，你不能直接对它进行修改操作。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 OriginBotManager.forEach {
@@ -24,7 +24,7 @@ OriginBotManager.forEach {
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 for(BotManager<?> it : OriginBotManager) {
@@ -40,7 +40,7 @@ for(BotManager<?> it : OriginBotManager) {
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" label="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 // 根据组件获取所有的管理器。假设这里获取所有的Mirai组件。
@@ -48,7 +48,7 @@ val managers: List<BotManager<*>> = OriginBotManager.getManagers(MiraiComponent.
 
 
 // 通过ID和组件信息直接定位一个Bot对象。
-val bot: Bot? = OriginBotManager.getBot(123.ID, TencentGuildComponent.component)
+val bot: Bot = OriginBotManager.getBot(123.ID, TencentGuildComponent.component)
 
 
 // 进行关闭操作。注意！关闭操作将会关闭所有被管理的botManager，并且将无法在继续构建新的管理器。
@@ -57,7 +57,7 @@ OriginBotManager.cancel()
 ```
 
 </TabItem>
-<TabItem value="Java" label="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final OriginBotManager manager = OriginBotManager.INSTANCE;
@@ -86,7 +86,7 @@ final Bot bot = manager.getBot(botId, SimbotComponent.INSTANCE);
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 /** 处理一个群消息事件 */
@@ -99,7 +99,7 @@ suspend fun GroupMessageEvent.processEvent() {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 /** 处理一个群消息事件 */
@@ -128,7 +128,7 @@ public void processEvent(GroupMessageEvent event) {
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val manager: BotManager<*> = ...
@@ -137,11 +137,11 @@ val manager: BotManager<*> = ...
 val all: List<Bot> = manager.all()
 
 // 获取指定的Bot
-val bot: Bot? = manager.get(123.ID)
+val bot: Bot = manager.get(123.ID)
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 final BotManager<? extends Bot> manager = ...;

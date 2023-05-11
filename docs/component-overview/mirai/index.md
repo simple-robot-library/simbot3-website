@@ -1,8 +1,8 @@
 ---
-title: Mirai组件
+title: mirai组件
 ---
 
-Mirai组件是simbot3核心库API针对 [mirai框架](https://github.com/mamoe/mirai) 所实现的组件，是面向 **QQ机器人** (_**非官方**、非频道_) 的组件。
+mirai组件是simbot3核心库API针对 [mirai框架](https://github.com/mamoe/mirai) 所实现的组件，是面向 **QQ机器人** (_**非官方**、非频道_) 的组件。
 
 import Label from '@site/src/components/Label'
 

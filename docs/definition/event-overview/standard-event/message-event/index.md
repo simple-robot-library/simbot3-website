@@ -36,7 +36,7 @@ import CodeBlock from '@theme/CodeBlock';
 :::
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val source: Objectives = event.source()
@@ -44,7 +44,7 @@ val messageContent: ReceivedMessageContent = event.messageContent
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Objectives source = event.getSource();
@@ -60,7 +60,7 @@ ReceivedMessageContent messageContent = event.getMessageContent();
 `MessageEvent` 继承 `ReplySupport`，对于消息事件来讲它总是 _期望_ 实现者拥有 **消息回复(`reply`)** 的能力。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val message: Message = ...
@@ -68,7 +68,7 @@ val receipt: MessageReceipt = event.reply(message)
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Message message = ...;
@@ -90,7 +90,7 @@ MessageReceipt receipt = event.replyBlocking(message);
 :::
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val messageContent: MessageContent = event.messageContent
@@ -99,7 +99,7 @@ val isDeleted: Boolean = messageContent.delete()
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 MessageContent messageContent = event.getMessageContent();
@@ -119,7 +119,7 @@ messageContent.deleteBlocking();
 在 `ContactMessageEvent` 中，属性 `user` 与 `source` 返回类型一致，为 `User` 类型。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val user: User = event.user()
@@ -128,7 +128,7 @@ val source: User = event.source()
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 User user = event.getUser();
@@ -154,7 +154,7 @@ User source = event.getSource();
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val friend: Friend = event.friend()
@@ -163,7 +163,7 @@ val source: Friend = event.source()
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Friend friend = event.getFriend();
@@ -217,7 +217,7 @@ event.useAuthor { author: Author ->
 | `group`  | 同上      | 同上        |
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val source: Group = event.source()
@@ -225,7 +225,7 @@ val group: Group = event.group()
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Group source = event.getSource();
@@ -246,7 +246,7 @@ Group group = event.getGroup();
 | `channel` | 同上        | 同上          |
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val source: Channel = event.source()
@@ -254,7 +254,7 @@ val channel: Channel = event.channel()
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Channel source = event.getSource();

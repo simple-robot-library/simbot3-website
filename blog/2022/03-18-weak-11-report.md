@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val manager = coreListenerManager {
@@ -34,7 +34,7 @@ val manager = coreListenerManager {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" default attributes={{'data-value': `Java`}}>
 
 ```java
 // 配置类
@@ -57,7 +57,7 @@ CoreListenerManager.newInstance(configuration);
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 coreListenerManager {
@@ -85,7 +85,7 @@ coreListenerManager {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" default attributes={{'data-value': `Java`}}>
 
 ```java
 // 构建配置类

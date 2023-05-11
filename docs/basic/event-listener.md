@@ -18,15 +18,15 @@ import TabItem from '@theme/TabItem';
 让我们来了解一下什么是**监听函数**。下面是监听函数（有所简化）的基本定义：
 
 ```kotlin
-public interface EventListener : ... {
+ interface EventListener : ... {
     /** 检测某事件类型是否为当前事件所需要的类型 */
-    public fun isTarget(event: Event.Key<*>): Boolean
+    fun isTarget(event: Event.Key<*>): Boolean
     
     /** 对事件进行匹配 */
-    public suspend fun match(context: EventListenerProcessingContext): Boolean
+    suspend fun match(context: EventListenerProcessingContext): Boolean
 
     /** 如果 [match] 匹配成功，处理此事件并得到一个结果 */
-    public suspend fun invoke(context: EventListenerProcessingContext): EventResult
+    suspend fun invoke(context: EventListenerProcessingContext): EventResult
     
     // 其他...
 }
@@ -62,7 +62,7 @@ if (listener.isTarget(eventContext.event.key) && listener.match(eventContext)) {
 我们以监听**好友消息事件**为例，创建一个当好友发送"在吗"时回复"在的"的监听函数。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 class MyListener : EventListener {
@@ -91,7 +91,7 @@ class MyListener : EventListener {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 :::caution 挂起与阻塞
 
@@ -157,7 +157,7 @@ public class MyListener implements EventListener {
 一气呵成：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 class MyListener : EventListener {
@@ -185,7 +185,7 @@ class MyListener : EventListener {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 :::caution 挂起与阻塞
 
@@ -273,7 +273,7 @@ public class MyListener implements EventListener {
 #### 直接构造
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val listener = simpleListener(FriendMessageEvent, matcher = { 
@@ -302,7 +302,7 @@ val listener = simpleListener(FriendMessageEvent) { event: FriendMessageEvent ->
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 SimpleListeners.listener(
@@ -356,7 +356,7 @@ private static String trim(String nullableValue) {
 除了直接通过 `simpleListener` 构建最终实例，也可以通过 `Builder` 来分步操作。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val listener = buildSimpleListener(FriendMessageEvent) {
@@ -385,7 +385,7 @@ val listener = buildSimpleListener(FriendMessageEvent) {
 不过相应的，后续其他监听函数也将无法得到此监听函数的执行结果。
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 SimpleListenerBuilder<FriendMessageEvent> builder = new SimpleListenerBuilder<>(FriendMessageEvent.Key);
@@ -443,7 +443,7 @@ private static String trim(String nullableValue) {
 下面示例中的内容将**不能**成功构建 `EventListener`, 因为它们没有提供具体的事件处理逻辑，或者配置了多次处理逻辑：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 _没有配置逻辑:_
 
@@ -470,7 +470,7 @@ val listener = buildSimpleListener(FriendMessageEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 _没有配置逻辑:_
 
@@ -506,7 +506,7 @@ EventListener listener = builder.build();
 虽然事件处理逻辑能且必须配置一次，但是对于事件**匹配逻辑**来讲，就没有这么严格了。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 _配置一次匹配逻辑:_
 
@@ -543,7 +543,7 @@ val listener = buildSimpleListener(FriendMessageEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 _配置一次匹配逻辑:_
 
@@ -604,18 +604,18 @@ EventListener listener = builder.build();
 首先来看一下 `EventResult` 的（简化版）定义：
 
 ```kotlin
-public interface EventResult {
+ interface EventResult {
     
     /**
      * 监听函数所返回的真正内容。
      */
-    public val content: Any?
+    val content: Any?
     
     
     /**
      * 是否阻止下一个监听函数的执行。
      */
-    public val isTruncated: Boolean
+    val isTruncated: Boolean
 }
 ```
 
@@ -641,7 +641,7 @@ public interface EventResult {
 `EventProcessingContext.result` 向当前监听函数暴露了整个事件处理流程中事件响应的结果集视图：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val listener = buildSimpleListener(FriendMessageEvent) {
@@ -661,7 +661,7 @@ val listener = buildSimpleListener(FriendMessageEvent) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 EventListener listener = SimpleListeners.listener(Event.Root, (context, event) -> {
@@ -717,7 +717,7 @@ SpecialEventResult  ..>  EventResult
 当一次事件处理后的返回值结果是 `Invalid` 的时候，本次返回值将会被**忽略并丢弃**，`Invalid` 将不会被记录并传递给后续流程。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 **直接使用 `Invalid`**
 
@@ -737,7 +737,7 @@ val listener = simpleListener(FooEvent) {
 
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 **直接使用 `Invalid`**
 
@@ -775,7 +775,7 @@ EventListener listener = SimpleListeners.listener(Event.Root, (context, event) -
 /**
  * 代表 [content] 可能为一个反应式的结果，并且允许其在一个函数结束时进行收集。
  */
-public abstract class ReactivelyCollectableEventResult : SpecialEventResult() {
+abstract class ReactivelyCollectableEventResult : SpecialEventResult() {
     
     /**
      *
@@ -791,7 +791,7 @@ public abstract class ReactivelyCollectableEventResult : SpecialEventResult() {
      *
      * [collected] 的结果不会再被二次收集, 因此假若 [collectedContent] 仍然为响应式类型, 则它们将会被忽略并直接作为结果返回.
      */
-    public abstract fun collected(collectedContent: Any?): EventResult
+    abstract fun collected(collectedContent: Any?): EventResult
     
 }
 ```
@@ -839,7 +839,7 @@ public abstract class ReactivelyCollectableEventResult : SpecialEventResult() {
 也就是说，假如你的代码是类似于这样的：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val listener1 = simpleListener(FooEvent) { event ->
@@ -863,7 +863,7 @@ eventListenerRegistrar.register(listener2)
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 EventListener listener1 = SimpleListeners.listener(FooEvent.Key, (context, event) -> {
@@ -926,7 +926,7 @@ eventListenerRegistrar.register(listener2);
 首先来看看它大概的定义：
 
 ```kotlin
-public abstract class AsyncEventResult : SpecialEventResult() {
+ abstract class AsyncEventResult : SpecialEventResult() {
     /**
      * 用来表示一个异步任务的 [content], 例如 [Deferred] 或 [Future].
      */
@@ -940,12 +940,12 @@ public abstract class AsyncEventResult : SpecialEventResult() {
     /**
      * 将结果转化为 [Future].
      */
-    public abstract fun contentAsFuture(): Future<EventResult>
+    abstract fun contentAsFuture(): Future<EventResult>
     
     /**
      * 等待 [content] 的异步任务响应。
      */
-    public abstract suspend fun awaitContent(): EventResult
+    abstract suspend fun awaitContent(): EventResult
 }
 ```
 
@@ -958,7 +958,7 @@ public abstract class AsyncEventResult : SpecialEventResult() {
 如果想要获取核心库中提供的默认实现，可以通过 `EventResult.async(...)` 来得到。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 `EventResult.async` 需要一个 `Deferred` 类型的参数：
 
@@ -994,7 +994,7 @@ val listener = simpleListener(FooEvent) { event ->
 :::
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 `EventResult.async` 需要一个 `CompletableFuture` 类型的参数：
 
@@ -1026,16 +1026,16 @@ EventListener listener = SimpleListeners.listener(Event.Root, (context, event) -
 按照惯例，我们先来看看 `EventListenerRegistrar`（有所简化）的基本定义：
 
 ```kotlin
-public interface EventListenerRegistrar {
+ interface EventListenerRegistrar {
     /**
      * 注册一个监听函数。对于注册的其他附加属性均采用默认值.
      */
-    public fun register(listener: EventListener): EventListenerHandle
+    fun register(listener: EventListener): EventListenerHandle
     
     /**
      * 注册一个监听函数。
      */
-    public fun register(registrationDescription: EventListenerRegistrationDescription): EventListenerHandle
+    fun register(registrationDescription: EventListenerRegistrationDescription): EventListenerHandle
 }
 ```
 
@@ -1050,24 +1050,24 @@ public interface EventListenerRegistrar {
 我们首先来看看它的定义：
 
 ```kotlin
-public abstract class EventListenerRegistrationDescription {
+ abstract class EventListenerRegistrationDescription {
     
     /**
      * 注册信息中的监听函数.
      */
-    public abstract val listener: EventListener
+    abstract val listener: EventListener
     
     /**
      * 此监听函数的优先级. 默认为 [DEFAULT_PRIORITY].
      *
      * @see PriorityConstant
      */
-    public open var priority: Int = DEFAULT_PRIORITY
+    open var priority: Int = DEFAULT_PRIORITY
     
     /**
      * 当前的监听函数是否要异步地使用. 默认为 [DEFAULT_ASYNC].
      */
-    public open var isAsync: Boolean = DEFAULT_ASYNC
+    open var isAsync: Boolean = DEFAULT_ASYNC
     
     //// ...
 }
@@ -1086,7 +1086,7 @@ public abstract class EventListenerRegistrationDescription {
 自身提供的构造方法来得到它们。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 通过 `EventListener.toRegistrationDescription(...)` 扩展函数将一个 `EventListener` 进行包装。
 
@@ -1106,7 +1106,7 @@ val registrationDescription = listener.toRegistrationDescription {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 通过 `EventListenerRegistrationDescription.of(...)` 将一个 `EventListener` 进行包装。
 
@@ -1127,7 +1127,7 @@ description.setPriority(PriorityConstant.FIRST);
 上面我们提到了 `EventListenerRegistrar`，它是用来注册一个监听函数的。通过 `register(...)` 方法即可完成对监听函数的动态注册。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 **直接注册监听函数:**
 
@@ -1162,7 +1162,7 @@ val handle2 = eventListenerRegistrar.register(listener)
 此时监听函数管理器中将会存在两个相同的监听函数逻辑，并且注册而得的句柄也并不相同。
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 **直接注册监听函数:**
 
@@ -1217,25 +1217,25 @@ EventListenerHandle handle2 = eventListenerRegistrar.register(listener);
 /**
  * 被注册后监听函数的句柄.
  */
-public interface EventListenerHandle {
-    
+interface EventListenerHandle {
+
     /**
      * 将当前监听函数移除于目标容器中.
      *
      * @return 是否移除成功. 如果目标容器中已经不存在当前句柄所描述的监听函数则会得到 `false`.
      */
-    public fun dispose(): Boolean
-    
+    fun dispose(): Boolean
+
     /**
      * 判断当前句柄所描述的监听函数是否存在于目标容器中.
      */
-    public val isExists: Boolean
-    
+    val isExists: Boolean
+
     /**
      * 此句柄所属的 [EventListenerContainer].
      */
-    public val container: EventListenerContainer
-    
+    val container: EventListenerContainer
+
 }
 ```
 
@@ -1251,7 +1251,7 @@ public interface EventListenerHandle {
 上面提到，`EventListenerHandle` 允许 `dispose` 操作，即将其描述的监听函数从其所属的容器中**移除**。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val listener: EventListener = ...
@@ -1261,7 +1261,7 @@ handle.dispose()
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 EventListener listener = ...;

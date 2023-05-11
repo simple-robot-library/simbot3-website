@@ -1,6 +1,7 @@
 ---
 title: boot 核心模块
 sidebar_location: 10
+draft: true
 ---
 
 与 [基础核心模块](../core) 类似，boot核心模块是针对于 [boot](index.md) 模块的基础完整实现模块。
@@ -15,7 +16,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 
 <Tabs groupId="code">
-<TabItem value="Kotlin" default>
+<TabItem value="Kotlin" default attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title="MyApp.kt"
 suspend fun main(vararg args: String) {
@@ -25,7 +26,7 @@ suspend fun main(vararg args: String) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java title="MyApp.java"
 public static void main(String[] args) {

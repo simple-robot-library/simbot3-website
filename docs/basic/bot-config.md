@@ -43,7 +43,7 @@ import TabItem from '@theme/TabItem';
 
 
 <Tabs groupId="use-dependency">
-<TabItem value="Maven" default>
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
 
 ```xml title=pom.xml
 <dependencies>
@@ -58,7 +58,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 </TabItem>
-<TabItem value="Gradle Kotlin DSL">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
 ```kotlin title=gradle.build.kts
 dependencies {
@@ -68,7 +68,7 @@ dependencies {
 ```
 
 </TabItem>
-<TabItem value="Gradle Groovy">
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
 ```groovy title=gradle.build
 dependencies {
@@ -96,7 +96,7 @@ dependencies {
 如果你希望增加对 `*.bot.properties` 格式文件的支持，请添加 [`kotlinx-serialization-properties`](https://github.com/Kotlin/kotlinx.serialization/tree/master/formats#properties) 依赖。
 
 <Tabs groupId="use-dependency">
-<TabItem value="Maven" default>
+<TabItem value="Maven" attributes={{'data-value': `Maven`}}>
 
 ```xml title=pom.xml
 <dependencies>
@@ -111,7 +111,7 @@ dependencies {
 ```
 
 </TabItem>
-<TabItem value="Gradle Kotlin DSL">
+<TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
 ```kotlin title=gradle.build.kts
 dependencies {
@@ -121,7 +121,7 @@ dependencies {
 ```
 
 </TabItem>
-<TabItem value="Gradle Groovy">
+<TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
 ```groovy title=gradle.build
 dependencies {

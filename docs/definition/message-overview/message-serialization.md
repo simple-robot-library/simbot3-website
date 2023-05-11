@@ -19,14 +19,14 @@ simbot通过 [kotlinx-serialization](https://github.com/Kotlin/kotlinx.serializa
 在simbot中提供的**标准消息**实现可以通过 `Messages.serializersModule` 获取。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val module = Messages.serializersModule
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 SerializersModule module = Messages.getSerializersModule();
@@ -38,7 +38,7 @@ SerializersModule module = Messages.getSerializersModule();
 当你想要序列化一个仅包含了**标准消息**的消息链，那么就可以直接使用了。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val json = Json {
@@ -54,7 +54,7 @@ val jsonStr = json.encodeToString(Messages.serializer, messages)
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 在Java中，想要构建一个 `kotlinx.serialization.json.Json` 会相对比较困难。simbot内提供了一个简易的工具 `MessageSerializationUtil` 
 来辅助Java开发者来处理序列化的情况。
@@ -85,7 +85,7 @@ String jsonStr = json.encodeToString(Messages.getSerializer(), messages);
 反之亦然。反序列化也通过 `kotlinx-serialization` 完成。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val json = Json {
@@ -100,7 +100,7 @@ val messages = json.decodeFromString(Messages.serializer, jsonStr)
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 在Java中，想要构建一个 `kotlinx.serialization.json.Json` 会相对比较困难。simbot内提供了一个简易的工具 `MessageSerializationUtil`
 来辅助Java开发者来处理序列化的情况。
@@ -133,7 +133,7 @@ Messages messages = json.decodeFromString(Messages.getSerializer(), jsonStr);
 由simbot所提供的组件中，消息序列化信息会通过 `Component` 的实现以及静态属性等多个方式对外提供。举个例子：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val serializersModule = SerializersModule {
@@ -150,7 +150,7 @@ val json = Json {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 // 合并标准消息的序列化信息 和 Kook组件的序列化信息
@@ -181,7 +181,7 @@ Json json = MessageSerializationUtil.createJson(null, (config) -> {
 除了这种提前定义好的方式以外，也可以在 `Application` 启动后来动态获取所有已加载组件中的序列化信息。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val application = createSimbotApplication(...) {
@@ -195,7 +195,7 @@ for (component in application.environment.components) {
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 ```java
 Application application = Applications.createSimbotApplication(..., null, (b, c) -> {

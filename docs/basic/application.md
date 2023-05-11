@@ -14,44 +14,44 @@ import TabItem from '@theme/TabItem';
 了解 `Application` 的第一步，先让我们来简单了解一下 `Application` 的**定义**。
 
 ```kotlin
-public interface Application : CoroutineScope {
+ interface Application : CoroutineScope {
 
     /**
      * 当前 [Application] 的部分属性。
      */
-    public val environment: Environment
+    val environment: Environment
 
     /**
      * 在进行构建时所使用的配置信息。
      * 构建完成后可以得到，但是尽可能不要进行修改操作。这可能没有意义，也可能会导致意外的错误。
      */
-    public val configuration: ApplicationConfiguration
+    val configuration: ApplicationConfiguration
 
     /**
      * 得到当前 [Application] 最终的 [EventListenerManager].
      */
-    public val eventListenerManager: EventListenerManager
+    val eventListenerManager: EventListenerManager
 
     /**
      * 当前应用下的所有 [事件提供者][EventProvider]。
      */
-    public val providers: List<EventProvider>
+    val providers: List<EventProvider>
 
     /**
      * 当前应用下的所有 [bot管理器][BotManager]。
      */
-    public val botManagers: BotManagers
+    val botManagers: BotManagers
 
     /**
      * 挂起此应用直至其被终止。
      */
-    public suspend fun join()
+    suspend fun join()
 
     /**
      * 终止当前应用，并关闭其中所有可能的资源。
      * [Application] 被终止后将不能再次启动。
      */
-    public suspend fun shutdown(reason: Throwable? = null)
+    suspend fun shutdown(reason: Throwable? = null)
 }
 ```
 
@@ -60,7 +60,7 @@ public interface Application : CoroutineScope {
 想要构建一个 `Application`, 需要使用 `createSimbotApplication` 函数。
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 createSimbotApplication(FACTORY, configurator = { /* config function block */ }) {
@@ -69,7 +69,7 @@ createSimbotApplication(FACTORY, configurator = { /* config function block */ })
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 在Java中，`createSimbotApplication` 是 `Applications` 的静态函数。
 
@@ -101,7 +101,7 @@ xxxApplication application = Applications.createSimbotApplication(
 类型的实例，simbot默认提供了三个实现，其中最常用的即为 `Simple` 工厂：
 
 <Tabs groupId="code">
-<TabItem value="Kotlin">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin
 val application = createSimbotApplication(
@@ -114,7 +114,7 @@ val application = createSimbotApplication(
 ```
 
 </TabItem>
-<TabItem value="Java">
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
 
 在Java中，`createSimbotApplication` 是 `Applications` 的静态函数。
 
