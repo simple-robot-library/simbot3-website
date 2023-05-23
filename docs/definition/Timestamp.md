@@ -3,7 +3,7 @@ sidebar_position: 20
 title: 时间戳
 ---
 
-**`Timestamp`**，顾名思义，这是一个**时间戳**类型。
+`Timestamp`，顾名思义，这是一个**时间戳**类型。
 
 在组件中，"时间戳"的非常常见的一个概念。比如 `Event.timestamp` 即代表获取此事件发生的时间。
 
@@ -117,5 +117,63 @@ Timestamp.notSupport();                     // 得到一个代表"无效"的时�
 </TabItem>
 </Tabs>
 
+## 简单类型包装
 
+`Timestamp` 是一种对简单类型的包装，因此它们很可能是**即用即造**的。因此在有需要的情况下（例如服务器资源十分紧缺）考虑通过变量在上下文中保存而不是始终通过属性获取。
 
+<Tabs groupId="code">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
+
+**Not so good**🤔:
+
+```kotlin
+val someContainer = ...
+
+// via property (getter)
+useTimestamp(someContainer.timestamp)
+useTimestamp(someContainer.timestamp)
+useTimestamp(someContainer.timestamp)
+```
+
+**Not bad**👍:
+
+```kotlin
+val someContainer = ...
+
+val timestamp = someContainer.timestamp
+
+// via local variables
+useTimestamp(timestamp)
+useTimestamp(timestamp)
+useTimestamp(timestamp)
+```
+
+</TabItem>
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
+
+**Not so good**🤔:
+
+```java
+var someContainer = ...;
+
+// via property (getter)
+useTimestamp(someContainer.getTimestamp());
+useTimestamp(someContainer.getTimestamp());
+useTimestamp(someContainer.getTimestamp());
+```
+
+**Not bad**👍:
+
+```java
+var someContainer = ...;
+
+var timestamp = someContainer.getTimestamp();
+
+// via local variables
+useTimestamp(timestamp);
+useTimestamp(timestamp);
+useTimestamp(timestamp);
+```
+
+</TabItem>
+</Tabs>

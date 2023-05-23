@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: 使用核心库
 description: 使用核心库进行开发。
 tags: [快速开始]
