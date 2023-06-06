@@ -59,7 +59,12 @@ sealed class NumericalID<N : Number> : ID() {
 - `UIntID` <Label>3.1.0</Label>
 - `ULongID` <Label>3.1.0</Label>
 
+:::tip future
+
 在未来，也可能在 simbot 4.0，ID类型会进一步被简化。
+
+:::
+
 
 简单的使用示例：
 
@@ -151,6 +156,68 @@ val anyId: CharSequenceID = 123.ID.toCharSequenceID() // 所有ID理论上都可
 final CharSequenceID helloId = Identifies.ID("HelloWorld");
 
 final CharSequenceID strId = Identifies.toCharSequenceID(Identifies.ID(123));
+```
+
+</TabItem>
+</Tabs>
+
+
+## 简单类型包装
+
+`ID` 是一种对简单类型的包装，因此它们很可能是**即用即造**的。因此在有需要的情况下（例如服务器资源十分紧缺）考虑通过变量在上下文中保存而不是始终通过属性获取。
+
+<Tabs groupId="code">
+<TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
+
+**Not so good**🤔:
+
+```kotlin
+val someContainer = ...
+
+// via property (getter)
+useId(someContainer.id)
+useId(someContainer.id)
+useId(someContainer.id)
+```
+
+**Not bad**👍:
+
+```kotlin
+val someContainer = ...
+
+val id = someContainer.id
+
+// via local variables
+useId(id)
+useId(id)
+useId(id)
+```
+
+</TabItem>
+<TabItem value="Java" attributes={{'data-value': `Java`}}>
+
+**Not so good**🤔:
+
+```java
+var someContainer = ...;
+
+// via property (getter)
+useId(someContainer.getId());
+useId(someContainer.getId());
+useId(someContainer.getId());
+```
+
+**Not bad**👍:
+
+```java
+var someContainer = ...;
+
+var id = someContainer.getId();
+
+// via local variables
+useId(id);
+useId(id);
+useId(id);
 ```
 
 </TabItem>

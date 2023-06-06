@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 tags: [快速开始]
 draft: true
 ---
