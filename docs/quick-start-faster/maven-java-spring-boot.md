@@ -1,6 +1,7 @@
 ---
 title: Maven & SpringBoot
 sidebar_position: 2
+draft: true
 ---
 
 本章节介绍通过 [simple-robot/simbot-archetypes](https://github.com/simple-robot/simbot-archetypes) 快速搭建基于Maven的Java SpringBoot样板项目。

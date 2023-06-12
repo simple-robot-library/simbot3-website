@@ -1,6 +1,7 @@
 ---
 title: Maven & Kotlin
 sidebar_position: 3
+draft: true
 ---
 
 本章节介绍通过 [simple-robot/simbot-archetypes](https://github.com/simple-robot/simbot-archetypes) 快速搭建基于Maven的Kotlin样板项目。

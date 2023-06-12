@@ -17,6 +17,8 @@ tags: [快速开始]
 
 ## mirai组件
 
+> mirai组件正如其名，它对接 [mirai框架](https://github.com/mamoe/mirai) 并提供对QQ（非频道）的能力支持。
+
 前往 [**mirai组件手册**](https://component-mirai.simbot.forte.love/docs/quick-start) 参阅。
 
 
