@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
 ```kotlin title='example/Main.kt'
 @EnableSimbot // 👈
 @SpringBootApplication
-class Main
+open class Main
 
 fun main(args: Array<String>) {
     runApplication<Main>(*args)
