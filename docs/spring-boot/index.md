@@ -1,15 +1,12 @@
 ---
-title: SpringBoot
-draft: true
+title: Spring Boot
 ---
 
-TODO!
-
-simbot 提供了 starter 来支持快速与SpringBoot相结合。
+simbot3 提供了 starter 来支持快速与SpringBoot相结合。
 
 ### 使用
 
-首先引入依赖，如果你使用了 `simbot-core` 或 `simboot-core` ，**替换** 即可，
+首先引入依赖，如果你使用了 `simbot-core` 或 `simboot-core` ，**替换**即可，
 starter 中包含了对 `simbot-core` 的引用。
 
 import Tabs from '@theme/Tabs';
@@ -141,6 +138,22 @@ simbot.bot-configuration-resources[0]=classpath:simbot-bots/*.bot*
 通常情况下 bot 信息的配置也是通过配置文件完成的。
 以上述配置或默认配置为例，bot 配置文件应当在资源目录中的 `simbot-bots/*.bot*` 下。
 
+以 IDEA 中 `Gradle` 项目结构为例：
+
+```text
+simply-robot
+└─ src
+    └─ main
+        ├─ java
+        ├─ kotlin
+        └─ resources
+              └─ simbot-bots
+                    // highlight-start
+                    ├─ xxx.bot.json <-- 你的bot配置文件，可以是多个
+                    └─ yyy.bot.json <-- 你的bot配置文件，可以是多个
+                    // highlight-end
+```
+
 不同的组件所需要的配置文件内容是不同的，这里给出各组件针对配置文件的说明：
 
 | 组件          | 相关文档链接                                                                                  |
@@ -191,7 +204,7 @@ public class MyListener {
 
 :::
 
-### 获取Application
+### 实用类型
 
 在使用 starter 时，会有一些可能对你有用的类型被注入到依赖中：
 
@@ -199,37 +212,33 @@ public class MyListener {
 - `love.forte.simbot.event.application.Application.Environment` (衍生自 `Application` )
 - `love.forte.simbot.event.EventListenerManager` (衍生自 `Application` )
 - `love.forte.simbot.application.BotManagers` (衍生自 `Application` )
-
 你可以配合这些类型来实现一些比较特殊的功能，例如获取当前所有的bot、动态注册bot、动态注册监听函数等。
 
-以"动态注册bot"为例：
+<br />
 
-:::danger TODO
-
-TODO
-
-:::
+以**"动态注册bot"**为例：
 
 <Tabs groupId="code">
 <TabItem value="Kotlin" attributes={{'data-value': `Kotlin`}}>
 
 ```kotlin title='RegisterSomeBot.kt'
 @Component
-class RegisterSomeBot(
+open class RegisterSomeBot(
     // highlight-next-line
     val application: Application
-    // 也可以直接注入 BotManagers
-) {
-    
-    /**
-     * 一些逻辑，比如用来注册bot
-     */
-    fun register() {
+    // 此示例场景下也可以直接用 BotManagers
+) : CommandLineRunner {
+    override fun run(vararg args: String?) {
         val bot = application.botManagers.register(...)
-        // 或精准注册
-        val bot = application.botManagers.firstInstance<MiraiBotManager>().register(...)
+        bot?.start() // nullable
         
-        application.launch { bot.start() }
+        // 或者精准的时候某个具体的组件的BOT管理器
+        val bot2 = application.botManagers
+            .filterIsInstance<MiraiBotManager>()
+            .first()
+            .register(...)
+        
+        bot2.start()
     }
 }
 ```
@@ -237,20 +246,28 @@ class RegisterSomeBot(
 </TabItem>
 <TabItem value="Java" attributes={{'data-value': `Java`}}>
 
-```java title='MyListener.java'
+```java title='RegisterSomeBot.java'
 @Component
-public class RegisterSomeBot {
+public class RegisterSomeBot implements CommandLineRunner {
     private final Application application;
 
     public RegisterSomeBot(Application application) {
         // highlight-next-line
         this.application = application;
-        // 也可以直接注入 BotManagers
+        // 此示例场景下也可以直接用 BotManagers
     }
 
-    public void run() {
-        
+    @Override
+    public void run(String... args) {
+        Bot bot = application.getBotManagers().register(...);
+        bot.startBlocking(); // warn: bot is nullable
+
+        MiraiBot bot2 = application.getBotManagers()
+                .getFirst(MiraiBotManager.class)
+                .register(...);
+        bot2.startBlocking();
     }
+
 }
 ```
 
