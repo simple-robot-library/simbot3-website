@@ -2,12 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://simbot.forte.love/blog</id>
     <title>Simple Robot Blog</title>
-    <updated>2023-07-07T00:00:00.000Z</updated>
+    <updated>2023-08-02T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://simbot.forte.love/blog"/>
     <subtitle>Simple Robot官方博客喵</subtitle>
     <icon>https://simbot.forte.love/img/favicon.png</icon>
     <rights>Copyright © 2022-2023 Forte Scarlet.</rights>
+    <entry>
+        <title type="html"><![CDATA[2023年7月月报]]></title>
+        <id>https://simbot.forte.love/blog/2023/08/02/month-7-report</id>
+        <link href="https://simbot.forte.love/blog/2023/08/02/month-7-report"/>
+        <updated>2023-08-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[大概是2023年7月的月报喵。]]></summary>
+        <content type="html"><![CDATA[<p>大概是2023年7月的月报喵。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="#组件更新" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="核心库">核心库<a href="#核心库" class="hash-link" aria-label="核心库的直接链接" title="核心库的直接链接">​</a></h3><p><a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a> 目前没有什么很大的问题，也没有什么可更新的。硬要说的话，也许会在某个时间点考虑将
+Kotlin 更新到 1.9 。不过这并不迫切，也不必须，总而言之7月的核心库没有什么更新。</p><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="mirai组件">mirai组件<a href="#mirai组件" class="hash-link" aria-label="mirai组件的直接链接" title="mirai组件的直接链接">​</a></h3><p><a href="https://github.com/mamoe/mirai" target="_blank" rel="noopener noreferrer">mirai</a> 终于是更新了 v2.15 版本，并且支持了对第三方签名服务器以及手表的扫描登录的支持。
+当然，<a href="https://github.com/simple-robot/simbot-component-mirai" target="_blank" rel="noopener noreferrer">mirai组件</a> 也随之更新了 <a href="https://github.com/simple-robot/simbot-component-mirai/releases/tag/v3.2.0.0" target="_blank" rel="noopener noreferrer"><code>v3.2.0.0</code></a>。</p><p>签名服务器的对接能力实际上由mirai-core本身通过 SPI 加载支持，理论上并不需要simbot组件来做编码层面的“适配”。
+因此对于签名服务器，实际上可以说与simbot并没什么关系。如果有需要，自行前往参考mirai与之相关的说明并进行配置即可。</p><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="qq频道组件">QQ频道组件<a href="#qq频道组件" class="hash-link" aria-label="QQ频道组件的直接链接" title="QQ频道组件的直接链接">​</a></h3><p><a href="https://github.com/simple-robot/simbot-component-qq-guild" target="_blank" rel="noopener noreferrer">QQ频道组件</a> 本月也更新了一个小版本 <a href="https://github.com/simple-robot/simbot-component-qq-guild/releases/tag/v3.2.0.0-alpha.10" target="_blank" rel="noopener noreferrer"><code>v3.2.0.0-alpha.10</code></a>，
+主要修复了一些问题。</p><p>QQ频道组件在重构之后，目前来看可能不会有什么<strong>大型</strong>的API变动了，也许...该考虑将版本更新到 beta 阶段了？</p><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="kook组件">KOOK组件<a href="#kook组件" class="hash-link" aria-label="KOOK组件的直接链接" title="KOOK组件的直接链接">​</a></h3><p><a href="https://github.com/simple-robot/simbot-component-kook" target="_blank" rel="noopener noreferrer">KOOK组件</a> 也同样有 <a href="https://github.com/simple-robot/simbot-component-kook/releases/tag/v3.0.0.0-alpha.7" target="_blank" rel="noopener noreferrer"><code>v3.0.0.0-alpha.7</code></a> 的小版本更新，
+也同样是修复了一些问题。</p><p>不过KOOK组件的 <a href="https://github.com/simple-robot/simbot-component-kook/issues/82" target="_blank" rel="noopener noreferrer">重构计划</a> 仍在执行，但是进度缓慢。
+至于为什么缓慢，当有了工作而且有很多任务的时候就会这样。在这种状况下回到家后，打开电脑，你更可能会打开 Steam 而不是 IDEA。</p><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="projects">Projects<a href="#projects" class="hash-link" aria-label="Projects的直接链接" title="Projects的直接链接">​</a></h3><p>本月某天，我们简单的装修了一下 <a href="https://github.com/orgs/simple-robot/projects" target="_blank" rel="noopener noreferrer">GitHub Projects</a>，
+后续可能会有意无意的将一些相关的 issues 与之关联。如果你对其中的相关信息感兴趣，可以看看。</p><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="以及一个好日子">以及一个好日子<a href="#以及一个好日子" class="hash-link" aria-label="以及一个好日子的直接链接" title="以及一个好日子的直接链接">​</a></h3><p>8月。有值得纪念的一天，也希望今年能够美满。</p>]]></content>
+        <author>
+            <name>Scarlet Forliy</name>
+            <email>ForliyScarlet@163.com</email>
+            <uri>https://github.com/ForliyScarlet</uri>
+        </author>
+        <category label="2023月报" term="2023月报"/>
+        <category label="月报" term="月报"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2023年6月月报]]></title>
         <id>https://simbot.forte.love/blog/2023/07/07/month-6-report</id>
