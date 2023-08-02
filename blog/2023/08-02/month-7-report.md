@@ -20,8 +20,15 @@ Kotlin 更新到 1.9 。不过这并不迫切，也不必须，总而言之7月�
 [mirai](https://github.com/mamoe/mirai) 终于是更新了 v2.15 版本，并且支持了对第三方签名服务器以及手表的扫描登录的支持。
 当然，[mirai组件][M] 也随之更新了 [`v3.2.0.0`](https://github.com/simple-robot/simbot-component-mirai/releases/tag/v3.2.0.0)。
 
-签名服务器的对接能力实际上由mirai-core本身通过 SPI 加载支持，理论上并不需要simbot组件来做编码层面的“适配”。
-因此对于签名服务器，实际上可以说与simbot并没什么关系。如果有需要，自行前往参考mirai与之相关的说明并进行配置即可。
+:::tip 签名服务器
+
+签名服务器的对接能力实际上由mirai-core本身通过 SPI 加载支持，
+理论上并不需要simbot组件来做编码层面的“适配”。
+
+因此签名服务器实际上可以说与simbot并没什么关系。
+如果有需要，自行前往参考mirai与之相关的说明并进行配置即可。
+
+:::
 
 ### QQ频道组件
 
