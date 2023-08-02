@@ -35,7 +35,7 @@ QQ频道组件在重构之后，目前来看可能不会有什么**大型**的AP
 [KOOK组件][KK] 也同样有 [`v3.0.0.0-alpha.7`](https://github.com/simple-robot/simbot-component-kook/releases/tag/v3.0.0.0-alpha.7) 的小版本更新，
 也同样是修复了一些问题。
 
-不过KOOK组件的 [重构计划]() 仍在执行，但是进度缓慢。
+不过KOOK组件的 [重构计划](https://github.com/simple-robot/simbot-component-kook/issues/82) 仍在执行，但是进度缓慢。
 至于为什么缓慢，当有了工作而且有很多任务的时候就会这样。在这种状况下回到家后，打开电脑，你更可能会打开 Steam 而不是 IDEA。
 
 ### Projects
