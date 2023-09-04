@@ -4,11 +4,23 @@
         <title>Simple Robot Blog</title>
         <link>https://simbot.forte.love/blog</link>
         <description>Simple Robot官方博客喵</description>
-        <lastBuildDate>Wed, 02 Aug 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 Sep 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
         <copyright>Copyright © 2022-2023 Forte Scarlet.</copyright>
+        <item>
+            <title><![CDATA[2023年8月月报]]></title>
+            <link>https://simbot.forte.love/blog/2023/09/04/month-8-report</link>
+            <guid>https://simbot.forte.love/blog/2023/09/04/month-8-report</guid>
+            <pubDate>Mon, 04 Sep 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[大概是2023年8月的月报喵。]]></description>
+            <content:encoded><![CDATA[<p>大概是2023年8月的月报喵。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="#组件更新" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="核心库">核心库<a href="#核心库" class="hash-link" aria-label="核心库的直接链接" title="核心库的直接链接">​</a></h3><p><a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a> 依旧没有什么很大的问题，也没有什么可更新的。</p><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="kook组件">KOOK组件<a href="#kook组件" class="hash-link" aria-label="KOOK组件的直接链接" title="KOOK组件的直接链接">​</a></h3><p><a href="https://github.com/simple-robot/simbot-component-kook" target="_blank" rel="noopener noreferrer">KOOK组件</a> 的 <a href="https://github.com/simple-robot/simbot-component-kook/issues/82" target="_blank" rel="noopener noreferrer">重构计划</a> 已经进入到了新的阶段，并且也发布了几个重构后的版本（例如 <a href="https://github.com/simple-robot/simbot-component-kook/releases/tag/v3.2.0.0-alpha.8-dev.3" target="_blank" rel="noopener noreferrer"><code>v3.2.0.0-alpha.8-dev.3</code></a>）</p><p>重构后，KOOK组件除了core模块以外，也同 <a href="https://github.com/simple-robot/simbot-component-qq-guild" target="_blank" rel="noopener noreferrer">QQ频道组件</a>一样被重构为 <code>KMP</code> (<code>Kotlin Multiplatform</code>) 模块并支持多平台（JVM、JS、Native），
+并且我们优化改善了KOOK内部的诸多机制，使得它更易维护，也更稳定。</p><p>目前发布的与重构相关的 <code>-dev.x</code> 版本更新说明里都会追加一些警告和对重构版本内容的部分说明，有兴趣的话可以参考一下～</p>]]></content:encoded>
+            <author>ForliyScarlet@163.com (Scarlet Forliy)</author>
+            <category>2023月报</category>
+            <category>月报</category>
+        </item>
         <item>
             <title><![CDATA[2023年7月月报]]></title>
             <link>https://simbot.forte.love/blog/2023/08/02/month-7-report</link>
