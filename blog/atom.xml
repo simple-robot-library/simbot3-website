@@ -2,12 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://simbot.forte.love/blog</id>
     <title>Simple Robot Blog</title>
-    <updated>2023-10-08T00:00:00.000Z</updated>
+    <updated>2023-11-08T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://simbot.forte.love/blog"/>
     <subtitle>Simple Robot官方博客喵</subtitle>
     <icon>https://simbot.forte.love/img/favicon.png</icon>
     <rights>Copyright © 2022-2023 Forte Scarlet.</rights>
+    <entry>
+        <title type="html"><![CDATA[2023年10月月报]]></title>
+        <id>https://simbot.forte.love/blog/2023/11/08/month-10-report</id>
+        <link href="https://simbot.forte.love/blog/2023/11/08/month-10-report"/>
+        <updated>2023-11-08T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[大概是2023年10月的月报喵。]]></summary>
+        <content type="html"><![CDATA[<p>大概是2023年10月的月报喵。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="#组件更新" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="核心库">核心库<a href="#核心库" class="hash-link" aria-label="核心库的直接链接" title="核心库的直接链接">​</a></h3><p><a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a> 发布了一个版本 <a href="https://github.com/simple-robot/simpler-robot/releases/tag/v3.3.0" target="_blank" rel="noopener noreferrer">v3.3.0</a> 。</p><p>实际上并没有比 <code>v3.3.0-beta1</code> 多出什么太多新东西。</p><p>simbot3的核心库目前处于一种相对稳定的状态，实际上也没什么可更新的。</p><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="qq频道组件">QQ频道组件<a href="#qq频道组件" class="hash-link" aria-label="QQ频道组件的直接链接" title="QQ频道组件的直接链接">​</a></h3><p>频道组件发布了版本 <a href="https://github.com/simple-robot/simbot-component-qq-guild/releases/tag/v3.2.0.0-beta.2" target="_blank" rel="noopener noreferrer">v3.2.0.0-beta.2</a> ，
+主要增加对 <code>QGEmbed</code> 的支持。(<a href="https://github.com/simple-robot/simbot-component-qq-guild/pull/108" target="_blank" rel="noopener noreferrer">qq-guild#108</a>)</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="v40-">v4.0 ?<a href="#v40-" class="hash-link" aria-label="v4.0 ?的直接链接" title="v4.0 ?的直接链接">​</a></h2><p>是的，simbot4 目前正在缓慢的进行中。在 simbot4 中，我们期望能够达成以下成果：</p><ul><li>全部或至少大部分核心内容能够通过 KMP 支持<strong>多平台目标</strong>，而不仅仅是JVM。</li><li>更好的Java友好，更简单、更容易扩展的<strong>组件开发</strong>。</li><li>更简洁地使用，更明确的概念。</li></ul><p>亦如 simbot2 到 simbot3 那样，我们会继续在 simbot3 的车辙之上尽力走出更远的一步。</p>]]></content>
+        <author>
+            <name>Scarlet Forliy</name>
+            <email>ForliyScarlet@163.com</email>
+            <uri>https://github.com/ForliyScarlet</uri>
+        </author>
+        <category label="2023月报" term="2023月报"/>
+        <category label="月报" term="月报"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2023年9月月报]]></title>
         <id>https://simbot.forte.love/blog/2023/10/08/month-9-report</id>
