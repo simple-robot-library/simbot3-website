@@ -2,12 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://simbot.forte.love/blog</id>
     <title>Simple Robot Blog</title>
-    <updated>2023-11-08T00:00:00.000Z</updated>
+    <updated>2023-12-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://simbot.forte.love/blog"/>
     <subtitle>Simple Robot官方博客喵</subtitle>
     <icon>https://simbot.forte.love/img/favicon.png</icon>
     <rights>Copyright © 2022-2023 Forte Scarlet.</rights>
+    <entry>
+        <title type="html"><![CDATA[2023年11月月报]]></title>
+        <id>https://simbot.forte.love/blog/2023/12/07/month-11-report</id>
+        <link href="https://simbot.forte.love/blog/2023/12/07/month-11-report"/>
+        <updated>2023-12-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[大概是2023年11月的月报喵。]]></summary>
+        <content type="html"><![CDATA[<p>大概是2023年11月的月报喵。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="#组件更新" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2><h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="米游社组件">米游社组件<a href="#米游社组件" class="hash-link" aria-label="米游社组件的直接链接" title="米游社组件的直接链接">​</a></h3><p>米游社似乎在近期发布了 ws 连接的功能。也许会抽空继续米游社组件的开发，也许。</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="v40">v4.0<a href="#v40" class="hash-link" aria-label="v4.0的直接链接" title="v4.0的直接链接">​</a></h2><p>我们公开了 v4.0 的 <a href="https://github.com/simple-robot/core" target="_blank" rel="noopener noreferrer"><strong>临时</strong>开发仓库</a>（在大部分工作完成后会将代码迁移合并到<a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a>），
+并在 <a href="https://github.com/simple-robot/core/issues" target="_blank" rel="noopener noreferrer">Issues</a> 中发布了一些我们正在烦恼的事情。
+如果你有什么好的想法，欢迎在对应的议题中留言讨论！</p>]]></content>
+        <author>
+            <name>Scarlet Forliy</name>
+            <email>ForliyScarlet@163.com</email>
+            <uri>https://github.com/ForliyScarlet</uri>
+        </author>
+        <category label="2023月报" term="2023月报"/>
+        <category label="月报" term="月报"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2023年10月月报]]></title>
         <id>https://simbot.forte.love/blog/2023/11/08/month-10-report</id>
