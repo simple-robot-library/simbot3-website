@@ -11,7 +11,7 @@ starter 中包含了对 `simbot-core` 的引用。
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {version} from '@site/static/version.json';
+import version from '@site/static/version.json';
 import CodeBlock from '@theme/CodeBlock';
 
 <Tabs groupId="use-dependency">
@@ -21,7 +21,7 @@ import CodeBlock from '@theme/CodeBlock';
 <dependency>
 <groupId>love.forte.simbot.boot</groupId>
 <artifactId>simboot-core-spring-boot-starter</artifactId>
-<version>${version}</version>
+<version>${version.version}</version>
 </dependency>
 `.trim()}</CodeBlock>
 
@@ -30,14 +30,14 @@ import CodeBlock from '@theme/CodeBlock';
 <TabItem value="Gradle Kotlin DSL" attributes={{'data-value': `Kts`}}>
 
 <CodeBlock language="kotlin">{`
-implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version}")
+implementation("love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.version}")
 `.trim()}</CodeBlock>
 
 </TabItem>
 <TabItem value="Gradle Groovy" attributes={{'data-value': `Gradle`}}>
 
 <CodeBlock language="groovy">{`
-implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version}'
+implementation 'love.forte.simbot.boot:simboot-core-spring-boot-starter:${version.version}'
 `.trim()}</CodeBlock>
 
 </TabItem>

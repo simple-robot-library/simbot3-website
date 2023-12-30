@@ -20,12 +20,12 @@ draft: true
 
 # 使用依赖
 
-import {version} from '@site/static/version.json';
+import version from '@site/static/version.json';
 import QuickStartBootCodes from './QuickStartBootCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<QuickStartBootCodes version={version} />
+<QuickStartBootCodes version={version.version} />
 
 
 

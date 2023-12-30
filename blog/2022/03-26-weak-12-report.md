@@ -48,10 +48,10 @@ tags: [2022周报,周报]
 
 对应关系如此图：
 
-| GitHub                                          | Gitee                                          |
-|-------------------------------------------------|------------------------------------------------|
-| <https://github.com/simple-robot/simpler-robot> | <https://gitee.com/ForteScarlet/simpler-robot> |
-| <https://github.com/simple-robot>               | <https://gitee.com/simple-robot-project>       |
+| GitHub                                                                                         | Gitee                                                                                        |
+|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| [https://github.com/simple-robot/simpler-robot](https://github.com/simple-robot/simpler-robot) | [https://gitee.com/ForteScarlet/simpler-robot](https://gitee.com/ForteScarlet/simpler-robot) |
+| [https://github.com/simple-robot](https://github.com/simple-robot)                             | [https://gitee.com/simple-robot-project](https://gitee.com/simple-robot-project)             |
 
 
 

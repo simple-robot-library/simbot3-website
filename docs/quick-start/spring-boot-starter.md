@@ -34,13 +34,13 @@ export const L = ({children, href}) => (<a style={{fontSize: '1.18em'}} href={hr
 
 # 安装
 
-import {version} from '@site/static/version.json';
+import version from '@site/static/version.json';
 import QuickStartSpringBootStarterCodes from './QuickStartSpringBootStarterCodes';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<QuickStartSpringBootStarterCodes version={version} />
+<QuickStartSpringBootStarterCodes version={version.version} />
 
 :::note 引用SpringBoot
 

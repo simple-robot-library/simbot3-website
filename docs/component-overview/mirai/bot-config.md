@@ -37,7 +37,7 @@ mirai组件为其下的BOT配置文件提供了 [`json-schema`](http://json-sche
 
 远程资源路径的 `$host` 即为当前站点，例如：
 
-<https://simbot.forte.love/schema/component/mirai/bot/0.1.0/bot.config.json>
+[https://simbot.forte.love/schema/component/mirai/bot/0.1.0/bot.config.json](https://simbot.forte.love/schema/component/mirai/bot/0.1.0/bot.config.json)
 
 :::
 
