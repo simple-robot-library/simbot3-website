@@ -10,7 +10,7 @@ import Label from '@site/src/components/Label'
 
 **仓库**: <a class="bi-github" href="https://github.com/simple-robot/simbot-component-qq-guild"> https://github.com/simple-robot/simbot-component-qq-guild</a>
 
-**手册**: 📖 <https://simple-robot.github.io/simbot-component-qq-guild/>
+**手册**: 📖 [https://simple-robot.github.io/simbot-component-qq-guild/](https://simple-robot.github.io/simbot-component-qq-guild/)
 
 **API文档**：[引导站](https://docs.simbot.forte.love/)
 

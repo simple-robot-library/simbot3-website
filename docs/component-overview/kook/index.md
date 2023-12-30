@@ -10,7 +10,7 @@ import Label from '@site/src/components/Label'
 
 **仓库**: <a class="bi-github" href="https://github.com/simple-robot/simbot-component-kook"> https://github.com/simple-robot/simbot-component-kook</a>
 
-**手册**: 📖 <https://simple-robot.github.io/simbot-component-kook/>
+**手册**: 📖 [https://simple-robot.github.io/simbot-component-kook/](https://simple-robot.github.io/simbot-component-kook/)
 
 **API文档**：[引导站](https://docs.simbot.forte.love/)
 

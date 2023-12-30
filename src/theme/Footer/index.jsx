@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '@theme-original/Footer';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import SimbotUtteranc from "../../components/SimbotUtteranc";
+import {SimbotUtteranc} from "../../components/SimbotUtteranc";
 
 function InjectSimbotUtteranc() {
     return <BrowserOnly>
