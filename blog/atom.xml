@@ -2,12 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://simbot.forte.love/blog</id>
     <title>Simple Robot Blog</title>
-    <updated>2023-12-07T00:00:00.000Z</updated>
+    <updated>2024-01-02T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://simbot.forte.love/blog"/>
     <subtitle>Simple Robot官方博客喵</subtitle>
     <icon>https://simbot.forte.love/img/favicon.png</icon>
     <rights>Copyright © 2022-2024 Forte Scarlet.</rights>
+    <entry>
+        <title type="html"><![CDATA[2023年12月月报]]></title>
+        <id>https://simbot.forte.love/blog/2024/01/02/month-12-report</id>
+        <link href="https://simbot.forte.love/blog/2024/01/02/month-12-report"/>
+        <updated>2024-01-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[大概是2023年12月的月报喵。]]></summary>
+        <content type="html"><![CDATA[<p>大概是2023年12月的月报喵。</p>
+<p>这是 2023 最后一个月报，也将是最后一个 <strong>月报</strong>。</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>信息</div><div class="admonitionContent_BuS1"><p>在 simbot4 发布之前，似乎没有太多可以作为定期汇报的东西了。
+日后的博客将会是不定期的更新方式。</p></div></div>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2024/01/02/month-12-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="米游社组件">米游社组件<a href="https://simbot.forte.love/blog/2024/01/02/month-12-report#%E7%B1%B3%E6%B8%B8%E7%A4%BE%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="米游社组件的直接链接" title="米游社组件的直接链接">​</a></h3>
+<p><a href="https://github.com/simple-robot/simbot-component-miyoushe-villa" target="_blank" rel="noopener noreferrer">米游社大别野组件</a>
+的
+<a href="https://github.com/simple-robot/simbot-component-miyoushe-villa/releases/tag/v0.0.1" target="_blank" rel="noopener noreferrer">首个版本</a>
+现已发布！</p>
+<p>快来试试吧！别忘了积极反馈喔~</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="v40">v4.0<a href="https://simbot.forte.love/blog/2024/01/02/month-12-report#v40" class="hash-link" aria-label="v4.0的直接链接" title="v4.0的直接链接">​</a></h2>
+<p>我们公开了 v4.0 的 <a href="https://github.com/simple-robot/core" target="_blank" rel="noopener noreferrer"><strong>临时</strong>开发仓库</a>（在大部分工作完成后会将代码迁移合并到<a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a>），
+并在 <a href="https://github.com/simple-robot/core/issues" target="_blank" rel="noopener noreferrer">Issues</a> 中发布了一些我们正在烦恼的事情。
+如果你有什么好的想法，欢迎在对应的议题中留言讨论！</p>]]></content>
+        <author>
+            <name>Scarlet Forliy</name>
+            <email>ForliyScarlet@163.com</email>
+            <uri>https://github.com/ForliyScarlet</uri>
+        </author>
+        <category label="2023月报" term="2023月报"/>
+        <category label="月报" term="月报"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2023年11月月报]]></title>
         <id>https://simbot.forte.love/blog/2023/12/07/month-11-report</id>
@@ -109,7 +138,7 @@
         <updated>2023-09-04T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[大概是2023年8月的月报喵。]]></summary>
         <content type="html"><![CDATA[<p>大概是2023年8月的月报喵。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2023/09/04/month-8-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件�更新的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2023/09/04/month-8-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="核心库">核心库<a href="https://simbot.forte.love/blog/2023/09/04/month-8-report#%E6%A0%B8%E5%BF%83%E5%BA%93" class="hash-link" aria-label="核心库的直接链接" title="核心库的直接链接">​</a></h3>
 <p><a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a> 依旧没有什么很大的问题，也没有什么可更新的。</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="kook组件">KOOK组件<a href="https://simbot.forte.love/blog/2023/09/04/month-8-report#kook%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="KOOK组件的直接链接" title="KOOK组件的直接链接">​</a></h3>
@@ -132,7 +161,7 @@
         <updated>2023-08-02T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[大概是2023年7月的月报喵。]]></summary>
         <content type="html"><![CDATA[<p>大概是2023年7月的月报喵。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2023/08/02/month-7-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件�更新的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2023/08/02/month-7-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="核心库">核心库<a href="https://simbot.forte.love/blog/2023/08/02/month-7-report#%E6%A0%B8%E5%BF%83%E5%BA%93" class="hash-link" aria-label="核心库的直接链接" title="核心库的直接链接">​</a></h3>
 <p><a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a> 目前没有什么很大的问题，也没有什么可更新的。硬要说的话，也许会在某个时间点考虑将
 Kotlin 更新到 1.9 。不过这并不迫切，也不必须，总而言之7月的核心库没有什么更新。</p>
@@ -171,7 +200,7 @@ Kotlin 更新到 1.9 。不过这并不迫切，也不必须，总而言之7月�
         <updated>2023-07-07T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[大概是2023年6月的月报喵。]]></summary>
         <content type="html"><![CDATA[<p>大概是2023年6月的月报喵。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2023/07/07/month-6-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件�更新的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2023/07/07/month-6-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="核心库">核心库<a href="https://simbot.forte.love/blog/2023/07/07/month-6-report#%E6%A0%B8%E5%BF%83%E5%BA%93" class="hash-link" aria-label="核心库的直接链接" title="核心库的直接链接">​</a></h3>
 <p><a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a> 截至目前（23/7/7）已经发布至
 <a href="https://github.com/simple-robot/simpler-robot/releases/v3.2.0" target="_blank" rel="noopener noreferrer">v3.2.0</a> 了。</p>
@@ -210,7 +239,7 @@ Kotlin 更新到 1.9 。不过这并不迫切，也不必须，总而言之7月�
         <updated>2023-06-06T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[大概是2023年5月的月报喵。]]></summary>
         <content type="html"><![CDATA[<p>大概是2023年5月的月报喵。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2023/06/06/month-5-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件�更新的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="组件更新">组件更新<a href="https://simbot.forte.love/blog/2023/06/06/month-5-report#%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0" class="hash-link" aria-label="组件更新的直接链接" title="组件更新的直接链接">​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="核心库">核心库<a href="https://simbot.forte.love/blog/2023/06/06/month-5-report#%E6%A0%B8%E5%BF%83%E5%BA%93" class="hash-link" aria-label="核心库的直接链接" title="核心库的直接链接">​</a></h3>
 <p><a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a> 已经迎来了它伟大的
 <a href="https://github.com/simple-robot/simpler-robot/releases/v3.0.0" target="_blank" rel="noopener noreferrer">v3.0.0</a> 更新，
@@ -223,7 +252,7 @@ Kotlin 更新到 1.9 。不过这并不迫切，也不必须，总而言之7月�
 <p><a href="https://github.com/mamoe/mirai" target="_blank" rel="noopener noreferrer">mirai</a> 目前的更新处于停滞状态，
 因此 <a href="https://github.com/simple-robot/simbot-component-mirai" target="_blank" rel="noopener noreferrer"><strong>mirai组件</strong></a> 也没什么机会去更新。</p>
 <p>我们仍旧在等待 mirai 发布后续更新，不过也有可能会临时破例更新一个针对 mirai 的 <code>v2.15.0-M1</code> 版本的临时版本。</p>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="qq频道组件">QQ频道组件<a href="https://simbot.forte.love/blog/2023/06/06/month-5-report#qq%E9%A2%91%E9%81%93%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="QQ频道组件的直接�链接" title="QQ频道组件的直接链接">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="qq频道组件">QQ频道组件<a href="https://simbot.forte.love/blog/2023/06/06/month-5-report#qq%E9%A2%91%E9%81%93%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="QQ频道组件的直接链接" title="QQ频道组件的直接链接">​</a></h3>
 <p><a href="https://github.com/simple-robot/simbot-component-qq-guild" target="_blank" rel="noopener noreferrer">QQ频道组件</a> 已经大体“稳定”，并且目前来看已经可以长期运营了（可参考亲爱的 <a href="https://qun.qq.com/qunpro/robot/share?robot_appid=101986850" target="_blank" rel="noopener noreferrer">法欧莉</a>）。
 不过可能仍有一些细节需要完善，比如发送主动消息时会产生的<strong>主动消息审核</strong>的问题。</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="kook组件">KOOK组件<a href="https://simbot.forte.love/blog/2023/06/06/month-5-report#kook%E7%BB%84%E4%BB%B6" class="hash-link" aria-label="KOOK组件的直接链接" title="KOOK组件的直接链接">​</a></h3>
@@ -333,7 +362,7 @@ KOOK组件目前仍处于 <a href="https://github.com/simple-robot/simbot-compon
 <p>在上述的站点中，你可能会发现<a href="https://component-mirai.simbot.forte.love/" target="_blank" rel="noopener noreferrer">mirai组件使用手册</a>。这这里会陆续提供mirai组件下的一些内容，
 目前所提供的主要内容便是有关于bot文件的配置以及一些简单的使用样例。</p>
 <p>其他组件其实也有计划，但是至少...也要等到它们趋于稳定。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="版本发布">版本发布<a href="https://simbot.forte.love/blog/2023/03/01/month-2-report#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83" class="hash-link" aria-label="版本发布的直接链接" title="版本发布的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="版本发布">版本发布<a href="https://simbot.forte.love/blog/2023/03/01/month-2-report#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83" class="hash-link" aria-label="版本发布的直接链接" title="版本发布的�直接链接">​</a></h2>
 <p>2月里，我们似乎又为 <a href="https://github.com/simple-robot/simpler-robot" target="_blank" rel="noopener noreferrer">核心库</a> 和 <a href="https://github.com/simple-robot/simbot-component-mirai" target="_blank" rel="noopener noreferrer">mirai组件库</a>
 发布了几个版本。</p>
 <p>对于核心库来说，其实基本上已经没什么大的更新了，这次更新的 <code>v3.0.0-RC.3</code> 主要是处理文档相关的内容以及一部分模块的迁移，没有实质上功能的调整。
@@ -405,7 +434,7 @@ KOOK组件目前仍处于 <a href="https://github.com/simple-robot/simbot-compon
         <updated>2022-12-31T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[2022年第52周周报, 元旦快乐。]]></summary>
         <content type="html"><![CDATA[<p>2022年第52周周报, 元旦快乐。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-元旦">🎉 元旦<a href="https://simbot.forte.love/blog/2022/12/31/weak-52-report#-%E5%85%83%E6%97%A6" class="hash-link" aria-label="🎉 元旦的直接链接" title="🎉 元旦�的直接链接">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-元旦">🎉 元旦<a href="https://simbot.forte.love/blog/2022/12/31/weak-52-report#-%E5%85%83%E6%97%A6" class="hash-link" aria-label="🎉 元旦的直接链接" title="🎉 元旦的直接链接">​</a></h2>
 <p>不算十分太平的一年，尾声也如期而至；面对未知的前路，仍需砥砺前行。</p>
 <p>也算是难得一次的本命年，还希望一切都好。</p>
 <p><strong>总而言之，元旦快乐🎉</strong></p>
@@ -600,33 +629,6 @@ KOOK组件目前仍处于 <a href="https://github.com/simple-robot/simbot-compon
             <name>Scarlet Forte</name>
             <email>ForteScarlet@163.com</email>
             <uri>https://github.com/ForteScarlet</uri>
-        </author>
-        <category label="2022周报" term="2022周报"/>
-        <category label="周报" term="周报"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2022年第44周周报]]></title>
-        <id>https://simbot.forte.love/blog/2022/11/05/weak-44-report</id>
-        <link href="https://simbot.forte.love/blog/2022/11/05/weak-44-report"/>
-        <updated>2022-11-05T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[大概是2022年第44周周报喵。]]></summary>
-        <content type="html"><![CDATA[<p>大概是2022年第44周周报喵。</p>
-<blockquote>
-<i><small>生活的苦涩，石激碧波般响彻。</small></i>
-</blockquote>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-核心库">📦 核心库<a href="https://simbot.forte.love/blog/2022/11/05/weak-44-report#-%E6%A0%B8%E5%BF%83%E5%BA%93" class="hash-link" aria-label="📦 核心库的直接链接" title="📦 核心库的直接链接">​</a></h2>
-<p>本周 <small>截止到目前为止</small> 还没有新的版本发布，但是会在近期发布一个 <code>v3.0.0-M2</code>，其内容主要包括一些问题的修正和调整（主要来自 <a href="https://github.com/simple-robot/simbot-component-kook/issues/62" target="_blank" rel="noopener noreferrer">kook#62</a>）。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-kook">🔧 Kook<a href="https://simbot.forte.love/blog/2022/11/05/weak-44-report#-kook" class="hash-link" aria-label="🔧 Kook的直接链接" title="🔧 Kook的直接链接">​</a></h2>
-<p>上文提到了对 <a href="https://github.com/simple-robot/simbot-component-kook/issues/62" target="_blank" rel="noopener noreferrer">kook#62</a> 的修正，这也是我们这周的主要行动。总而言之，除了对它的修正之外，还有包括Kook组件的内部小调整之类的内容，以后也会更利于我们团队对其的更新与维护。</p>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="-还有什么">🍵 还有什么？<a href="https://simbot.forte.love/blog/2022/11/05/weak-44-report#-%E8%BF%98%E6%9C%89%E4%BB%80%E4%B9%88" class="hash-link" aria-label="🍵 还有什么？的直接链接" title="🍵 还有什么？的直接链接">​</a></h2>
-<p>我们还做了什么？也许没有了，也许忘记了。在维持更新的同时，或许我们应该先解决组内成员的就业问题。</p>
-<blockquote>
-<i><small>生活总是高于理想。</small></i>
-</blockquote>]]></content>
-        <author>
-            <name>Scarlet Forliy</name>
-            <email>ForliyScarlet@163.com</email>
-            <uri>https://github.com/ForliyScarlet</uri>
         </author>
         <category label="2022周报" term="2022周报"/>
         <category label="周报" term="周报"/>
