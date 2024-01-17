@@ -260,15 +260,15 @@ async function createConfig() {
                 },
 
                 // 公告
-                // announcementBar: {
-                //     id: 'announcementBar-still_under_construction',
-                //     content: `🎉🎉🎉 <b>v3.0.0</b> 已经发布，可前往 <a href="https://github.com/orgs/simple-robot/discussions" target="_blank"><b>社区</b></a> 交流或通过 <a href="https://github.com/simple-robot/simpler-robot/issues" target="_blank"><b>Issues</b></a> 反馈问题 😎😎😎`,
-                //     // backgroundColor: '#FFB906',
-                //     // backgroundColor: 'linear-gradient(0deg,red 50%,green 50%)',
-                //     // textColor: '#142F48',
-                //     isCloseable: true
-                //
-                // },
+                announcementBar: {
+                    id: 'announcementBar-still_under_construction',
+                    content: `🔈🔈🔈Simple Robot<b>V4</b> 已<b>箭在弦上</b>！可前往 <a href="https://github.com/simple-robot/simpler-robot/tree/v4-dev" target="_blank"><b>v4开发分支</b></a>或 <a href="https://simple-robot-library.github.io/simbot4-website/" target="_blank"><b>simbot4手册（预发布）</b></a> 提前预览，并前往 <a href="https://github.com/orgs/simple-robot/discussions">讨论区</a> 分享你的任何想法与建议！🕶`,
+                    // backgroundColor: '#FFB906',
+                    backgroundColor: 'linear-gradient(0deg,red 50%,green 50%)',
+                    textColor: '#142F48',
+                    isCloseable: true
+
+                },
 
                 // autoCollapseSidebarCategories: true,
                 navbar: {
