@@ -33,8 +33,8 @@ async function createConfig() {
     return {
         title: 'Simple Robot',
         tagline: '欢迎，我的朋友。',
-        url: 'https://simbot.forte.love',
-        baseUrl: '/',
+        url: 'https://simple-robot-library.github.io',
+        baseUrl: '/simbot3-website/',
         onBrokenLinks: 'warn', //  [ignore, log, warn, error, throw]
         onBrokenMarkdownLinks: 'warn',
         favicon: 'img/favicon.png',
@@ -260,15 +260,15 @@ async function createConfig() {
                 },
 
                 // 公告
-                announcementBar: {
-                    id: 'announcementBar-still_under_construction',
-                    content: `🔈🔈🔈Simple Robot<b>V4</b> 已<b>箭在弦上</b>！可前往 <a href="https://github.com/simple-robot/simpler-robot/tree/v4-dev" target="_blank"><b>v4开发分支</b></a>或 <a href="https://simple-robot-library.github.io/simbot4-website/" target="_blank"><b>simbot4手册（预发布）</b></a> 提前预览，并前往 <a href="https://github.com/orgs/simple-robot/discussions">讨论区</a> 分享你的任何想法与建议！🕶`,
-                    // backgroundColor: '#FFB906',
-                    backgroundColor: 'linear-gradient(0deg,red 50%,green 50%)',
-                    textColor: '#142F48',
-                    isCloseable: true
-
-                },
+                // announcementBar: {
+                //     id: 'announcementBar-still_under_construction',
+                //     content: `🔈🔈🔈Simple Robot<b>V4</b> 已<b>箭在弦上</b>！可前往 <a href="https://github.com/simple-robot/simpler-robot/tree/v4-dev" target="_blank"><b>v4开发分支</b></a>或 <a href="https://simple-robot-library.github.io/simbot4-website/" target="_blank"><b>simbot4手册（预发布）</b></a> 提前预览，并前往 <a href="https://github.com/orgs/simple-robot/discussions">讨论区</a> 分享你的任何想法与建议！🕶`,
+                //     // backgroundColor: '#FFB906',
+                //     backgroundColor: 'linear-gradient(0deg,red 50%,green 50%)',
+                //     textColor: '#142F48',
+                //     isCloseable: true
+                //
+                // },
 
                 // autoCollapseSidebarCategories: true,
                 navbar: {
