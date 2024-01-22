@@ -225,7 +225,7 @@ simbot.bot-configuration-resources[0]=classpath:simbot-bots/*.bot*
 
 :::info 快速引导
 
-- 对于 QQ频道 组件，[**QQ频道组件: 《BOT配置文件》**](https://simple-robot.github.io/simbot-component-qq-guild/docs/bot-config/)
+- 对于 QQ频道 组件，[**QQ频道组件: 《BOT配置文件》**](http://component-qqguild.simbot.forte.love/old-bot-config.html)
 - 对于 mirai 组件，[**mirai组件: 《BOT配置文件》**](https://component-mirai.simbot.forte.love/docs/bot-config/)
 - 对于 KOOK 组件，[**KOOK组件: 《BOT配置文件》**](https://simple-robot.github.io/simbot-component-kook/docs/bot-config/)
 

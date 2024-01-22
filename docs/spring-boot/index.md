@@ -156,11 +156,11 @@ simply-robot
 
 不同的组件所需要的配置文件内容是不同的，这里给出各组件针对配置文件的说明：
 
-| 组件          | 相关文档链接                                                                                  |
-|-------------|-----------------------------------------------------------------------------------------|
-| **QQ频道组件**  | [手册：BOT配置文件](https://simple-robot.github.io/simbot-component-qq-guild/docs/bot-config/) |
-| **KOOK组件**  | [手册：BOT配置文件](https://simple-robot.github.io/simbot-component-kook/docs/bot-config/)     |
-| **mirai组件** | [手册：BOT配置文件](https://component-mirai.simbot.forte.love/docs/bot-config)                 |
+| 组件          | 相关文档链接                                                                              |
+|-------------|-------------------------------------------------------------------------------------|
+| **QQ频道组件**  | [手册：BOT配置文件](http://component-qqguild.simbot.forte.love/old-bot-config.html)        |
+| **KOOK组件**  | [手册：BOT配置文件](https://simple-robot.github.io/simbot-component-kook/docs/bot-config/) |
+| **mirai组件** | [手册：BOT配置文件](https://component-mirai.simbot.forte.love/docs/bot-config)             |
 
 ### 事件监听
 
