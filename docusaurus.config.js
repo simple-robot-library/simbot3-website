@@ -156,10 +156,10 @@ async function createConfig() {
                         versions: {
                             current: {
                                 label: currentVersion,
-                                // path: '3.0.0.preview',
-                                // banner: '',
-                                badge: true
-                            },
+                                banner: 'unmaintained',
+                                badge: true,
+                                noIndex: true,
+                            }
                         },
                         // https://github.com/sjwall/mdx-mermaid
                         // remarkPlugins: [mdxMermaid.default]
@@ -226,32 +226,6 @@ async function createConfig() {
 
                 image: 'img/logo.png',
 
-
-                // "@docsearch/react": "^3.0.0",
-                // https://www.algolia.com/account/api-keys/all?applicationId=XJ6OXX8I3C
-                // TODO algolia not ready yet.
-                // algolia: {
-                //   appId: 'VLLZ4JZE8Z',
-                //
-                //   // Public API key: it is safe to commit it
-                //   apiKey: 'e60d9ee16618a0ad3a338ecc73cb840e',
-                //
-                //   indexName: 'doc',
-                //
-                //   // Optional: see doc section below
-                //   contextualSearch: true,
-                //
-                //   // Optional: Specify domains where the navigation should occur through window.location instead on history.push.
-                //   // Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-                //   // externalUrlRegex: 'external\\.com|domain\\.com',
-                //
-                //   // Optional: Algolia search parameters
-                //   // searchParameters: {},
-                //
-                //   // Optional: path for search page that enabled by default (`false` to disable it)
-                //   searchPagePath: 'search',
-                // },
-
                 docs: {
                     sidebar: {
                         hideable: true,
@@ -260,15 +234,16 @@ async function createConfig() {
                 },
 
                 // 公告
-                // announcementBar: {
-                //     id: 'announcementBar-still_under_construction',
-                //     content: `🔈🔈🔈Simple Robot<b>V4</b> 已<b>箭在弦上</b>！可前往 <a href="https://github.com/simple-robot/simpler-robot/tree/v4-dev" target="_blank"><b>v4开发分支</b></a>或 <a href="https://simple-robot-library.github.io/simbot4-website/" target="_blank"><b>simbot4手册（预发布）</b></a> 提前预览，并前往 <a href="https://github.com/orgs/simple-robot/discussions">讨论区</a> 分享你的任何想法与建议！🕶`,
-                //     // backgroundColor: '#FFB906',
-                //     backgroundColor: 'linear-gradient(0deg,red 50%,green 50%)',
-                //     textColor: '#142F48',
-                //     isCloseable: true
-                //
-                // },
+                announcementBar: {
+                    id: 'announcementBar-see_simbot4',
+                    content: `Simple Robot v3 版本已经基本结束了它的生命周期🙏🙏, 
+前往 <a href="https://github.com/simpler-robot">仓库</a> 或 <a href="https://simple-robot-library.github.io/simbot4-website/">Simple Robot v4 手册</a> 
+了解 <b><span style="color: #d90d88; font-size: 23px;">simbot 4</span></b>！`,
+                    // backgroundColor: '#FFB906',
+                    backgroundColor: 'linear-gradient(0deg,red 50%,green 50%)',
+                    textColor: '#142F48',
+                    isCloseable: false
+                },
 
                 // autoCollapseSidebarCategories: true,
                 navbar: {
@@ -296,7 +271,7 @@ async function createConfig() {
                             type: 'docsVersionDropdown',
                             position: 'right',
                             docsPluginId: 'default',
-                            // dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+                            dropdownItemsBefore: [{href: 'https://simple-robot-library.github.io/simbot4-website/', label: 'simbot4'}],
                             dropdownActiveClassDisabled: true,
                         },
                         {
